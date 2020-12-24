@@ -1,11 +1,15 @@
 import styled from "styled-components";
 
 export const NavigationContainer = styled.div` 
+  background-color: white; 
   box-shadow: 0 2px 8px rgba(0, 0, 0, .2);
   display: flex;
   height: 80px;
   justify-content: center;
   padding: 0 20px;
+  position: sticky;
+  top: 0;
+  z-index: 1;
 `;
 
 export const InnerContainer = styled.div` 
