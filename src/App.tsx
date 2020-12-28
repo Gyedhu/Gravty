@@ -19,7 +19,7 @@ function App() {
     exact: true
   });
 
-  console.log(signin, signup);  
+  console.log(currentPath, history);  
 
   // Redirecting to signin
   history.push("/signin");
