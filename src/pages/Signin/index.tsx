@@ -4,14 +4,17 @@ import Input from "../../components/Input";
 import { FormContainer } from "../../container";
 import { useForm } from "react-hook-form";
 
+// User data interface
 interface UserData {
   email: string;
   password: string;
 };
 
+// Error message 
 const ErrorText: FC = ({ children }) =>
   <span style={{ color: "tomato" }}>{children}</span>
 
+// Signin
 const Signin = () => {
 
   // react-hook-form
@@ -32,11 +35,11 @@ const Signin = () => {
 
   // Signin form
   return <FormContainer
-    title="Signin"
-    subTitle="Welcome back to Gravty"
     linkTitle="Create a new account?"
     linkTo="/signup"
     onSubmit={handleSubmit(submitForm)}
+    subTitle="Welcome back to Gravty"
+    title="Signin"
   >
 
     {/* Email field */}
