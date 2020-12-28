@@ -27,7 +27,7 @@ const FormContainer: React.FC<Props> =
 
         {children}
 
-        <Button fit fill to={to} onClick={onSubmit} title="Submit" />
+        <Button fit background to={to} onClick={onSubmit} title="Submit" />
         <Button fit to={linkTo} link title={linkTitle} />
       </FlexView>
     </FlexView>

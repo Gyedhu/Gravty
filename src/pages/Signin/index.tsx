@@ -2,8 +2,18 @@ import { useState } from "react";
 import { CheckBox } from "../../components";
 import Input from "../../components/Input";
 import { FormContainer } from "../../container";
+import { useForm } from "react-hook-form";
+
+interface SubmitData {
+  email: string;
+  password: string;
+};
 
 const Signin = () => {
+
+  // react-hook-form
+  // Get register, errors, handleSubmit
+  const { register, errors, handleSubmit } = useForm();
 
   // ShowPassword for set password visibility
   const [showPassword, setShowPassword] = useState(false);
@@ -13,22 +23,24 @@ const Signin = () => {
     setShowPassword(prev => !prev);
 
   // Submit form data
-  const submitForm = () => {
-    alert("signin");
+  const submitForm = (onValid: SubmitData) => {
+    console.log(onValid);
   }
 
+  // Signin form
   return <FormContainer
     title="Signin"
     subTitle="Welcome back to Gravty"
     linkTitle="Create a new account?"
     linkTo="/signup"
-    onSubmit={submitForm}
+    onSubmit={handleSubmit(submitForm)}
   >
 
     {/* Email field */}
     <Input
       name="email"
       placeholder="Email"
+      ref={register({ required: true })}
       type="email"
     />
 
@@ -36,6 +48,7 @@ const Signin = () => {
     <Input
       name="password"
       placeholder="Password"
+      ref={register({ required: true })}
       type={showPassword ? "text" : "password"}
     />
 
