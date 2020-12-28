@@ -1,5 +1,5 @@
 import React from "react";
-import { FlexView, UrlImage, Text, Button } from "../../components";
+import { FlexView, Button } from "../../components";
 
 
 const HomeNavBar = () => {
