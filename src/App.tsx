@@ -19,6 +19,8 @@ function App() {
     exact: true
   });
 
+  console.log(signin, signup);  
+
   // Redirecting to signin
   history.push("/signin");
 
