@@ -1,9 +1,9 @@
 import React from "react";
-import { TextContainer } from "./style";
+import { TextContainer } from "./style"; 
 
-const Text: React.FC<TextTypes> = ({ children, ...props }) => {
+const Text: React.FC<TextProps> = ({ children, ...props }) => {
   return <TextContainer {...props}>
-  {children}
+    {children}
   </TextContainer>
 }
 
