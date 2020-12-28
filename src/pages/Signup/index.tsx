@@ -20,7 +20,9 @@ const Signup = () => {
 
   // react-hook-form
   // Get register, errors, handleSubmit
-  const { register, errors, handleSubmit } = useForm<UserData>();
+  const { register, errors, handleSubmit } = useForm<UserData>({
+    mode: "onChange"
+  });
 
   // ShowPassword for set password visibility
   const [showPassword, setShowPassword] = useState(false);
@@ -30,8 +32,8 @@ const Signup = () => {
     setShowPassword(prev => !prev);
 
   // Submit form data
-  const submitForm = (onValid: UserData) => {
-    console.log(onValid);
+  const submitForm = (userdata: UserData) => {
+    console.log(userdata);
   }
 
   // Signup form
@@ -75,13 +77,19 @@ const Signup = () => {
     <Input
       name="password"
       placeholder="Password"
-      ref={register({ required: true })}
+      ref={register({ required: true, minLength: 8 })}
       type={showPassword ? "text" : "password"}
     />
     {
       // Password is required Error
       errors.password && errors.password.type === "required" && (
         <ErrorText>Please enter your password!</ErrorText>
+      )
+    }
+    {
+      // Password length Error
+      errors.password && errors.password.type === "minLength" && (
+        <ErrorText>Password must need atleast 8 characters!</ErrorText>
       )
     }
 

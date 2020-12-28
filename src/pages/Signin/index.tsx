@@ -29,8 +29,8 @@ const Signin = () => {
     setShowPassword(prev => !prev);
 
   // Submit form data
-  const submitForm = (onValid: UserData) => {
-    console.log(onValid);
+  const submitForm = (userdata: UserData) => {
+    console.log(userdata);
   }
 
   // Signin form
