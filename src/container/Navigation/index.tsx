@@ -5,6 +5,7 @@ import { FlexView, Text } from '../../components'
 const Navigation = () => {
   return <FlexView
     justify="center"
+    paddingHorizontal="20px"
     paddingVertical="20px"
     shadow
   >
