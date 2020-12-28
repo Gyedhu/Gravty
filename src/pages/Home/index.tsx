@@ -1,6 +1,8 @@
 import { User } from "../../assets/images";
 import { HomeCard, HomeNavBar, ProfileCard, View } from "../../container";
 
+// User data to be fetched
+// Temperarly hardcoded
 const userdata = {
   name: "Yedhumohanan.G",
   email: "gyedhumohanan@gmail.com",
@@ -9,7 +11,7 @@ const userdata = {
   uploads: 0,
   friends: 0,
   stars: 0
-}
+};
 
 const Home = () => {
 
