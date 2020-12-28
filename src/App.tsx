@@ -5,10 +5,12 @@ import Router from "./router";
 function App() {
 
   const history = useHistory();
-
   const currentPath = history.location.pathname;
 
-return <>   
+  // Redirecting to signin
+  history.push("/signin");
+
+  return <>
     {
       currentPath !== "/signin" &&
       currentPath !== "/signup" &&
