@@ -40,10 +40,10 @@ const Signup = () => {
 
   // Signup form
   return <FormContainer
-    linkTitle="Create a new account?"
-    linkTo="/signup"
+    linkTitle="Already have an account?"
+    linkTo="/signin"
     onSubmit={handleSubmit(submitForm)}
-    subTitle="Welcome back to Gravty"
+    subTitle="Welcome to Gravty"
     title="Signup"
   >
 
