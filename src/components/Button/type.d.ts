@@ -1,7 +1,7 @@
 type Width = "100px" | "150px" | "200px";
 
 interface ButtonStyleTypes {
-  fill?: boolean;
+  background?: boolean;
   fit?: boolean;
   link?: boolean;
   to?: string;

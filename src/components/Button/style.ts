@@ -15,7 +15,7 @@ export const ButtonContainer = styled.button <ButtonStyleTypes>`
   transition: .2s;
   width: ${({ fit, width }) => width};
 
-  ${({ fill }) => fill && css`
+  ${({ background: fill }) => fill && css`
     background-color: #59886b;
     border-radius: 5px;
     color: white; 
