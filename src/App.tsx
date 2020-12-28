@@ -8,14 +8,14 @@ function App() {
   const currentPath = history.location.pathname;
 
   // Checking current page is /signin or not
-  const signin = matchPath("/signin", {
-    path: currentPath,
+  const signin = matchPath(currentPath, {
+    path: "/signin",
     exact: true
   });
 
   // Checking current page is /signup or not
-  const signup = matchPath("/signup", {
-    path: currentPath,
+  const signup = matchPath(currentPath, {
+    path: "/signup",
     exact: true
   });
 
