@@ -4,10 +4,12 @@ import { FlexView, Text } from '../../components'
 
 const Navigation = () => {
   return <FlexView
+    fill="#ffffff"
     justify="center"
     paddingHorizontal="20px"
     paddingVertical="20px"
     shadow
+    sticky
   >
     <FlexView
       align="center"
