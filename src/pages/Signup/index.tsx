@@ -7,8 +7,10 @@ import { useForm } from "react-hook-form";
 // User data interface
 interface UserData {
   email: string;
+  gender: string;
   name: string;
   password: string;
+  profession: string;
 };
 
 // Error message 
@@ -70,6 +72,32 @@ const Signup = () => {
       // Email is required Error
       errors.email && errors.email.type === "required" && (
         <ErrorText>Please enter your email!</ErrorText>
+      )
+    }
+
+    {/* Gender field */}
+    <Input
+      ref={register}
+      name="gender"
+      options={[
+        "Male",
+        "Female",
+        "Other"
+      ]}
+      select
+    />
+
+    {/* Profession field */}
+    <Input
+      name="profession"
+      placeholder="Profession"
+      ref={register({ required: true })}
+      type="text"
+    />
+    {
+      // Profession is required Error
+      errors.profession && errors.profession.type === "required" && (
+        <ErrorText>Please enter your profession!</ErrorText>
       )
     }
 
