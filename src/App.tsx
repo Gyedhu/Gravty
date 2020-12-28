@@ -20,7 +20,7 @@ function App() {
   });
 
   // Redirecting to signin
-  // history.push("/signin");
+  history.push("/signin");
 
   return <>
     {
