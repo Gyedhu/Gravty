@@ -1,6 +1,5 @@
-import { Desktop, Mobile, User, Writer } from "../../assets/images";
-import { Button, FlexView, Text, UrlImage } from "../../components";
-import { HomeCard, ProfileCard, View } from "../../container";
+import { User } from "../../assets/images";
+import { HomeCard, HomeNavBar, ProfileCard, View } from "../../container";
 
 const userdata = {
   name: "Yedhumohanan.G",
@@ -16,18 +15,13 @@ const Home = () => {
 
   return <View>
 
+    {/* Profile Card */}
     <ProfileCard {...userdata} />
 
     {/* NavBar */}
-    <FlexView fill="#59886b" gap="10px" paddingHorizontal="15px" paddingVertical="15px" radius="10px" mobile>
-      <Button background className="ri-add-line" />
-      <Button background className="ri-message-line" />
-      <Button background className="ri-search-2-line" />
-      <Button background className="ri-upload-cloud-2-line" />
-      <Button background className="ri-team-line" />
-    </FlexView>
+    <HomeNavBar />
 
-    {/* Card */}
+    {/* HomeCard */}
     <HomeCard />
 
   </View>
