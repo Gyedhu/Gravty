@@ -9,7 +9,14 @@ interface UserDataProps {
 }
 
 const UserData: React.FC<UserDataProps> = ({ email, imageUrl, name, profession }) => {
-  return <FlexView align="center" gap="20px" justify="space-between" paddingVertical="20px" wrap="wrap">
+  return <FlexView
+    align="center"
+    gap="20px"
+    justify="space-between"
+    paddingVertical="20px"
+    wrap="wrap"
+    mobile
+  >
     {imageUrl && <UrlImage rounded url={imageUrl} height="100px" width="100px" />}
 
     <FlexView direction="column" justify="center" mobile>

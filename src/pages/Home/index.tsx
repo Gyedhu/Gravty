@@ -1,6 +1,6 @@
 import { Desktop, Mobile, User, Writer } from "../../assets/images";
 import { Button, FlexView, Text, UrlImage } from "../../components";
-import { ProfileCard, View } from "../../container";
+import { HomeCard, ProfileCard, View } from "../../container";
 
 const userdata = {
   name: "Yedhumohanan.G",
@@ -28,37 +28,7 @@ const Home = () => {
     </FlexView>
 
     {/* Card */}
-    <FlexView gap="10px" wrap="wrap">
-
-      <FlexView direction="column" gap="20px" grow="1" minWidth="200px">
-        <UrlImage fit height="200px" url={Writer} />
-
-        <FlexView direction="column" maxWidth="300px">
-          <Text size="20px">Write</Text>
-          <Text size="15px">Write your question ideas and thoughts</Text>
-        </FlexView>
-
-      </FlexView>
-
-      <FlexView direction="column" gap="20px" grow="1" minWidth="200px">
-        <UrlImage fit height="200px" url={Mobile} />
-
-        <FlexView direction="column" maxWidth="300px">
-          <Text size="20px">Chat</Text>
-          <Text size="15px">Chat with your friends and share resources</Text>
-        </FlexView>
-      </FlexView>
-
-      <FlexView direction="column" gap="20px" grow="1" minWidth="200px">
-        <UrlImage fit height="200px" url={Desktop} />
-
-        <FlexView direction="column" maxWidth="300px">
-          <Text size="20px">Search</Text>
-          <Text size="15px">Search and frind resources and help peoples with answer questions</Text>
-        </FlexView>
-      </FlexView>
-
-    </FlexView>
+    <HomeCard />
 
   </View>
 }
