@@ -1,6 +1,6 @@
 import React from "react";
 import { Button, FlexView, Text } from "../../components";
-import { QuestionWriteArea, View } from "../../container";
+import { Header, QuestionWriteArea, View } from "../../container";
 
 const Write = () => {
 
@@ -23,11 +23,10 @@ const Write = () => {
 
   return <View>
 
-    {/* Header */}
-    <FlexView direction="column">
-      <Text size="30px">Write</Text>
-      <Text size="18px">Write your questions, ideas and thoughts</Text>
-    </FlexView>
+    <Header
+      title="Write"
+      subTitle="Write your questions, ideas and thoughts"
+    />
 
     {/* Button set question ~ pages */}
     <FlexView gap="20px">
