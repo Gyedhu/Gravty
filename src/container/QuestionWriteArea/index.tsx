@@ -15,6 +15,14 @@ const QuestionWriteArea = () => {
   }
 
 
+  // --- Clear area ---
+  const clear = () => {
+
+    // Set empty string in state
+    setQuestion("");
+  }
+
+
   // --- Upload question ---
   const uploadQuestion = () => {
 
@@ -22,7 +30,10 @@ const QuestionWriteArea = () => {
     if (question.trim()) {
 
       // database operation
-      console.log(question);
+      alert(question);
+
+      // clear field
+      clear();
     }
     else {
 
@@ -31,19 +42,13 @@ const QuestionWriteArea = () => {
     }
 
   }
+  
 
   // --- Attach media ---
   const attachMedia = () => {
 
     // File operations
     alert("Attach media");
-  }
-
-  // --- Clear area ---
-  const clear = () => {
-
-    // Set empty string in state
-    setQuestion("");
   }
 
   return <FlexView direction="column" gap="10px">

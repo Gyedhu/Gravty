@@ -50,5 +50,9 @@ export const ButtonContainer = styled.button <ButtonStyleTypes>`
   &:active {
     opacity: .2;
   }
+
+  &:focus {
+    outline: 1px dashed dodgerblue;
+  }
   
 `;
