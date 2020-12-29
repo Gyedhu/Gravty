@@ -52,7 +52,7 @@ export const ButtonContainer = styled.button <ButtonStyleTypes>`
   }
 
   &:focus {
-    outline: 1px dashed dodgerblue;
+    outline: ${({ background }) => background && "1px dashed dodgerblue"};
   }
   
 `;

@@ -62,7 +62,6 @@ const ProfileCard: React.FC<ProfileCardProps> =
   ({ email, friends, imageUrl, name, profession, stars, uploads }) => {
     return <FlexView
       align="center"
-      
       justify="space-between"
       wrap="wrap"
     >
