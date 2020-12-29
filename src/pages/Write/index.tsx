@@ -33,6 +33,12 @@ const Write = () => {
       <Button active={active[1]} onClick={toggleActive} title="Pages" value="1" />
     </FlexView>
     {/* Text area */}
+
+    <FlexView direction="column" gap="10px" minHeight="200px">
+      <textarea placeholder="Write your question" style={{ flex: 1, fontFamily: "Jost", padding: "10px" }}></textarea>
+      <Button background title="Upload" />
+    </FlexView>
+
     {/* Submit Button */}
 
   </View>
