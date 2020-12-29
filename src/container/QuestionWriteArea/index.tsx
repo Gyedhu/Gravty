@@ -6,6 +6,15 @@ const QuestionWriteArea = () => {
   // State for store question
   const [question, setQuestion] = React.useState("");
 
+  // Reference for textarea
+  const textAreaRef = React.useRef<HTMLTextAreaElement>(null);
+
+  // Adding side-effect to set the textArea focused in compoent mount
+  React.useEffect(() => {
+    if (textAreaRef.current)
+      textAreaRef.current.focus();
+  }, []);
+
 
   // --- Read question ---
   const readQuestion = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -42,7 +51,7 @@ const QuestionWriteArea = () => {
     }
 
   }
-  
+
 
   // --- Attach media ---
   const attachMedia = () => {
@@ -57,6 +66,7 @@ const QuestionWriteArea = () => {
     <TextArea
       onChange={readQuestion}
       placeholder="Write your question"
+      ref={textAreaRef}
       value={question}
     />
 

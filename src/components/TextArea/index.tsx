@@ -7,9 +7,8 @@ interface Props {
   value?: string;
 }
 
-const TextArea: React.FC<Props> = ({ ...props }) => {
-  return <TextAreaContainer    {...props}></TextAreaContainer>
-
-}
+const TextArea = React.forwardRef<HTMLTextAreaElement | null, Props>(({ ...props }, ref) => {
+  return <TextAreaContainer ref={ref}   {...props}></TextAreaContainer>
+});
 
 export default TextArea;
