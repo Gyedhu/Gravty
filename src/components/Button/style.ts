@@ -14,9 +14,21 @@ export const ButtonContainer = styled.button <ButtonStyleTypes>`
   justify-content: center;
   outline: 0;
   transition: opacity .2s;
-  width: ${({ width }) => width};
+  width: ${({ width }) => width}; 
 
-  ${({ background: fill }) => fill && css`
+  ${({ border }) => border && css`
+    border: 1px solid #59886b; 
+    border-radius: 5px; 
+    padding: 5px 10px;
+  `}
+
+  ${({ shadow }) => shadow && css`
+    box-shadow:  0 2px 8px rgba(0, 0, 0, .25); 
+    border-radius: 5px; 
+    padding: 5px 10px;
+  `}
+
+  ${({ background }) => background && css`
     background-color: #59886b;
     border-radius: 5px;
     color: white; 
