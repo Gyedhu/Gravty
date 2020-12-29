@@ -3,6 +3,9 @@ import { CheckBox } from "../../components";
 import Input from "../../components/Input";
 import { FormContainer } from "../../container";
 import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
+import { clearNotification, setNotification } from "../../redux/notification/action";
+import { useHistory } from "react-router-dom";
 
 // User data interface
 interface UserData {
@@ -21,15 +24,27 @@ const Signin = () => {
   // Get register, errors, handleSubmit
   const { register, errors, handleSubmit } = useForm<UserData>();
 
+  // history for change route
+  const history = useHistory();
+
+  // Dispatch
+  const dispatch = useDispatch();
+
   // ShowPassword for set password visibility
   const [showPassword, setShowPassword] = useState(false);
+
 
   // Toggling password visibility
   const togglePassword = () =>
     setShowPassword(prev => !prev);
 
+
   // Submit form data
   const submitForm = (userdata: UserData) => {
+    dispatch(setNotification("Loading..."));
+    setTimeout(() => {
+      dispatch(clearNotification()); 
+    }, 5000);
     console.log(userdata);
   }
 

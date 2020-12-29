@@ -14,9 +14,10 @@ const Notificaion: React.FC<Props> = ({ title, message }) => {
     <FlexView
       align="center"
       direction="column"
-      fill="#59886b"
+      fill="#f5f5f5"
       paddingHorizontal="20px"
       paddingVertical="20px"
+      shadow
     >
       <Text size="18px"> {title}</Text>
       <Text size="18px"> {message}</Text>

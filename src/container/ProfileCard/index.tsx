@@ -19,7 +19,7 @@ const UserData: React.FC<UserDataProps> =
       wrap="wrap"
       mobile
     >
-      {imageUrl && <UrlImage rounded url={imageUrl} height="100px" width="100px" />}
+      {imageUrl && <UrlImage border rounded url={imageUrl} height="100px" width="100px" />}
 
       <FlexView direction="column" justify="center" mobile>
         <Text size="24px">{name}</Text>

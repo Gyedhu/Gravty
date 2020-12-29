@@ -4,7 +4,7 @@ import { Button, FlexView, Text } from '../../components'
 
 const Navigation = () => {
   return <FlexView
-    fill="#ffffff"
+    fill="#f5f5f5"
     justify="center"
     paddingHorizontal="20px"
     paddingVertical="20px"
