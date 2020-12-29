@@ -8,24 +8,26 @@ interface UserDataProps {
   profession: string;
 }
 
-const UserData: React.FC<UserDataProps> = ({ email, imageUrl, name, profession }) => {
-  return <FlexView
-    align="center"
-    gap="20px"
-    justify="space-between"
-    paddingVertical="20px"
-    wrap="wrap"
-    mobile
-  >
-    {imageUrl && <UrlImage rounded url={imageUrl} height="100px" width="100px" />}
+const UserData: React.FC<UserDataProps> =
+  ({ email, imageUrl, name, profession }) => {
 
-    <FlexView direction="column" justify="center" mobile>
-      <Text size="24px">{name}</Text>
-      <Text size="15px">{email}</Text>
-      <Text size="15px">{profession}</Text>
+    return <FlexView
+      align="center"
+      gap="20px"
+      justify="space-between"
+      paddingVertical="20px"
+      wrap="wrap"
+      mobile
+    >
+      {imageUrl && <UrlImage rounded url={imageUrl} height="100px" width="100px" />}
+
+      <FlexView direction="column" justify="center" mobile>
+        <Text size="24px">{name}</Text>
+        <Text size="15px">{email}</Text>
+        <Text size="15px">{profession}</Text>
+      </FlexView>
     </FlexView>
-  </FlexView>
-}
+  }
 
 interface DashboardProps {
   uploads: number;
@@ -60,6 +62,7 @@ const ProfileCard: React.FC<ProfileCardProps> =
   ({ email, friends, imageUrl, name, profession, stars, uploads }) => {
     return <FlexView
       align="center"
+      
       justify="space-between"
       wrap="wrap"
     >
