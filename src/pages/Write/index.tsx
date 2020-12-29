@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, FlexView, Text } from "../../components";
+import { Button, FlexView, Text, TextArea } from "../../components";
 import { View } from "../../container";
 
 const Write = () => {
@@ -8,7 +8,7 @@ const Write = () => {
 
   const toggleActive = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
 
-    const newList = active.map((value, index) => {
+    const newList = active.map((_, index) => {
       if (`${index}` === event.currentTarget.value)
         return true;
       else
@@ -34,12 +34,14 @@ const Write = () => {
     </FlexView>
     {/* Text area */}
 
-    <FlexView direction="column" gap="10px" minHeight="200px">
-      <textarea placeholder="Write your question" style={{ flex: 1, fontFamily: "Jost", padding: "10px" }}></textarea>
-      <Button background title="Upload" />
+    <FlexView direction="column" gap="10px">
+      <TextArea placeholder="Write your question" />
+      <FlexView gap="10px">
+        <Button fit background title="Upload" />
+        <Button className="ri-link" title="Attach" />
+        <Button className="ri-delete-bin-line" title="Clear" />
+      </FlexView>
     </FlexView>
-
-    {/* Submit Button */}
 
   </View>
 }
