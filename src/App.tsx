@@ -1,5 +1,5 @@
 // import { useHistory } from "react-router-dom";
-import Navigation from "./container/Navigation";
+import { Navigation, Notification } from "./container";
 import Router from "./router";
 
 function App() {
@@ -10,6 +10,7 @@ function App() {
   // history.push("/signin");
 
   return <>
+    <Notification message="" />
     <Navigation />
     <Router />
   </>
