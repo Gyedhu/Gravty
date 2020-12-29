@@ -4,6 +4,7 @@ export const ButtonContainer = styled.button <ButtonStyleTypes>`
   align-items: center;
   background-color: transparent;
   border: 0; 
+  border-bottom: ${({ active }) => active && "4px solid #59886b"};
   color: #252525;
   cursor: pointer;
   display: flex;
@@ -12,8 +13,8 @@ export const ButtonContainer = styled.button <ButtonStyleTypes>`
   gap: 5px;
   justify-content: center;
   outline: 0;
-  transition: .2s;
-  width: ${({ fit, width }) => width};
+  transition: opacity .2s;
+  width: ${({ width }) => width};
 
   ${({ background: fill }) => fill && css`
     background-color: #59886b;
