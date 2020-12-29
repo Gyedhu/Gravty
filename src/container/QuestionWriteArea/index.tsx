@@ -60,6 +60,8 @@ const QuestionWriteArea = () => {
     alert("Attach media");
   }
 
+
+  // --- Write question --- 
   return <FlexView direction="column" gap="10px">
 
     {/* Text area */}

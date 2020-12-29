@@ -14,7 +14,7 @@ const Button: React.FC<ButtonProps> = ({ title, to, onClick, ...props }) => {
   }
 
   return <ButtonContainer onClick={_onClick}  {...props}>
-    <span>{title}</span>
+    {title && <span>{title}</span>}
   </ButtonContainer>
 }
 

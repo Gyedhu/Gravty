@@ -1,6 +1,6 @@
 import React from 'react'
 import { Logo } from '../../assets/images'
-import { FlexView, Text } from '../../components'
+import { Button, FlexView, Text } from '../../components'
 
 const Navigation = () => {
   return <FlexView
@@ -11,16 +11,28 @@ const Navigation = () => {
     shadow
     sticky
   >
+
     <FlexView
       align="center"
       bound="1024px"
       gap="5px"
+      justify="space-between"
     >
 
-      <img src={Logo} alt="logo" height="30" />
-      <Text fancy>Gravty</Text>
+      {/* Logo */}
+      <FlexView gap="10px">
+        <img src={Logo} alt="logo" height="30" />
+        <Text fancy>Gravty</Text>
+      </FlexView>
+
+      {/* Nav Icons */}
+      <FlexView gap="20px">
+        <Button className="ri-notification-line" />
+        <Button className="ri-home-2-line" to="/" />
+      </FlexView>
 
     </FlexView>
+
   </FlexView>
 }
 
