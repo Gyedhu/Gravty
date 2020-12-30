@@ -43,7 +43,8 @@ const Signin = () => {
   const submitForm = (userdata: UserData) => {
     dispatch(setNotification("Loading..."));
     setTimeout(() => {
-      dispatch(clearNotification()); 
+      dispatch(clearNotification());
+      history.push("/");
     }, 5000);
     console.log(userdata);
   }

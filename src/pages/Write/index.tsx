@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, FlexView, Text } from "../../components";
+import { Button, FlexView } from "../../components";
 import { Header, QuestionWriteArea, View } from "../../container";
 
 const Write = () => {

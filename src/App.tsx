@@ -5,7 +5,11 @@ import { NotificationState } from "./redux/notification/type";
 
 function App() {
 
-  const message = useSelector<NotificationState, NotificationState["message"]>(state => state.message);
+  interface State {
+    notification: NotificationState;
+  }
+
+  const message = useSelector<State, NotificationState["message"]>(state => state.notification.message);
 
   return <>
     <Notification message={message} />
