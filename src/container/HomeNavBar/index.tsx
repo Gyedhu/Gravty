@@ -3,8 +3,9 @@ import { FlexView, Button } from "../../components";
 
 
 const HomeNavBar = () => {
+feature/write-page
   return <FlexView gap="10px" mobile paddingHorizontal="15px" paddingVertical="15px" radius="10px" shadow>
-    <Button className="ri-add-line" to="/question" />
+    <Button className="ri-add-line" to="/question" /> 
     <Button className="ri-message-line" />
     <Button className="ri-search-2-line" />
     <Button className="ri-upload-cloud-2-line" />
