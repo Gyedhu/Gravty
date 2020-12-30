@@ -1,6 +1,7 @@
 import React from "react";
 import { Button, FlexView, TextArea, UrlImage } from "../../components";
 import { filePicker } from "../../utility";
+import Paragraph from "../Paragraph";
 
 const QuestionWriteArea = () => {
 
@@ -94,6 +95,11 @@ const QuestionWriteArea = () => {
         <UrlImage fit url={attachImage} width="200px" />
       </FlexView>
     }
+
+    <Paragraph
+      content="Write your question and upload ... get answered :)"
+    />
+
 
     {/* Text area */}
     <TextArea

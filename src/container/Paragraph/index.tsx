@@ -8,7 +8,7 @@ interface Props {
 
 const Paragraph: React.FC<Props> = ({ header, content }) => {
   return <FlexView direction="column" gap="10px">
-    <Text size="24px">{header}</Text>
+    {header && <Text size="24px">{header}</Text>}
     <Text size="18px">{content}</Text>
   </FlexView>
 }

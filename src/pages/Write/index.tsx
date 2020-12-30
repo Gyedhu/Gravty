@@ -1,6 +1,6 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
-import { Button, FlexView, Text } from "../../components";
+import { Button, FlexView } from "../../components";
 import { Header, PageWriter, QuestionWriteArea, View } from "../../container";
 
 interface Props {
@@ -14,9 +14,7 @@ const Write: React.FC<Props> = ({ type }) => {
 
   // Select current page
   const toggleActive = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-
-    history.replace("/" + event.currentTarget.value);
-
+    history.replace(`/${event.currentTarget.value}`);
   }
 
   return <View>
@@ -28,8 +26,21 @@ const Write: React.FC<Props> = ({ type }) => {
 
     {/* Button set question ~ pages */}
     <FlexView gap="20px">
-      <Button active={type === "question"} onClick={toggleActive} title="Questions" value="question" />
-      <Button active={type === "page"} onClick={toggleActive} title="Pages" value="page" />
+
+      <Button
+        active={type === "question"}
+        onClick={toggleActive}
+        title="Questions"
+        value="question"
+      />
+
+      <Button
+        active={type === "page"}
+        onClick={toggleActive}
+        title="Pages"
+        value="page"
+      />
+
     </FlexView>
 
     {
