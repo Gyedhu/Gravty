@@ -8,6 +8,7 @@ interface CardProps {
   subTitle: string;
 };
 
+// Card with image
 const Card: React.FC<CardProps> = ({ imageUrl, title, subTitle }) => {
   return <FlexView
     direction="column"
@@ -25,6 +26,7 @@ const Card: React.FC<CardProps> = ({ imageUrl, title, subTitle }) => {
   </FlexView>
 }
 
+//  Card set
 const HomeCard = () => {
   return <FlexView
     gap="10px"

@@ -9,4 +9,8 @@ export const TextAreaContainer = styled.textarea`
   outline: 0;
   padding: 10px;
   width: 100%;
+
+  &:focus {
+    outline: 1px dashed dodgerblue;
+  }
 `;

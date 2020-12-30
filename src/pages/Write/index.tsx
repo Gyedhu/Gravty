@@ -1,47 +1,48 @@
 import React from "react";
-import { Button, FlexView, Text, TextArea } from "../../components";
-import { View } from "../../container";
+import { Button, FlexView } from "../../components";
+import { Header, QuestionWriteArea, View } from "../../container";
 
 const Write = () => {
 
-  const [active, setActive] = React.useState([true, false]);
+  // Current page list
+  const [currentPage, setCurrentPage] = React.useState([true, false]);
 
+  // Select current page
   const toggleActive = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
 
-    const newList = active.map((_, index) => {
-      if (`${index}` === event.currentTarget.value)
-        return true;
-      else
-        return false;
-    });
+    // map throught current page list
+    const newCurrentPageList = currentPage.map((_, index) =>
+      `${index}` === event.currentTarget.value
+        ? true  // setting selected page true
+        : false // setting all other pages false
+    );
 
-    setActive(newList);
-
+    // Save the final result in state
+    setCurrentPage(newCurrentPageList);
   }
 
   return <View>
 
-    {/* Header */}
-    <FlexView direction="column">
-      <Text size="30px">Write</Text>
-      <Text size="18px">Write your questions, ideas and thoughts</Text>
-    </FlexView>
+    <Header
+      title="Write"
+      subTitle="Write your questions, ideas and thoughts"
+    />
 
     {/* Button set question ~ pages */}
     <FlexView gap="20px">
-      <Button active={active[0]} onClick={toggleActive} title="Questions" value="0" />
-      <Button active={active[1]} onClick={toggleActive} title="Pages" value="1" />
+      <Button active={currentPage[0]} onClick={toggleActive} title="Questions" value="0" />
+      <Button active={currentPage[1]} onClick={toggleActive} title="Pages" value="1" />
     </FlexView>
-    {/* Text area */}
 
-    <FlexView direction="column" gap="10px">
-      <TextArea placeholder="Write your question" />
-      <FlexView gap="10px">
-        <Button fit background title="Upload" />
-        <Button className="ri-link" title="Attach" />
-        <Button className="ri-delete-bin-line" title="Clear" />
-      </FlexView>
-    </FlexView>
+    {
+      // question write area
+      currentPage[0] && <QuestionWriteArea />
+    }
+
+    {
+      // Page write area
+      currentPage[1] && <p>~page is not ready</p>
+    }
 
   </View>
 }

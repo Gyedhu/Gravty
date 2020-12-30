@@ -1,15 +1,18 @@
-// import { useHistory } from "react-router-dom";
-import Navigation from "./container/Navigation";
+import { useSelector } from "react-redux";
+import { Navigation, Notification } from "./container";
 import Router from "./router";
+import { NotificationState } from "./redux/notification/type";
 
 function App() {
 
-  // const history = useHistory();
+  interface State {
+    notification: NotificationState;
+  }
 
-  // Redirecting to signin
-  // history.push("/signin");
+  const message = useSelector<State, NotificationState["message"]>(state => state.notification.message);
 
   return <>
+    <Notification message={message} />
     <Navigation />
     <Router />
   </>
