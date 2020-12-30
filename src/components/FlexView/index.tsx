@@ -2,9 +2,9 @@ import React from "react";
 import { FlexViewContainer } from "./style";
 
 const FlexView: React.FC<FlexView> = ({ children, ...props }) => {
-  return <FlexViewContainer {...props}>
+  return <FlexViewContainer  {...props}>
     {children}
-  </FlexViewContainer>
+  </FlexViewContainer >
 }
 
 export default FlexView;

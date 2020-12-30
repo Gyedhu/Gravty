@@ -11,3 +11,4 @@ export { default as PageWriter } from "./PageWriter";
 export { default as Paragraph } from "./Paragraph";  
 export { default as Dashboard } from "./Dashboard";  
 export { default as UserDataCard } from "./UserDataCard";  
+export { default as List } from "./List";  
