@@ -45,7 +45,7 @@ const QuestionWriteArea = () => {
 
 
   // --- Clear area ---
-  const clear = () => {
+  const clearTextArea = () => {
 
     // Set empty string in state
     setQuestion("");
@@ -64,16 +64,21 @@ const QuestionWriteArea = () => {
     if (question.trim()) {
 
       // database operation
-      notification(question);
+      notification("Uploading your question");
+      setTimeout(() => {
+        notification("Your question uploaded successfully");
+      }, 4000);
 
-      // clear field attached file
-      clear();
+      // clear textarea and attached file
+      clearTextArea();
       removeAttachedMedia();
     }
     else {
 
-      // If the question is blank pop error
+      // If the question is blank show error
       notification("Write something!");
+      // And focusing the textarea
+      textAreaRef.current?.focus();
     }
 
   }
@@ -145,7 +150,7 @@ const QuestionWriteArea = () => {
       }
 
       {/* Clear area button */}
-      <Button className="ri-delete-bin-line" onClick={clear} title="Clear" />
+      <Button className="ri-delete-bin-line" onClick={clearTextArea} title="Clear" />
 
     </FlexView>
   </FlexView >
