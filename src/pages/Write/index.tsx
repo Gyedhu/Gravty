@@ -1,8 +1,7 @@
 import React from "react";
-feature/write-page
 import { useHistory } from "react-router-dom";
 import { Button, FlexView } from "../../components";
-import { Header, PageWriter, QuestionWriteArea, View } from "../../container"; 
+import { Header, PageWriter, QuestionWriteArea, View } from "../../container";
 
 interface Props {
   type: "question" | "page"

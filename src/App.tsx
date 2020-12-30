@@ -1,8 +1,7 @@
-feature/write-page
-// import { useHistory } from "react-router-dom"; 
-import Navigation from "./container/Navigation";  
+import { Navigation, Notification } from "./container";
 import Router from "./router";
 import { NotificationState } from "./redux/notification/type";
+import { useSelector } from "react-redux";
 
 function App() {
 
