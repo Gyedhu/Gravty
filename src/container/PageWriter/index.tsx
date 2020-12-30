@@ -1,12 +1,12 @@
 import React from "react";
-import { Button, FlexView, Text } from "../../components";
-import Header from "../Header";
+import { FlexView } from "../../components";
+import Paragraph from "../Paragraph";
 
 const PageWriter = () => {
   return <FlexView >
-    <Header
-      title="Page Writer"
-      subTitle=""
+    <Paragraph
+      header="Google"
+      content="Google LLC is an American multinational technology company that specializes in Internet-related services and products, which include online advertising technologies, a search engine, cloud computing, software, and hardware."
     />
   </FlexView>
 }

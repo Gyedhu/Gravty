@@ -6,7 +6,15 @@ const Router = () => {
     <Route exact component={Home} path="/" />
     <Route component={Signin} path="/signin" />
     <Route component={Signup} path="/signup" />
-    <Route component={Write} path="/write" />
+
+    <Route path="/question">
+      <Write type="question" />
+    </Route>
+
+    <Route path="/page">
+      <Write type="page" />
+    </Route>
+
   </Switch>
 }
 

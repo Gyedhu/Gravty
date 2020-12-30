@@ -1,24 +1,22 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 import { Button, FlexView, Text } from "../../components";
 import { Header, PageWriter, QuestionWriteArea, View } from "../../container";
 
-const Write = () => {
+interface Props {
+  type: "question" | "page"
+}
+
+const Write: React.FC<Props> = ({ type }) => {
 
   // Current page list
-  const [currentPage, setCurrentPage] = React.useState([true, false]);
+  const history = useHistory();
 
   // Select current page
   const toggleActive = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
 
-    // map throught current page list
-    const newCurrentPageList = currentPage.map((_, index) =>
-      `${index}` === event.currentTarget.value
-        ? true  // setting selected page true
-        : false // setting all other pages false
-    );
+    history.replace("/" + event.currentTarget.value);
 
-    // Save the final result in state
-    setCurrentPage(newCurrentPageList);
   }
 
   return <View>
@@ -30,18 +28,18 @@ const Write = () => {
 
     {/* Button set question ~ pages */}
     <FlexView gap="20px">
-      <Button active={currentPage[0]} onClick={toggleActive} title="Questions" value="0" />
-      <Button active={currentPage[1]} onClick={toggleActive} title="Pages" value="1" />
+      <Button active={type === "question"} onClick={toggleActive} title="Questions" value="question" />
+      <Button active={type === "page"} onClick={toggleActive} title="Pages" value="page" />
     </FlexView>
 
     {
       // question write area
-      currentPage[0] && <QuestionWriteArea />
+      type === "question" && <QuestionWriteArea />
     }
 
     {
       // Page write area
-      currentPage[1] && <PageWriter />
+      type === "page" && <PageWriter />
     }
 
   </View>
