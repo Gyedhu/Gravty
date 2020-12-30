@@ -1,7 +1,6 @@
 import React from "react";
 import { Button, FlexView, TextArea } from "../../components";
 import { filePicker } from "../../utility";
-import FilePicker from "../FilePicker";
 
 const QuestionWriteArea = () => {
 
