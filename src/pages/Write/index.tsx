@@ -1,6 +1,6 @@
 import React from "react";
 import { Button, FlexView, Text } from "../../components";
-import { Header, QuestionWriteArea, View } from "../../container";
+import { Header, PageWriter, QuestionWriteArea, View } from "../../container";
 
 const Write = () => {
 
@@ -41,7 +41,7 @@ const Write = () => {
 
     {
       // Page write area
-      currentPage[1] && <p>~page is not ready</p>
+      currentPage[1] && <PageWriter />
     }
 
   </View>

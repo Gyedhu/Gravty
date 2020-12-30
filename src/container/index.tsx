@@ -6,3 +6,4 @@ export { default as HomeCard } from "./HomeCard";
 export { default as HomeNavBar } from "./HomeNavBar";
 export { default as QuestionWriteArea } from "./QuestionWriteArea";
 export { default as Header } from "./Header"; 
+export { default as PageWriter } from "./PageWriter"; 
