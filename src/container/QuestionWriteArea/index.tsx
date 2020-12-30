@@ -1,5 +1,7 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import { Button, FlexView, TextArea, UrlImage } from "../../components";
+import { clearNotification, setNotification } from "../../redux/notification/action";
 import { filePicker } from "../../utility";
 import Paragraph from "../Paragraph";
 
@@ -9,6 +11,8 @@ const QuestionWriteArea = () => {
   const [question, setQuestion] = React.useState("");
   const [attachImage, setAttachImage] = React.useState("");
 
+  // Dispatch
+  const dispatch = useDispatch();
 
   // Reference for textarea
   const textAreaRef = React.useRef<HTMLTextAreaElement>(null);
@@ -58,7 +62,11 @@ const QuestionWriteArea = () => {
     else {
 
       // if the question is blank pop error
-      alert("Write something!");
+      dispatch(setNotification("Write something!"));
+      
+      setTimeout(() => {
+        dispatch(clearNotification());
+      }, 2000);
     }
 
   }
