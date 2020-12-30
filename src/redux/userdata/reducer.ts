@@ -1,4 +1,4 @@
-import { UserDataState, UserDataActionTypes, SET_USER_DATA } from "./type";
+import { UserDataState, UserDataActionTypes, SET_USER_DATA, CLEAR_USER_DATA } from "./type";
 
 const inialState: UserDataState = {
   imageUrl: "",
@@ -8,7 +8,7 @@ const inialState: UserDataState = {
   uploads: 0,
   friends: 0,
   stars: 0,
-};
+}; 
 
 const reducer = (state: UserDataState = inialState, action: UserDataActionTypes): UserDataState => {
 
@@ -18,6 +18,12 @@ const reducer = (state: UserDataState = inialState, action: UserDataActionTypes)
       return {
         ...state,
         ...action.payload
+      };
+
+    case CLEAR_USER_DATA:
+      return {
+        ...state,
+        ...inialState
       };
 
     default:

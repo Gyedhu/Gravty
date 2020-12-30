@@ -45,7 +45,7 @@ const Signin = () => {
     setTimeout(() => {
       dispatch(clearNotification());
       history.push("/");
-    }, 5000);
+    }, 2000);
     console.log(userdata);
   }
 

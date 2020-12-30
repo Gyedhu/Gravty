@@ -9,7 +9,7 @@ const Button: React.FC<ButtonProps> = ({ title, to, onClick, ...props }) => {
   const _onClick = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     if (to)
       history.push(to)
-    else if (typeof onClick === "function")
+    if (typeof onClick === "function")
       onClick(event);
   }
 

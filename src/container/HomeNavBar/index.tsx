@@ -1,9 +1,9 @@
 import React from "react";
-import { FlexView, Button } from "../../components";
+import { FlexView, Button, FloatingBox } from "../../components";
 
 
 const HomeNavBar = () => {
-  return <FlexView gap="10px" mobile paddingHorizontal="15px" paddingVertical="15px" radius="10px" shadow>
+  return <FlexView fill="#ffffff" gap="10px" grow="1" mobile paddingHorizontal="15px" paddingVertical="15px" radius="10px" shadow>
     <Button className="ri-add-line" to="/write" />
     <Button className="ri-message-line" />
     <Button className="ri-search-2-line" />
