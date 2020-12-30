@@ -1,32 +1,19 @@
-import { matchPath, useHistory } from "react-router-dom";
-import Navigation from "./container/Navigation";
+import { Navigation, Notification } from "./container";
 import Router from "./router";
+import { NotificationState } from "./redux/notification/type";
+import { useSelector } from "react-redux";
 
 function App() {
 
-  const history = useHistory();
-  const currentPath = history.location.pathname;
-
-  // checking the current page is signin or not
-  const signin = matchPath("/signin", {
-    path: currentPath,
-    exact: true
-  });
-
-  // checking the current page is signup or not
-  const signup = matchPath("/signup", {
-    path: currentPath,
-    exact: true
-  });
-
-  // // Redirecting to signin
-  history.push("/signin");
+  interface State {
+    notification: NotificationState;
+  } 
+  
+  const message = useSelector<State, NotificationState["message"]>(state => state.notification.message);
 
   return <>
-    {/* Adding condition for not show navigation bar when the page is /signin or /signup */}
-    {
-      !signin && !signup && <Navigation />
-    }
+    <Notification message={message} />
+    <Navigation /> 
     <Router />
   </>
 }
