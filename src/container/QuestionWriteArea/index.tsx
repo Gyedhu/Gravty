@@ -1,5 +1,6 @@
 import React from "react";
 import { Button, FlexView, TextArea } from "../../components";
+import { filePicker } from "../../utility";
 import FilePicker from "../FilePicker";
 
 const QuestionWriteArea = () => {
@@ -61,12 +62,14 @@ const QuestionWriteArea = () => {
     try {
 
       // Get the file
-      let file = await FilePicker();
+      let file = await filePicker();
+
+      console.log(file);
 
     } catch (error) {
 
       // Error
-      console.log(error);
+      alert(error);
     }
   }
 
