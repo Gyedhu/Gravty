@@ -9,7 +9,7 @@ type Fill = "#ffffff" | "#f5f5f5" | "#59886b";
 type Dimensions = "100px" | "200px" | "300px" | "400px" | "500px";
 type Bound = "1024px" | "750px" | "400px";
 
-interface FlexView {
+interface FlexView { 
   align?: AlignItems;
   fill?: Fill;
   border?: boolean;
@@ -18,7 +18,7 @@ interface FlexView {
   gap?: SizeInPixel;
   grow?: FlexGrow;
   hideInMobile?: boolean;
-  justify?: JustifyContent;
+  justify?: JustifyContent; 
   maxHeight?: HeiDimensionsght;
   maxWidth?: Dimensions;
   minHeight?: Dimensions;
