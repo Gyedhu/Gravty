@@ -1,10 +1,14 @@
 import React from "react";
-import { Button, FlexView, TextArea } from "../../components";
+import { Button, FlexView, TextArea, UrlImage } from "../../components";
+import { filePicker } from "../../utility";
+import Paragraph from "../Paragraph";
 
 const QuestionWriteArea = () => {
 
-  // State for store question
+  // State 
   const [question, setQuestion] = React.useState("");
+  const [attachImage, setAttachImage] = React.useState("");
+
 
   // Reference for textarea
   const textAreaRef = React.useRef<HTMLTextAreaElement>(null);
@@ -31,6 +35,11 @@ const QuestionWriteArea = () => {
     setQuestion("");
   }
 
+  // --- Remove attached media ---
+  const removeAttachedMedia = () => {
+    setAttachImage("");
+  }
+
 
   // --- Upload question ---
   const uploadQuestion = () => {
@@ -43,6 +52,8 @@ const QuestionWriteArea = () => {
 
       // clear field
       clear();
+      // clear attach
+      removeAttachedMedia();
     }
     else {
 
@@ -54,15 +65,41 @@ const QuestionWriteArea = () => {
 
 
   // --- Attach media ---
-  const attachMedia = () => {
+  const attachMedia = async () => {
 
     // File operations
-    alert("Attach media");
+    try {
+
+      // Get the file
+      let file = await filePicker();
+      let url = URL.createObjectURL(file);
+      setAttachImage(url);
+
+    } catch (error) {
+
+      // Error
+      alert(error);
+    }
   }
 
 
   // --- Write question --- 
   return <FlexView direction="column" gap="10px">
+
+
+    {/* Attached media */}
+    {
+
+      // Only display if something is attached
+      attachImage && <FlexView minHeight="200px">
+        <UrlImage fit url={attachImage} width="200px" />
+      </FlexView>
+    }
+
+    <Paragraph
+      content="Write your question and upload ... get answered :)"
+    />
+
 
     {/* Text area */}
     <TextArea
@@ -84,14 +121,19 @@ const QuestionWriteArea = () => {
         value={question}
       />
 
+
       {/* Attach media button */}
-      <Button className="ri-link" onClick={attachMedia} title="Attach" />
+      {
+        !attachImage
+          ? <Button className="ri-link" onClick={attachMedia} title="Attach" />
+          : <Button className="ri-close-line" onClick={removeAttachedMedia} title="Remove" />
+      }
 
       {/* Clear area button */}
       <Button className="ri-delete-bin-line" onClick={clear} title="Clear" />
 
     </FlexView>
-  </FlexView>
+  </FlexView >
 }
 
 export default QuestionWriteArea;

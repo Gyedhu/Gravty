@@ -12,6 +12,7 @@ export const ButtonContainer = styled.button <ButtonStyleTypes>`
   flex-grow: ${({ fit }) => fit && 1};
   gap: 5px;
   justify-content: center;
+  max-height: 100px;
   outline: 0;
   transition: opacity .2s;
   width: ${({ width }) => width}; 
@@ -19,12 +20,13 @@ export const ButtonContainer = styled.button <ButtonStyleTypes>`
   ${({ border }) => border && css`
     border: 1px solid #59886b; 
     border-radius: 5px; 
+    color: #59886b; 
     padding: 5px 10px;
   `}
 
   ${({ shadow }) => shadow && css`
     box-shadow:  0 2px 8px rgba(0, 0, 0, .25); 
-    border-radius: 5px; 
+    border-radius: 5px;  
     padding: 5px 10px;
   `}
 

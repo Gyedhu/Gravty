@@ -1,5 +1,6 @@
-import { useSelector } from "react-redux";
-import { Navigation, Notification } from "./container";
+feature/write-page
+// import { useHistory } from "react-router-dom"; 
+import Navigation from "./container/Navigation";  
 import Router from "./router";
 import { NotificationState } from "./redux/notification/type";
 
