@@ -14,6 +14,18 @@ const QuestionWriteArea = () => {
   // Dispatch
   const dispatch = useDispatch();
 
+  // Notification
+  const notification = (message: string) => {
+    dispatch(setNotification(message));
+
+    // Close notification after 2 seconds
+    setTimeout(() => {
+      dispatch(clearNotification());
+    }, 2000);
+  }
+
+
+
   // Reference for textarea
   const textAreaRef = React.useRef<HTMLTextAreaElement>(null);
 
@@ -52,21 +64,16 @@ const QuestionWriteArea = () => {
     if (question.trim()) {
 
       // database operation
-      alert(question);
+      notification(question);
 
-      // clear field
+      // clear field attached file
       clear();
-      // clear attach
       removeAttachedMedia();
     }
     else {
 
-      // if the question is blank pop error
-      dispatch(setNotification("Write something!"));
-      
-      setTimeout(() => {
-        dispatch(clearNotification());
-      }, 2000);
+      // If the question is blank pop error
+      notification("Write something!");
     }
 
   }
