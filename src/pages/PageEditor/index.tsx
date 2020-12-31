@@ -1,9 +1,11 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import {
+  List,
   PageEditButtons,
   PageEditorElemenetSelector,
   PageHeader,
+  Paragraph,
   WriteBox
 } from "../../container";
 import Header from "../../container/Header";
@@ -22,9 +24,6 @@ const PageEditor = () => {
   return <View>
     <Header title="Editor" subTitle="Write your page" />
     <PageEditButtons />
-
-    <PageHeader />
-
     <PageEditorElemenetSelector />
     <WriteBox onSubmit={readData} />
   </View>
