@@ -101,7 +101,7 @@ const WriteBox: React.FC<Props> = ({ active, onSubmit }) => {
       />
       <Button
         className={attachImageUrl ? "ri-eraser-line" : "ri-attachment-2"}
-        title={attachImageUrl ? "Remove media" : "Attach"}
+        title={attachImageUrl ? "Detach" : "Attach"}
         onClick={attachImageUrl ? detachMedia : attachMedia}
       />
       <Button
