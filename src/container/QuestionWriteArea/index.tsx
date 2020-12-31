@@ -29,12 +29,6 @@ const QuestionWriteArea = () => {
   // Reference for textarea
   const textAreaRef = React.useRef<HTMLTextAreaElement>(null);
 
-  // Adding side-effect to set the textArea focused in compoent mount
-  React.useEffect(() => {
-    if (textAreaRef.current)
-      textAreaRef.current.focus();
-  }, []);
-
 
   // --- Read question ---
   const readQuestion = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
