@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import {
   PageEditButtons,
   PageEditorElemenetSelector,
+  PageHeader,
   WriteBox
 } from "../../container";
 import Header from "../../container/Header";
@@ -15,12 +16,15 @@ const PageEditor = () => {
 
   // Read data
   const readData = (data: string, file?: FileList | null | undefined) => {
-    
+
   }
 
   return <View>
     <Header title="Editor" subTitle="Write your page" />
     <PageEditButtons />
+
+    <PageHeader />
+
     <PageEditorElemenetSelector />
     <WriteBox onSubmit={readData} />
   </View>

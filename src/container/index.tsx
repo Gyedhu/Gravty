@@ -16,3 +16,4 @@ export { default as ButtonSet } from "./ButtonSet";
 export { default as PageEditButtons } from "./PageEditButtons";   
 export { default as PageEditorElemenetSelector } from "./PageEditorElemenetSelector";    
 export { default as WriteBox } from "./WriteBox";    
+export { default as PageHeader } from "./PageHeader";    
