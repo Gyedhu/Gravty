@@ -1,9 +1,20 @@
 import React from "react";
 import { FlexView } from "../../components";
 
-const View: React.FC = ({ children }) => {
-  return <FlexView justify="center" paddingHorizontal="20px" paddingVertical="30px">
-    <FlexView bound="1024px" direction="column" gap="30px">
+interface Props {
+  type?: "small" | "medium" | "big";
+  smallGap?: boolean,
+  shadow?: boolean;
+};
+
+const View: React.FC<Props> = ({ type, smallGap, shadow, children }) => {
+  return <FlexView justify="center" paddingHorizontal="20px" paddingVertical="20px" shadow={shadow}>
+    <FlexView
+      fill="#ffffff"
+      bound={type === "small" ? "400px" : type === "medium" ? "750px" : "1024px"}
+      direction="column"
+      gap={smallGap ? "10px" : "30px"}
+    >
       {children}
     </FlexView>
   </FlexView>

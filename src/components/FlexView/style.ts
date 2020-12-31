@@ -6,7 +6,7 @@ export const FlexViewContainer = styled.div<FlexView>`
   align-self: ${({ self }) => self};
   background-color: ${({ fill }) => fill};
   border: ${({ border }) => border && "1px solid #ddd"};
-  box-shadow: ${({ shadow }) => shadow && "0 2px 8px rgba(0, 0, 0, .2)"}; 
+  box-shadow: ${({ shadow }) => shadow && "0 1px 5px rgba(0, 0, 0, .1), 0 2px 5px rgba(0, 0, 0, .1)"}; 
   color: ${({ fill }) => fill === "#59886b" && "#ffffff"};
   border-radius: ${({ radius }) => radius};
   display: flex; 
@@ -21,6 +21,10 @@ export const FlexViewContainer = styled.div<FlexView>`
   min-height: ${({ minHeight }) => minHeight}; 
   min-width: ${({ minWidth }) => minWidth}; 
   padding: ${({ paddingVertical }) => paddingVertical ? paddingVertical : 0} ${({ paddingHorizontal }) => paddingHorizontal ? paddingHorizontal : 0};
+
+  ${({ maxHeight, maxWidth }) => (maxHeight || maxWidth) && css`  
+    overflow: auto;
+  `}
 
   ${({ sticky }) => sticky && css`  
     position:  sticky;

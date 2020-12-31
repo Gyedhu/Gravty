@@ -1,29 +1,9 @@
 import React from "react";
-import { useDispatch } from "react-redux";
 import { Button, FlexView } from "../../components";
-import { clearNotification, setNotification } from "../../redux/notification/action";
 import List from "../List";
 import Paragraph from "../Paragraph";
 
 const PageWriter = () => {
-
-  // Dispatch
-  const dispatch = useDispatch();
-
-  // Notificaiton
-  const notification = (message: string) => {
-    dispatch(setNotification(message));
-
-    // Close notification after 2 seconds
-    setTimeout(() => {
-      dispatch(clearNotification());
-    }, 2000);
-  }
-
-  // Goto writer
-  const gotoWriter = () => {
-    notification("Going to writer");
-  }
 
   return <FlexView direction="column">
     <Paragraph
@@ -42,7 +22,7 @@ const PageWriter = () => {
 
 
     <FlexView direction="column" paddingVertical="20px">
-      <Button border className="ri-file-line" onClick={gotoWriter} width="200px" title="Create new page" />
+      <Button border className="ri-file-line" to="/write/page-editor" width="200px" title="Create new page" />
     </FlexView>
 
   </FlexView>

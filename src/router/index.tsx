@@ -1,5 +1,11 @@
 import { Route, Switch } from "react-router-dom";
-import { Home, Signin, Signup, Write } from "../pages";
+import {
+  Home,
+  PageEditor,
+  Signin,
+  Signup,
+  Write
+} from "../pages";
 
 const Router = () => {
   return <Switch>
@@ -15,6 +21,8 @@ const Router = () => {
     <Route path="/write/page">
       <Write type="page" />
     </Route>
+
+    <Route component={PageEditor} path="/write/page-editor" />
 
   </Switch>
 }

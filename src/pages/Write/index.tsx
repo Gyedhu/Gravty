@@ -9,9 +9,6 @@ interface Props {
 
 const Write: React.FC<Props> = ({ type }) => {
 
-
-  console.log(type);
-
   // Current page list
   const history = useHistory();
 
