@@ -14,4 +14,5 @@ export { default as UserDataCard } from "./UserDataCard";
 export { default as List } from "./List";
 export { default as ButtonSet } from "./ButtonSet";   
 export { default as PageEditButtons } from "./PageEditButtons";   
-export { default as PageEditorElemenetSelector } from "./PageEditorElemenetSelector";   
+export { default as PageEditorElemenetSelector } from "./PageEditorElemenetSelector";    
+export { default as WriteBox } from "./WriteBox";    
