@@ -13,10 +13,11 @@ import { setWriteBox } from "../../redux/pageEditor/action";
 import { filePicker } from "../../utility";
 
 interface Props {
+  active?: boolean;
   onSubmit: (data: string, file?: FileList | null) => void
 }
 
-const WriteBox: React.FC<Props> = ({ onSubmit }) => {
+const WriteBox: React.FC<Props> = ({ active, onSubmit }) => {
 
   // State 
   const [data, setData] = React.useState("");
@@ -70,7 +71,7 @@ const WriteBox: React.FC<Props> = ({ onSubmit }) => {
     }
   }
 
-  return <FloatingBox side="bottom" active={writeBox}><View>
+  return <FloatingBox side="bottom" active={active ? active : writeBox}><View>
 
     {attachImageUrl && <img src={attachImageUrl} alt="selected" width="200" />}
 
@@ -93,10 +94,13 @@ const WriteBox: React.FC<Props> = ({ onSubmit }) => {
         title="Clear"
         onClick={clearTextArea}
       />
-      <Button
+      {
+        !active && 
+        <Button
         className="ri-close-circle-line"
         onClick={writeBoxToggler}
       />
+      }
     </FlexView>
 
   </View></FloatingBox>
