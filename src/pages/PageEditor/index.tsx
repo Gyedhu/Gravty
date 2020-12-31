@@ -12,7 +12,9 @@ const PageEditor = () => {
     <Header title="Editor" subTitle="Write your page" />
     <PageEditButtons />
     <PageEditorElemenetSelector />
-    <WriteBox />
+    <WriteBox onSubmit={(data, file) => {
+      console.log(data, file);
+    }} />
   </View>
 }
 

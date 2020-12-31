@@ -4,7 +4,7 @@ import { Paragraph, View } from "..";
 import { useDispatch, useSelector } from "react-redux";
 import { State } from "../../redux/store";
 import { PageEditorState } from "../../redux/pageEditor/type";
-import { setSelectElementBox } from "../../redux/pageEditor/action";
+import { setSelectElementBox, setWriteBox } from "../../redux/pageEditor/action";
 
 interface SelectButtonProps {
   title: string;
@@ -18,10 +18,10 @@ const SelectButton: React.FC<SelectButtonProps> = ({ title }) => {
 
   // --- selectElement ---
   const selectElement = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    alert(event.currentTarget.value);
     dispatch(setSelectElementBox(false));
-  } 
-
+    dispatch(setWriteBox(true));
+  }  
+  
 
   return <Button
     border

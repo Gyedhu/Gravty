@@ -23,11 +23,10 @@ const QuestionWriteArea = () => {
       dispatch(clearNotification());
     }, 2000);
   }
-
-
+ 
 
   // Reference for textarea
-  const textAreaRef = React.useRef<HTMLTextAreaElement>(null);
+  const textAreaRef = React.useRef<HTMLTextAreaElement>(null);  
 
 
   // --- Read question ---
