@@ -34,12 +34,23 @@ const WriteBox: React.FC<Props> = ({ active, onSubmit }) => {
 
   // --- Submit data ---
   const submit = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    if (data.trim() !== "")
+    if (data.trim() !== "") {
       onSubmit(data, file);
+
+      // Clear data
+      clearTextArea();
+      detachMedia();
+    }
   }
 
   // --- Clear area ---
   const clearTextArea = () => setData("");
+
+  // --- Detach media --- 
+  const detachMedia = () => {
+    setAttachImageUrl("");
+    setFile(null);
+  };
 
   // --- writeBox toggler ---
   const writeBoxToggler = () => dispatch(setWriteBox(false));
@@ -75,7 +86,11 @@ const WriteBox: React.FC<Props> = ({ active, onSubmit }) => {
 
     {attachImageUrl && <img src={attachImageUrl} alt="selected" width="200" />}
 
-    <TextArea onChange={readData} placeholder="Write your content" />
+    <TextArea
+      onChange={readData}
+      placeholder="Write your content"
+      value={data}
+    />
 
     <FlexView gap="10px">
       <Button
@@ -85,9 +100,9 @@ const WriteBox: React.FC<Props> = ({ active, onSubmit }) => {
         title="Done"
       />
       <Button
-        className="ri-attachment-2"
-        title="Attach"
-        onClick={attachMedia}
+        className={attachImageUrl ? "ri-eraser-line" : "ri-attachment-2"}
+        title={attachImageUrl ? "Remove media" : "Attach"}
+        onClick={attachImageUrl ? detachMedia : attachMedia}
       />
       <Button
         className="ri-delete-bin-line"
@@ -95,11 +110,11 @@ const WriteBox: React.FC<Props> = ({ active, onSubmit }) => {
         onClick={clearTextArea}
       />
       {
-        !active && 
+        !active &&
         <Button
-        className="ri-close-circle-line"
-        onClick={writeBoxToggler}
-      />
+          className="ri-close-circle-line"
+          onClick={writeBoxToggler}
+        />
       }
     </FlexView>
 
