@@ -1,6 +1,6 @@
 import React from "react";
 import { Button, FlexView, FloatingBox, TextArea } from "../../components";
-import { Paragraph } from "../../container";
+import { ButtonSet, Paragraph } from "../../container";
 import Header from "../../container/Header";
 import View from "../../container/View";
 
@@ -22,31 +22,16 @@ const PageEditor = () => {
       subTitle="Write your page"
     />
 
-    <FlexView gap="10px" justify="space-between" wrap="wrap">
-
-      <FlexView
-        fill="#ffffff"
-        gap="10px"
-        paddingHorizontal="15px"
-        paddingVertical="15px"
-        radius="10px"
-        shadow
-      >
+    <ButtonSet>
+      <FlexView>
         <Button onClick={gotoSelectElemenet} className="ri-add-circle-line" toolTip="Add Element" />
       </FlexView>
 
-      <FlexView
-        fill="#ffffff"
-        gap="10px"
-        paddingHorizontal="15px"
-        paddingVertical="15px"
-        radius="10px"
-        shadow
-      >
+      <FlexView>
         <Button className="ri-slideshow-2-line" toolTip="View page" />
         <Button className="ri-question-line" toolTip="help" />
       </FlexView>
-    </FlexView>
+    </ButtonSet>
 
     <FloatingBox side="center" active={selectElement}>
       <View>
