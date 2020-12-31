@@ -1,6 +1,6 @@
 import React from "react";
 import { Button, FlexView, FloatingBox, TextArea } from "../../components";
-import { ButtonSet, Paragraph } from "../../container";
+import {  PageEditButtons, Paragraph } from "../../container";
 import Header from "../../container/Header";
 import View from "../../container/View";
 
@@ -14,44 +14,11 @@ const PageEditor = () => {
     setSelectElement(false);
   };
 
-  const gotoSelectElemenet = () => setSelectElement(prev => !prev)
 
-  return <View >
+  return <View>
 
-    <Header
-      title="Editor"
-      subTitle="Write your page"
-    />
-
-    {/* Edit Buttons */}
-    <ButtonSet
-      leftSet={
-        <React.Fragment>
-          {/* Added Element Button */}
-          <Button
-            onClick={gotoSelectElemenet}
-            className="ri-add-circle-line"
-            toolTip="Add Element"
-          />
-        </React.Fragment>
-      }
-
-      rightSet={
-        <React.Fragment>
-          {/* Preview Button */}
-          <Button
-            className="ri-slideshow-2-line"
-            toolTip="View page"
-          />
-
-          {/* Help Button */}
-          <Button
-            className="ri-question-line"
-            toolTip="help"
-          />
-        </React.Fragment>
-      }
-    />
+    <Header title="Editor" subTitle="Write your page"  /> 
+    <PageEditButtons />
 
     <FloatingBox side="center" active={selectElement}>
       <View>
