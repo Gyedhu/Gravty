@@ -1,9 +1,12 @@
 import React from "react";
 import { User } from "../../assets/images";
 import { FlexView } from "../../components";
-import Complex from "../PageListMap";
-import PageHeader from "../PageHeader";
-import View from "../View";
+import {
+  View,
+  PageListMap,
+  Image,
+  PageHeader
+} from "..";
 import {
   LIST,
   ListTypes,
@@ -49,10 +52,15 @@ const Page = () => {
       {...header}
     />
 
+    <Image
+      footer="Quick sort working diagram!"
+      url="https://www.geeksforgeeks.org/wp-content/uploads/gq/2014/01/QuickSort2.png"
+    />
+
     <FlexView direction="column" gap="15px">
       {
         data.map((value, index) =>
-          <Complex key={index} {...value} />
+          <PageListMap key={index} {...value} />
         )
       }
     </FlexView>

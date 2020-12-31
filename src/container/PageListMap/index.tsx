@@ -1,28 +1,40 @@
 import React from "react";
-import List from "../List";
-import Paragraph from "../Paragraph";
+
 import {
+  List,
+  Paragraph,
+  Image
+} from "..";
+
+import {
+  IMAGE,
+  ImageTypes,
   LIST,
   ListTypes,
   PARAGRAPH,
   ParagraphTypes
 } from "./types";
 
-const PageListMap: React.FC<ParagraphTypes | ListTypes> = (props) => {
+const PageListMap: React.FC<ParagraphTypes | ListTypes | ImageTypes> = (props) => {
 
-  // List
-  if (props.contentType === LIST)
-    return <List {...props} />
+  switch (props.contentType) {
 
-  // Paragraph
-  else if (props.contentType === PARAGRAPH)
-    return <Paragraph {...props} />
+    // List
+    case LIST:
+      return <List {...props} />
 
-  // If nothing
-  else {
-    return null;
+    // Paragraph
+    case PARAGRAPH:
+      return <Paragraph {...props} />
+
+    // Image
+    case IMAGE:
+      return <Image {...props} />
+
+    // If nother
+    default:
+      return null;
   }
-
 }
 
 export default PageListMap
