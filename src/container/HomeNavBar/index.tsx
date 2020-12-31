@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, FlexView } from "../../components";
+import { Button } from "../../components";
 import ButtonSet from "../ButtonSet";
 
 

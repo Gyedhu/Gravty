@@ -5,7 +5,6 @@ export const ButtonContainer = styled.button <ButtonStyleTypes>`
   background-color: transparent;
   border: 0; 
   border-bottom: ${({ active }) => active && "4px solid #59886b"};
-  border-radius: 5px; 
   color: #252525;
   cursor: pointer;
   display: flex;
@@ -21,6 +20,7 @@ export const ButtonContainer = styled.button <ButtonStyleTypes>`
 
   ${({ border }) => border && css`
     border: 1px solid #59886b; 
+    border-radius: 5px; 
     color: #59886b; 
     padding: 5px 10px;
   `}
@@ -33,6 +33,7 @@ export const ButtonContainer = styled.button <ButtonStyleTypes>`
 
   ${({ background }) => background && css`
     background-color: #59886b; 
+    border-radius: 5px; 
     color: white; 
     padding: 5px 10px;
   `}
