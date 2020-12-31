@@ -17,33 +17,39 @@ const PageEditor = () => {
   const gotoSelectElemenet = () => setSelectElement(prev => !prev)
 
   return <View >
+
     <Header
       title="Editor"
       subTitle="Write your page"
     />
 
+    {/* Edit Buttons */}
     <ButtonSet
       leftSet={
-        <FlexView>
+        <React.Fragment>
+          {/* Added Element Button */}
           <Button
             onClick={gotoSelectElemenet}
             className="ri-add-circle-line"
             toolTip="Add Element"
           />
-        </FlexView>
+        </React.Fragment>
       }
 
       rightSet={
-        <FlexView>
+        <React.Fragment>
+          {/* Preview Button */}
           <Button
             className="ri-slideshow-2-line"
             toolTip="View page"
           />
+
+          {/* Help Button */}
           <Button
             className="ri-question-line"
             toolTip="help"
           />
-        </FlexView>
+        </React.Fragment>
       }
     />
 
