@@ -4,17 +4,20 @@ import { Button, FlexView } from "../../components";
 import { Header, PageWriter, QuestionWriteArea, View } from "../../container";
 
 interface Props {
-  type: "question" | "page"
+  type: "question" | "page" | null
 }
 
 const Write: React.FC<Props> = ({ type }) => {
+
+
+  console.log(type);
 
   // Current page list
   const history = useHistory();
 
   // Select current page
   const toggleActive = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    history.replace(`/${event.currentTarget.value}`);
+    history.replace(`/write/${event.currentTarget.value}`);
   }
 
   return <View>

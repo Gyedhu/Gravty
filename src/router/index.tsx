@@ -6,12 +6,13 @@ const Router = () => {
     <Route exact component={Home} path="/" />
     <Route component={Signin} path="/signin" />
     <Route component={Signup} path="/signup" />
+    <Route exact component={Write} path="/write" />
 
-    <Route path="/question">
+    <Route path="/write/question">
       <Write type="question" />
     </Route>
 
-    <Route path="/page">
+    <Route path="/write/page">
       <Write type="page" />
     </Route>
 
