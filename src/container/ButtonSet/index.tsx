@@ -2,10 +2,11 @@ import React from 'react'
 import { FlexView } from '../../components'
 
 interface Props {
-
+  leftSet: React.ReactNode;
+  rightSet?: React.ReactNode;
 }
 
-const ButtonSet: React.FC<Props> = ({ children }) => {
+const ButtonSet: React.FC<Props> = ({ leftSet, rightSet, children }) => {
   return <FlexView
     fill="#ffffff"
     gap="10px"
@@ -15,7 +16,13 @@ const ButtonSet: React.FC<Props> = ({ children }) => {
     shadow
     justify="space-between" wrap="wrap"
   >
-  {children}
+    <FlexView gap="10px" mobile>
+      {leftSet}
+    </FlexView>
+
+    <FlexView gap="10px" mobile>
+      {rightSet}
+    </FlexView>
   </FlexView>
 }
 

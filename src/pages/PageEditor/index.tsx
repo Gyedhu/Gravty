@@ -22,16 +22,30 @@ const PageEditor = () => {
       subTitle="Write your page"
     />
 
-    <ButtonSet>
-      <FlexView>
-        <Button onClick={gotoSelectElemenet} className="ri-add-circle-line" toolTip="Add Element" />
-      </FlexView>
+    <ButtonSet
+      leftSet={
+        <FlexView>
+          <Button
+            onClick={gotoSelectElemenet}
+            className="ri-add-circle-line"
+            toolTip="Add Element"
+          />
+        </FlexView>
+      }
 
-      <FlexView>
-        <Button className="ri-slideshow-2-line" toolTip="View page" />
-        <Button className="ri-question-line" toolTip="help" />
-      </FlexView>
-    </ButtonSet>
+      rightSet={
+        <FlexView>
+          <Button
+            className="ri-slideshow-2-line"
+            toolTip="View page"
+          />
+          <Button
+            className="ri-question-line"
+            toolTip="help"
+          />
+        </FlexView>
+      }
+    />
 
     <FloatingBox side="center" active={selectElement}>
       <View>
