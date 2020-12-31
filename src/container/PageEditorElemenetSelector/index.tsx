@@ -4,7 +4,7 @@ import { Paragraph, View } from "..";
 import { useDispatch, useSelector } from "react-redux";
 import { State } from "../../redux/store";
 import { PageEditorState } from "../../redux/pageEditor/type";
-import { setSelectElementBox, setWriteBox } from "../../redux/pageEditor/action";
+import { setCurrentWriting, setSelectElementBox, setWriteBox } from "../../redux/pageEditor/action";
 
 interface SelectButtonProps {
   title: string;
@@ -18,10 +18,11 @@ const SelectButton: React.FC<SelectButtonProps> = ({ title }) => {
 
   // --- selectElement ---
   const selectElement = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    dispatch(setCurrentWriting(event.currentTarget.value));
     dispatch(setSelectElementBox(false));
     dispatch(setWriteBox(true));
-  }  
-  
+  }
+
 
   return <Button
     border
@@ -29,7 +30,7 @@ const SelectButton: React.FC<SelectButtonProps> = ({ title }) => {
     width="fit-content"
     onClick={selectElement}
     title={title}
-    value={title}
+    value={title.toLocaleLowerCase()}
   />
 }
 
@@ -61,8 +62,6 @@ const PageEditorElemenetSelector = () => {
           <SelectButton title="Pagragraph" />
           <SelectButton title="Paragraph with header" />
           <SelectButton title="List" />
-          <SelectButton title="Image" />
-          <SelectButton title="Audio" />
         </FlexView>
 
       </FlexView>
