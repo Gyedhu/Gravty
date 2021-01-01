@@ -35,6 +35,7 @@ const PageEditButtons = () => {
         <Button
           className="ri-slideshow-2-line"
           toolTip="View page"
+          to="/page"
         />
 
         {/* Help Button */}

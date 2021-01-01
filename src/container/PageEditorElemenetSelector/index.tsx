@@ -62,6 +62,7 @@ const PageEditorElemenetSelector = () => {
           <SelectButton title="Pagragraph" />
           <SelectButton title="Paragraph with header" />
           <SelectButton title="List" />
+          <SelectButton title="Image" />
         </FlexView>
 
       </FlexView>

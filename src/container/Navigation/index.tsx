@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { Logo } from "../../assets/images";
 import { Button, FlexView, Text } from "../../components";
-import { clearUserData } from "../../redux/userdata/action";
+import { clearUserData } from "../../redux/userData/action";
 import View from "../View";
 
 const Navigation = () => {
@@ -22,7 +22,7 @@ const Navigation = () => {
   }
 
 
-  return <View shadow>
+  return <View shadow sticky>
     <FlexView justify="space-between">
       {/* Logo */}
       <FlexView gap="10px">

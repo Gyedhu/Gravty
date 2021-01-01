@@ -1,5 +1,5 @@
-import React from 'react'
-import { FlexView, UrlImage, Text } from '../../components'
+import React from "react";
+import { FlexView, UrlImage, Text } from "../../components";
 
 interface Props {
   url: string;

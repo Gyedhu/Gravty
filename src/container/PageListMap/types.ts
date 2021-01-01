@@ -28,3 +28,6 @@ export interface ListTypes {
   listItems: Array<string>;
   type?: "decimal" | "rouded" | "square" | "upper-alpha";
 };
+
+// Data 
+export type Data = Array<ParagraphTypes | ListTypes | ImageTypes>

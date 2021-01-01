@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { FlexView, Text } from "../../components";
 import { State } from "../../redux/store";
-import { UserDataState } from "../../redux/userdata/type";
+import { UserDataState } from "../../redux/userData/type";
 
 // Dashcard
 const DashCard: React.FC<{ title: string; value: number }> = ({ title, value }) =>
