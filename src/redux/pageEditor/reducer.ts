@@ -25,7 +25,6 @@ const reducer = (state: PageEditorState = intialState, action: PageEditorStateAc
       };
 
     case SET_CURRENT_WRITING:
-      alert(action.payload);
       return {
         ...state,
         currentWriting: action.payload

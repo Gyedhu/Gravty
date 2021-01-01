@@ -23,7 +23,7 @@ const PageEditButtons = () => {
   const addElement = () => {
 
     if (!header) {
-      dispatch(setCurrentWriting("main-header"));
+      dispatch(setCurrentWriting("main-header")); 
       dispatch(setWriteBox(true, "Write the Heading of content"));
     } else {
       selectElementBoxToggler();
