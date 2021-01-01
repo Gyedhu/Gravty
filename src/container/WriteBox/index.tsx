@@ -3,6 +3,7 @@ import {
   Button,
   FlexView,
   FloatingBox,
+  Text,
   TextArea
 } from "../../components";
 import { View } from "..";
@@ -28,8 +29,8 @@ const WriteBox: React.FC<Props> = ({ active, onSubmit }) => {
   const dispatch = useDispatch();
 
   // Get writeBox from state
-  const writeBox = useSelector<State, PageEditorState["writeBox"]>(
-    state => state.pageEditor.writeBox
+  const { writeBox, writeBoxTitle } = useSelector<State, PageEditorState>(
+    state => state.pageEditor
   );
 
   // --- Submit data ---
@@ -85,6 +86,8 @@ const WriteBox: React.FC<Props> = ({ active, onSubmit }) => {
   return <FloatingBox side="bottom" active={active ? active : writeBox}><View>
 
     {attachImageUrl && <img src={attachImageUrl} alt="selected" width="200" />}
+
+    <Text>{writeBoxTitle}</Text>
 
     <TextArea
       onChange={readData}

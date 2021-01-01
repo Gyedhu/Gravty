@@ -1,6 +1,7 @@
 import { ADD_PAGE_DATA, PageAction, PageState } from "./type";
 
 const intialState: PageState = {
+  header: null,
   data: null
 };
 

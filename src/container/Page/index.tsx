@@ -1,5 +1,4 @@
-import React from "react";
-import { User } from "../../assets/images";
+import React from "react";  
 import { FlexView } from "../../components";
 
 import {
@@ -12,22 +11,19 @@ import { State } from "../../redux/store";
 import { PageState } from "../../redux/page/type";
 
 
-const header = {
-  imageUrl: User,
-  auther: "Yedhumohanan.G",
-  date: new Date().toLocaleString(),
-  title: "How should you setup your working desk",
-};
-
 
 const Page = () => {
 
-  const data = useSelector<State, PageState["data"]>(state => state.page.data)
+  // state
+  const { data, header } = useSelector<State, PageState>(state => state.page);
 
   return <View type="medium">
-    <PageHeader
-      {...header}
-    />
+    {
+      header &&
+      <PageHeader
+        {...header}
+      />
+    }
 
     <FlexView direction="column" gap="15px">
       {

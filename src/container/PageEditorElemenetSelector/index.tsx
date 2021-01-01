@@ -20,7 +20,7 @@ const SelectButton: React.FC<SelectButtonProps> = ({ title }) => {
   const selectElement = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     dispatch(setCurrentWriting(event.currentTarget.value));
     dispatch(setSelectElementBox(false));
-    dispatch(setWriteBox(true));
+    dispatch(setWriteBox(true, "Write your content here"));
   }
 
 

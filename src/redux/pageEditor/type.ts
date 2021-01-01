@@ -5,6 +5,7 @@ export const SET_CURRENT_WRITING = "SET_CURRENT_WRITING";
 export interface PageEditorState {
   selectElementBox?: boolean;
   writeBox?: boolean;
+  writeBoxTitle: string;
   currentWriting?: string | null;
 };
 
@@ -15,7 +16,8 @@ export interface SetSelectElementBox {
 
 export interface SetWriteBox {
   type: typeof SET_WRITE_BOX;
-  payload: boolean;
+  state: boolean;
+  title: string;
 };
 
 export interface SetCurrentWriting {

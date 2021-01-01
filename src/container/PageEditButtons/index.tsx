@@ -1,17 +1,34 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { ButtonSet } from "..";
 import { Button } from "../../components";
-import { setSelectElementBox } from "../../redux/pageEditor/action";
+import { PageState } from "../../redux/page/type";
+import { setCurrentWriting, setSelectElementBox, setWriteBox } from "../../redux/pageEditor/action";
+import { State } from "../../redux/store";
 
 const PageEditButtons = () => {
 
   // dispatch
   const dispatch = useDispatch();
 
+  // state
+  const { header } = useSelector<State, PageState>(state => state.page);
+
   // --- selectElementBox toggler ---
   const selectElementBoxToggler = () => {
     dispatch(setSelectElementBox(true));
+  }
+
+  // --- Add element ---
+  const addElement = () => {
+
+    if (!header) {
+      dispatch(setCurrentWriting("main-header"));
+      dispatch(setWriteBox(true, "Write the Heading of content"));
+    } else {
+      selectElementBoxToggler();
+    }
+
   }
 
   return <ButtonSet
@@ -22,7 +39,7 @@ const PageEditButtons = () => {
         {/* Added Element Button */}
         <Button
           className="ri-add-circle-line"
-          onClick={selectElementBoxToggler}
+          onClick={addElement}
           toolTip="Add Element"
         />
       </React.Fragment>
