@@ -1,5 +1,10 @@
 import React from "react";
-import { FlexView, Text } from "../../components";
+
+// Components
+import {
+  FlexView,
+  Text
+} from "../../components";
 
 interface Props {
   title?: string;

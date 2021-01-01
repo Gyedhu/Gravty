@@ -1,10 +1,16 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+
+// Containers
 import { ButtonSet } from "..";
+
+// Components
 import { Button } from "../../components";
-import { PageState } from "../../redux/page/type";
-import { setCurrentWriting, setSelectElementBox, setWriteBox } from "../../redux/pageEditor/action";
-import { State } from "../../redux/store";
+
+// State, Reducers and actions
+// import { State } from "../../redux/store";
+// import { PageState } from "../../redux/page/type";
+import { setSelectElementBox, } from "../../redux/pageEditor/action";
 
 const PageEditButtons = () => {
 
@@ -12,23 +18,17 @@ const PageEditButtons = () => {
   const dispatch = useDispatch();
 
   // state
-  const { header } = useSelector<State, PageState>(state => state.page);
+  // const { header } = useSelector<State, PageState>(state => state.page);
 
-  // --- selectElementBox toggler ---
+  // --- SelectElementBox Toggler ---
   const selectElementBoxToggler = () => {
     dispatch(setSelectElementBox(true));
   }
 
-  // --- Add element ---
+  // --- Add element --- 
+  // it will open the selectElementBox
   const addElement = () => {
-
-    if (!header) {
-      dispatch(setCurrentWriting("main-header")); 
-      dispatch(setWriteBox(true, "Write the Heading of content"));
-    } else {
-      selectElementBoxToggler();
-    }
-
+    selectElementBoxToggler();
   }
 
   return <ButtonSet

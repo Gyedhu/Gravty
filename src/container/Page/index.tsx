@@ -1,4 +1,4 @@
-import React from "react";  
+import React from "react";
 import { FlexView } from "../../components";
 
 import {
@@ -6,11 +6,10 @@ import {
   PageListMap,
   PageHeader
 } from "..";
+
 import { useSelector } from "react-redux";
 import { State } from "../../redux/store";
 import { PageState } from "../../redux/page/type";
-
-
 
 const Page = () => {
 

@@ -1,21 +1,21 @@
 import React from "react";
 
+// Containers
 import {
   List,
   Paragraph,
   Image
 } from "..";
 
+// Type for map page list
 import {
-  IMAGE,
-  ImageTypes,
+  IMAGE, 
   LIST,
-  ListTypes,
   PARAGRAPH,
-  ParagraphTypes
+  PageListType
 } from "./types";
 
-const PageListMap: React.FC<ParagraphTypes | ListTypes | ImageTypes> = (props) => {
+const PageListMap: React.FC<PageListType> = (props) => {
 
   switch (props.contentType) {
 

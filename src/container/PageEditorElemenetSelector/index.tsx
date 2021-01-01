@@ -1,11 +1,32 @@
 import React from "react";
-import { Button, FlexView, FloatingBox } from "../../components";
-import { Paragraph, View } from "..";
-import { useDispatch, useSelector } from "react-redux";
+import {
+  useDispatch,
+  useSelector
+} from "react-redux";
+
+// Components
+import {
+  Button,
+  FlexView,
+  FloatingBox
+} from "../../components";
+
+// Container
+import {
+  Paragraph,
+  View
+} from "..";
+
+// State, Reducers and actions
 import { State } from "../../redux/store";
 import { PageEditorState } from "../../redux/pageEditor/type";
-import { setCurrentWriting, setSelectElementBox, setWriteBox } from "../../redux/pageEditor/action";
+import {
+  setCurrentWriting,
+  setSelectElementBox, setWriteBox
+} from "../../redux/pageEditor/action";
 
+
+// SelectButtonProps 
 interface SelectButtonProps {
   title: string;
 }
@@ -18,6 +39,7 @@ const SelectButton: React.FC<SelectButtonProps> = ({ title }) => {
 
   // --- selectElement ---
   const selectElement = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    alert(event.currentTarget.value);
     dispatch(setCurrentWriting(event.currentTarget.value));
     dispatch(setSelectElementBox(false));
     dispatch(setWriteBox(true, "Write your content here"));
@@ -59,7 +81,7 @@ const PageEditorElemenetSelector = () => {
 
         <FlexView direction="column" gap="10px" maxHeight="250px">
           <SelectButton title="Header" />
-          <SelectButton title="Pagragraph" />
+          <SelectButton title="Paragraph" />
           <SelectButton title="Paragraph with header" />
           <SelectButton title="List" />
           <SelectButton title="Image" />

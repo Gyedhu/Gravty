@@ -1,4 +1,11 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { State } from "../../redux/store";
+import { PageEditorState } from "../../redux/pageEditor/type";
+import { setWriteBox } from "../../redux/pageEditor/action";
+
+import { filePicker } from "../../utility";
+
 import {
   Button,
   FlexView,
@@ -6,12 +13,9 @@ import {
   Text,
   TextArea
 } from "../../components";
+
 import { View } from "..";
-import { useDispatch, useSelector } from "react-redux";
-import { State } from "../../redux/store";
-import { PageEditorState } from "../../redux/pageEditor/type";
-import { setWriteBox } from "../../redux/pageEditor/action";
-import { filePicker } from "../../utility";
+
 
 interface Props {
   active?: boolean;
@@ -28,24 +32,19 @@ const WriteBox: React.FC<Props> = ({ active, onSubmit }) => {
   // dispatch
   const dispatch = useDispatch();
 
+  // --- Clear area ---
+  const clearTextArea = () => setData("");
+
+
   // Get writeBox from state
-  const { writeBox, writeBoxTitle } = useSelector<State, PageEditorState>(
-    state => state.pageEditor
-  );
+  const { writeBox } = useSelector<State, PageEditorState>(state => state.pageEditor);
 
   // --- Submit data ---
   const submit = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     if (data.trim() !== "") {
       onSubmit(data, file);
-
-      // Clear data
-      clearTextArea();
-      detachMedia();
     }
   }
-
-  // --- Clear area ---
-  const clearTextArea = () => setData("");
 
   // --- Detach media --- 
   const detachMedia = () => {
@@ -57,11 +56,8 @@ const WriteBox: React.FC<Props> = ({ active, onSubmit }) => {
   const writeBoxToggler = () => dispatch(setWriteBox(false));
 
   // --- Read data ---
-  const readData = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
-
-    // set data in state
+  const readData = (event: React.ChangeEvent<HTMLTextAreaElement>) =>
     setData(event.target.value);
-  }
 
 
   // --- Attach media ---
@@ -69,15 +65,16 @@ const WriteBox: React.FC<Props> = ({ active, onSubmit }) => {
 
     // File operations
     try {
-
       // Get the file
       let file = await filePicker();
-      setFile(file as FileList | null);
+      // Store file in state
+      setFile(file as FileList);
+      // Make url
       let url = URL.createObjectURL(file);
+      // Store url in state
       setAttachImageUrl(url);
 
     } catch (error) {
-
       // Error
       alert(error);
     }
@@ -85,40 +82,54 @@ const WriteBox: React.FC<Props> = ({ active, onSubmit }) => {
 
   return <FloatingBox side="bottom" active={active ? active : writeBox}><View>
 
-    {attachImageUrl && <img src={attachImageUrl} alt="selected" width="200" />}
+    <FlexView direction="column" gap="5px">
 
-    <Text>{writeBoxTitle}</Text>
+      {/* Show image only if something attached */}
+      {attachImageUrl && <img src={attachImageUrl} alt="selected" width="200" />}
 
-    <TextArea
-      onChange={readData}
-      placeholder="Write your content"
-      value={data}
-    />
 
-    <FlexView gap="10px">
-      <Button
-        background
-        fit
-        onClick={submit}
-        title="Done"
+      {/* Textarea */}
+      <TextArea
+        onChange={readData}
+        placeholder="Write paragraph here"
+        value={data}
+        size="big"
       />
-      <Button
-        className={attachImageUrl ? "ri-eraser-line" : "ri-attachment-2"}
-        title={attachImageUrl ? "Detach" : "Attach"}
-        onClick={attachImageUrl ? detachMedia : attachMedia}
-      />
-      <Button
-        className="ri-delete-bin-line"
-        title="Clear"
-        onClick={clearTextArea}
-      />
-      {
-        !active &&
+
+      {/* Buttons */}
+      <FlexView gap="10px" paddingVertical="10px">
+
+        {/* Done button */}
         <Button
-          className="ri-close-circle-line"
-          onClick={writeBoxToggler}
+          background
+          fit
+          onClick={submit}
+          title="Done"
         />
-      }
+
+        {/* Attach media button */}
+        <Button
+          className={attachImageUrl ? "ri-eraser-line" : "ri-attachment-2"}
+          title={attachImageUrl ? "Detach" : "Attach"}
+          onClick={attachImageUrl ? detachMedia : attachMedia}
+        />
+
+        {/* Clear text area button */}
+        <Button
+          className="ri-delete-bin-line"
+          title="Clear"
+          onClick={clearTextArea}
+        />
+
+        {
+          // Close button
+          !active &&
+          <Button
+            className="ri-close-circle-line"
+            onClick={writeBoxToggler}
+          />
+        }
+      </FlexView>
     </FlexView>
 
   </View></FloatingBox>

@@ -1,11 +1,19 @@
 import { FC, useState } from "react";
-import { CheckBox } from "../../components";
-import Input from "../../components/Input";
-import { FormContainer } from "../../container";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
-import { clearNotification, setNotification } from "../../redux/notification/action";
 import { useHistory } from "react-router-dom";
+
+// Components
+import {
+  CheckBox,
+  Input
+} from "../../components";
+
+// Container
+import { FormContainer } from "../../container";
+
+// State, Reducers and actions
+import { clearNotification, setNotification } from "../../redux/notification/action";
 
 // User data interface
 interface UserData {
@@ -30,7 +38,7 @@ const Signin = () => {
   // Dispatch
   const dispatch = useDispatch();
 
-  // ShowPassword for set password visibility
+  // ShowPassword for change password visibility
   const [showPassword, setShowPassword] = useState(false);
 
 
@@ -41,7 +49,12 @@ const Signin = () => {
 
   // Submit form data
   const submitForm = (userdata: UserData) => {
+
+    // Loading message
     dispatch(setNotification("Loading..."));
+
+    // Database operation here ...
+
     setTimeout(() => {
       dispatch(clearNotification());
       history.push("/");

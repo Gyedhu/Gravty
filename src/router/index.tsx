@@ -1,11 +1,9 @@
 import { Route, Switch } from "react-router-dom";
 import { Page } from "../container";
+
+// Pages
 import {
-  Home,
-  PageEditor,
-  Signin,
-  Signup,
-  Write
+  Home, PageEditor, Signin, Signup, Write
 } from "../pages";
 
 const Router = () => {
@@ -13,8 +11,8 @@ const Router = () => {
     <Route exact component={Home} path="/" />
     <Route component={Signin} path="/signin" />
     <Route component={Signup} path="/signup" />
-    <Route exact component={Write} path="/write" /> 
-    <Route exact component={Page} path="/page" /> 
+    <Route exact component={Write} path="/write" />
+    <Route exact component={Page} path="/page" />
 
     <Route path="/write/question">
       <Write type="question" />

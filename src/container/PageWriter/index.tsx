@@ -1,7 +1,13 @@
 import React from "react";
-import { Button, FlexView } from "../../components";
-import List from "../List";
-import Paragraph from "../Paragraph";
+
+// Components
+import {
+  Button,
+  FlexView
+} from "../../components";
+
+// Container
+import { List, Paragraph } from "..";
 
 const PageWriter = () => {
 

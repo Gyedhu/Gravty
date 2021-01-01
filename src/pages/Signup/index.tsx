@@ -1,8 +1,14 @@
 import { FC, useState } from "react";
-import { CheckBox } from "../../components";
-import Input from "../../components/Input";
-import { FormContainer } from "../../container";
 import { useForm } from "react-hook-form";
+
+// Components
+import {
+  CheckBox,
+  Input
+} from "../../components";
+
+// Containers
+import { FormContainer } from "../../container";
 
 // User data interface
 interface UserData {
@@ -26,7 +32,7 @@ const Signup = () => {
     mode: "onChange"
   });
 
-  // ShowPassword for set password visibility
+  // ShowPassword for change password visibility
   const [showPassword, setShowPassword] = useState(false);
 
   // Toggling password visibility

@@ -3,7 +3,6 @@ import { PageEditorState, PageEditorStateAction, SET_CURRENT_WRITING, SET_SELECT
 const intialState: PageEditorState = {
   selectElementBox: false,
   writeBox: false,
-  writeBoxTitle: "",
   currentWriting: null
 };
 
@@ -20,8 +19,7 @@ const reducer = (state: PageEditorState = intialState, action: PageEditorStateAc
     case SET_WRITE_BOX:
       return {
         ...state,
-        writeBox: action.state,
-        writeBoxTitle: action.title,
+        writeBox: action.payload
       };
 
     case SET_CURRENT_WRITING:

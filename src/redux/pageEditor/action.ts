@@ -12,10 +12,9 @@ export const setSelectElementBox = (payload: boolean): SetSelectElementBox => ({
   payload: payload
 });
 
-export const setWriteBox = (state: boolean, title?: string): SetWriteBox => ({
+export const setWriteBox = (payload: boolean, title?: string): SetWriteBox => ({
   type: SET_WRITE_BOX,
-  state,
-  title: title ? title : ""
+  payload
 });
 
 export const setCurrentWriting = (payload: string): SetCurrentWriting => ({

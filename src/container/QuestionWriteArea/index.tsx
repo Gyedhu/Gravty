@@ -14,9 +14,11 @@ const QuestionWriteArea = () => {
 
   // --- Write question --- 
   return <FlexView direction="column">
+
     <Paragraph
       content="Write your question and upload in internet for share to the world..."
     />
+    
     <WriteBox active={true} onSubmit={readQuestion} />
   </FlexView>
 }

@@ -31,3 +31,6 @@ export interface ListTypes {
 
 // Data 
 export type Data = Array<ParagraphTypes | ListTypes | ImageTypes>
+
+// PageListPropsType
+export type PageListType = ParagraphTypes | ListTypes | ImageTypes;

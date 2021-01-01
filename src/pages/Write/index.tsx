@@ -1,8 +1,21 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
-import { Button, FlexView } from "../../components";
-import { Header, PageWriter, QuestionWriteArea, View } from "../../container";
 
+// Components
+import {
+  Button,
+  FlexView
+} from "../../components";
+
+// Containers
+import {
+  Header,
+  PageWriter,
+  QuestionWriteArea,
+  View
+} from "../../container";
+
+// Write types
 interface Props {
   type: "question" | "page" | null
 }
@@ -13,7 +26,7 @@ const Write: React.FC<Props> = ({ type }) => {
   const history = useHistory();
 
   // Select current page
-  const toggleActive = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+  const selectWriteType = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     history.replace(`/write/${event.currentTarget.value}`);
   }
 
@@ -29,14 +42,14 @@ const Write: React.FC<Props> = ({ type }) => {
 
       <Button
         active={type === "question"}
-        onClick={toggleActive}
+        onClick={selectWriteType}
         title="Questions"
         value="question"
       />
 
       <Button
         active={type === "page"}
-        onClick={toggleActive}
+        onClick={selectWriteType}
         title="Pages"
         value="page"
       />

@@ -27,7 +27,7 @@ const Card: React.FC<CardProps> = ({ imageUrl, title, subTitle }) => {
 }
 
 //  Card set
-const HomeCard = () => {
+const ImageCard = () => {
   return <FlexView
     gap="10px"
     wrap="wrap"
@@ -53,4 +53,4 @@ const HomeCard = () => {
   </FlexView>
 }
 
-export default HomeCard
+export default ImageCard
