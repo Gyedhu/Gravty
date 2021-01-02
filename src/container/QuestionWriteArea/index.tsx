@@ -1,13 +1,16 @@
 import React from "react";
+
+// Components
 import { FlexView } from "../../components";
-import Paragraph from "../Paragraph";
-import WriteBox from "../WriteBox";
+
+// Containers
+import { Paragraph, QuestionWriteBox } from "..";
 
 const QuestionWriteArea = () => {
 
   // Get data
   const readQuestion = (data: string, file?: FileList | null | undefined) => {
-    console.log(data)
+    console.log(data);
     if (file)
       console.log(file);
   }
@@ -18,8 +21,8 @@ const QuestionWriteArea = () => {
     <Paragraph
       content="Write your question and upload in internet for share to the world..."
     />
-    
-    <WriteBox active={true} onSubmit={readQuestion} />
+
+    <QuestionWriteBox active={true} onSubmit={readQuestion} />
   </FlexView>
 }
 

@@ -1,28 +1,27 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+
+// State, Reducer Actions
 import { State } from "../../redux/store";
 import { PageEditorState } from "../../redux/pageEditor/type";
 import { setWriteBox } from "../../redux/pageEditor/action";
 
+// Utilities
 import { filePicker } from "../../utility";
 
+// Components
 import {
   Button,
   FlexView,
-  FloatingBox,
-  Text,
   TextArea
-} from "../../components";
-
-import { View } from "..";
-
+} from "../../components"; 
 
 interface Props {
   active?: boolean;
   onSubmit: (data: string, file?: FileList | null) => void
 }
 
-const WriteBox: React.FC<Props> = ({ active, onSubmit }) => {
+const QuestionWriteBox: React.FC<Props> = ({ active, onSubmit }) => {
 
   // State 
   const [data, setData] = React.useState("");
@@ -80,59 +79,55 @@ const WriteBox: React.FC<Props> = ({ active, onSubmit }) => {
     }
   }
 
-  return <FloatingBox side="bottom" active={active ? active : writeBox}><View>
+  return <FlexView direction="column" gap="5px" paddingVertical="20px">
 
-    <FlexView direction="column" gap="5px">
+    {/* Show image only if something attached */}
+    {attachImageUrl && <img src={attachImageUrl} alt="selected" width="200" />}
 
-      {/* Show image only if something attached */}
-      {attachImageUrl && <img src={attachImageUrl} alt="selected" width="200" />}
+    {/* Textarea */}
+    <TextArea
+      onChange={readData}
+      placeholder="Write your question"
+      value={data}
+      size={8}
+      type="solid"
+    />
 
+    {/* Buttons */}
+    <FlexView gap="10px" paddingVertical="10px">
 
-      {/* Textarea */}
-      <TextArea
-        onChange={readData}
-        placeholder="Write paragraph here"
-        value={data}
-        size="big"
+      {/* Done button */}
+      <Button
+        background
+        fit
+        onClick={submit}
+        title="Done"
       />
 
-      {/* Buttons */}
-      <FlexView gap="10px" paddingVertical="10px">
+      {/* Attach media button */}
+      <Button
+        className={attachImageUrl ? "ri-eraser-line" : "ri-attachment-2"}
+        title={attachImageUrl ? "Detach" : "Attach"}
+        onClick={attachImageUrl ? detachMedia : attachMedia}
+      />
 
-        {/* Done button */}
+      {/* Clear text area button */}
+      <Button
+        className="ri-delete-bin-line"
+        title="Clear"
+        onClick={clearTextArea}
+      />
+
+      {
+        // Close button
+        !active &&
         <Button
-          background
-          fit
-          onClick={submit}
-          title="Done"
+          className="ri-close-circle-line"
+          onClick={writeBoxToggler}
         />
-
-        {/* Attach media button */}
-        <Button
-          className={attachImageUrl ? "ri-eraser-line" : "ri-attachment-2"}
-          title={attachImageUrl ? "Detach" : "Attach"}
-          onClick={attachImageUrl ? detachMedia : attachMedia}
-        />
-
-        {/* Clear text area button */}
-        <Button
-          className="ri-delete-bin-line"
-          title="Clear"
-          onClick={clearTextArea}
-        />
-
-        {
-          // Close button
-          !active &&
-          <Button
-            className="ri-close-circle-line"
-            onClick={writeBoxToggler}
-          />
-        }
-      </FlexView>
+      }
     </FlexView>
-
-  </View></FloatingBox>
+  </FlexView>
 }
 
-export default WriteBox;
+export default QuestionWriteBox;

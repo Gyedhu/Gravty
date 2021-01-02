@@ -17,10 +17,10 @@ export { default as ImageCard } from "./ImageCard";
 
 // Buttons tools
 
-export { default as ButtonSet } from "./ButtonSet"; 
+export { default as ButtonSet } from "./ButtonSet";
 
 // Write tools
-export { default as WriteBox } from "./WriteBox";
+export { default as QuestionWriteBox } from "./QuestionWriteBox";
 
 
 // Question

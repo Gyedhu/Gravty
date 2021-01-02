@@ -16,13 +16,13 @@ const ButtonSet: React.FC<Props> = ({ leftSet, rightSet, children }) => {
     shadow
     justify="space-between" wrap="wrap"
   >
-    <FlexView gap="10px">
+    {leftSet && <FlexView gap="10px" mobile={!rightSet}>
       {leftSet}
-    </FlexView>
+    </FlexView>}
 
-    <FlexView gap="10px">
+    {rightSet && <FlexView gap="10px" mobile={!leftSet}>
       {rightSet}
-    </FlexView>
+    </FlexView>}
   </FlexView>
 }
 
