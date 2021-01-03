@@ -3,10 +3,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { Button, FlexView, TextArea } from "../../components";
 import { addPageHeader } from "../../redux/page/action";
 import { PageState } from "../../redux/page/type";
+import { setCurrentWriting } from "../../redux/pageEditor/action";
 import { State } from "../../redux/store";
 import { UserDataState } from "../../redux/userData/type";
 import View from "../View";
- 
+
+
 
 const MainHeaderWriter = () => {
 
@@ -50,6 +52,8 @@ const MainHeaderWriter = () => {
 
       // Setting the new header in redux state
       dispatch(addPageHeader(newHeader));
+      // Close the fields
+      dispatch(setCurrentWriting(""));
     }
   }
 

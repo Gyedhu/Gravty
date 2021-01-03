@@ -20,8 +20,9 @@ export { default as ImageCard } from "./ImageCard";
 export { default as ButtonSet } from "./ButtonSet";
 
 // Write tools
-export { default as QuestionWriteBox } from "./QuestionWriteBox"; 
-export { default as MainHeaderWriter } from "./MainHeaderWriter"; 
+export { default as QuestionWriteBox } from "./QuestionWriteBox";
+export { default as MainHeaderWriter } from "./MainHeaderWriter";
+export { default as CurrentWritingFieldMap } from "./CurrentWritingFieldMap";
 
 
 // Question

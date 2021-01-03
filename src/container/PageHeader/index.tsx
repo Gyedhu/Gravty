@@ -14,7 +14,7 @@ interface TextWithImageProps {
 }
 
 const TextWithImage: React.FC<TextWithImageProps> = ({ url, title, subTitle }) =>
-  <FlexView gap="10px" paddingVertical="15px">
+  <FlexView gap="10px" paddingVertical="30px">
     {url && <UrlImage rounded url={url ? url : ""} height="50px" width="50px" />}
     <FlexView direction="column">
       <Text size="18px">{title}</Text>

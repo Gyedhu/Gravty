@@ -7,7 +7,7 @@ import {
   PageEditorElemenetSelector,
   Header,
   View,
-  MainHeaderWriter
+  CurrentWritingFieldMap
 } from "../../container";
 
 const PageEditor = () => {
@@ -16,7 +16,7 @@ const PageEditor = () => {
     <Header title="Editor" subTitle="Write your page" />
     <PageEditButtons />
     <Page />
-    <MainHeaderWriter />
+    <CurrentWritingFieldMap />
     <PageEditorElemenetSelector />
 
   </View>

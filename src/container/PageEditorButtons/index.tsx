@@ -1,16 +1,18 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 // Containers
 import { ButtonSet } from "..";
 
 // Components
 import { Button } from "../../components";
+import { PageState } from "../../redux/page/type";
 
 // State, Reducers and actions
 // import { State } from "../../redux/store";
 // import { PageState } from "../../redux/page/type";
-import { setSelectElementBox, } from "../../redux/pageEditor/action";
+import { setCurrentWriting, setSelectElementBox, } from "../../redux/pageEditor/action";
+import { State } from "../../redux/store";
 
 const PageEditButtons = () => {
 
@@ -18,7 +20,7 @@ const PageEditButtons = () => {
   const dispatch = useDispatch();
 
   // state
-  // const { header } = useSelector<State, PageState>(state => state.page);
+  const { header } = useSelector<State, PageState>(state => state.page);
 
   // --- SelectElementBox Toggler ---
   const selectElementBoxToggler = () => {
@@ -28,7 +30,10 @@ const PageEditButtons = () => {
   // --- Add element --- 
   // It will open the selectElementBox
   const addElement = () => {
-    selectElementBoxToggler();
+    if (!header) {
+      dispatch(setCurrentWriting("main-header"));
+    } else
+      selectElementBoxToggler();
   }
 
   return <ButtonSet
