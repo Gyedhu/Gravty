@@ -1,9 +1,9 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 // State, Reducer Actions
-import { State } from "../../redux/store";
-import { PageEditorState } from "../../redux/pageEditor/type";
+// import { State } from "../../redux/store";
+// import { PageEditorState } from "../../redux/pageEditor/type";
 import { setWriteBox } from "../../redux/pageEditor/action";
 
 // Utilities
@@ -14,7 +14,7 @@ import {
   Button,
   FlexView,
   TextArea
-} from "../../components"; 
+} from "../../components";
 
 interface Props {
   active?: boolean;
@@ -36,7 +36,7 @@ const QuestionWriteBox: React.FC<Props> = ({ active, onSubmit }) => {
 
 
   // Get writeBox from state
-  const { writeBox } = useSelector<State, PageEditorState>(state => state.pageEditor);
+  // const { writeBox } = useSelector<State, PageEditorState>(state => state.pageEditor);
 
   // --- Submit data ---
   const submit = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
