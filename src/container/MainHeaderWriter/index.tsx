@@ -57,6 +57,9 @@ const MainHeaderWriter: React.FC<Props> = () => {
 
   // Clear field
   const clearField = () => {
+    // Clearing the currentFocused field
+    // It would be stored in the currentTypingField variable in state
+    // We can use name property of the element
     if (currentTypingField?.name === "main") {
       setMainHeader("");
     } else {
