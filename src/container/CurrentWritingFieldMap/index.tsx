@@ -8,6 +8,7 @@ import { MainHeaderWriter } from "..";
 import { PageEditorState } from "../../redux/pageEditor/type";
 import { State } from "../../redux/store";
 import ParagraphWithHeaderWriter from "../ParagraphWithHeaderWriter";
+import ParagraphWriter from "../ParagraphWriter";
 
 const CurrentWritingFieldMap = () => {
 
@@ -21,6 +22,9 @@ const CurrentWritingFieldMap = () => {
 
     case "paragraph-with-header":
       return <ParagraphWithHeaderWriter />
+
+    case "paragraph":
+      return <ParagraphWriter />
 
     default: return null;
   }
