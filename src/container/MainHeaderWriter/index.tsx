@@ -15,20 +15,18 @@ const MainHeaderWriter: React.FC<Props> = () => {
   // --- Local State --- 
   const [mainHeader, setMainHeader] = React.useState("");
   const [subHeader, setSubHeader] = React.useState("");
-  const [current, setCurrent] = React.useState<EventTarget & HTMLTextAreaElement | null>(null);
+  const [currentTypingField, setCurrentTypingField] = React.useState<EventTarget & HTMLTextAreaElement | null>(null);
 
-  // --- State and Dispatch --- 
-  // Page header
+  // --- State and Dispatch ---  
   const { header } = useSelector<State, PageState>(state => state.page);
-  // User data
   const { name, imageUrl } = useSelector<State, UserDataState>(state => state.userData);
   const dispatch = useDispatch();
 
   // --- On Fucus --- 
   // On focus we are setting the current typing field in the state
-  // On the clear button click the element stored in the 'current' will be cleared
+  // On the clear button click the element stored in the 'currentTypingField' will be cleared
   const focus = (event: React.FocusEvent<HTMLTextAreaElement>) => {
-    setCurrent(event.currentTarget);
+    setCurrentTypingField(event.currentTarget);
   }
 
   // --- Read main header --- 
@@ -59,7 +57,7 @@ const MainHeaderWriter: React.FC<Props> = () => {
 
   // Clear field
   const clearField = () => {
-    if (current?.name === "main") {
+    if (currentTypingField?.name === "main") {
       setMainHeader("");
     } else {
       setSubHeader("");
