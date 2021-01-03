@@ -22,7 +22,7 @@ import { State } from "../../redux/store";
 import { PageEditorState } from "../../redux/pageEditor/type";
 import {
   setCurrentWriting,
-  setSelectElementBox, setWriteBox
+  setSelectElementBox
 } from "../../redux/pageEditor/action";
 
 
@@ -78,7 +78,7 @@ const PageEditorElemenetSelector = () => {
         </FlexView>
 
         <FlexView direction="column" gap="10px" maxHeight="250px">
-          <SelectButton title="Paragraph-with-header" />
+          <SelectButton title="Paragraph-withheader" />
           <SelectButton title="Paragraph" />
           <SelectButton title="List" />
           <SelectButton title="Image" />

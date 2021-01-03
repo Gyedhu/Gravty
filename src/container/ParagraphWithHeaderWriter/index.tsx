@@ -1,11 +1,8 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { Button, FlexView, TextArea } from "../../components";
 import { addPageData } from "../../redux/page/action";
-import { PageState } from "../../redux/page/type";
 import { setCurrentWriting } from "../../redux/pageEditor/action";
-import { State } from "../../redux/store";
-import { UserDataState } from "../../redux/userData/type";
 import { PARAGRAPH, ParagraphTypes } from "../PageListMap/types";
 import View from "../View";
 
