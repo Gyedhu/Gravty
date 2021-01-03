@@ -21,8 +21,9 @@ export { default as ButtonSet } from "./ButtonSet";
 
 // Write tools
 export { default as QuestionWriteBox } from "./QuestionWriteBox";
-export { default as MainHeaderWriter } from "./MainHeaderWriter";
 export { default as CurrentWritingFieldMap } from "./CurrentWritingFieldMap";
+export { default as MainHeaderWriter } from "./MainHeaderWriter";
+export { default as ParagraphWithHeaderWriter } from "./ParagraphWithHeaderWriter";
 
 
 // Question

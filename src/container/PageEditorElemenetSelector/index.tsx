@@ -39,13 +39,11 @@ const SelectButton: React.FC<SelectButtonProps> = ({ title }) => {
 
   // --- selectElement ---
   const selectElement = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    alert(event.currentTarget.value);
     dispatch(setCurrentWriting(event.currentTarget.value));
     dispatch(setSelectElementBox(false));
-    dispatch(setWriteBox(true, "Write your content here"));
   }
 
-
+  // Button
   return <Button
     border
     rounded
@@ -68,7 +66,7 @@ const PageEditorElemenetSelector = () => {
   }
 
   // Get selectElementBox from state;
-  const selectElementBox = useSelector<State, PageEditorState["selectElementBox"]>(state => state.pageEditor.selectElementBox);
+  const { selectElementBox } = useSelector<State, PageEditorState>(state => state.pageEditor);
 
   return <FloatingBox side="center" active={selectElementBox}>
     <View>
@@ -80,7 +78,7 @@ const PageEditorElemenetSelector = () => {
         </FlexView>
 
         <FlexView direction="column" gap="10px" maxHeight="250px">
-          <SelectButton title="Paragraph with header" />
+          <SelectButton title="Paragraph-with-header" />
           <SelectButton title="Paragraph" />
           <SelectButton title="List" />
           <SelectButton title="Image" />

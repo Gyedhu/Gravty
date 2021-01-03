@@ -1,3 +1,4 @@
+import { PageListType } from "../../container/PageListMap/types";
 import {
   AddPageData,
   ADD_PAGE_DATA,
@@ -5,7 +6,7 @@ import {
   PageHeaderType
 } from "./type";
 
-export const addPageData = (payload: boolean): AddPageData => ({
+export const addPageData = (payload: PageListType): AddPageData => ({
   type: ADD_PAGE_DATA,
   payload: payload
 });

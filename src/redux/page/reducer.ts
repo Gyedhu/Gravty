@@ -10,9 +10,13 @@ const reducer = (state: PageState = intialState, action: PageAction) => {
   switch (action.type) {
 
     case ADD_PAGE_DATA:
+
+      const newData = state.data?.slice();
+      newData?.push(action.payload);
+
       return {
         ...state,
-        data: action.payload
+        data: newData
       }
 
     case ADD_PAGE_HEADER:

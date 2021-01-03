@@ -30,8 +30,8 @@ export interface ListTypes {
   type?: "decimal" | "rouded" | "square" | "upper-alpha";
 };
 
-// Data 
-export type Data = Array<ParagraphTypes | ListTypes | ImageTypes>
-
 // PageListPropsType
 export type PageListType = ParagraphTypes | ListTypes | ImageTypes;
+
+// Data 
+export type Data = Array<PageListType>
