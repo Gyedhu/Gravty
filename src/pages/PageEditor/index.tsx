@@ -6,7 +6,8 @@ import {
   PageEditButtons,
   PageEditorElemenetSelector,
   Header,
-  View
+  View,
+  MainHeaderWriter
 } from "../../container";
 
 const PageEditor = () => {
@@ -15,6 +16,7 @@ const PageEditor = () => {
     <Header title="Editor" subTitle="Write your page" />
     <PageEditButtons />
     <Page />
+    <MainHeaderWriter />
     <PageEditorElemenetSelector />
 
   </View>

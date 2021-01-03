@@ -26,7 +26,7 @@ const PageEditButtons = () => {
   }
 
   // --- Add element --- 
-  // it will open the selectElementBox
+  // It will open the selectElementBox
   const addElement = () => {
     selectElementBoxToggler();
   }
@@ -51,7 +51,7 @@ const PageEditButtons = () => {
         {/* Preview Button */}
         <Button
           className="ri-slideshow-2-line"
-          toolTip="View page"
+          toolTip="Preview"
           to="/page"
         />
 

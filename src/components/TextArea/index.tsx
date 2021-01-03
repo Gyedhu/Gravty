@@ -5,7 +5,7 @@ import { TextAreaContainer } from "./style";
 const TextArea = React.forwardRef<HTMLTextAreaElement | null, TextAreaProps>(({ size, ...props }, ref) => {
   return <TextAreaContainer
     ref={ref}
-    rows={size}
+    rows={size} 
     {...props}
   />
 });

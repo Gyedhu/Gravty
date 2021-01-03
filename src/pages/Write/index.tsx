@@ -10,8 +10,8 @@ import {
 // Containers
 import {
   Header,
-  PageWriter,
-  QuestionWriteArea,
+  WritePage as WritePage,
+  WriteQuestion,
   View
 } from "../../container";
 
@@ -58,12 +58,12 @@ const Write: React.FC<Props> = ({ type }) => {
 
     {
       // question write area
-      type === "question" && <QuestionWriteArea />
+      type === "question" && <WriteQuestion />
     }
 
     {
       // Page write area
-      type === "page" && <PageWriter />
+      type === "page" && <WritePage />
     }
 
   </View>

@@ -1,4 +1,4 @@
-import { ADD_PAGE_DATA, PageAction, PageState } from "./type";
+import { ADD_PAGE_DATA, ADD_PAGE_HEADER, PageAction, PageState } from "./type";
 
 const intialState: PageState = {
   header: null,
@@ -13,6 +13,12 @@ const reducer = (state: PageState = intialState, action: PageAction) => {
       return {
         ...state,
         data: action.payload
+      }
+
+    case ADD_PAGE_HEADER:
+      return {
+        ...state,
+        header: action.payload
       }
 
     default:

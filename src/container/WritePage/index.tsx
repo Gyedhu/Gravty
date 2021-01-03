@@ -9,7 +9,7 @@ import {
 // Container
 import { List, Paragraph } from "..";
 
-const PageWriter = () => {
+const WritePage = () => {
 
   return <FlexView direction="column">
     <Paragraph
@@ -34,4 +34,4 @@ const PageWriter = () => {
   </FlexView>
 }
 
-export default PageWriter;
+export default WritePage;

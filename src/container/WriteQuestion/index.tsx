@@ -6,7 +6,8 @@ import { FlexView } from "../../components";
 // Containers
 import { Paragraph, QuestionWriteBox } from "..";
 
-const QuestionWriteArea = () => {
+const WriteQuestion
+ = () => {
 
   // Get data
   const readQuestion = (data: string, file?: FileList | null | undefined) => {
@@ -26,4 +27,5 @@ const QuestionWriteArea = () => {
   </FlexView>
 }
 
-export default QuestionWriteArea;
+export default WriteQuestion
+;

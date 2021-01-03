@@ -20,17 +20,17 @@ export { default as ImageCard } from "./ImageCard";
 export { default as ButtonSet } from "./ButtonSet";
 
 // Write tools
-export { default as QuestionWriteBox } from "./QuestionWriteBox";
+export { default as QuestionWriteBox } from "./QuestionWriteBox"; 
+export { default as MainHeaderWriter } from "./MainHeaderWriter"; 
 
 
 // Question
-export { default as QuestionWriteArea } from "./QuestionWriteArea";
+export { default as WriteQuestion } from "./WriteQuestion";
 
 
-// Page
-
+// Page 
 export { default as List } from "./List";
-export { default as PageWriter } from "./PageWriter";
+export { default as WritePage } from "./WritePage";
 export { default as Paragraph } from "./Paragraph";
 export { default as Header } from "./Header";
 export { default as PageEditorElemenetSelector } from "./PageEditorElemenetSelector";

@@ -1,8 +1,9 @@
 import { Data } from "../../container/PageListMap/types";
 
-export const ADD_PAGE_DATA = "ADD_DATA";
+export const ADD_PAGE_DATA = "ADD_PAGE_DATA";
+export const ADD_PAGE_HEADER = "ADD_PAGE_HEADER";
 
-interface Header {
+export interface PageHeaderType {
   imageUrl?: string;
   auther: string;
   date: string;
@@ -11,7 +12,7 @@ interface Header {
 }
 
 export interface PageState {
-  header: Header | null;
+  header: PageHeaderType | null;
   data: Data | null;
 };
 
@@ -20,4 +21,9 @@ export interface AddPageData {
   payload: boolean;
 };
 
-export type PageAction = AddPageData;
+export interface AddPageHeader {
+  type: typeof ADD_PAGE_HEADER;
+  payload: boolean;
+};
+
+export type PageAction = AddPageData | AddPageHeader;
