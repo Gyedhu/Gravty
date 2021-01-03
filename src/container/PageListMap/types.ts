@@ -19,6 +19,7 @@ export interface ImageTypes {
   url: string;
   header?: string;
   footer?: string;
+  fit?: boolean;
 }
 
 // List
