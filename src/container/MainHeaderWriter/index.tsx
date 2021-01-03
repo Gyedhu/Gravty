@@ -6,11 +6,9 @@ import { PageState } from "../../redux/page/type";
 import { State } from "../../redux/store";
 import { UserDataState } from "../../redux/userData/type";
 import View from "../View";
+ 
 
-interface Props {
-};
-
-const MainHeaderWriter: React.FC<Props> = () => {
+const MainHeaderWriter = () => {
 
   // --- Local State --- 
   const [mainHeader, setMainHeader] = React.useState("");
