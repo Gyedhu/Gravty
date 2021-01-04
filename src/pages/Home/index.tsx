@@ -1,5 +1,12 @@
 import React from "react";
-import { HomeCard, HomeNavBar, ProfileCard, View } from "../../container";
+
+// Containers
+import {
+  ImageCard,
+  HomeNavBar,
+  ProfileCard,
+  View
+} from "../../container";
 
 const Home = () => {
 
@@ -12,7 +19,7 @@ const Home = () => {
     <HomeNavBar />
 
     {/* HomeCard */}
-    <HomeCard />
+    <ImageCard />
 
   </View>
 }

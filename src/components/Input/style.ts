@@ -12,6 +12,7 @@ export const InputContainer = styled.input`
 `;
 
 export const SelectContainer = styled.select`
+  background: transparent;
   border: 1px solid #ccc; 
   border-radius: 5px;
   display: flex;  

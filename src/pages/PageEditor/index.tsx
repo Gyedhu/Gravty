@@ -1,20 +1,26 @@
 import React from "react";
+import { FlexView } from "../../components";
+
+// Containers
 import {
+  Page,
   PageEditButtons,
   PageEditorElemenetSelector,
-  WriteBox
+  Header,
+  View,
+  CurrentWritingFieldMap
 } from "../../container";
-import Header from "../../container/Header";
-import View from "../../container/View";
 
 const PageEditor = () => {
+
   return <View>
     <Header title="Editor" subTitle="Write your page" />
     <PageEditButtons />
+    <Page />
+    <CurrentWritingFieldMap />
     <PageEditorElemenetSelector />
-    <WriteBox onSubmit={(data, file) => {
-      console.log(data, file);
-    }} />
+
+    <FlexView minHeight="100px" />
   </View>
 }
 

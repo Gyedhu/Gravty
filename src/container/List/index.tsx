@@ -1,13 +1,21 @@
 import React from "react";
-import { FlexView, Text } from "../../components";
+
+// Components
+import {
+  FlexView,
+  Text
+} from "../../components";
+import { ListStyleTypes } from "../PageListMap/types";
 
 interface Props {
+  title?: string;
   listItems: Array<string>;
-  type?: "decimal" | "rouded" | "square" | "upper-alpha";
+  type?: ListStyleTypes;
 }
 
-const List: React.FC<Props> = ({ listItems, type }) => {
-  return <FlexView>
+const List: React.FC<Props> = ({ title, listItems, type }) => {
+  return <FlexView direction="column">
+    {title && <Text size="22px">{title}</Text>}
     <ul style={{ listStyleType: type }}>
       {
         listItems

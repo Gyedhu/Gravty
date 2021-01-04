@@ -16,7 +16,7 @@ const Card: React.FC<CardProps> = ({ imageUrl, title, subTitle }) => {
     grow="1"
     minWidth="200px"
   >
-    {imageUrl && <UrlImage fit height="200px" url={imageUrl} />}
+    {imageUrl && <UrlImage fit={true} height="200px" url={imageUrl} />}
 
     <FlexView direction="column" maxWidth="300px">
       <Text size="20px">{title}</Text>
@@ -27,7 +27,7 @@ const Card: React.FC<CardProps> = ({ imageUrl, title, subTitle }) => {
 }
 
 //  Card set
-const HomeCard = () => {
+const ImageCard = () => {
   return <FlexView
     gap="10px"
     wrap="wrap"
@@ -46,11 +46,11 @@ const HomeCard = () => {
 
     <Card
       imageUrl={Desktop}
-      subTitle="Search and frind resources and help peoples with answer questions"
+      subTitle="Search and find resources and help people by with answer their questions"
       title="Search"
     />
 
   </FlexView>
 }
 
-export default HomeCard
+export default ImageCard

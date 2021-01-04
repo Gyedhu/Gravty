@@ -1,9 +1,15 @@
 import React from "react";
-import { Button, FlexView } from "../../components";
-import List from "../List";
-import Paragraph from "../Paragraph";
 
-const PageWriter = () => {
+// Components
+import {
+  Button,
+  FlexView
+} from "../../components";
+
+// Container
+import { List, Paragraph } from "..";
+
+const WritePage = () => {
 
   return <FlexView direction="column">
     <Paragraph
@@ -28,4 +34,4 @@ const PageWriter = () => {
   </FlexView>
 }
 
-export default PageWriter;
+export default WritePage;

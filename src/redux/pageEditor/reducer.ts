@@ -1,8 +1,9 @@
-import { PageEditorState, PageEditorStateAction, SET_SELECT_ELEMENT_BOX, SET_WRITE_BOX } from "./type";
+import { PageEditorState, PageEditorStateAction, SET_CURRENT_WRITING, SET_SELECT_ELEMENT_BOX, SET_WRITE_BOX } from "./type";
 
 const intialState: PageEditorState = {
   selectElementBox: false,
-  writeBox: false
+  writeBox: false,
+  currentWriting: null
 };
 
 const reducer = (state: PageEditorState = intialState, action: PageEditorStateAction) => {
@@ -21,9 +22,14 @@ const reducer = (state: PageEditorState = intialState, action: PageEditorStateAc
         writeBox: action.payload
       };
 
+    case SET_CURRENT_WRITING:
+      return {
+        ...state,
+        currentWriting: action.payload
+      };
+
     default:
       return state;
-
   }
 
 }

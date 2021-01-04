@@ -1,21 +1,29 @@
 import { combineReducers, createStore } from "redux";
-import notification from "./notification/reducer";
-import userdata from "./userdata/reducer";
-import pageEditor from "./pageEditor/reducer";
+
 import { NotificationState } from "./notification/type";
-import { UserDataState } from "./userdata/type";
+import { UserDataState } from "./userData/type";
 import { PageEditorState } from "./pageEditor/type";
+import { PageState } from "./page/type";
+
+import {
+  notification,
+  userData,
+  pageEditor,
+  page
+} from "./index";
 
 export interface State {
   notification: NotificationState;
   userData: UserDataState;
   pageEditor: PageEditorState;
+  page: PageState;
 };
 
 const store = createStore(combineReducers({
-  notification: notification,
-  userData: userdata,
-  pageEditor: pageEditor
+  notification,
+  userData,
+  pageEditor,
+  page
 }));
 
 export default store;
