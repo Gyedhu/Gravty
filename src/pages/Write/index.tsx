@@ -10,7 +10,7 @@ import {
 // Containers
 import {
   Header,
-  WritePage as WritePage,
+  WritePage,
   WriteQuestion,
   View
 } from "../../container";
