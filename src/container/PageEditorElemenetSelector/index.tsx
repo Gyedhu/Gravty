@@ -78,7 +78,7 @@ const PageEditorElemenetSelector = () => {
         </FlexView>
 
         <FlexView direction="column" gap="10px" maxHeight="250px">
-          <SelectButton title="Paragraph-withheader" />
+          <SelectButton title="Paragraph-with-header" />
           <SelectButton title="Paragraph" />
           <SelectButton title="List" />
           <SelectButton title="Image" />

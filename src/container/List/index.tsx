@@ -5,11 +5,12 @@ import {
   FlexView,
   Text
 } from "../../components";
+import { ListStyleTypes } from "../PageListMap/types";
 
 interface Props {
   title?: string;
   listItems: Array<string>;
-  type?: "decimal" | "rouded" | "square" | "upper-alpha";
+  type?: ListStyleTypes;
 }
 
 const List: React.FC<Props> = ({ title, listItems, type }) => {

@@ -4,6 +4,8 @@ export const PARAGRAPH = "PARAGRAPH";
 export const LIST = "LIST";
 export const IMAGE = "IMAGE";
 
+export type ListStyleTypes = "decimal" | "rounded" | "square" | "upper-alpha" | "lower-alpha";
+
 // --- Interfaces ---
 
 // Paragraph
@@ -27,7 +29,7 @@ export interface ListTypes {
   contentType: typeof LIST;
   title?: string;
   listItems: Array<string>;
-  type?: "decimal" | "rouded" | "square" | "upper-alpha";
+  type?: ListStyleTypes;
 };
 
 // PageListPropsType

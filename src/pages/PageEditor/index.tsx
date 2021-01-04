@@ -1,4 +1,5 @@
 import React from "react";
+import { FlexView } from "../../components";
 
 // Containers
 import {
@@ -19,6 +20,7 @@ const PageEditor = () => {
     <CurrentWritingFieldMap />
     <PageEditorElemenetSelector />
 
+    <FlexView minHeight="100px" />
   </View>
 }
 
