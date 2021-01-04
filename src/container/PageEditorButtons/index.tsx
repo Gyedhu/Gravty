@@ -51,11 +51,6 @@ const PageEditButtons = () => {
                 onClick={addElement}
                 toolTip="Add Element"
               />
-            </React.Fragment>
-          }
-
-          rightSet={
-            <React.Fragment>
 
               {/* Preview Button */}
               <Button
@@ -63,13 +58,6 @@ const PageEditButtons = () => {
                 toolTip="Preview"
                 to="/page"
               />
-
-              {/* Help Button */}
-              <Button
-                className="ri-question-line"
-                toolTip="help"
-              />
-
             </React.Fragment>
           }
         />

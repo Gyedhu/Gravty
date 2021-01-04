@@ -14,7 +14,7 @@ const filePicker = () => new Promise((resolve, reject) => {
 
       // resolve the result
       resolve(files[0]);
-    }else {
+    } else {
 
       // reject
       reject("Error while picking file");

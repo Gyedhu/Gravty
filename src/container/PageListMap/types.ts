@@ -21,7 +21,8 @@ export interface ImageTypes {
   url: string;
   header?: string;
   footer?: string;
-  fit?: boolean;
+  fit?: "fit-in-both" | "fit-in-width" | null;
+  file: FileList;
 }
 
 // List

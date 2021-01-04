@@ -7,6 +7,7 @@ import { MainHeaderWriter } from "..";
 // State, Redux and actions
 import { PageEditorState } from "../../redux/pageEditor/type";
 import { State } from "../../redux/store";
+import ImageWriter from "../ImageWriter";
 import ListWriter from "../ListWriter";
 import ParagraphWithHeaderWriter from "../ParagraphWithHeaderWriter";
 import ParagraphWriter from "../ParagraphWriter";
@@ -29,6 +30,9 @@ const CurrentWritingFieldMap = () => {
 
     case "list":
       return <ListWriter />
+
+    case "image":
+      return <ImageWriter />
 
     default: return null;
   }
