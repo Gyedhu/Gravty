@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { Button, FlexView, Input, Text, TextArea } from "../../components";
 import { addPageData } from "../../redux/page/action";
 import { setCurrentWriting } from "../../redux/pageEditor/action";
-import { LIST, ListStyleTypes, ListTypes } from "../PageListMap/types";
+import { LIST, ListStyleTypes, ListTypes } from "../PageElementTypes";
 import View from "../View";
 
 const ListWriter = () => {

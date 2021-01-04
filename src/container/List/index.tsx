@@ -5,15 +5,9 @@ import {
   FlexView,
   Text
 } from "../../components";
-import { ListStyleTypes } from "../PageListMap/types";
+import { ListProps } from "../PageElementTypes";
 
-interface Props {
-  title?: string;
-  listItems: Array<string>;
-  type?: ListStyleTypes;
-}
-
-const List: React.FC<Props> = ({ title, listItems, type }) => {
+const List: React.FC<ListProps> = ({ title, listItems, type }) => {
   return <FlexView direction="column">
     {title && <Text size="22px">{title}</Text>}
     <ul style={{ listStyleType: type }}>

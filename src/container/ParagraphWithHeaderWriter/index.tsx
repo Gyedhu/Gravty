@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { Button, FlexView, TextArea } from "../../components";
 import { addPageData } from "../../redux/page/action";
 import { setCurrentWriting } from "../../redux/pageEditor/action";
-import { PARAGRAPH, ParagraphTypes } from "../PageListMap/types";
+import { PARAGRAPH, ParagraphTypes } from "../PageElementTypes";
 import View from "../View";
 
 const ParagraphWithHeaderWriter = () => {

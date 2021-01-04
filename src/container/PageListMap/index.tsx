@@ -6,14 +6,9 @@ import {
   Paragraph,
   Image
 } from "..";
+import { PageListType } from "../PageElementTypes";
+import { IMAGE, LIST, PARAGRAPH } from "../PageElementTypesContants";
 
-// Type for map page list
-import {
-  IMAGE, 
-  LIST,
-  PARAGRAPH,
-  PageListType
-} from "./types";
 
 const PageListMap: React.FC<PageListType> = (props) => {
 
@@ -37,4 +32,4 @@ const PageListMap: React.FC<PageListType> = (props) => {
   }
 }
 
-export default PageListMap
+export default PageListMap;

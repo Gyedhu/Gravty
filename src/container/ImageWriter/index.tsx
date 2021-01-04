@@ -5,7 +5,7 @@ import { addPageData } from "../../redux/page/action";
 import { setCurrentWriting } from "../../redux/pageEditor/action";
 import { filePicker } from "../../utility";
 import Image from "../Image";
-import { IMAGE, ImageTypes } from "../PageListMap/types";
+import { FitStyleTypes, IMAGE, ImageTypes } from "../PageElementTypes";
 import View from "../View";
 
 const ImageWriter = () => {
@@ -14,7 +14,7 @@ const ImageWriter = () => {
   const [header, setHeader] = React.useState("");
   const [footer, setFooter] = React.useState("");
   const [file, setFile] = React.useState<FileList | null>();
-  const [fitType, setFitType] = React.useState<"fit-in-both" | "fit-in-width" | null>("fit-in-both");
+  const [fitType, setFitType] = React.useState<FitStyleTypes>("fit-in-both");
   const [currentTypingField, setCurrentTypingField] = React.useState<EventTarget & HTMLTextAreaElement | null>(null);
 
 
@@ -49,7 +49,7 @@ const ImageWriter = () => {
 
   // --- Read Image Fit Type
   const readImageFitType = (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-    setFitType(event.currentTarget.value as "fit-in-both" | "fit-in-width" | null);
+    setFitType(event.currentTarget.value as FitStyleTypes);
   }
 
   // --- Submit ---
@@ -94,7 +94,7 @@ const ImageWriter = () => {
 
       {/* Selected image previe */}
       {
-        file && <Image fit={fitType} url={URL.createObjectURL(file)} />
+        file && <Image fit={fitType} file={file} url={URL.createObjectURL(file)} />
       }
 
       {/* Fit type of image */}

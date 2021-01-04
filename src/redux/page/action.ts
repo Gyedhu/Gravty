@@ -1,4 +1,4 @@
-import { PageListType } from "../../container/PageListMap/types";
+import { PageListType } from "../../container/PageElementTypes";
 import {
   AddPageData,
   ADD_PAGE_DATA,
