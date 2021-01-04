@@ -1,5 +1,4 @@
 import React from "react";
-import { FlexView } from "../../components";
 
 // Containers
 import {
@@ -20,7 +19,7 @@ const Home = () => {
     <HomeNavBar />
 
     {/* HomeCard */}
-    <ImageCard /> 
+    <ImageCard />
 
   </View>
 }
