@@ -19,24 +19,27 @@ const ParagraphWriter = () => {
   const readParagraph = (event: React.ChangeEvent<HTMLTextAreaElement>) =>
     setParagraph(event.currentTarget.value);
 
-
   // --- Submit ---
   const submit = () => {
 
+    // check the paragraph is given
     if (paragraph) {
 
+      // Create a new paragrap object
       const newParagraph: ParagraphTypes = {
         contentType: PARAGRAPH,
         content: paragraph
       };
 
-      // Set data in state
+      // Set data in redux
       dispatch(addPageData(newParagraph));
-      // Close all fields
+      // Reset the currentWritingtool
       dispatch(setCurrentWriting(""));
 
     }
+
   }
+
 
   // Clear field
   const clearField = () => {
