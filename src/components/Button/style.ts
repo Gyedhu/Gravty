@@ -5,7 +5,7 @@ export const ButtonContainer = styled.button <ButtonStyleTypes>`
   background-color: transparent;
   border: 0; 
   border-bottom: ${({ active }) => active && "4px solid #59886b"};
-  color: #252525;
+  color: inherit;
   cursor: pointer;
   display: flex;
   font-size: 18px;

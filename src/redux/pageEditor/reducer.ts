@@ -22,11 +22,7 @@ const reducer = (state: PageEditorState = intialState, action: PageEditorStateAc
         writeBox: action.payload
       };
 
-    case SET_CURRENT_WRITING:
-      // window.scrollTo(0, document.body.scrollHeight);
-
-      // alert(document.body.scrollHeight);
-
+    case SET_CURRENT_WRITING:  
       return {
         ...state,
         currentWriting: action.payload

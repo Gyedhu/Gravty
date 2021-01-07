@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 
 // Components
 import { FlexView, TextArea } from "../../components";
@@ -20,6 +20,14 @@ const ParagraphWithHeaderWriter = () => {
   // --- Local State ---
   const [header, setHeader] = React.useState("");
   const [paragraph, setParagraph] = React.useState("");
+  const TextAreaRef = useRef<HTMLTextAreaElement | null>(null);
+
+  // Automatic focus
+  useEffect(() => TextAreaRef.current?.focus(), []);
+
+  // Automatic focus
+  useEffect(() => TextAreaRef.current?.focus(), []);
+
 
   // --- Read header --- 
   const readHeader = (event: React.ChangeEvent<HTMLTextAreaElement>) =>
@@ -53,6 +61,7 @@ const ParagraphWithHeaderWriter = () => {
         onChange={readHeader}
         onFocus={onFocus}
         placeholder="Heading"
+        ref={TextAreaRef}
         size={1}
         type="dashed"
       />

@@ -55,6 +55,7 @@ const useWriterMethods = () => {
 
     // Reset the PageEditorTool
     onClose();
+    console.log(document.body.scrollHeight);
   }
 
   return { onFocus, onClear, onSubmit, onClose };

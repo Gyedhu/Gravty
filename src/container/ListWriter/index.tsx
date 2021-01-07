@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 
 // Components
 import { FlexView, TextArea, Input, Text } from "../../components";
@@ -21,6 +21,10 @@ const ListWriter = () => {
   const [list, setList] = React.useState("");
   const [header, setHeader] = React.useState("");
   const [type, setType] = React.useState<ListStyleTypes>("decimal");
+  const TextAreaRef = useRef<HTMLTextAreaElement | null>(null);
+
+  // Automatic focus
+  useEffect(() => TextAreaRef.current?.focus(), []);
 
   // --- Read header --- 
   const readHeader = (event: React.ChangeEvent<HTMLTextAreaElement>) =>
@@ -77,6 +81,7 @@ const ListWriter = () => {
         onChange={readList}
         onFocus={onFocus}
         placeholder="Write your list items separeted by comma"
+        ref={TextAreaRef}
         size={5}
         type="dashed"
         value={list}

@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const TextContainer = styled.p<TextStylesTypes>`
+  color: inherit;
   font-family: ${({ fancy }) => fancy ? "Redressed" : "jost"};
   font-size: ${props => props.size ? props.size : "20px"};
   font-weight: ${props => props.bold ? "bold" : "normal"};

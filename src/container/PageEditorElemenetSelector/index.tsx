@@ -69,7 +69,7 @@ const PageEditorElemenetSelector = () => {
   const { selectElementBox } = useSelector<State, PageEditorState>(state => state.pageEditor);
 
   return <FloatingBox side="center" active={selectElementBox}>
-    <View>
+    <View fill="#ffffff">
       <FlexView direction="column" gap="30px" paddingHorizontal="20px" paddingVertical="20px" popup radius="10px" shadow>
 
         <FlexView justify="space-between">

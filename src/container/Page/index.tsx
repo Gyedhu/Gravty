@@ -29,7 +29,7 @@ const Page = () => {
       {
         data
           ? data.map((value: PageListType, index: number) =>
-            <PageListMap   {...value} />
+            <PageListMap key={index}   {...value} />
           )
           : ""
       }

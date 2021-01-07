@@ -16,7 +16,7 @@ import { PARAGRAPH } from "../PageElementTypes";
 const ParagraphWriter = () => {
 
   // Get write methods
-  const { onClear, onFocus, onSubmit } = useWriterMethods();
+  const { onClear, onFocus, onSubmit } = useWriterMethods(); 
 
   // --- Local State --- 
   const [paragraph, setParagraph] = useState("");
