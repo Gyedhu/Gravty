@@ -27,6 +27,7 @@ export { default as ParagraphWithHeaderWriter } from "./ParagraphWithHeaderWrite
 export { default as ParagraphWriter } from "./ParagraphWriter";
 export { default as ListWriter } from "./ListWriter";
 export { default as ImageWriter } from "./ImageWriter"; 
+export { default as WriterButtonSet } from "./WriterButtonSet"; 
 
 
 

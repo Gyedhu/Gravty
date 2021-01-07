@@ -1,10 +1,19 @@
 import React from "react";
-import { Button, FlexView, Input, Text, TextArea } from "../../components";
+
+// Components
+import { FlexView, TextArea, Input, Text, Button } from "../../components";
+
+// Containers
+import { WriterButtonSet, View, Image } from "..";
+
+// Utility
 import { filePicker } from "../../utility";
+
+// Hooks
 import { useWriterMethods } from "../hooks";
-import Image from "../Image";
+
+// Types 
 import { FitStyleTypes, IMAGE } from "../PageElementTypes";
-import View from "../View";
 
 const ImageWriter = () => {
 
@@ -72,8 +81,7 @@ const ImageWriter = () => {
         select
         onChange={readImageFitType}
         options={[
-          "fit-in-both",
-          "fit-in-height",
+          "fit-in-both", 
           "fit-in-width"
         ]}
 
@@ -106,20 +114,12 @@ const ImageWriter = () => {
       />
 
 
-      <FlexView gap="10px">
-        <Button
-          border
-          onClick={_onSubmit}
-          className="ri-check-double-line"
-          title="DONE"
-        />
-        <Button
-          border
-          onClick={onClear}
-          className="ri-delete-bin-line"
-          title="CLEAR"
-        />
-      </FlexView>
+      {/* Submit and Clear */}
+      <WriterButtonSet
+        onClear={onClear}
+        onSubmit={_onSubmit}
+      />
+
 
     </FlexView>
   </View>

@@ -1,9 +1,16 @@
 import React from "react";
-import { useDispatch } from "react-redux";
-import { Button, FlexView, Input, Text, TextArea } from "../../components";
+
+// Components
+import { FlexView, TextArea, Input, Text } from "../../components";
+
+// Containers
+import { WriterButtonSet, View } from "..";
+
+// Hooks
 import { useWriterMethods } from "../hooks";
+
+// Types 
 import { LIST, ListStyleTypes } from "../PageElementTypes";
-import View from "../View";
 
 const ListWriter = () => {
 
@@ -76,20 +83,11 @@ const ListWriter = () => {
       />
 
 
-      <FlexView gap="10px">
-        <Button
-          border
-          onClick={_onSubmit}
-          className="ri-check-double-line"
-          title="DONE"
-        />
-        <Button
-          border
-          onClick={onClear}
-          className="ri-delete-bin-line"
-          title="CLEAR"
-        />
-      </FlexView>
+      {/* Submit and Clear */}
+      <WriterButtonSet
+        onClear={onClear}
+        onSubmit={_onSubmit}
+      />
 
     </FlexView>
   </View>

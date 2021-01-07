@@ -1,8 +1,16 @@
 import React from "react";
-import { Button, FlexView, TextArea } from "../../components";
+
+// Components
+import { FlexView, TextArea } from "../../components";
+
+// Containers
+import { WriterButtonSet, View } from "..";
+
+// Hooks
 import { useWriterMethods } from "../hooks";
+
+// Types
 import { PARAGRAPH } from "../PageElementTypes";
-import View from "../View";
 
 const ParagraphWithHeaderWriter = () => {
 
@@ -34,7 +42,7 @@ const ParagraphWithHeaderWriter = () => {
       });
 
     }
-  } 
+  }
 
   return <View type="medium">
     <FlexView direction="column" gap="10px">
@@ -60,20 +68,11 @@ const ParagraphWithHeaderWriter = () => {
       />
 
 
-      <FlexView gap="10px">
-        <Button
-          border
-          onClick={_onSubmit}
-          className="ri-check-double-line"
-          title="DONE"
-        />
-        <Button
-          border
-          onClick={onClear}
-          className="ri-delete-bin-line"
-          title="CLEAR"
-        />
-      </FlexView>
+      {/* Submit and Clear */}
+      <WriterButtonSet
+        onClear={onClear}
+        onSubmit={_onSubmit}
+      />
 
     </FlexView>
   </View>
