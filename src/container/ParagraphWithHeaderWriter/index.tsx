@@ -1,10 +1,7 @@
 import React from "react";
-import { useDispatch } from "react-redux";
 import { Button, FlexView, TextArea } from "../../components";
-import { addPageData } from "../../redux/page/action";
-import { setCurrentWriting } from "../../redux/pageEditor/action";
 import { useWriterMethods } from "../hooks";
-import { PARAGRAPH, ParagraphTypes } from "../PageElementTypes";
+import { PARAGRAPH } from "../PageElementTypes";
 import View from "../View";
 
 const ParagraphWithHeaderWriter = () => {
@@ -37,8 +34,7 @@ const ParagraphWithHeaderWriter = () => {
       });
 
     }
-  }
-
+  } 
 
   return <View type="medium">
     <FlexView direction="column" gap="10px">
