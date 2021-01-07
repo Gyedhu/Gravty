@@ -16,7 +16,6 @@ interface InputProps extends InputStyleTypes {
   placeholder?: string;
   select?: boolean;
   type?: string;
-  // type?: "input" | "select";
   value?: string;
 };
 

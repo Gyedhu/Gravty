@@ -6,28 +6,23 @@ import { PageState } from "../../redux/page/type";
 import { setCurrentWriting } from "../../redux/pageEditor/action";
 import { State } from "../../redux/store";
 import { UserDataState } from "../../redux/userData/type";
+import { useWriterMethods } from "../hooks";
+import { PAGE_HEADER, PARAGRAPH } from "../PageElementTypes";
 import View from "../View";
 
 
 
 const MainHeaderWriter = () => {
 
+  // Get write methods
+  const { onClear, onFocus, onSubmit } = useWriterMethods();
+ 
   // --- Local State --- 
   const [mainHeader, setMainHeader] = React.useState("");
   const [subHeader, setSubHeader] = React.useState("");
-  const [currentTypingField, setCurrentTypingField] = React.useState<EventTarget & HTMLTextAreaElement | null>(null);
 
-  // --- State and Dispatch ---  
-  const { header } = useSelector<State, PageState>(state => state.page);
+  // --- State and Dispatch ---   
   const { name, imageUrl } = useSelector<State, UserDataState>(state => state.userData);
-  const dispatch = useDispatch();
-
-  // --- On Fucus --- 
-  // On focus we are setting the current typing field in the state
-  // On the clear button click the element stored in the 'currentTypingField' will be cleared
-  const focus = (event: React.FocusEvent<HTMLTextAreaElement>) => {
-    setCurrentTypingField(event.currentTarget);
-  }
 
   // --- Read main header --- 
   const readMainHeader = (event: React.ChangeEvent<HTMLTextAreaElement>) =>
@@ -38,34 +33,20 @@ const MainHeaderWriter = () => {
     setSubHeader(event.currentTarget.value);
 
   // --- Submit ---
-  const submit = () => {
+  const _onSubmit = () => {
 
     // Set only if main header in given
     if (mainHeader) {
-      const newHeader: typeof header = {
+
+      onSubmit({
+        contentType: PAGE_HEADER,
         auther: name,
-        date: new Date().toLocaleString(),
+        date: new Date().toDateString(),
         title: mainHeader,
-        subTitle: subHeader,
-        imageUrl: imageUrl
-      };
+        imageUrl: imageUrl,
+        subTitle: subHeader
+      });
 
-      // Setting the new header in redux state
-      dispatch(addPageHeader(newHeader));
-      // Close the fields
-      dispatch(setCurrentWriting(""));
-    }
-  }
-
-  // Clear field
-  const clearField = () => {
-    // Clearing the currentFocused field
-    // It would be stored in the currentTypingField variable in state
-    // We can use name property of the element
-    if (currentTypingField?.name === "main") {
-      setMainHeader("");
-    } else {
-      setSubHeader("");
     }
   }
 
@@ -76,9 +57,8 @@ const MainHeaderWriter = () => {
       <TextArea
         align="center"
         fontSize="42px"
-        name="main"
         onChange={readMainHeader}
-        onFocus={focus}
+        onFocus={onFocus}
         placeholder="Main Heading"
         size={1}
         type="dashed"
@@ -88,9 +68,8 @@ const MainHeaderWriter = () => {
       {/* Sub header write field */}
       <TextArea
         align="center"
-        name="sub"
         onChange={readSubHeader}
-        onFocus={focus}
+        onFocus={onFocus}
         placeholder="Sub Heading (Optional)"
         size={1}
         type="dashed"
@@ -101,13 +80,13 @@ const MainHeaderWriter = () => {
     <FlexView gap="10px">
       <Button
         border
-        onClick={submit}
+        onClick={_onSubmit}
         className="ri-check-double-line"
         title="DONE"
       />
       <Button
         border
-        onClick={clearField}
+        onClick={onClear}
         className="ri-delete-bin-line"
         title="CLEAR"
       />

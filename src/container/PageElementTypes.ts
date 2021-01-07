@@ -2,6 +2,7 @@
 export const PARAGRAPH = "PARAGRAPH";
 export const LIST = "LIST";
 export const IMAGE = "IMAGE";
+export const PAGE_HEADER = "PAGE_HEADER";
 
 
 // Types
@@ -9,6 +10,20 @@ export type ListStyleTypes = "decimal" | "rounded" | "square" | "upper-alpha" | 
 export type FitStyleTypes = "fit-in-both" | "fit-in-width" | null;
 
 // Interfaces 
+
+// Main heading
+export interface PageHeaderProp {
+  imageUrl?: string;
+  auther: string;
+  date: string;
+  title: string;
+  subTitle?: string;
+}
+
+export interface PageHeaderTypes extends PageHeaderProp {
+  contentType: typeof PAGE_HEADER;
+};
+
 
 // Paragraph 
 export interface ParagraphProps {
@@ -45,7 +60,11 @@ export interface ListTypes extends ListProps {
 };
 
 // PageListPropsType
-export type PageListType = ParagraphTypes | ListTypes | ImageTypes;
+export type PageListType = ParagraphTypes | ListTypes | ImageTypes | PageHeaderTypes;
+
+// PageListProps
+export type PageElementProps = ParagraphProps | ListProps | ImageProps;
+
 
 // Data 
 export type Data = Array<PageListType>

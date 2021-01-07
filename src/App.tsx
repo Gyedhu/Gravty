@@ -7,13 +7,13 @@ function App() {
 
   interface State {
     notification: NotificationState;
-  } 
-  
+  }
+
   const message = useSelector<State, NotificationState["message"]>(state => state.notification.message);
 
   return <>
     <Notification message={message} />
-    <Navigation /> 
+    <Navigation />
     <Router />
   </>
 }
