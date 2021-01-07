@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ChangeEvent, useEffect, useRef, useState } from "react";
 
 // Components
 import { FlexView, TextArea } from "../../components";
@@ -19,10 +19,14 @@ const ParagraphWriter = () => {
   const { onClear, onFocus, onSubmit } = useWriterMethods();
 
   // --- Local State --- 
-  const [paragraph, setParagraph] = React.useState("");
+  const [paragraph, setParagraph] = useState("");
+  const TextAreaRef = useRef<HTMLTextAreaElement | null>(null);
+
+  // Automatic focus
+  useEffect(() => TextAreaRef.current?.focus(), []);
 
   // --- Read Paragraph ---  
-  const readParagraph = (event: React.ChangeEvent<HTMLTextAreaElement>) =>
+  const readParagraph = (event: ChangeEvent<HTMLTextAreaElement>) =>
     setParagraph(event.currentTarget.value);
 
   // --- Submit ---
@@ -45,6 +49,7 @@ const ParagraphWriter = () => {
         onChange={readParagraph}
         onFocus={onFocus}
         placeholder="Paragraph"
+        ref={TextAreaRef}
         size={5}
         type="dashed"
       />

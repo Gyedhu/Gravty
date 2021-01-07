@@ -47,8 +47,7 @@ export const ButtonContainer = styled.button <ButtonStyleTypes>`
   `} 
 
   ${({ rounded }) => rounded && css` 
-    border-radius: 50px; 
-    padding: 5px 20px;
+    border-radius: 50px;  
   `}  
 
   & > span {
@@ -60,7 +59,7 @@ export const ButtonContainer = styled.button <ButtonStyleTypes>`
   }
 
   &:focus {
-    outline: ${({ background }) => background && "1px dashed dodgerblue"};
+    outline: ${({ background, border }) => (background || border) && "1px dashed dodgerblue"};
   }
   
 `;

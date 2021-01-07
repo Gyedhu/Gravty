@@ -3,9 +3,9 @@ import styled, { css } from "styled-components";
 export const FlexViewContainer = styled.div<FlexView>`
   animation: ${({ popup }) => popup && "popup .25s"}; 
   align-items: ${({ align }) => align};
-  align-self: ${({ self }) => self};
+  align-self: ${({ self }) => self}; 
   background-color: ${({ fill }) => fill};
-  border: ${({ border }) => border && "1px solid #ddd"};
+  border: ${({ border }) => border && "1px solid #ddd"}; 
   box-shadow: ${({ shadow }) => shadow && "0 1px 5px rgba(0, 0, 0, .1), 0 2px 5px rgba(0, 0, 0, .1)"}; 
   color: ${({ fill }) => fill === "#59886b" && "#ffffff"};
   border-radius: ${({ radius }) => radius};

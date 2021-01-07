@@ -36,6 +36,12 @@ const useWriterMethods = () => {
 
   }
 
+  // onClose
+  const onClose = () => {
+
+    // Reset the PageEditorTool
+    dispatch(setCurrentWriting(""));
+  }
 
   // onSubmit 
   const onSubmit = (data: PageListType) => {
@@ -48,11 +54,10 @@ const useWriterMethods = () => {
     }
 
     // Reset the PageEditorTool
-    dispatch(setCurrentWriting(""));
-
+    onClose();
   }
 
-  return { onFocus, onClear, onSubmit };
+  return { onFocus, onClear, onSubmit, onClose };
 
 }
 

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ChangeEvent, useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
 
 // Compoenents
@@ -18,25 +18,28 @@ import { useWriterMethods } from "../hooks";
 import { PAGE_HEADER } from "../PageElementTypes";
 
 
-
 const MainHeaderWriter = () => {
 
   // Get write methods
   const { onClear, onFocus, onSubmit } = useWriterMethods();
+  const TextAreaRef = useRef<HTMLTextAreaElement | null>(null);
 
   // --- Local State --- 
-  const [mainHeader, setMainHeader] = React.useState("");
-  const [subHeader, setSubHeader] = React.useState("");
+  const [mainHeader, setMainHeader] = useState("");
+  const [subHeader, setSubHeader] = useState("");
+
+  // Automatic focus
+  useEffect(() => TextAreaRef.current?.focus(), []);
 
   // --- State and Dispatch ---   
   const { name, imageUrl } = useSelector<State, UserDataState>(state => state.userData);
 
   // --- Read main header --- 
-  const readMainHeader = (event: React.ChangeEvent<HTMLTextAreaElement>) =>
+  const readMainHeader = (event: ChangeEvent<HTMLTextAreaElement>) =>
     setMainHeader(event.currentTarget.value);
 
   // --- Read sub header --- 
-  const readSubHeader = (event: React.ChangeEvent<HTMLTextAreaElement>) =>
+  const readSubHeader = (event: ChangeEvent<HTMLTextAreaElement>) =>
     setSubHeader(event.currentTarget.value);
 
   // --- Submit ---
@@ -67,6 +70,7 @@ const MainHeaderWriter = () => {
         onChange={readMainHeader}
         onFocus={onFocus}
         placeholder="Main Heading"
+        ref={TextAreaRef}
         size={1}
         type="dashed"
         value={mainHeader}

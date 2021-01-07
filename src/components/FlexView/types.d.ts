@@ -15,7 +15,7 @@ interface FlexView {
   border?: boolean;
   bound?: Bound;
   direction?: FlexDirection;
-  gap?: SizeInPixel;
+  gap?: SizeInPixel; 
   grow?: FlexGrow;
   hideInMobile?: boolean;
   justify?: JustifyContent;
