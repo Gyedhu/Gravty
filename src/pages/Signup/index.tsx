@@ -9,11 +9,11 @@ import {
 
 // Containers
 import { FormContainer } from "../../container";
+import { useAuthentication } from "../../firebase";
 
 // User data interface
 interface UserData {
   email: string;
-  gender: string;
   name: string;
   password: string;
   profession: string;
@@ -32,6 +32,9 @@ const Signup = () => {
     mode: "onChange"
   });
 
+  // Authentication
+  const { signup } = useAuthentication();
+
   // ShowPassword for change password visibility
   const [showPassword, setShowPassword] = useState(false);
 
@@ -41,7 +44,7 @@ const Signup = () => {
 
   // Submit form data
   const submitForm = (userdata: UserData) => {
-    console.log(userdata);
+    signup(userdata);
   }
 
   // Signup form
@@ -80,18 +83,6 @@ const Signup = () => {
         <ErrorText>Please enter your email!</ErrorText>
       )
     }
-
-    {/* Gender field */}
-    <Input
-      ref={register}
-      name="gender"
-      options={[
-        "Male",
-        "Female",
-        "Other"
-      ]}
-      select
-    />
 
     {/* Profession field */}
     <Input

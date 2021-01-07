@@ -20,11 +20,11 @@ const UserData = () => {
   >
 
     {/* User image */}
-    <UrlImage border rounded url={imageUrl ? imageUrl : ""} height="100px" width="100px" />
+    <UrlImage border rounded url={imageUrl ? imageUrl : ""} height="120px" width="120px" />
 
     {/* User info */}
     <FlexView direction="column" justify="center" mobile>
-      <Text size="24px">{name}</Text>
+      <Text size="30px">{name}</Text>
       <Text size="15px">{email}</Text>
       <Text size="15px">{profession}</Text>
     </FlexView>

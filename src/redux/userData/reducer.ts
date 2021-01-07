@@ -1,5 +1,4 @@
-import { User } from "../../assets/images";
-
+ 
 // Types
 import {
   UserDataState,
@@ -9,10 +8,10 @@ import {
 } from "./type";
 
 const inialState: UserDataState = {
-  imageUrl: User,
-  name: "Yedhumohanan",
-  email: "gyedhumohanan@gmaill.com",
-  profession: "Fullstack developer",
+  imageUrl: "",
+  name: "",
+  email: "",
+  profession: "",
   uploads: 0,
   friends: 0,
   stars: 0,
