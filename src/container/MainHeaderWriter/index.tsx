@@ -1,14 +1,21 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Button, FlexView, TextArea } from "../../components";
-import { addPageHeader } from "../../redux/page/action";
-import { PageState } from "../../redux/page/type";
-import { setCurrentWriting } from "../../redux/pageEditor/action";
+import { useSelector } from "react-redux";
+
+// Compoenents
+import { FlexView, TextArea } from "../../components";
+
+// Redux State - Actions
 import { State } from "../../redux/store";
 import { UserDataState } from "../../redux/userData/type";
+
+// Containers
+import { WriterButtonSet, View } from "..";
+
+// Hooks
 import { useWriterMethods } from "../hooks";
-import { PAGE_HEADER, PARAGRAPH } from "../PageElementTypes";
-import View from "../View";
+
+// Types 
+import { PAGE_HEADER } from "../PageElementTypes";
 
 
 
@@ -16,7 +23,7 @@ const MainHeaderWriter = () => {
 
   // Get write methods
   const { onClear, onFocus, onSubmit } = useWriterMethods();
- 
+
   // --- Local State --- 
   const [mainHeader, setMainHeader] = React.useState("");
   const [subHeader, setSubHeader] = React.useState("");
@@ -77,20 +84,12 @@ const MainHeaderWriter = () => {
       />
     </FlexView>
 
-    <FlexView gap="10px">
-      <Button
-        border
-        onClick={_onSubmit}
-        className="ri-check-double-line"
-        title="DONE"
-      />
-      <Button
-        border
-        onClick={onClear}
-        className="ri-delete-bin-line"
-        title="CLEAR"
-      />
-    </FlexView>
+
+    {/* Submit and Clear */}
+    <WriterButtonSet
+      onClear={onClear}
+      onSubmit={_onSubmit}
+    />
 
   </View>
 }
