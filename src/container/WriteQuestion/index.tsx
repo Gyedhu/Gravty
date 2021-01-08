@@ -9,28 +9,22 @@ import { usePushQuestions } from "../../firebase";
 
 const WriteQuestion = () => {
 
-  const { addQuestion } = usePushQuestions();
+  // Upload method
+  const { uploadQuestion } = usePushQuestions();
 
   // Get data
-  const readQuestion = async (data: string, file?: FileList | null) => {
-
+  const _uploadQuestion = async (data: string, file?: Blob | null) => {
+    
     try {
-
-      const key = await addQuestion({
+      uploadQuestion({
         content: data,
         imageFile: file,
         timestamp: new Date()
       });
-
-      console.log(key);
-
     }
     catch (error) {
       alert(error.message);
     }
-
-    if (file)
-      console.log(file);
   }
 
   // --- Write question --- 
@@ -40,7 +34,7 @@ const WriteQuestion = () => {
       content="Write your question and upload in internet for share to the world..."
     />
 
-    <QuestionWriteBox active={true} onSubmit={readQuestion} />
+    <QuestionWriteBox onSubmit={_uploadQuestion} />
   </FlexView>
 }
 

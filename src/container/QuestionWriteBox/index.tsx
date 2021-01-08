@@ -17,29 +17,23 @@ import {
 } from "../../components";
 
 interface Props {
-  active?: boolean;
-  onSubmit: (data: string, file?: FileList | null) => void
+  onSubmit: (
+    data: string,
+    file?: Blob | null
+  ) => void
 }
 
-const QuestionWriteBox: React.FC<Props> = ({ active, onSubmit }) => {
+const QuestionWriteBox: React.FC<Props> = ({ onSubmit }) => {
 
   // State 
   const [data, setData] = React.useState("");
-  const [file, setFile] = React.useState<FileList | null>();
-  const [attachImageUrl, setAttachImageUrl] = React.useState("");
-
-  // dispatch
-  const dispatch = useDispatch();
+  const [file, setFile] = React.useState<Blob | null>();
 
   // --- Clear area ---
   const clearTextArea = () => setData("");
 
-
-  // Get writeBox from state
-  // const { writeBox } = useSelector<State, PageEditorState>(state => state.pageEditor);
-
   // --- Submit data ---
-  const submit = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+  const submit = () => {
     if (data.trim() !== "") {
       onSubmit(data, file);
     }
@@ -47,12 +41,8 @@ const QuestionWriteBox: React.FC<Props> = ({ active, onSubmit }) => {
 
   // --- Detach media --- 
   const detachMedia = () => {
-    setAttachImageUrl("");
     setFile(null);
   };
-
-  // --- writeBox toggler ---
-  const writeBoxToggler = () => dispatch(setWriteBox(false));
 
   // --- Read data ---
   const readData = (event: React.ChangeEvent<HTMLTextAreaElement>) =>
@@ -67,11 +57,7 @@ const QuestionWriteBox: React.FC<Props> = ({ active, onSubmit }) => {
       // Get the file
       let file = await filePicker();
       // Store file in state
-      setFile(file as FileList);
-      // Make url
-      let url = URL.createObjectURL(file);
-      // Store url in state
-      setAttachImageUrl(url);
+      setFile(file as Blob);
 
     } catch (error) {
       // Error
@@ -82,7 +68,7 @@ const QuestionWriteBox: React.FC<Props> = ({ active, onSubmit }) => {
   return <FlexView direction="column" gap="5px" paddingVertical="20px">
 
     {/* Show image only if something attached */}
-    {attachImageUrl && <img src={attachImageUrl} alt="selected" width="200" />}
+    {file && <img src={URL.createObjectURL(file)} alt="selected" width="200" />}
 
     {/* Textarea */}
     <TextArea
@@ -106,9 +92,9 @@ const QuestionWriteBox: React.FC<Props> = ({ active, onSubmit }) => {
 
       {/* Attach media button */}
       <Button
-        className={attachImageUrl ? "ri-eraser-line" : "ri-attachment-2"}
-        title={attachImageUrl ? "Detach" : "Attach"}
-        onClick={attachImageUrl ? detachMedia : attachMedia}
+        className={file ? "ri-eraser-line" : "ri-attachment-2"}
+        title={file ? "Detach" : "Attach"}
+        onClick={file ? detachMedia : attachMedia}
       />
 
       {/* Clear text area button */}
@@ -117,15 +103,6 @@ const QuestionWriteBox: React.FC<Props> = ({ active, onSubmit }) => {
         title="Clear"
         onClick={clearTextArea}
       />
-
-      {
-        // Close button
-        !active &&
-        <Button
-          className="ri-close-circle-line"
-          onClick={writeBoxToggler}
-        />
-      }
     </FlexView>
   </FlexView>
 }

@@ -3,17 +3,19 @@ import "firebase/firestore";
 import usePushData from "./usePushData";
 import { useDispatch } from "react-redux";
 import { setNotification } from "../redux/notification/action";
+import useUploadImage from "./useUploadImage";
 
 interface QuestionType {
   content: string;
   timestamp: Date;
-  imageFile?: FileList | null;
+  imageFile?: Blob | null;
 };
 
 const usePushQuestions = () => {
 
   // Dispatch
   const dispatch = useDispatch();
+  const { upload } = useUploadImage();
 
   // --- Notification ---
   const notification = (message: string) => {
@@ -22,33 +24,53 @@ const usePushQuestions = () => {
 
   const { AddDataWithKey, pushInArray } = usePushData();
 
-  const addQuestion = async (data: QuestionType) => {
+  const uploadQuestion = async (data: QuestionType) => {
 
     try {
+
       notification("Uploading question");
-
-      const id = await AddDataWithKey(`questions/`, data);
-      notification("Please wait...");
-
       const { currentUser } = firebase.auth();
 
-      if (currentUser)
+      // Datas to be uploaded
+      const { content, timestamp, imageFile } = data;
+      let url: string | null = null;
+
+      // Get the current user
+      if (currentUser) {
+
+        // Upload attached image file in storage
+        // And get the url
+        if (imageFile)
+          url = await upload(`global-users/${currentUser.uid}`, imageFile) as string;
+
+        // Store the question and image url and other information to the firestore
+        // Get the question's firestore id
+        const id = await AddDataWithKey(`questions/`, {
+          content,
+          timestamp,
+          imageUrl: url
+        });
+        notification("Please wait...");
+
+        // Store the id in our account
         await pushInArray(
           `global-users/${currentUser.email}/`,
           "questions",
           id as string
         );
 
-      notification("Upload succes");
+        notification("Upload succes");
+      }
+      else
+        notification("Error while upload");
     } catch (error) {
-      alert(error.message);
       notification(error.message);
     } finally {
       setTimeout(() => notification(""), 2000);
     }
   }
 
-  return { addQuestion };
+  return { uploadQuestion };
 
 }
 
