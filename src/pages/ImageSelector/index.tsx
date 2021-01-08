@@ -3,7 +3,7 @@ import firebase from "firebase";
 import "firebase/auth";
 import { Button, FlexView, UrlImage } from "../../components";
 import { Header, View } from "../../container";
-import { useUploadImage } from "../../firebase";
+import { useGetUserData, useUploadImage } from "../../firebase";
 import { filePicker } from "../../utility";
 import { useHistory } from "react-router-dom";
 
@@ -11,6 +11,7 @@ const ImagePicker = () => {
 
   const [file, setFile] = useState<Blob | null>(null);
   const { upload } = useUploadImage();
+  const { getData } = useGetUserData();
   const history = useHistory();
 
   // --- Read image ---
@@ -22,6 +23,7 @@ const ImagePicker = () => {
   // --- OnSkip ---
   const onSkip = () => {
     history.replace("/");
+    getData();
   }
 
   // --- Upload Image

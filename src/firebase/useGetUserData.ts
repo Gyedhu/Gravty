@@ -43,7 +43,6 @@ const useGetUserData = () => {
     } catch (error) {
       notification(error.message);
     } finally {
-      console.log("...")
       setTimeout(() => notification(""), 2000);
     }
   }

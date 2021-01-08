@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 
 // Containers
 import {
@@ -7,15 +7,8 @@ import {
   ProfileCard,
   View
 } from "../../container";
-import { useGetUserData } from "../../firebase";
 
 const Home = () => {
-
-  const { getData } = useGetUserData();
-
-  useEffect(() => {
-    getData();
-  }, []);
 
   return <View>
 

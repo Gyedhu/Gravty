@@ -7,6 +7,7 @@ import { useHistory } from "react-router-dom";
 import { setNotification } from "../redux/notification/action";
 import { clearUserData } from "../redux/userData/action";
 import { UserDataState } from "../redux/userData/type";
+import useGetUserData from "./useGetUserData";
 import usePushData from "./usePushData";
 
 const useAuthentication = () => {
@@ -19,6 +20,7 @@ const useAuthentication = () => {
 
   // Fetch data methods 
   const { pushTo } = usePushData();
+  const { getData } = useGetUserData();
 
   // --- Notification ---
   const notification = (message: string) => {
@@ -33,6 +35,9 @@ const useAuthentication = () => {
       // Signing in...
       await firebase.auth().signInWithEmailAndPassword(email, password);
 
+      // Get use Data
+      getData();
+
       // Change  route
       history.replace("/");
 
@@ -40,7 +45,6 @@ const useAuthentication = () => {
 
       notification(error.message);
     } finally {
-
       // Close notification 
       setTimeout(() => notification(""), 2000);
     }
@@ -55,9 +59,11 @@ const useAuthentication = () => {
   };
   const signup = async (data: UserData) => {
 
-    const { email, password } = data;
+    const { email, name, profession, password } = data;
     let userData: UserDataState = {
-      ...data,
+      email,
+      name,
+      profession,
       friends: 0,
       uploads: 0,
       stars: 0
@@ -69,7 +75,7 @@ const useAuthentication = () => {
       notification("Please wait...");
       await pushTo(userData, `global-users/${email}/`);
       notification("Account created successfull");
-      history.push("/select-image");
+      history.replace("/select-image");
     } catch (error) {
       notification(error.message);
     }
