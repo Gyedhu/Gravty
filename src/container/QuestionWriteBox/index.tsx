@@ -1,6 +1,4 @@
 import React from "react";
-import usePushData from "./usePushData";
-import usePushData from "./usePushData";
 
 // Utilities
 import { filePicker } from "../../utility";
