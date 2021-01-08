@@ -30,7 +30,7 @@ const Write: React.FC<Props> = ({ type }) => {
     history.replace(`/write/${event.currentTarget.value}`);
   }
 
-  return <View>
+  return <View type="medium">
 
     <Header
       title="Write"
