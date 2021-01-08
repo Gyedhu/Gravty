@@ -10,7 +10,6 @@ const ProfileCard = () => {
     wrap="wrap"
   >
     <UserDataCard />
-    {/* <Dashboard /> */}
   </FlexView>
 }
 
