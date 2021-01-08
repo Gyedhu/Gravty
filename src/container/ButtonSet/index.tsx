@@ -6,13 +6,13 @@ interface Props {
   rightSet?: React.ReactNode;
 }
 
-const ButtonSet: React.FC<Props> = ({ leftSet, rightSet, children }) => {
+const ButtonSet: React.FC<Props> = ({ leftSet, rightSet }) => {
   return <FlexView
+    radius="30px"
     fill="#ffffff"
     gap="10px"
     paddingHorizontal="15px"
     paddingVertical="15px"
-    radius="10px"
     shadow
     justify="space-between" wrap="wrap"
   >

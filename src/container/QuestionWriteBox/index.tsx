@@ -89,7 +89,7 @@ const QuestionWriteBox: React.FC<Props> = ({ active, onSubmit }) => {
       onChange={readData}
       placeholder="Write your question"
       value={data}
-      size={8}
+      size={5}
       type="solid"
     />
 

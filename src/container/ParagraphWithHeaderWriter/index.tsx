@@ -1,28 +1,33 @@
-import React from "react";
-import { useDispatch } from "react-redux";
-import { Button, FlexView, TextArea } from "../../components";
-import { addPageData } from "../../redux/page/action";
-import { setCurrentWriting } from "../../redux/pageEditor/action";
-import { PARAGRAPH, ParagraphTypes } from "../PageListMap/types";
-import View from "../View";
+import React, { useEffect, useRef } from "react";
+
+// Components
+import { FlexView, TextArea } from "../../components";
+
+// Containers
+import { WriterButtonSet, View } from "..";
+
+// Hooks
+import { useWriterMethods } from "../hooks";
+
+// Types
+import { PARAGRAPH } from "../PageElementTypes";
 
 const ParagraphWithHeaderWriter = () => {
+
+  // Get write methods
+  const { onClear, onFocus, onSubmit } = useWriterMethods();
 
   // --- Local State ---
   const [header, setHeader] = React.useState("");
   const [paragraph, setParagraph] = React.useState("");
-  const [currentTypingField, setCurrentTypingField] = React.useState<EventTarget & HTMLTextAreaElement | null>(null);
+  const TextAreaRef = useRef<HTMLTextAreaElement | null>(null);
 
+  // Automatic focus
+  useEffect(() => TextAreaRef.current?.focus(), []);
 
-  // --- State and Dispatch ---    
-  const dispatch = useDispatch();
+  // Automatic focus
+  useEffect(() => TextAreaRef.current?.focus(), []);
 
-  // --- On Fucus --- 
-  // On focus we are setting the current typing field in the state
-  // On the clear button click the element stored in the 'currentTypingField' will be cleared
-  const focus = (event: React.FocusEvent<HTMLTextAreaElement>) => {
-    setCurrentTypingField(event.currentTarget);
-  }
 
   // --- Read header --- 
   const readHeader = (event: React.ChangeEvent<HTMLTextAreaElement>) =>
@@ -34,36 +39,18 @@ const ParagraphWithHeaderWriter = () => {
 
 
   // --- Submit ---
-  const submit = () => {
+  const _onSubmit = () => {
 
     if (header && paragraph) {
 
-      const newParagraph: ParagraphTypes = {
+      onSubmit({
         contentType: PARAGRAPH,
         content: paragraph,
         header: header
-      };
-
-      // Set data in state
-      dispatch(addPageData(newParagraph));
-      // Close all fields
-      dispatch(setCurrentWriting(""));
+      });
 
     }
   }
-
-  // Clear field
-  const clearField = () => {
-    // Clearing the currentFocused field
-    // It would be stored in the currentTypingField variable in state
-    // We can use name property of the element
-    if (currentTypingField?.name === "paragraph") {
-      setParagraph("");
-    } else {
-      setHeader("");
-    }
-  }
-
 
   return <View type="medium">
     <FlexView direction="column" gap="10px">
@@ -72,8 +59,9 @@ const ParagraphWithHeaderWriter = () => {
       <TextArea
         name="header"
         onChange={readHeader}
-        onFocus={focus}
+        onFocus={onFocus}
         placeholder="Heading"
+        ref={TextAreaRef}
         size={1}
         type="dashed"
       />
@@ -82,27 +70,18 @@ const ParagraphWithHeaderWriter = () => {
       <TextArea
         name="paragraph"
         onChange={readParagraph}
-        onFocus={focus}
+        onFocus={onFocus}
         placeholder="Paragraph"
         size={5}
         type="dashed"
       />
 
 
-      <FlexView gap="10px">
-        <Button
-          border
-          onClick={submit}
-          className="ri-check-double-line"
-          title="DONE"
-        />
-        <Button
-          border
-          onClick={clearField}
-          className="ri-delete-bin-line"
-          title="CLEAR"
-        />
-      </FlexView>
+      {/* Submit and Clear */}
+      <WriterButtonSet
+        onClear={onClear}
+        onSubmit={_onSubmit}
+      />
 
     </FlexView>
   </View>

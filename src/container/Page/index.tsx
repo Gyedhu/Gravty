@@ -10,6 +10,7 @@ import {
 import { useSelector } from "react-redux";
 import { State } from "../../redux/store";
 import { PageState } from "../../redux/page/type";
+import { PageListType } from "../PageElementTypes";
 
 const Page = () => {
 
@@ -27,8 +28,8 @@ const Page = () => {
     <FlexView direction="column" gap="15px">
       {
         data
-          ? data.map((value, index) =>
-            <PageListMap key={index} {...value} />
+          ? data.map((value: PageListType, index: number) =>
+            <PageListMap key={index}   {...value} />
           )
           : ""
       }

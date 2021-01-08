@@ -31,9 +31,9 @@ interface Props {
 }
 
 const PageHeader: React.FC<Props> = ({ imageUrl, auther, date, title, subTitle }) => {
-  return <FlexView direction="column">
+  return <FlexView direction="column" paddingVertical="20px" paddingHorizontal="20px">
     <Text align="center" size="42px">{title}</Text>
-    <Text align="center">{subTitle}</Text>
+    <Text align="center" size="18px">{subTitle}</Text>
     <TextWithImage
       url={imageUrl}
       title={auther}

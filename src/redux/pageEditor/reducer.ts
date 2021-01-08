@@ -22,7 +22,7 @@ const reducer = (state: PageEditorState = intialState, action: PageEditorStateAc
         writeBox: action.payload
       };
 
-    case SET_CURRENT_WRITING:
+    case SET_CURRENT_WRITING:  
       return {
         ...state,
         currentWriting: action.payload

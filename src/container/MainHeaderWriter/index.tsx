@@ -1,71 +1,62 @@
-import React from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Button, FlexView, TextArea } from "../../components";
-import { addPageHeader } from "../../redux/page/action";
-import { PageState } from "../../redux/page/type";
-import { setCurrentWriting } from "../../redux/pageEditor/action";
+import React, { ChangeEvent, useEffect, useRef, useState } from "react";
+import { useSelector } from "react-redux";
+
+// Compoenents
+import { FlexView, TextArea } from "../../components";
+
+// Redux State - Actions
 import { State } from "../../redux/store";
 import { UserDataState } from "../../redux/userData/type";
-import View from "../View";
 
+// Containers
+import { WriterButtonSet, View } from "..";
+
+// Hooks
+import { useWriterMethods } from "../hooks";
+
+// Types 
+import { PAGE_HEADER } from "../PageElementTypes";
 
 
 const MainHeaderWriter = () => {
 
+  // Get write methods
+  const { onClear, onFocus, onSubmit } = useWriterMethods();
+  const TextAreaRef = useRef<HTMLTextAreaElement | null>(null);
+
   // --- Local State --- 
-  const [mainHeader, setMainHeader] = React.useState("");
-  const [subHeader, setSubHeader] = React.useState("");
-  const [currentTypingField, setCurrentTypingField] = React.useState<EventTarget & HTMLTextAreaElement | null>(null);
+  const [mainHeader, setMainHeader] = useState("");
+  const [subHeader, setSubHeader] = useState("");
 
-  // --- State and Dispatch ---  
-  const { header } = useSelector<State, PageState>(state => state.page);
+  // Automatic focus
+  useEffect(() => TextAreaRef.current?.focus(), []);
+
+  // --- State and Dispatch ---   
   const { name, imageUrl } = useSelector<State, UserDataState>(state => state.userData);
-  const dispatch = useDispatch();
-
-  // --- On Fucus --- 
-  // On focus we are setting the current typing field in the state
-  // On the clear button click the element stored in the 'currentTypingField' will be cleared
-  const focus = (event: React.FocusEvent<HTMLTextAreaElement>) => {
-    setCurrentTypingField(event.currentTarget);
-  }
 
   // --- Read main header --- 
-  const readMainHeader = (event: React.ChangeEvent<HTMLTextAreaElement>) =>
+  const readMainHeader = (event: ChangeEvent<HTMLTextAreaElement>) =>
     setMainHeader(event.currentTarget.value);
 
   // --- Read sub header --- 
-  const readSubHeader = (event: React.ChangeEvent<HTMLTextAreaElement>) =>
+  const readSubHeader = (event: ChangeEvent<HTMLTextAreaElement>) =>
     setSubHeader(event.currentTarget.value);
 
   // --- Submit ---
-  const submit = () => {
+  const _onSubmit = () => {
 
     // Set only if main header in given
     if (mainHeader) {
-      const newHeader: typeof header = {
+
+      onSubmit({
+        contentType: PAGE_HEADER,
         auther: name,
-        date: new Date().toLocaleString(),
+        date: new Date().toDateString(),
         title: mainHeader,
-        subTitle: subHeader,
-        imageUrl: imageUrl
-      };
+        imageUrl: imageUrl,
+        subTitle: subHeader
+      });
 
-      // Setting the new header in redux state
-      dispatch(addPageHeader(newHeader));
-      // Close the fields
-      dispatch(setCurrentWriting(""));
-    }
-  }
-
-  // Clear field
-  const clearField = () => {
-    // Clearing the currentFocused field
-    // It would be stored in the currentTypingField variable in state
-    // We can use name property of the element
-    if (currentTypingField?.name === "main") {
-      setMainHeader("");
-    } else {
-      setSubHeader("");
     }
   }
 
@@ -76,10 +67,10 @@ const MainHeaderWriter = () => {
       <TextArea
         align="center"
         fontSize="42px"
-        name="main"
         onChange={readMainHeader}
-        onFocus={focus}
+        onFocus={onFocus}
         placeholder="Main Heading"
+        ref={TextAreaRef}
         size={1}
         type="dashed"
         value={mainHeader}
@@ -88,9 +79,8 @@ const MainHeaderWriter = () => {
       {/* Sub header write field */}
       <TextArea
         align="center"
-        name="sub"
         onChange={readSubHeader}
-        onFocus={focus}
+        onFocus={onFocus}
         placeholder="Sub Heading (Optional)"
         size={1}
         type="dashed"
@@ -98,20 +88,12 @@ const MainHeaderWriter = () => {
       />
     </FlexView>
 
-    <FlexView gap="10px">
-      <Button
-        border
-        onClick={submit}
-        className="ri-check-double-line"
-        title="DONE"
-      />
-      <Button
-        border
-        onClick={clearField}
-        className="ri-delete-bin-line"
-        title="CLEAR"
-      />
-    </FlexView>
+
+    {/* Submit and Clear */}
+    <WriterButtonSet
+      onClear={onClear}
+      onSubmit={_onSubmit}
+    />
 
   </View>
 }

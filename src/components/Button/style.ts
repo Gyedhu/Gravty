@@ -5,7 +5,7 @@ export const ButtonContainer = styled.button <ButtonStyleTypes>`
   background-color: transparent;
   border: 0; 
   border-bottom: ${({ active }) => active && "4px solid #59886b"};
-  color: #252525;
+  color: inherit;
   cursor: pointer;
   display: flex;
   font-size: 18px;
@@ -47,8 +47,7 @@ export const ButtonContainer = styled.button <ButtonStyleTypes>`
   `} 
 
   ${({ rounded }) => rounded && css` 
-    border-radius: 50px; 
-    padding: 5px 20px;
+    border-radius: 50px;  
   `}  
 
   & > span {
@@ -60,7 +59,7 @@ export const ButtonContainer = styled.button <ButtonStyleTypes>`
   }
 
   &:focus {
-    outline: ${({ background }) => background && "1px dashed dodgerblue"};
+    outline: ${({ background, border }) => (background || border) && "1px dashed dodgerblue"};
   }
   
 `;

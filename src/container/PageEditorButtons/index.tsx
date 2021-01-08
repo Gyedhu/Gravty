@@ -39,7 +39,7 @@ const PageEditButtons = () => {
 
   return <FloatingBox side="bottom" active>
     <View>
-      <FlexView border direction="column" minWidth="100%" popup radius="10px">
+      <FlexView direction="column" minWidth="100%" popup>
         <ButtonSet
 
           leftSet={

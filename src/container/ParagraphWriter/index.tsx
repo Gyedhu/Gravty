@@ -1,48 +1,45 @@
-import React from "react";
-import { useDispatch } from "react-redux";
-import { Button, FlexView, TextArea } from "../../components";
-import { addPageData } from "../../redux/page/action";
-import { setCurrentWriting } from "../../redux/pageEditor/action";
-import { PARAGRAPH, ParagraphTypes } from "../PageListMap/types";
-import View from "../View";
+import React, { ChangeEvent, useEffect, useRef, useState } from "react";
+
+// Components
+import { FlexView, TextArea } from "../../components";
+
+// Containers
+import { WriterButtonSet, View } from "..";
+
+// Hooks
+import { useWriterMethods } from "../hooks";
+
+// Types
+import { PARAGRAPH } from "../PageElementTypes";
+
 
 const ParagraphWriter = () => {
 
+  // Get write methods
+  const { onClear, onFocus, onSubmit } = useWriterMethods(); 
+
   // --- Local State --- 
-  const [paragraph, setParagraph] = React.useState("");
+  const [paragraph, setParagraph] = useState("");
+  const TextAreaRef = useRef<HTMLTextAreaElement | null>(null);
 
-
-  // --- State and Dispatch ---    
-  const dispatch = useDispatch();
+  // Automatic focus
+  useEffect(() => TextAreaRef.current?.focus(), []);
 
   // --- Read Paragraph ---  
-  const readParagraph = (event: React.ChangeEvent<HTMLTextAreaElement>) =>
+  const readParagraph = (event: ChangeEvent<HTMLTextAreaElement>) =>
     setParagraph(event.currentTarget.value);
 
-
   // --- Submit ---
-  const submit = () => {
+  const _onSubmit = () => {
 
+    // check the paragraph is given
     if (paragraph) {
-
-      const newParagraph: ParagraphTypes = {
+      onSubmit({
         contentType: PARAGRAPH,
         content: paragraph
-      };
-
-      // Set data in state
-      dispatch(addPageData(newParagraph));
-      // Close all fields
-      dispatch(setCurrentWriting(""));
-
+      });
     }
   }
-
-  // Clear field
-  const clearField = () => {
-    setParagraph("");
-  }
-
 
   return <View type="medium">
     <FlexView direction="column" gap="10px">
@@ -50,26 +47,18 @@ const ParagraphWriter = () => {
       {/* Paragraph */}
       <TextArea
         onChange={readParagraph}
+        onFocus={onFocus}
         placeholder="Paragraph"
+        ref={TextAreaRef}
         size={5}
         type="dashed"
       />
 
-
-      <FlexView gap="10px">
-        <Button
-          border
-          onClick={submit}
-          className="ri-check-double-line"
-          title="DONE"
-        />
-        <Button
-          border
-          onClick={clearField}
-          className="ri-delete-bin-line"
-          title="CLEAR"
-        />
-      </FlexView>
+      {/* Submit and Clear */}
+      <WriterButtonSet
+        onClear={onClear}
+        onSubmit={_onSubmit}
+      />
 
     </FlexView>
   </View>

@@ -1,32 +1,30 @@
 import React from "react";
-import { useDispatch } from "react-redux";
-import { Button, FlexView, Input, Text, TextArea } from "../../components";
-import { addPageData } from "../../redux/page/action";
-import { setCurrentWriting } from "../../redux/pageEditor/action";
+
+// Components
+import { FlexView, TextArea, Input, Text, Button } from "../../components";
+
+// Containers
+import { WriterButtonSet, View, Image } from "..";
+
+// Utility
 import { filePicker } from "../../utility";
-import Image from "../Image";
-import { IMAGE, ImageTypes } from "../PageListMap/types";
-import View from "../View";
+
+// Hooks
+import { useWriterMethods } from "../hooks";
+
+// Types 
+import { FitStyleTypes, IMAGE } from "../PageElementTypes";
 
 const ImageWriter = () => {
+
+  // Get write method
+  const { onClear, onFocus, onSubmit } = useWriterMethods();
 
   // --- Local State ---
   const [header, setHeader] = React.useState("");
   const [footer, setFooter] = React.useState("");
   const [file, setFile] = React.useState<FileList | null>();
-  const [fitType, setFitType] = React.useState<"fit-in-both" | "fit-in-width" | null>("fit-in-both");
-  const [currentTypingField, setCurrentTypingField] = React.useState<EventTarget & HTMLTextAreaElement | null>(null);
-
-
-  // --- State and Dispatch ---    
-  const dispatch = useDispatch();
-
-  // --- On Fucus --- 
-  // On focus we are setting the current typing field in the state
-  // On the clear button click the element stored in the 'currentTypingField' will be cleared
-  const focus = (event: React.FocusEvent<HTMLTextAreaElement>) => {
-    setCurrentTypingField(event.currentTarget);
-  }
+  const [fitType, setFitType] = React.useState<FitStyleTypes>("fit-in-both");
 
   // --- Read header --- 
   const readHeader = (event: React.ChangeEvent<HTMLTextAreaElement>) =>
@@ -47,54 +45,34 @@ const ImageWriter = () => {
   const readFooter = (event: React.ChangeEvent<HTMLTextAreaElement>) =>
     setFooter(event.currentTarget.value);
 
-  // --- Read Image Fit Type
+  // --- Read Image Fit Type ---
   const readImageFitType = (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-    setFitType(event.currentTarget.value as "fit-in-both" | "fit-in-width" | null);
+    setFitType(event.currentTarget.value as FitStyleTypes);
   }
 
   // --- Submit ---
-  const submit = () => {
+  const _onSubmit = () => {
 
     if (file) {
-
-      const newImage: ImageTypes = {
+      onSubmit({
         contentType: IMAGE,
         file: file,
         url: URL.createObjectURL(file),
         footer: footer,
         fit: fitType,
         header: header,
-      }
-
-      // Set data in state
-      dispatch(addPageData(newImage));
-      // Close all fields
-      dispatch(setCurrentWriting(""));
-
+      });
     }
   }
-
-  // Clear field
-  const clearField = () => {
-    // Clearing the currentFocused field
-    // It would be stored in the currentTypingField variable in state
-    // We can use name property of the element
-    if (currentTypingField?.name === "paragraph") {
-      // setParagraph("");
-    } else {
-      setHeader("");
-    }
-  }
-
 
   return <View type="medium">
 
 
     <FlexView direction="column" gap="10px">
 
-      {/* Selected image previe */}
+      {/* Selected image preview */}
       {
-        file && <Image fit={fitType} url={URL.createObjectURL(file)} />
+        file && <Image fit={fitType} file={file} url={URL.createObjectURL(file)} />
       }
 
       {/* Fit type of image */}
@@ -103,8 +81,7 @@ const ImageWriter = () => {
         select
         onChange={readImageFitType}
         options={[
-          "fit-in-both",
-          "fit-in-height",
+          "fit-in-both", 
           "fit-in-width"
         ]}
 
@@ -112,9 +89,8 @@ const ImageWriter = () => {
 
       {/* Heading */}
       <TextArea
-        name="header"
         onChange={readHeader}
-        onFocus={focus}
+        onFocus={onFocus}
         placeholder="Heading (optional)"
         size={1}
         type="dashed"
@@ -130,29 +106,20 @@ const ImageWriter = () => {
 
       {/* Footer */}
       <TextArea
-        name="footer"
         onChange={readFooter}
-        onFocus={focus}
+        onFocus={onFocus}
         placeholder="Footer (optional)"
         size={1}
         type="dashed"
       />
 
 
-      <FlexView gap="10px">
-        <Button
-          border
-          onClick={submit}
-          className="ri-check-double-line"
-          title="DONE"
-        />
-        <Button
-          border
-          onClick={clearField}
-          className="ri-delete-bin-line"
-          title="CLEAR"
-        />
-      </FlexView>
+      {/* Submit and Clear */}
+      <WriterButtonSet
+        onClear={onClear}
+        onSubmit={_onSubmit}
+      />
+
 
     </FlexView>
   </View>

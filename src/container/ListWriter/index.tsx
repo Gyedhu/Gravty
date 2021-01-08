@@ -1,30 +1,30 @@
-import React from "react";
-import { useDispatch } from "react-redux";
-import { Button, FlexView, Input, Text, TextArea } from "../../components";
-import { addPageData } from "../../redux/page/action";
-import { setCurrentWriting } from "../../redux/pageEditor/action";
-import { LIST, ListStyleTypes, ListTypes } from "../PageListMap/types";
-import View from "../View";
+import React, { useEffect, useRef } from "react";
+
+// Components
+import { FlexView, TextArea, Input, Text } from "../../components";
+
+// Containers
+import { WriterButtonSet, View } from "..";
+
+// Hooks
+import { useWriterMethods } from "../hooks";
+
+// Types 
+import { LIST, ListStyleTypes } from "../PageElementTypes";
 
 const ListWriter = () => {
+
+  // Get write method
+  const { onClear, onFocus, onSubmit } = useWriterMethods();
 
   // --- Local State --- 
   const [list, setList] = React.useState("");
   const [header, setHeader] = React.useState("");
   const [type, setType] = React.useState<ListStyleTypes>("decimal");
-  const [currentTypingField, setCurrentTypingField] = React.useState<EventTarget & HTMLTextAreaElement | null>(null);
+  const TextAreaRef = useRef<HTMLTextAreaElement | null>(null);
 
-
-
-  // --- On Fucus --- 
-  // On focus we are setting the current typing field in the state
-  // On the clear button click the element stored in the 'currentTypingField' will be cleared
-  const focus = (event: React.FocusEvent<HTMLTextAreaElement>) => {
-    setCurrentTypingField(event.currentTarget);
-  }
-
-  // --- State and Dispatch ---    
-  const dispatch = useDispatch();
+  // Automatic focus
+  useEffect(() => TextAreaRef.current?.focus(), []);
 
   // --- Read header --- 
   const readHeader = (event: React.ChangeEvent<HTMLTextAreaElement>) =>
@@ -36,36 +36,17 @@ const ListWriter = () => {
 
 
   // --- Submit ---
-  const submit = () => {
+  const _onSubmit = () => {
 
     if (list) {
-
       const listArray = list.split(",");
 
-      const newList: ListTypes = {
+      onSubmit({
         contentType: LIST,
         title: header,
         listItems: listArray,
         type: type
-      };
-
-      // Set data in state
-      dispatch(addPageData(newList));
-      // // Close all fields
-      dispatch(setCurrentWriting(""));
-
-    }
-  }
-
-  // Clear field
-  const clearField = () => {
-    // Clearing the currentFocused field
-    // It would be stored in the currentTypingField variable in state
-    // We can use name property of the element
-    if (currentTypingField?.name === "list") {
-      setList("");
-    } else {
-      setHeader("");
+      });
     }
   }
 
@@ -87,9 +68,8 @@ const ListWriter = () => {
 
       {/* header */}
       <TextArea
-        name="header"
         onChange={readHeader}
-        onFocus={focus}
+        onFocus={onFocus}
         placeholder="Header (optional)"
         size={1}
         type="dashed"
@@ -98,30 +78,21 @@ const ListWriter = () => {
 
       {/* List */}
       <TextArea
-        name="list"
         onChange={readList}
-        onFocus={focus}
+        onFocus={onFocus}
         placeholder="Write your list items separeted by comma"
+        ref={TextAreaRef}
         size={5}
         type="dashed"
         value={list}
       />
 
 
-      <FlexView gap="10px">
-        <Button
-          border
-          onClick={submit}
-          className="ri-check-double-line"
-          title="DONE"
-        />
-        <Button
-          border
-          onClick={clearField}
-          className="ri-delete-bin-line"
-          title="CLEAR"
-        />
-      </FlexView>
+      {/* Submit and Clear */}
+      <WriterButtonSet
+        onClear={onClear}
+        onSubmit={_onSubmit}
+      />
 
     </FlexView>
   </View>

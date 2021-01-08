@@ -1,4 +1,4 @@
-import { Data, PageListType } from "../../container/PageListMap/types";
+import { Data, PageListType } from "../../container/PageElementTypes";
 
 export const ADD_PAGE_DATA = "ADD_PAGE_DATA";
 export const ADD_PAGE_HEADER = "ADD_PAGE_HEADER";
