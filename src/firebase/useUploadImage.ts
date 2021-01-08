@@ -2,7 +2,7 @@ import firebase from "firebase";
 import "firebase/storage";
 import "firebase/auth";
 import { useDispatch } from "react-redux";
-import { setNotification } from "../redux/notification/action";
+import { setNotification } from "../redux/notification/action"; 
 
 const useUploadImage = () => {
 
