@@ -1,9 +1,17 @@
-import { Route, Switch } from "react-router-dom";
+import {
+  Route,
+  Switch
+} from "react-router-dom";
 import { Page } from "../container";
 
 // Pages
 import {
-  Home, PageEditor, Signin, Signup, Write
+  Home,
+  PageEditor,
+  Signin,
+  Signup,
+  Write,
+  ImageSelector
 } from "../pages";
 
 const Router = () => {
@@ -13,6 +21,7 @@ const Router = () => {
     <Route component={Signup} path="/signup" />
     <Route exact component={Write} path="/write" />
     <Route exact component={Page} path="/page" />
+    <Route exact component={ImageSelector} path="/select-image" />
 
     <Route path="/write/question">
       <Write type="question" />

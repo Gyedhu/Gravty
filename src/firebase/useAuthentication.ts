@@ -5,9 +5,8 @@ import "firebase/auth";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { setNotification } from "../redux/notification/action";
-import { setUserData } from "../redux/userData/action";
+import { clearUserData } from "../redux/userData/action";
 import { UserDataState } from "../redux/userData/type";
-import useFetchData from "./useFetchData";
 import usePushData from "./usePushData";
 
 const useAuthentication = () => {
@@ -18,18 +17,12 @@ const useAuthentication = () => {
   // history for change route
   const history = useHistory();
 
-  // Fetch data methods
-  const { fetchFrom } = useFetchData();
+  // Fetch data methods 
   const { pushTo } = usePushData();
 
   // --- Notification ---
   const notification = (message: string) => {
     dispatch(setNotification(message));
-  }
-
-  // --- store user data ---
-  const storeUserData = (data: UserDataState) => {
-    dispatch(setUserData(data));
   }
 
   // --- Signin --- 
@@ -40,19 +33,8 @@ const useAuthentication = () => {
       // Signing in...
       await firebase.auth().signInWithEmailAndPassword(email, password);
 
-      // Fetch use data
-      const path = `global-users/${email}`;
-      const userData = await fetchFrom(path) as UserDataState
-      userData["email"] = email;
-
-      // store
-      storeUserData(userData);
-
-      // Success message
-      notification("Signin success!");
-
       // Change  route
-      history.push("/");
+      history.replace("/");
 
     } catch (error) {
 
@@ -87,12 +69,20 @@ const useAuthentication = () => {
       notification("Please wait...");
       await pushTo(userData, `global-users/${email}/`);
       notification("Account created successfull");
+      history.push("/select-image");
     } catch (error) {
       notification(error.message);
     }
   }
 
-  return { signin, signup };
+  // Signout
+  const signout = async () => {
+    await firebase.auth().signOut();
+    dispatch(clearUserData());
+    history.replace("/signin");
+  }
+
+  return { signin, signup, signout };
 
 }
 
