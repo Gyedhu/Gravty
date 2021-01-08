@@ -1,10 +1,4 @@
 import React from "react";
-import { useDispatch } from "react-redux";
-
-// State, Reducer Actions
-// import { State } from "../../redux/store";
-// import { PageEditorState } from "../../redux/pageEditor/type";
-import { setWriteBox } from "../../redux/pageEditor/action";
 
 // Utilities
 import { filePicker } from "../../utility";
