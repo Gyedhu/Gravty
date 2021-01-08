@@ -1,7 +1,5 @@
 import { FC, useState } from "react";
 import { useForm } from "react-hook-form";
-import { useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
 
 // Components
 import {
@@ -11,9 +9,8 @@ import {
 
 // Container
 import { FormContainer } from "../../container";
+import { useAuthentication } from "../../firebase";
 
-// State, Reducers and actions
-import { clearNotification, setNotification } from "../../redux/notification/action";
 
 // User data interface
 interface UserData {
@@ -32,11 +29,8 @@ const Signin = () => {
   // Get register, errors, handleSubmit
   const { register, errors, handleSubmit } = useForm<UserData>();
 
-  // history for change route
-  const history = useHistory();
-
-  // Dispatch
-  const dispatch = useDispatch();
+  // Authentication
+  const { signin } = useAuthentication();
 
   // ShowPassword for change password visibility
   const [showPassword, setShowPassword] = useState(false);
@@ -50,16 +44,8 @@ const Signin = () => {
   // Submit form data
   const submitForm = (userdata: UserData) => {
 
-    // Loading message
-    dispatch(setNotification("Loading..."));
-
-    // Database operation here ...
-
-    setTimeout(() => {
-      dispatch(clearNotification());
-      history.push("/");
-    }, 2000);
-    console.log(userdata);
+    const { email, password } = userdata;
+    signin(email, password);
   }
 
   // Signin form
