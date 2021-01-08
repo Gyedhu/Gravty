@@ -8,7 +8,7 @@ const Navigation = () => {
 
   const { signout } = useAuthentication();
 
-  return <View fill="#ffffff" type="medium" shadow sticky>
+  return <View shadow sticky>
     <FlexView justify="space-between">
       {/* Logo */}
       <FlexView gap="10px">

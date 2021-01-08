@@ -3,7 +3,7 @@ import firebase from "firebase";
 import "firebase/auth";
 import { Button, FlexView, UrlImage } from "../../components";
 import { Header, View } from "../../container";
-import { useGetUserData, useUploadImage } from "../../firebase";
+import { useGetUserData, usePushData, useUploadImage } from "../../firebase";
 import { filePicker } from "../../utility";
 import { useHistory } from "react-router-dom";
 
@@ -11,6 +11,7 @@ const ImagePicker = () => {
 
   const [file, setFile] = useState<Blob | null>(null);
   const { upload } = useUploadImage();
+  const { pushTo } = usePushData();
   const { getData } = useGetUserData();
   const history = useHistory();
 
@@ -31,12 +32,17 @@ const ImagePicker = () => {
 
     const { currentUser } = firebase.auth();
     if (currentUser)
-      if (file && currentUser.uid)
-        upload(
-          `${currentUser.uid}/profile-image.jpg`,
-          file,
-          onSkip
-        );
+      if (file && currentUser.uid) {
+
+        try {
+          const url = await upload(`${currentUser.uid}/profile-image.jpg`, file);
+          await pushTo(`global-users/${currentUser.email}`, { imageUrl: url });
+          onSkip();
+        } catch (error) {
+          alert(error.message);
+        }
+
+      }
   }
   return <View type="small">
 

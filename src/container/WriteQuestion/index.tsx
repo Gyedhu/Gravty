@@ -5,13 +5,30 @@ import { FlexView } from "../../components";
 
 // Containers
 import { Paragraph, QuestionWriteBox } from "..";
+import { usePushQuestions } from "../../firebase";
 
-const WriteQuestion
- = () => {
+const WriteQuestion = () => {
+
+  const { addQuestion } = usePushQuestions();
 
   // Get data
-  const readQuestion = (data: string, file?: FileList | null | undefined) => {
-    console.log(data);
+  const readQuestion = async (data: string, file?: FileList | null) => {
+
+    try {
+
+      const key = await addQuestion({
+        content: data,
+        imageFile: file,
+        timestamp: new Date()
+      });
+
+      console.log(key);
+
+    }
+    catch (error) {
+      alert(error.message);
+    }
+
     if (file)
       console.log(file);
   }
@@ -28,4 +45,4 @@ const WriteQuestion
 }
 
 export default WriteQuestion
-;
+  ;

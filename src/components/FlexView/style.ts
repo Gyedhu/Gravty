@@ -1,13 +1,13 @@
 import styled, { css } from "styled-components";
 
 export const FlexViewContainer = styled.div<FlexView>`
-  animation: ${({ popup }) => popup && "popup .25s"}; 
+  animation: ${({ popup }) => popup && "popup .5s"}; 
   align-items: ${({ align }) => align};
   align-self: ${({ self }) => self}; 
   background-color: ${({ fill }) => fill};
   border: ${({ border }) => border && "1px solid #ddd"}; 
   box-shadow: ${({ shadow }) => shadow && "0 1px 5px rgba(0, 0, 0, .1), 0 2px 5px rgba(0, 0, 0, .1)"}; 
-  color: ${({ fill }) => (fill === "#59886b" || fill === "#101010") ? "#ffffff" : "#252525"};
+  color: ${({ fill }) => (fill === "#59886b" || fill === "#101010" || fill === "#1e90ff" || fill === "#454545") ? "#ffffff" : "inherit"};
   border-radius: ${({ radius }) => radius};
   display: flex; 
   flex-basis: ${({ bound }) => bound};

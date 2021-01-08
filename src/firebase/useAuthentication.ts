@@ -66,14 +66,14 @@ const useAuthentication = () => {
       profession,
       friends: 0,
       uploads: 0,
-      stars: 0
+      stars: 1
     };
 
     notification("Loading...");
     try {
       await firebase.auth().createUserWithEmailAndPassword(email, password);
       notification("Please wait...");
-      await pushTo(userData, `global-users/${email}/`);
+      await pushTo(`global-users/${email}/`, userData);
       notification("Account created successfull");
       history.replace("/select-image");
     } catch (error) {

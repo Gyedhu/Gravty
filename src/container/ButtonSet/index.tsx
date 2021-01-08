@@ -8,13 +8,13 @@ interface Props {
 
 const ButtonSet: React.FC<Props> = ({ leftSet, rightSet }) => {
   return <FlexView
-    radius="30px"
-    fill="#ffffff"
+    fill="#59886b"
     gap="10px"
+    justify="space-between" wrap="wrap"
     paddingHorizontal="15px"
     paddingVertical="15px"
+    radius="30px"
     shadow
-    justify="space-between" wrap="wrap"
   >
     {leftSet && <FlexView gap="10px" mobile={!rightSet}>
       {leftSet}

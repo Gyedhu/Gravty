@@ -12,11 +12,16 @@ interface CardProps {
 const Card: React.FC<CardProps> = ({ imageUrl, title, subTitle }) => {
   return <FlexView
     direction="column"
+    border
+    fill="#ffffff"
     gap="20px"
     grow="1"
-    minWidth="200px"
+    minWidth="250px"
+    paddingHorizontal="20px"
+    paddingVertical="20px"
+    radius="5px"
   >
-    {imageUrl && <UrlImage fit={true} height="200px" url={imageUrl} />}
+    {imageUrl && <UrlImage fit={true} height="100px" url={imageUrl} />}
 
     <FlexView direction="column" maxWidth="300px">
       <Text size="20px">{title}</Text>
@@ -29,7 +34,7 @@ const Card: React.FC<CardProps> = ({ imageUrl, title, subTitle }) => {
 //  Card set
 const ImageCard = () => {
   return <FlexView
-    gap="10px"
+    gap="20px"
     wrap="wrap"
   >
     <Card
