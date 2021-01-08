@@ -11,7 +11,6 @@ export { default as FormContainer } from "./FormContainer";
 // Homepage
 export { default as ProfileCard } from "./ProfileCard";
 export { default as UserDataCard } from "./UserDataCard";
-export { default as Dashboard } from "./Dashboard";
 export { default as HomeNavBar } from "./HomeNavBar";
 export { default as ImageCard } from "./ImageCard";
 
@@ -26,8 +25,8 @@ export { default as MainHeaderWriter } from "./MainHeaderWriter";
 export { default as ParagraphWithHeaderWriter } from "./ParagraphWithHeaderWriter";
 export { default as ParagraphWriter } from "./ParagraphWriter";
 export { default as ListWriter } from "./ListWriter";
-export { default as ImageWriter } from "./ImageWriter"; 
-export { default as WriterButtonSet } from "./WriterButtonSet"; 
+export { default as ImageWriter } from "./ImageWriter";
+export { default as WriterButtonSet } from "./WriterButtonSet";
 
 
 

@@ -10,7 +10,7 @@ import {
 
 const Home = () => {
 
-  return <View fill="#ffffff">
+  return <View>
 
     {/* Profile Card */}
     <ProfileCard />

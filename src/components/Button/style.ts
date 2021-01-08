@@ -58,9 +58,13 @@ export const ButtonContainer = styled.button <ButtonStyleTypes>`
     opacity: .2;
   }
 
-  &:focus {
-    outline: ${({ background, border }) => (background || border) && "1px dashed dodgerblue"};
-  }
+  &:focus {   
+     ${({ background, border }) => (background || border) && css`
+        outline: 1px dashed dodgerblue;
+     `}; 
+
+     
+  }  
   
 `;
 

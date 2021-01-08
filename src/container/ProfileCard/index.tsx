@@ -1,4 +1,4 @@
-import { UserDataCard, Dashboard } from "..";
+import { UserDataCard } from "..";
 import { FlexView } from "../../components";
 
 
@@ -10,7 +10,7 @@ const ProfileCard = () => {
     wrap="wrap"
   >
     <UserDataCard />
-    <Dashboard />
+    {/* <Dashboard /> */}
   </FlexView>
 }
 

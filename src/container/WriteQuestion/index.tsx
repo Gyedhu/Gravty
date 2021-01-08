@@ -5,15 +5,26 @@ import { FlexView } from "../../components";
 
 // Containers
 import { Paragraph, QuestionWriteBox } from "..";
+import { usePushQuestions } from "../../firebase";
 
-const WriteQuestion
- = () => {
+const WriteQuestion = () => {
+
+  // Upload method
+  const { uploadQuestion } = usePushQuestions();
 
   // Get data
-  const readQuestion = (data: string, file?: FileList | null | undefined) => {
-    console.log(data);
-    if (file)
-      console.log(file);
+  const _uploadQuestion = async (data: string, file?: Blob | null) => {
+    
+    try {
+      uploadQuestion({
+        content: data,
+        imageFile: file,
+        timestamp: new Date()
+      });
+    }
+    catch (error) {
+      alert(error.message);
+    }
   }
 
   // --- Write question --- 
@@ -23,9 +34,9 @@ const WriteQuestion
       content="Write your question and upload in internet for share to the world..."
     />
 
-    <QuestionWriteBox active={true} onSubmit={readQuestion} />
+    <QuestionWriteBox onSubmit={_uploadQuestion} />
   </FlexView>
 }
 
 export default WriteQuestion
-;
+  ;
