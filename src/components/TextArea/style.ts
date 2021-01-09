@@ -6,7 +6,7 @@ export const TextAreaContainer = styled.textarea<TextAreaStyle>`
   font-family: "jost"; 
   font-size: ${({ fontSize }) => fontSize ? fontSize : "20px"}; 
   outline: 0;
-  padding: 10px;
+  padding: 20px;
   text-align: ${({ align }) => align};
   width: 100%;   
   

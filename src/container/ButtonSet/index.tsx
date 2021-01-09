@@ -8,19 +8,19 @@ interface Props {
 
 const ButtonSet: React.FC<Props> = ({ leftSet, rightSet }) => {
   return <FlexView
-    fill="#59886b"
+    fill="#1e90ff"
     gap="10px"
     justify="space-between" wrap="wrap"
-    paddingHorizontal="15px"
+    paddingHorizontal="25px"
     paddingVertical="15px"
-    radius="30px"
+    radius="40px"
     shadow
   >
-    {leftSet && <FlexView gap="10px" mobile={!rightSet}>
+    {leftSet && <FlexView gap="25px" mobile={!rightSet}>
       {leftSet}
     </FlexView>}
 
-    {rightSet && <FlexView gap="10px" mobile={!leftSet}>
+    {rightSet && <FlexView gap="25px" mobile={!leftSet}>
       {rightSet}
     </FlexView>}
   </FlexView>

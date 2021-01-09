@@ -6,11 +6,15 @@ import {
   Paragraph,
   Image
 } from "..";
-import { PageListType } from "../PageElementTypes";
-import { IMAGE, LIST, PARAGRAPH } from "../PageElementTypesContants";
+import {
+  PageMapables,
+  PARAGRAPH,
+  LIST,
+  IMAGE
+} from "../../types/pageMapables";
 
 
-const PageListMap: React.FC<PageListType> = (props) => {
+const PageListMap: React.FC<PageMapables> = (props) => {
 
   switch (props.contentType) {
 

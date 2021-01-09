@@ -11,9 +11,9 @@ import { filePicker } from "../../utility";
 
 // Hooks
 import { useWriterMethods } from "../hooks";
+import { IMAGE } from "../../types/pageMapables";
 
-// Types 
-import { FitStyleTypes, IMAGE } from "../PageElementTypes";
+// Types  
 
 const ImageWriter = () => {
 
@@ -81,7 +81,7 @@ const ImageWriter = () => {
         select
         onChange={readImageFitType}
         options={[
-          "fit-in-both", 
+          "fit-in-both",
           "fit-in-width"
         ]}
 

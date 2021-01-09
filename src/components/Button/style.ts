@@ -8,12 +8,13 @@ export const ButtonContainer = styled.button <ButtonStyleTypes>`
   color: inherit;
   cursor: pointer;
   display: flex;
-  font-size: 18px;
+  font-size: ${({ size }) => size ? size : "18px"};
   flex-grow: ${({ fit }) => fit && 1};
   gap: 5px;
   justify-content: center;
   max-height: 100px;
   outline: 0;
+  padding: 0;
   position: relative;
   transition: opacity .2s;
   width: ${({ width }) => width};  
@@ -61,9 +62,11 @@ export const ButtonContainer = styled.button <ButtonStyleTypes>`
   &:focus {   
      ${({ background, border }) => (background || border) && css`
         outline: 1px dashed dodgerblue;
-     `}; 
-
-     
+     `};  
+      
+     ${({ background, border }) => (!background || !border) && css`
+        outline: 1px dashed #ddd;
+     `};  
   }  
   
 `;

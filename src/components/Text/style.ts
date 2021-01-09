@@ -1,11 +1,18 @@
 import styled from "styled-components";
 
 export const TextContainer = styled.p<TextStylesTypes>`
-  color: ${({primary}) => primary ? "#59886b" : "inherit"};
-  font-family: ${({ fancy }) => fancy ? "Redressed" : "jost"};
+  align-items: center;
+  color: ${({ primary }) => primary ? "#59886b" : "inherit"};
+  display: flex;
   font-size: ${props => props.size ? props.size : "20px"};
   font-weight: ${props => props.bold ? "bold" : "normal"};
+  gap: 5px;
   margin: 0; 
   text-decoration: ${props => props.underline && "underline "};  
   text-align: ${props => props.align};
+
+  & > span { 
+    font-family: ${({ fancy }) => fancy ? "Redressed" : "jost"};
+    width: 100%;
+  }
 `;

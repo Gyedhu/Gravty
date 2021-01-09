@@ -8,9 +8,11 @@ import { WriterButtonSet, View } from "..";
 
 // Hooks
 import { useWriterMethods } from "../hooks";
+import { PARAGRAPH } from "../../types/pageMapables";
 
-// Types
-import { PARAGRAPH } from "../PageElementTypes";
+// Types 
+
+
 
 const ParagraphWithHeaderWriter = () => {
 
@@ -24,10 +26,6 @@ const ParagraphWithHeaderWriter = () => {
 
   // Automatic focus
   useEffect(() => TextAreaRef.current?.focus(), []);
-
-  // Automatic focus
-  useEffect(() => TextAreaRef.current?.focus(), []);
-
 
   // --- Read header --- 
   const readHeader = (event: React.ChangeEvent<HTMLTextAreaElement>) =>
@@ -55,7 +53,7 @@ const ParagraphWithHeaderWriter = () => {
   return <View type="medium">
     <FlexView direction="column" gap="10px">
 
-      {/* Heading */}
+      {/* Heading text field */}
       <TextArea
         name="header"
         onChange={readHeader}
@@ -66,7 +64,7 @@ const ParagraphWithHeaderWriter = () => {
         type="dashed"
       />
 
-      {/* Paragraph */}
+      {/* Paragraph text field */}
       <TextArea
         name="paragraph"
         onChange={readParagraph}

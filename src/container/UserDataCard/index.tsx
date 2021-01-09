@@ -7,7 +7,7 @@ import { UserDataState } from "../../redux/userData/type";
 
 // Dashcard
 const DashCard: React.FC<{ title: string; value: number }> = ({ title, value }) =>
-  <FlexView align="center" direction="column" popup>
+  <FlexView align="center" direction="column" justify="flex-end" popup>
     <Text>{value}</Text>
     <Text size="15px">{title}</Text>
   </FlexView >
@@ -28,11 +28,12 @@ const UserData = () => {
   >
 
     {/* User image */}
-    <UrlImage border rounded url={imageUrl ? imageUrl : ""} height="120px" width="120px" />
+    <UrlImage border rounded url={imageUrl ? imageUrl : ""} height="150px" width="150px" />
 
     {/* User info */}
     <FlexView direction="column">
       {
+        // Only show if the data is successfully fetched
         name && email && profession &&
         <FlexView direction="column" popup mobile>
           <Text size="24px">{name}</Text>

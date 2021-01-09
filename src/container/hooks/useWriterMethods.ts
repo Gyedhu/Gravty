@@ -2,7 +2,7 @@ import { ChangeEvent, useState } from "react"
 import { useDispatch } from "react-redux";
 import { addPageData, addPageHeader } from "../../redux/page/action";
 import { setCurrentWriting } from "../../redux/pageEditor/action";
-import { PageListType } from "../PageElementTypes";
+import { PageMapables, PAGE_TITLE } from "../../types/pageMapables";
 
 const useWriterMethods = () => {
 
@@ -44,10 +44,10 @@ const useWriterMethods = () => {
   }
 
   // onSubmit 
-  const onSubmit = (data: PageListType) => {
+  const onSubmit = (data: PageMapables) => {
 
     // Set data in redux
-    if (data.contentType === "PAGE_HEADER") {
+    if (data.contentType === PAGE_TITLE) {
       dispatch(addPageHeader(data));
     } else {
       dispatch(addPageData(data));

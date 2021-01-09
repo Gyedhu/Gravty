@@ -8,15 +8,14 @@ import { WriterButtonSet, View } from "..";
 
 // Hooks
 import { useWriterMethods } from "../hooks";
+import { PARAGRAPH } from "../../types/pageMapables";
 
-// Types
-import { PARAGRAPH } from "../PageElementTypes";
-
+// Types  
 
 const ParagraphWriter = () => {
 
   // Get write methods
-  const { onClear, onFocus, onSubmit } = useWriterMethods(); 
+  const { onClear, onFocus, onSubmit } = useWriterMethods();
 
   // --- Local State --- 
   const [paragraph, setParagraph] = useState("");

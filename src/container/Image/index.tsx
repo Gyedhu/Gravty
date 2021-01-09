@@ -6,15 +6,26 @@ import {
   UrlImage,
   Text
 } from "../../components";
-import { ImageProps } from "../PageElementTypes";
+
+// types
+import { ImageProps } from "../../types/pageElements";
 
 const Image: React.FC<ImageProps> = ({ url, header, fit, footer }) => {
   return <FlexView direction="column" gap="10px">
+
+    {/* Title */}
     <Text>{header}</Text>
-    <UrlImage fit={fit === "fit-in-both"} url={url}
+
+    {/* Image */}
+    <UrlImage
+      fit={fit === "fit-in-both"}
+      url={url}
       height="200px"
     />
+
+    {/* Footer */}
     <Text size="15px">{footer}</Text>
+
   </FlexView>
 }
 

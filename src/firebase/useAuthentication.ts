@@ -1,4 +1,5 @@
 import firebase from "firebase/app";
+import "firebase/firestore";
 import "firebase/auth";
 
 // Redux
@@ -8,7 +9,7 @@ import { setNotification } from "../redux/notification/action";
 import { clearUserData } from "../redux/userData/action";
 import { UserDataState } from "../redux/userData/type";
 import useGetUserData from "./useGetUserData";
-import usePushData from "./usePushData";
+import useUploadData from "./useUploadData";
 
 const useAuthentication = () => {
 
@@ -19,7 +20,7 @@ const useAuthentication = () => {
   const history = useHistory();
 
   // Fetch data methods 
-  const { pushTo } = usePushData();
+  const { pushTo } = useUploadData();
   const { getData } = useGetUserData();
 
   // --- Notification ---
@@ -81,11 +82,16 @@ const useAuthentication = () => {
     } catch (error) {
       notification(error.message);
     }
+    finally {
+      notification("");
+    }
   }
 
   // Signout
   const signout = async () => {
+    notification("Signing out...");
     await firebase.auth().signOut();
+    notification("");
     dispatch(clearUserData());
     history.replace("/signin");
   }

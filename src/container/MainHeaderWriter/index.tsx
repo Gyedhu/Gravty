@@ -14,8 +14,8 @@ import { WriterButtonSet, View } from "..";
 // Hooks
 import { useWriterMethods } from "../hooks";
 
-// Types 
-import { PAGE_HEADER } from "../PageElementTypes";
+// Types  
+import { PAGE_TITLE } from "../../types/pageMapables";
 
 
 const MainHeaderWriter = () => {
@@ -47,9 +47,8 @@ const MainHeaderWriter = () => {
 
     // Set only if main header in given
     if (mainHeader) {
-
       onSubmit({
-        contentType: PAGE_HEADER,
+        contentType: PAGE_TITLE,
         auther: name,
         date: new Date().toDateString(),
         title: mainHeader,

@@ -1,4 +1,4 @@
-import { Data, PageListType } from "../../container/PageElementTypes";
+import { PageData, PageMapables } from "../../types/pageMapables";
 
 export const ADD_PAGE_DATA = "ADD_PAGE_DATA";
 export const ADD_PAGE_HEADER = "ADD_PAGE_HEADER";
@@ -13,12 +13,12 @@ export interface PageHeaderType {
 
 export interface PageState {
   header: PageHeaderType | null;
-  data: Data | null;
+  data: PageData | null;
 };
 
 export interface AddPageData {
   type: typeof ADD_PAGE_DATA;
-  payload: PageListType;
+  payload: PageMapables;
 };
 
 export interface AddPageHeader {

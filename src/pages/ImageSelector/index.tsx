@@ -1,24 +1,32 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import firebase from "firebase";
 import "firebase/auth";
+
+// Component
 import { Button, FlexView, UrlImage } from "../../components";
+
+// Container
 import { Header, View } from "../../container";
-import { useGetUserData, usePushData, useUploadImage } from "../../firebase";
+
+// Firebase
+import { useGetUserData, useUploadData, useUploadImage } from "../../firebase";
+
+// Utility
 import { filePicker } from "../../utility";
-import { useHistory } from "react-router-dom";
 
 const ImagePicker = () => {
 
-  const [file, setFile] = useState<Blob | null>(null);
+  const [file, setFile] = useState<File | null>(null);
   const { upload } = useUploadImage();
-  const { pushTo } = usePushData();
+  const { pushTo } = useUploadData();
   const { getData } = useGetUserData();
   const history = useHistory();
 
   // --- Read image ---
   const getFile = async () => {
     const file = await filePicker();
-    setFile(file as Blob);
+    setFile(file as File);
   }
 
   // --- OnSkip ---

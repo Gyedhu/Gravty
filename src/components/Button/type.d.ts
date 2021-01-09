@@ -8,6 +8,7 @@ interface ButtonStyleTypes {
   link?: boolean;
   rounded?: boolean;
   shadow?: boolean;
+  size?: FontSize;
   to?: string;
   width?: Width;
 };
