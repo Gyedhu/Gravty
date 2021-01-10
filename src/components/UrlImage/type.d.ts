@@ -1,13 +1,10 @@
-
-type ImageSize = "50px" | "100px" | "120px" | "150px" | "200px" | "250px";
-
 interface UrlImageStyleTypes {
   border?: boolean;
   fit?: boolean;
-  height?: ImageSize;
+  height?: Dimensions;
   rounded?: boolean;
   url: string;
-  width?: ImageSize
+  width?: Dimensions
 }
 
 interface UrlImageProps extends UrlImageStyleTypes { };

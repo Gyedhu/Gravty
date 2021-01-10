@@ -1,6 +1,7 @@
 // Navigation
 export { default as Navigation } from "./Navigation";
 export { default as Notification } from "./Notification";
+export { default as ImageDisplay } from "./ImageDisplay";
 
 // View 
 export { default as View } from "./View";
@@ -32,6 +33,7 @@ export { default as WriterButtonSet } from "./WriterButtonSet";
 // Question
 export { default as WriteQuestion } from "./WriteQuestion";
 export { default as QuestionTemplate } from "./QuestionTemplate";
+export { default as QuestionList } from "./QuestionList";
 
 
 // Page 

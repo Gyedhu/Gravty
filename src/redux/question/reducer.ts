@@ -4,7 +4,7 @@ const initialState: QuestionState = {
   questions: []
 };
 
-export default function reducer(state = initialState, action: QuestionActionsTypes) {
+export default function reducer(state = initialState, action: QuestionActionsTypes): QuestionState {
 
   switch (action.type) {
 

@@ -7,12 +7,14 @@ import { PageState } from "./page/type";
 
 import {
   notification,
+  imageDisplay,
   userData,
   pageEditor,
   page,
   question
 } from "./index";
 import { QuestionState } from "./question/type";
+import { ImageDisplayState } from "./imageDisplay/type";
 
 export interface State {
   notification: NotificationState;
@@ -20,6 +22,7 @@ export interface State {
   pageEditor: PageEditorState;
   page: PageState;
   question: QuestionState;
+  imageDisplay: ImageDisplayState;
 };
 
 const store = createStore(combineReducers({
@@ -27,7 +30,8 @@ const store = createStore(combineReducers({
   userData,
   pageEditor,
   page,
-  question
+  question,
+  imageDisplay
 }));
 
 export default store;

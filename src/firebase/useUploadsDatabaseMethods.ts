@@ -7,6 +7,7 @@ import { useNotification } from "../hook";
 import { QuestionProps } from "../redux/question/type";
 import useQuestioMethods from "../hook/useQuestionMethods";
 import useQuestionRedux from "../hook/useQuestionsRedux";
+import useUploadImage from "./useUploadImage";
 
 const useUploadsDatabaseMethods = () => {
 
@@ -16,6 +17,58 @@ const useUploadsDatabaseMethods = () => {
   // Store question
   const { storeQuestions } = useQuestioMethods();
   const { removeQuestionFromList } = useQuestionRedux();
+  const { uploadImage } = useUploadImage();
+
+  // upload question
+  const uploadQuestion =
+    async (
+      data: QuestionProps,
+      file?: File | null,
+      callback?: () => void
+    ) => {
+
+
+      try {
+        pushNotification("Uploading question");
+        const { currentUser } = firebase.auth();
+
+        if (currentUser?.email) {
+
+          // Get email and uid
+          const { uid } = currentUser;
+
+          // Upload data and get the id
+          const { id } = await firebase.firestore()
+            .collection("questions")
+            .add(data);
+
+          pushNotification("Please wait...");
+
+          // Upload image 
+          if (file) {
+
+            // Get url 
+            const url = await uploadImage(`${uid}/${id}`, file);
+
+            // Store url in database
+            await firebase.firestore()
+              .collection("questions")
+              .doc(id)
+              .set({ imageUrl: url }, { merge: true });
+          }
+
+          pushNotification("Upload success", 2);
+
+          // Calling callback
+          if (callback)
+            callback()
+        }
+
+      } catch (error) {
+        // --- Error message --- 
+        pushNotification(error.message, 2);
+      }
+    }
 
 
   // fetch questions
@@ -25,7 +78,6 @@ const useUploadsDatabaseMethods = () => {
     const questions: Array<QuestionProps> = [];
 
     try {
-
       const { currentUser } = firebase.auth();
 
       if (currentUser?.email) {
@@ -99,7 +151,7 @@ const useUploadsDatabaseMethods = () => {
 
   }
 
-  return { fetchQuestion, removeQuestion };
+  return { fetchQuestion, removeQuestion, uploadQuestion };
 
 }
 

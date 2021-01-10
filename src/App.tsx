@@ -1,4 +1,4 @@
-import { Navigation, Notification } from "./container";
+import { ImageDisplay, Navigation, Notification } from "./container";
 import Router from "./router";
 import { NotificationState } from "./redux/notification/type";
 import { useSelector } from "react-redux";
@@ -13,8 +13,10 @@ function App() {
   const message = useSelector<State, NotificationState["message"]>(state => state.notification.message);
 
   return <>
+    <ImageDisplay />
     <Notification message={message} />
     <Navigation />
+    <ImageDisplay />
     <Router />
   </>
 }
