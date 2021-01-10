@@ -8,7 +8,13 @@ type FitStyleTypes = "fit-in-both" | "fit-in-width" | "full-size";
 type FlexDirection = "row" | "row-reverse" | "column" | "column-reverse";
 type FlexGrow = "1" | ".75" | ".5" | ".25";
 type FlexWrap = "nowrap" | "wrap" | "wrap-reverse";
+type FontSize = "15px" | "18px" | "20px" | "22px" | "24px" | "30px" | "32px" | "36px" | "42px";
 type JustifyContent = "center" | "flex-start" | "flex-end" | "space-evenly" | "space-between" | "space-around";
 type ListStyleTypes = "decimal" | "rounded" | "square" | "upper-alpha" | "lower-alpha";
 type Sides = "left" | "right";
 type SizeInPixel = "5px" | "10px" | "15px" | "20px" | "25px" | "30px" | "35px" | "40px" | "45px" | "50px";
+type TextAlign = "left" | "center" | "right";
+type TextAreaSize = 1 | 2 | 5 | 8;
+type TextAreaType = "solid" | "dashed";
+
+

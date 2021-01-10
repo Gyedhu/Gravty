@@ -1,17 +1,14 @@
-import React, { memo, useEffect } from "react";
+import React, { memo } from "react";
 import "firebase/firestore";
 import { useHistory } from "react-router-dom";
 
 // component
-import { Button, FlexView, Text } from "../../components";
+import { Button, FlexView } from "../../components";
 
 // container
-import { QuestionTemplate, View } from "../../container";
+import { Header, QuestionList, View } from "../../container";
 
-// type
-import { QuestionState } from "../../redux/question/type";
-import { useSelector } from "react-redux";
-import { State } from "../../redux/store";
+// type 
 import useUploadsDatabaseMethods from "../../firebase/useUploadsDatabaseMethods";
 
 
@@ -21,16 +18,7 @@ interface UploadListProps {
 
 const UploadList: React.FC<UploadListProps> = ({ type }) => {
 
-  const { questions } = useSelector<State, QuestionState>(state => state.question);
   const { fetchQuestion } = useUploadsDatabaseMethods();
-
-  useEffect(() => {
-
-    // Fetch only if there is no questions in state
-    // if (!questions.length)
-    // fetchQuestion();
-
-  }, [fetchQuestion, questions]);
 
   const router = useHistory();
 
@@ -40,11 +28,16 @@ const UploadList: React.FC<UploadListProps> = ({ type }) => {
 
   return <View type="medium">
 
-    <FlexView align="center" direction="column" paddingVertical="20px">
-      <Text bold size="32px">Your Uploads</Text>
-      <Text fancy size="18px">Edit, Delete, Share your uploads</Text>
-    </FlexView>
+    {/* Title */}
+    <Header
+      center
+      fancy
+      title="Your uploads"
+      subTitle="Edit, Delete, Share your uploads"
+    />
 
+
+    {/* Navigation */}
     <FlexView gap="30px" justify="space-between">
       <FlexView gap="30px" popup>
         <Button onClick={ChangeRoute}
@@ -68,25 +61,12 @@ const UploadList: React.FC<UploadListProps> = ({ type }) => {
           size="15px"
           title="Reload"
         />
-
       </FlexView>
     </FlexView>
 
     {
-      questions?.map((value) =>
-        <QuestionTemplate
-          key={value.id}
-          {...value}
-        />
-      )
-    }
-
-    {
-      questions.length === 0 &&
-      <FlexView direction="column" gap="20px" popup>
-        <Text>No Question uploaded so far</Text>
-        <Button border title="Write one" to="/write/question" />
-      </FlexView>
+      // List of question 
+      type === "questions" && <QuestionList />
     }
 
   </View>
