@@ -1,6 +1,7 @@
 // Navigation
 export { default as Navigation } from "./Navigation";
 export { default as Notification } from "./Notification";
+export { default as ImageDisplay } from "./ImageDisplay";
 
 // View 
 export { default as View } from "./View";

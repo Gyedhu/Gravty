@@ -22,7 +22,7 @@ const QuestionList = () => {
       questions?.map((value, index) =>
         <QuestionTemplate
           key={value.id}
-          delay={index / 10}
+          delay={index / 20}
           {...value}
         />
       )
@@ -31,7 +31,7 @@ const QuestionList = () => {
 
     {
       questions.length === 0 &&
-      <FlexView direction="column" gap="20px" popup>
+      <FlexView direction="column" delay={.05} gap="20px" popup>
         <Text>No Question uploaded so far</Text>
         <Button border title="Write one" to="/write/question" />
       </FlexView>

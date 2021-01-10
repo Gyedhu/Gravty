@@ -1,4 +1,4 @@
-type Width = "100px" | "150px" | "200px" | "fit-content";
+type Width = "100px" | "150px" | "200px" | "100%" | "50%" | "fit-content";
 
 interface ButtonStyleTypes {
   active?: boolean;

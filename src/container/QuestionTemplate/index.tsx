@@ -1,8 +1,10 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 
 // components
 import { Button, FlexView, Text } from "../../components";
 import { useUploadsDatabaseMethods } from "../../firebase";
+import { setImageDisplayUrl } from "../../redux/imageDisplay/action";
 import { QuestionProps } from "../../redux/question/type";
 
 interface Props extends QuestionProps {
@@ -17,6 +19,13 @@ const QuestionTemplate: React.FC<Props> = ({ delay, id, comments, imageUrl, cont
     removeQuestion(event.currentTarget.value, Boolean(imageUrl));
   }
 
+  // dispatch
+  const dispatch = useDispatch();
+
+  const viewImage = (event: React.MouseEvent<HTMLImageElement, MouseEvent>) => {
+    dispatch(setImageDisplayUrl(event.currentTarget.src));
+  }
+
   return <FlexView
     fill="#ffffff"
     direction="column"
@@ -29,7 +38,7 @@ const QuestionTemplate: React.FC<Props> = ({ delay, id, comments, imageUrl, cont
 
     {
       imageUrl &&
-      <img src={imageUrl} alt="template" width="100%" />
+      <img onClick={viewImage} src={imageUrl} alt="template" width="100%" />
     }
 
     <FlexView

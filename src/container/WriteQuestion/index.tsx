@@ -6,7 +6,7 @@ import { FlexView, Text } from "../../components";
 
 // Containers
 import { QuestionWriteBox } from "..";
-import { usePushQuestions as useQuestionUpload } from "../../firebase";
+import { useUploadsDatabaseMethods } from "../../firebase";
 import { useSelector } from "react-redux";
 import { UserDataState } from "../../redux/userData/type";
 import { State } from "../../redux/store";
@@ -14,7 +14,7 @@ import { State } from "../../redux/store";
 const WriteQuestion = () => {
 
   // Upload method
-  const { uploadQuestion } = useQuestionUpload();
+  const { uploadQuestion } = useUploadsDatabaseMethods();
   const { email } = useSelector<State, UserDataState>(state => state.userData);
 
   const _uploadQuestion =
@@ -31,7 +31,7 @@ const WriteQuestion = () => {
           likes: 0,
           views: 0,
           timestamp: firebase.firestore.Timestamp.fromDate(new Date())
-        }, file, callback );
+        }, file, callback);
     }
 
   // --- Write question --- 
