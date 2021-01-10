@@ -4,6 +4,7 @@ interface FlexView {
   fill?: Fill;
   border?: boolean;
   bound?: Bound;
+  delay?: number;
   direction?: FlexDirection;
   gap?: SizeInPixel;
   grow?: FlexGrow;

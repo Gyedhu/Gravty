@@ -40,7 +40,7 @@ const useWriterMethods = () => {
   const onClose = () => {
 
     // Reset the PageEditorTool
-    dispatch(setCurrentWriting(""));
+    dispatch(setCurrentWriting(null));
   }
 
   // onSubmit 

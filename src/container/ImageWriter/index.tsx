@@ -82,7 +82,8 @@ const ImageWriter = () => {
         onChange={readImageFitType}
         options={[
           "fit-in-both",
-          "fit-in-width"
+          "fit-in-width",
+          "full-size"
         ]}
 
       />

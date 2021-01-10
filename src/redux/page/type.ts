@@ -11,16 +11,23 @@ export interface PageHeaderType {
   subTitle?: string;
 }
 
+// State
 export interface PageState {
   header: PageHeaderType | null;
   data: PageData | null;
 };
 
+
+// Actions
+
+// Action for add page data
 export interface AddPageData {
   type: typeof ADD_PAGE_DATA;
   payload: PageMapables;
 };
 
+
+// Action for add page title
 export interface AddPageHeader {
   type: typeof ADD_PAGE_HEADER;
   payload: boolean;

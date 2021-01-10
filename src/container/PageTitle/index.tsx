@@ -14,7 +14,10 @@ import {
 import { PageTitleProps } from "../../types/pageElements"
 
 
-const PageHeader: React.FC<PageTitleProps> = ({ imageUrl, auther, date, title, subTitle }) => {
+const PageTitle: React.FC<PageTitleProps> = ({ imageUrl, auther, date, title, subTitle }) => {
+
+  // alert(auther)
+
   return <FlexView
     fill="#f5f5f5"
     direction="column"
@@ -30,16 +33,16 @@ const PageHeader: React.FC<PageTitleProps> = ({ imageUrl, auther, date, title, s
 
     <FlexView
       align="flex-end"
-      gap="10px"
+      gap="30px"
       justify="space-between"
       wrap="wrap"
     >
 
       <div style={{ color: "#555" }} >
         <FlexView align="center" gap="10px" wrap="wrap">
-          <Button size="15px" title="203" className="ri-eye-2-line" />  &bull;
-        <Button size="15px" title="20" className="ri-thumb-up-line" /> &bull;
-        <Button size="15px" title="93 " className="ri-message-line" />
+          <Button size="15px" title="203 Views" className="ri-eye-2-line" />  &bull;
+          <Button size="15px" title="20 Likes" className="ri-thumb-up-line" /> &bull;
+          <Button size="15px" title="93 Comments" className="ri-message-line" />
         </FlexView>
       </div>
 
@@ -54,4 +57,4 @@ const PageHeader: React.FC<PageTitleProps> = ({ imageUrl, auther, date, title, s
   </FlexView >
 }
 
-export default PageHeader;
+export default PageTitle;

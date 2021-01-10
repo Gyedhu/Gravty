@@ -17,11 +17,23 @@ const Image: React.FC<ImageProps> = ({ url, header, fit, footer }) => {
     <Text>{header}</Text>
 
     {/* Image */}
-    <UrlImage
-      fit={fit === "fit-in-both"}
-      url={url}
-      height="200px"
-    />
+    {
+      fit !== "full-size" && <UrlImage
+        fit={fit === "fit-in-both"}
+        url={url}
+        height="250px"
+      />
+    }
+
+    {/* Full size image */}
+    {
+      fit === "full-size" &&
+      <img
+        src={url}
+        alt="page content"
+        style={{ width: "100%" }}
+      />
+    }
 
     {/* Footer */}
     <Text size="15px">{footer}</Text>

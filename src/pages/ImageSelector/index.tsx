@@ -18,7 +18,7 @@ import { filePicker } from "../../utility";
 const ImagePicker = () => {
 
   const [file, setFile] = useState<File | null>(null);
-  const { upload } = useUploadImage();
+  const { uploadImage } = useUploadImage();
   const { pushTo } = useUploadData();
   const { getData } = useGetUserData();
   const history = useHistory();
@@ -43,7 +43,7 @@ const ImagePicker = () => {
       if (file && currentUser.uid) {
 
         try {
-          const url = await upload(`${currentUser.uid}/profile-image.jpg`, file);
+          const url = await uploadImage(`${currentUser.uid}/profile-image.jpg`, file);
           await pushTo(`global-users/${currentUser.email}`, { imageUrl: url });
           onSkip();
         } catch (error) {

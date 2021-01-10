@@ -3,61 +3,70 @@ import "firebase/firestore";
 import "firebase/auth";
 import { useDispatch } from "react-redux";
 import { setNotification } from "../redux/notification/action";
-import { QuestionState } from "../redux/question/type";
+import { QuestionProps } from "../redux/question/type";
 import useUploadImage from "./useUploadImage";
 
 const usePushQuestions = () => {
 
   // Dispatch
   const dispatch = useDispatch();
-  const { upload } = useUploadImage();
+  const { uploadImage } = useUploadImage();
 
   // --- Notification ---
   const notification = (message: string) => {
     dispatch(setNotification(message));
   }
 
-  const uploadQuestion = async (data: QuestionState, file?: File | null) => {
+  const uploadQuestion =
+    async (
+      data: QuestionProps,
+      file?: File | null,
+      callback?: () => void
+    ) => {
 
-    try {
-      notification("Uploading question");
-      const { currentUser } = firebase.auth();
+      try {
+        notification("Uploading question");
+        const { currentUser } = firebase.auth();
 
-      if (currentUser) {
+        if (currentUser?.email) {
 
-        const { email, uid } = currentUser;
+          // Get email and uid
+          const { uid } = currentUser;
 
-        if (email) {
-
+          // Upload data and get the id
           const { id } = await firebase.firestore()
-            .collection("question")
-            .doc(email)
-            .collection("data")
+            .collection("questions")
             .add(data);
+          // .doc(email)
+          // .collection("questions")
+          // .add(data);
 
           notification("Please wait...");
 
+          // Upload image 
           if (file) {
-            const url = await upload(`${uid}/${id}`, file);
+
+            // Get url 
+            const url = await uploadImage(`${uid}/${id}`, file);
             await firebase.firestore()
-              .collection("question")
-              .doc(email)
-              .collection("data")
+              .collection("questions")
               .doc(id)
               .set({ imageUrl: url }, { merge: true });
           }
 
+          notification("Upload success");
+          if (callback)
+            callback()
         }
-      }
 
-    } catch (error) {
-      // --- Error message --- 
-      notification(error.message);
+      } catch (error) {
+        // --- Error message --- 
+        notification(error.message);
+      }
+      finally {
+        setTimeout(() => notification(""), 2000);
+      }
     }
-    finally {
-      setTimeout(() => notification(""), 2000);
-    }
-  }
 
   return { uploadQuestion };
 

@@ -14,7 +14,7 @@ const useUploadImage = () => {
     dispatch(setNotification(message));
   }
 
-  const upload = (path: string, file: File) => new Promise(
+  const uploadImage = (path: string, file: File) => new Promise(
     async (resolve, reject) => {
 
       try {
@@ -53,7 +53,7 @@ const useUploadImage = () => {
     }
   )
 
-  return { upload };
+  return { uploadImage };
 
 }
 

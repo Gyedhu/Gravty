@@ -1,8 +1,11 @@
 import React from "react";
 import { Logo } from "../../assets/images";
-import { Button, FlexView } from "../../components";
-import { Text } from "../../components";
-import View from "../View";
+
+// components
+import { Button, FlexView, Text } from "../../components";
+
+// container
+import { View } from "..";
 
 interface Props {
   linkTitle: string;
@@ -17,18 +20,40 @@ const FormContainer: React.FC<Props> =
   ({ children, linkTitle, linkTo, onSubmit, title, to, subTitle }) => {
 
     return <View smallGap type="small">
-      <FlexView align="center" direction="column" paddingVertical="20px">
+
+      {/* Title */}
+      <FlexView
+        align="center"
+        direction="column"
+        paddingVertical="20px"
+      >
+        {/* Logo */}
         <img src={Logo} alt="logo" height="50" />
         <br />
         <Text size="30px" fancy>{title}</Text>
         <Text fancy>{subTitle}</Text>
+
       </FlexView>
 
+      {/* Form goes here */}
       {children}
 
-      <Button fit background to={to} onClick={onSubmit} title="Submit" />
-      <Button fit to={linkTo} link title={linkTitle} />
+      {/* Submit */}
+      <Button
+        fit
+        background
+        to={to}
+        onClick={onSubmit}
+        title="Submit"
+      />
+
+      <Button
+        fit
+        to={linkTo}
+        link
+        title={linkTitle}
+      />
     </View>
   }
 
-export default FormContainer
+export default FormContainer;

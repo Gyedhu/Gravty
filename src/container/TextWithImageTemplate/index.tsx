@@ -16,8 +16,7 @@ const TextWithImageTemplate: React.FC<TextWithImageTemplateProps> =
 
     <FlexView gap="10px">
       {(side === "left" || side === undefined) && url &&
-        <UrlImage
-          border
+        <UrlImage 
           rounded
           url={url ? url : ""}
           height="50px" width="50px"

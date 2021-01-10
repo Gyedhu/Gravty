@@ -2,15 +2,26 @@ import React from "react";
 import { useSelector } from "react-redux";
 
 // Containers
-import { MainHeaderWriter } from "..";
+import {
+  MainHeaderWriter,
+  ListWriter,
+  ImageWriter,
+  ParagraphWriter,
+  ParagraphWithHeaderWriter
+} from "..";
 
 // State, Redux and actions
 import { PageEditorState } from "../../redux/pageEditor/type";
 import { State } from "../../redux/store";
-import ImageWriter from "../ImageWriter";
-import ListWriter from "../ListWriter";
-import ParagraphWithHeaderWriter from "../ParagraphWithHeaderWriter";
-import ParagraphWriter from "../ParagraphWriter";
+
+// Types
+import {
+  PAGE_TITLE,
+  PARAGRAPH_WITH_HEADER,
+  IMAGE,
+  LIST,
+  PARAGRAPH
+} from "../../types/pageMapables";
 
 const CurrentWritingFieldMap = () => {
 
@@ -19,19 +30,19 @@ const CurrentWritingFieldMap = () => {
 
   switch (currentWriting) {
 
-    case "main-header":
+    case PAGE_TITLE:
       return <MainHeaderWriter />
 
-    case "paragraph-with-header":
+    case PARAGRAPH_WITH_HEADER:
       return <ParagraphWithHeaderWriter />
 
-    case "paragraph":
+    case PARAGRAPH:
       return <ParagraphWriter />
 
-    case "list":
+    case LIST:
       return <ListWriter />
 
-    case "image":
+    case IMAGE:
       return <ImageWriter />
 
     default: return null;

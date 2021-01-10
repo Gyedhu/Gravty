@@ -39,7 +39,7 @@ const Write: React.FC<Props> = ({ type }) => {
     />
 
     {/* Button set question ~ pages */}
-    <FlexView gap="20px">
+    <FlexView gap="20px" popup>
 
       <Button
         active={type === "question"}

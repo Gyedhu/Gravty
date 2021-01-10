@@ -31,6 +31,7 @@ export { default as WriterButtonSet } from "./WriterButtonSet";
 
 // Question
 export { default as WriteQuestion } from "./WriteQuestion";
+export { default as QuestionTemplate } from "./QuestionTemplate";
 
 
 // Page 

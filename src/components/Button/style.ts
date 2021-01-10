@@ -27,13 +27,13 @@ export const ButtonContainer = styled.button <ButtonStyleTypes>`
   `}
 
   ${({ shadow }) => shadow && css`
-    box-shadow:  0 2px 8px rgba(0, 0, 0, .25); 
+    box-shadow:  0 2px 5px rgba(0, 0, 0, .25); 
     border-radius: 5px;   
     padding: 5px 10px;
   `}
 
   ${({ background }) => background && css`
-    background-color: #59886b; 
+    background-color: #59886b;  
     border-radius: 5px; 
     color: white; 
     padding: 5px 10px;

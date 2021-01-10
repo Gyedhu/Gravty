@@ -24,6 +24,7 @@ import {
   setCurrentWriting,
   setSelectElementBox
 } from "../../redux/pageEditor/action";
+import { IMAGE, LIST, mapableConstants, PARAGRAPH, PARAGRAPH_WITH_HEADER } from "../../types/pageMapables";
 
 
 // SelectButtonProps 
@@ -38,8 +39,8 @@ const SelectButton: React.FC<SelectButtonProps> = ({ title }) => {
 
 
   // --- selectElement ---
-  const selectElement = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    dispatch(setCurrentWriting(event.currentTarget.value));
+  const selectElement = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => { 
+    dispatch(setCurrentWriting(event.currentTarget.value as mapableConstants));
     dispatch(setSelectElementBox(false));
   }
 
@@ -50,7 +51,7 @@ const SelectButton: React.FC<SelectButtonProps> = ({ title }) => {
     width="fit-content"
     onClick={selectElement}
     title={title}
-    value={title.toLocaleLowerCase()}
+    value={title }
   />
 }
 
@@ -78,10 +79,10 @@ const PageEditorElemenetSelector = () => {
         </FlexView>
 
         <FlexView direction="column" gap="10px" maxHeight="250px">
-          <SelectButton title="Paragraph-with-header" />
-          <SelectButton title="Paragraph" />
-          <SelectButton title="List" />
-          <SelectButton title="Image" />
+          <SelectButton title={PARAGRAPH_WITH_HEADER} />
+          <SelectButton title={PARAGRAPH} />
+          <SelectButton title={LIST} />
+          <SelectButton title={IMAGE} />
         </FlexView>
 
       </FlexView>

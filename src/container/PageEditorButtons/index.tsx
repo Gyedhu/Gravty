@@ -2,18 +2,18 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 // Containers
-import { ButtonSet } from "..";
+import { ButtonSet, View } from "..";
 
 // Components
 import { Button, FlexView, FloatingBox } from "../../components";
 import { PageState } from "../../redux/page/type";
 
-// State, Reducers and actions
-// import { State } from "../../redux/store";
-// import { PageState } from "../../redux/page/type";
+// State, Reducers and actions 
 import { setCurrentWriting, setSelectElementBox, } from "../../redux/pageEditor/action";
 import { State } from "../../redux/store";
-import View from "../View";
+
+// Types
+import { PAGE_TITLE } from "../../types/pageMapables";
 
 const PageEditButtons = () => {
 
@@ -32,7 +32,7 @@ const PageEditButtons = () => {
   // It will open the selectElementBox
   const addElement = () => {
     if (!header) {
-      dispatch(setCurrentWriting("main-header"));
+      dispatch(setCurrentWriting(PAGE_TITLE));
     } else
       selectElementBoxToggler();
   }

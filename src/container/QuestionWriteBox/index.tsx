@@ -12,7 +12,7 @@ import {
 
 interface Props {
   onSubmit: (
-    data: string, file?: File | null) => void;
+    data: string, file?: File | null, callback?: () => void) => void;
 };
 
 const QuestionWriteBox: React.FC<Props> = ({ onSubmit }) => {
@@ -33,9 +33,10 @@ const QuestionWriteBox: React.FC<Props> = ({ onSubmit }) => {
   // --- Submit data ---
   const submit = () => {
     if (data.trim() !== "") {
-      onSubmit(data, file);
-      clearTextArea();
-      detachMedia();
+      onSubmit(data, file, () => {
+        clearTextArea();
+        detachMedia();
+      });
     }
   }
 
@@ -60,7 +61,7 @@ const QuestionWriteBox: React.FC<Props> = ({ onSubmit }) => {
     }
   }
 
-  return <FlexView direction="column" gap="5px" paddingVertical="20px">
+  return <FlexView direction="column" gap="5px" paddingVertical="20px" popup>
 
     {/* Show image only if something attached */}
     {file && <img src={URL.createObjectURL(file)} alt="selected" width="250" />}
@@ -75,27 +76,28 @@ const QuestionWriteBox: React.FC<Props> = ({ onSubmit }) => {
     />
 
     {/* Buttons */}
-    <FlexView gap="10px" paddingVertical="10px">
+    <FlexView direction="row-reverse" gap="10px" paddingVertical="10px">
 
       {/* Done button */}
       <Button
-        border
+        background
         fit
+        className="ri-save-line"
         onClick={submit}
-        title="Done"
+        title="Upload"
       />
 
       {/* Attach media button */}
       <Button
-        border
-        className={file ? "ri-eraser-line" : "ri-attachment-2"}
+        background
+        className={file ? "ri-link-unlink-m" : "ri-attachment-2"}
         onClick={file ? detachMedia : attachMedia}
       />
 
       {/* Clear text area button */}
       <Button
-        border
-        className="ri-delete-bin-line"
+        background
+        className="ri-eraser-line"
         onClick={clearTextArea}
       />
     </FlexView>

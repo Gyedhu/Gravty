@@ -7,6 +7,7 @@ import {
 } from "./pageElements";
 
 // --- Constants ---
+export const PARAGRAPH_WITH_HEADER = "PARAGRAPH_WITH_HEADER";
 export const PARAGRAPH = "PARAGRAPH";
 export const LIST = "LIST";
 export const IMAGE = "IMAGE";
@@ -18,7 +19,9 @@ export type mapableConstants =
   typeof PARAGRAPH |
   typeof LIST |
   typeof IMAGE |
-  typeof PAGE_TITLE;
+  typeof PAGE_TITLE |
+  typeof PARAGRAPH_WITH_HEADER |
+  null;
 
 
 
