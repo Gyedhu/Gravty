@@ -5,7 +5,11 @@ import { Button, FlexView, Text } from "../../components";
 import { useUploadsDatabaseMethods } from "../../firebase";
 import { QuestionProps } from "../../redux/question/type";
 
-const QuestionTemplate: React.FC<QuestionProps> = ({ id, comments, imageUrl, content, likes, timestamp, views }) => {
+interface Props extends QuestionProps {
+  delay?: number
+};
+
+const QuestionTemplate: React.FC<Props> = ({ delay, id, comments, imageUrl, content, likes, timestamp, views }) => {
 
   const { removeQuestion } = useUploadsDatabaseMethods();
 
@@ -20,6 +24,7 @@ const QuestionTemplate: React.FC<QuestionProps> = ({ id, comments, imageUrl, con
     paddingVertical="20px"
     popup
     shadow
+    delay={delay}
   >
 
     {

@@ -17,11 +17,12 @@ const QuestionList = () => {
   // State
   const { questions } = useSelector<State, QuestionState>(state => state.question);
 
-  return <React.Fragment>
+  return <FlexView direction="column" gap="25px" popup>
     {
-      questions?.map((value) =>
+      questions?.map((value, index) =>
         <QuestionTemplate
           key={value.id}
+          delay={index / 10}
           {...value}
         />
       )
@@ -35,7 +36,7 @@ const QuestionList = () => {
         <Button border title="Write one" to="/write/question" />
       </FlexView>
     }
-  </React.Fragment>
+  </FlexView>
 }
 
 export default QuestionList;
