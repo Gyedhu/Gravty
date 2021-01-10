@@ -3,7 +3,7 @@ import "firebase/auth";
 
 // Redux
 import { useDispatch } from "react-redux";
-import { setNotification } from "../redux/notification/action";
+import { useNotification } from "../hook";
 import { setUserData } from "../redux/userData/action";
 import { UserDataState } from "../redux/userData/type";
 import useFetchData from "./useFetchData";
@@ -14,13 +14,11 @@ const useGetUserData = () => {
   // Dispatch
   const dispatch = useDispatch();
 
+  // --- Notification ---
+  const { popNotification, pushNotification } = useNotification();
+
   // Fetch data methods
   const { fetchFrom } = useFetchData();
-
-  // --- Notification ---
-  const notification = (message: string) => {
-    dispatch(setNotification(message));
-  }
 
   // --- store user data ---
   const storeUserData = (data: UserDataState) => {
@@ -33,7 +31,7 @@ const useGetUserData = () => {
     try {
       // Fetch user data
       if (currentUser) {
-        notification("Fetching your account information");
+        pushNotification("Fetching your account information");
         const path = `global-users/${currentUser.email}`;
         const userData = await fetchFrom(path) as UserDataState
 
@@ -41,9 +39,9 @@ const useGetUserData = () => {
         storeUserData(userData);
       }
     } catch (error) {
-      notification(error.message);
+      pushNotification(error.message, 2);
     } finally {
-      setTimeout(() => notification(""), 2000);
+      popNotification();
     }
   }
   return { getData };

@@ -23,15 +23,17 @@ const WriteQuestion = () => {
       file?: File | null,
       callback?: () => void
     ) => {
-      if (email)
-        uploadQuestion({
-          auther: email,
-          content: data,
-          comments: 0,
-          likes: 0,
-          views: 0,
-          timestamp: firebase.firestore.Timestamp.fromDate(new Date())
-        }, file, callback);
+
+      const newQuestion = {
+        auther: email,
+        content: data,
+        commentCount: 0,
+        likes: 0,
+        views: 0,
+        timestamp: firebase.firestore.Timestamp.fromDate(new Date())
+      }
+
+      uploadQuestion(newQuestion, file, callback);
     }
 
   // --- Write question --- 

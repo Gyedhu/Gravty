@@ -4,19 +4,30 @@ export const SET_QUESTION = "SET_QUESTION";
 export const REMOVE_QUESTION = "REMOVE_QUESTION";
 
 // State
+export interface CommentProps {
+  auther: string;
+  email?: string;
+  id?: string | number;
+  imageUrl?: string;
+  content: string;
+  timestamp: firebase.firestore.Timestamp;
+};
+
 export interface QuestionProps {
   auther: string;
   id?: string | number;
   imageUrl?: string;
   content: string;
   views: number;
-  comments: number;
+  commentCount: number;
   timestamp: firebase.firestore.Timestamp;
   likes: number;
+  comment?: Array<CommentProps>
 };
 
+
 export interface QuestionState {
-  questions: Array<QuestionProps>;
+  questions: Array<QuestionProps>; 
 };
 
 
