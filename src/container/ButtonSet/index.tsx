@@ -1,29 +1,36 @@
-import React from 'react'
-import { FlexView } from '../../components'
+import React from "react";
+import { FlexView } from "../../components";
 
 interface Props {
   leftSet: React.ReactNode;
   rightSet?: React.ReactNode;
-}
+};
 
 const ButtonSet: React.FC<Props> = ({ leftSet, rightSet }) => {
   return <FlexView
-    fill="#59886b"
+    delay={.2}
+    fill="#1e90ff"
     gap="10px"
     justify="space-between" wrap="wrap"
-    paddingHorizontal="15px"
+    paddingHorizontal="25px"
+    popup
     paddingVertical="15px"
-    radius="30px"
+    radius="40px"
     shadow
   >
-    {leftSet && <FlexView gap="10px" mobile={!rightSet}>
-      {leftSet}
-    </FlexView>}
+    {
+      leftSet && <FlexView gap="25px" mobile={!rightSet}>
+        {leftSet}
+      </FlexView>
+    }
 
-    {rightSet && <FlexView gap="10px" mobile={!leftSet}>
-      {rightSet}
-    </FlexView>}
+    {
+      rightSet && <FlexView gap="25px" mobile={!leftSet}>
+        {rightSet}
+      </FlexView>
+    }
+
   </FlexView>
 }
 
-export default ButtonSet
+export default ButtonSet;

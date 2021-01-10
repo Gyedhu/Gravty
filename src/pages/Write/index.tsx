@@ -33,12 +33,13 @@ const Write: React.FC<Props> = ({ type }) => {
   return <View type="medium">
 
     <Header
+      center
       title="Write"
       subTitle="Write your questions, ideas and thoughts"
     />
 
     {/* Button set question ~ pages */}
-    <FlexView gap="20px">
+    <FlexView gap="20px" popup>
 
       <Button
         active={type === "question"}

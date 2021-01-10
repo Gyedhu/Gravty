@@ -1,8 +1,10 @@
 import styled, { css, keyframes } from "styled-components";
 
 export const TextAreaContainer = styled.textarea<TextAreaStyle>`
-  border: 1px solid #59886b;
+  /* border: 1px solid #59886b; */
+  border: 0;
   border-radius: 5px;
+  box-shadow: inset 1px 1px 8px rgba(0, 0, 0, .15), inset -1px -1px 8px rgba(0, 0, 0, .15);
   font-family: "jost"; 
   font-size: ${({ fontSize }) => fontSize ? fontSize : "20px"}; 
   outline: 0;

@@ -12,31 +12,33 @@ import {
 
 interface Props {
   onSubmit: (
-    data: string,
-    file?: Blob | null
-  ) => void
-}
+    data: string, file?: File | null, callback?: () => void) => void;
+};
 
 const QuestionWriteBox: React.FC<Props> = ({ onSubmit }) => {
 
   // State 
   const [data, setData] = React.useState("");
-  const [file, setFile] = React.useState<Blob | null>();
+  const [file, setFile] = React.useState<File | null>();
 
   // --- Clear area ---
   const clearTextArea = () => setData("");
 
-  // --- Submit data ---
-  const submit = () => {
-    if (data.trim() !== "") {
-      onSubmit(data, file);
-    }
-  }
 
   // --- Detach media --- 
   const detachMedia = () => {
     setFile(null);
   };
+
+  // --- Submit data ---
+  const submit = () => {
+    if (data.trim() !== "") {
+      onSubmit(data, file, () => {
+        clearTextArea();
+        detachMedia();
+      });
+    }
+  }
 
   // --- Read data ---
   const readData = (event: React.ChangeEvent<HTMLTextAreaElement>) =>
@@ -51,7 +53,7 @@ const QuestionWriteBox: React.FC<Props> = ({ onSubmit }) => {
       // Get the file
       let file = await filePicker();
       // Store file in state
-      setFile(file as Blob);
+      setFile(file as File);
 
     } catch (error) {
       // Error
@@ -59,10 +61,10 @@ const QuestionWriteBox: React.FC<Props> = ({ onSubmit }) => {
     }
   }
 
-  return <FlexView direction="column" gap="5px" paddingVertical="20px">
+  return <FlexView direction="column" gap="5px" paddingVertical="20px" popup>
 
     {/* Show image only if something attached */}
-    {file && <img src={URL.createObjectURL(file)} alt="selected" width="200" />}
+    {file && <img src={URL.createObjectURL(file)} alt="selected" width="250" />}
 
     {/* Textarea */}
     <TextArea
@@ -74,27 +76,28 @@ const QuestionWriteBox: React.FC<Props> = ({ onSubmit }) => {
     />
 
     {/* Buttons */}
-    <FlexView gap="10px" paddingVertical="10px">
+    <FlexView direction="row-reverse" gap="10px" paddingVertical="10px">
 
       {/* Done button */}
       <Button
         background
         fit
+        className="ri-save-line"
         onClick={submit}
-        title="Done"
+        title="Upload"
       />
 
       {/* Attach media button */}
       <Button
-        className={file ? "ri-eraser-line" : "ri-attachment-2"}
-        title={file ? "Detach" : "Attach"}
+        background
+        className={file ? "ri-link-unlink-m" : "ri-attachment-2"}
         onClick={file ? detachMedia : attachMedia}
       />
 
       {/* Clear text area button */}
       <Button
-        className="ri-delete-bin-line"
-        title="Clear"
+        background
+        className="ri-eraser-line"
         onClick={clearTextArea}
       />
     </FlexView>

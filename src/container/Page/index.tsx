@@ -1,16 +1,22 @@
 import React from "react";
+import { useSelector } from "react-redux";
+
+// Components
 import { FlexView } from "../../components";
 
+// Containers 
 import {
   View,
   PageListMap,
-  PageHeader
+  PageTitle
 } from "..";
 
-import { useSelector } from "react-redux";
+// State and Actions
 import { State } from "../../redux/store";
 import { PageState } from "../../redux/page/type";
-import { PageListType } from "../PageElementTypes";
+
+// Types
+import { PageMapables } from "../../types/pageMapables";
 
 const Page = () => {
 
@@ -20,7 +26,7 @@ const Page = () => {
   return <View type="medium">
     {
       header &&
-      <PageHeader
+      <PageTitle
         {...header}
       />
     }
@@ -28,7 +34,7 @@ const Page = () => {
     <FlexView direction="column" gap="15px">
       {
         data
-          ? data.map((value: PageListType, index: number) =>
+          ? data.map((value: PageMapables, index: number) =>
             <PageListMap key={index}   {...value} />
           )
           : ""

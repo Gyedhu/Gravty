@@ -10,7 +10,7 @@ import {
 
 const Home = () => {
 
-  return <View>
+  return <View type="medium">
 
     {/* Profile Card */}
     <ProfileCard />

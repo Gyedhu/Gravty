@@ -1,24 +1,32 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import firebase from "firebase";
 import "firebase/auth";
+
+// Component
 import { Button, FlexView, UrlImage } from "../../components";
+
+// Container
 import { Header, View } from "../../container";
-import { useGetUserData, usePushData, useUploadImage } from "../../firebase";
+
+// Firebase
+import { useGetUserData, useUploadData, useUploadImage } from "../../firebase";
+
+// Utility
 import { filePicker } from "../../utility";
-import { useHistory } from "react-router-dom";
 
 const ImagePicker = () => {
 
-  const [file, setFile] = useState<Blob | null>(null);
-  const { upload } = useUploadImage();
-  const { pushTo } = usePushData();
+  const [file, setFile] = useState<File | null>(null);
+  const { uploadImage } = useUploadImage();
+  const { pushTo } = useUploadData();
   const { getData } = useGetUserData();
   const history = useHistory();
 
   // --- Read image ---
   const getFile = async () => {
     const file = await filePicker();
-    setFile(file as Blob);
+    setFile(file as File);
   }
 
   // --- OnSkip ---
@@ -35,7 +43,7 @@ const ImagePicker = () => {
       if (file && currentUser.uid) {
 
         try {
-          const url = await upload(`${currentUser.uid}/profile-image.jpg`, file);
+          const url = await uploadImage(`${currentUser.uid}/profile-image.jpg`, file);
           await pushTo(`global-users/${currentUser.email}`, { imageUrl: url });
           onSkip();
         } catch (error) {

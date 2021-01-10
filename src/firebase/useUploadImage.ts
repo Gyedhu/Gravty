@@ -2,7 +2,7 @@ import firebase from "firebase";
 import "firebase/storage";
 import "firebase/auth";
 import { useDispatch } from "react-redux";
-import { setNotification } from "../redux/notification/action"; 
+import { setNotification } from "../redux/notification/action";
 
 const useUploadImage = () => {
 
@@ -14,7 +14,7 @@ const useUploadImage = () => {
     dispatch(setNotification(message));
   }
 
-  const upload = (path: string, file: Blob) => new Promise(
+  const uploadImage = (path: string, file: File) => new Promise(
     async (resolve, reject) => {
 
       try {
@@ -23,13 +23,19 @@ const useUploadImage = () => {
         const task = ref.put(file);
 
         task.on("state_change",
+
+          // Progress
           (snapshot) => {
             const progress = Math.round((snapshot.bytesTransferred / snapshot.totalBytes)) * 100;
             notification(`Upload ${progress}% finished`);
           },
+
+          // Error
           (error) => {
             reject(error);
           },
+
+          // Successy
           async () => {
             notification("Upload success");
             const url = await ref.getDownloadURL();
@@ -39,14 +45,15 @@ const useUploadImage = () => {
 
       } catch (error) {
         reject(error);
-      } finally {
+      }
+      finally {
         notification("");
       }
 
     }
   )
 
-  return { upload };
+  return { uploadImage };
 
 }
 

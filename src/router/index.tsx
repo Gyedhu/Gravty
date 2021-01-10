@@ -1,7 +1,7 @@
 import {
   Route,
   Switch
-} from "react-router-dom"; 
+} from "react-router-dom";
 
 // Container 
 import { Page } from "../container";
@@ -13,7 +13,8 @@ import {
   Signin,
   Signup,
   Write,
-  ImageSelector
+  ImageSelector,
+  UploadList
 } from "../pages";
 
 const Router = () => {
@@ -24,6 +25,14 @@ const Router = () => {
     <Route exact component={Write} path="/write" />
     <Route exact component={Page} path="/page" />
     <Route exact component={ImageSelector} path="/select-image" />
+    <Route exact component={UploadList} path="/upload-list" />
+    
+    <Route exact path="/upload-list/questions">
+      <UploadList type="questions" />
+    </Route>
+    <Route exact path="/upload-list/pages">
+      <UploadList type="pages" />
+    </Route>
 
     <Route path="/write/question">
       <Write type="question" />

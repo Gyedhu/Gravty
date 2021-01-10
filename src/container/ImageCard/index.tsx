@@ -11,19 +11,17 @@ interface CardProps {
 // Card with image
 const Card: React.FC<CardProps> = ({ imageUrl, title, subTitle }) => {
   return <FlexView
-    direction="column"
-    border
+    direction="column" 
     fill="#ffffff"
     gap="20px"
-    grow="1"
-    minWidth="250px"
+    grow="1" 
     paddingHorizontal="20px"
     paddingVertical="20px"
     radius="5px"
   >
-    {imageUrl && <UrlImage fit={true} height="100px" url={imageUrl} />}
+    {imageUrl && <UrlImage fit={true} height="150px" url={imageUrl} />}
 
-    <FlexView direction="column" maxWidth="300px">
+    <FlexView direction="column" maxWidth="150px">
       <Text size="20px">{title}</Text>
       <Text size="15px">{subTitle}</Text>
     </FlexView>
@@ -51,7 +49,7 @@ const ImageCard = () => {
 
     <Card
       imageUrl={Desktop}
-      subTitle="Search and find resources and help people by with answer their questions"
+      subTitle="Search and find resources"
       title="Search"
     />
 

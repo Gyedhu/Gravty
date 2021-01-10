@@ -1,42 +1,47 @@
 import React from "react";
+import firebase from "firebase/app";
 
 // Components
-import { FlexView } from "../../components";
+import { FlexView, Text } from "../../components";
 
 // Containers
-import { Paragraph, QuestionWriteBox } from "..";
-import { usePushQuestions } from "../../firebase";
+import { QuestionWriteBox } from "..";
+import { usePushQuestions as useQuestionUpload } from "../../firebase";
+import { useSelector } from "react-redux";
+import { UserDataState } from "../../redux/userData/type";
+import { State } from "../../redux/store";
 
 const WriteQuestion = () => {
 
   // Upload method
-  const { uploadQuestion } = usePushQuestions();
+  const { uploadQuestion } = useQuestionUpload();
+  const { email } = useSelector<State, UserDataState>(state => state.userData);
 
-  // Get data
-  const _uploadQuestion = async (data: string, file?: Blob | null) => {
-    
-    try {
-      uploadQuestion({
-        content: data,
-        imageFile: file,
-        timestamp: new Date()
-      });
+  const _uploadQuestion =
+    async (
+      data: string,
+      file?: File | null,
+      callback?: () => void
+    ) => {
+      if (email)
+        uploadQuestion({
+          auther: email,
+          content: data,
+          comments: 0,
+          likes: 0,
+          views: 0,
+          timestamp: firebase.firestore.Timestamp.fromDate(new Date())
+        }, file, callback );
     }
-    catch (error) {
-      alert(error.message);
-    }
-  }
 
   // --- Write question --- 
-  return <FlexView direction="column">
+  return <FlexView direction="column" popup>
 
-    <Paragraph
-      content="Write your question and upload in internet for share to the world..."
-    />
+    <Text size="18px">Write your question and upload in internet for share to the world...</Text>
+    <Text size="18px">As a testing phase, you can only upload 5 question</Text>
 
     <QuestionWriteBox onSubmit={_uploadQuestion} />
   </FlexView>
 }
 
-export default WriteQuestion
-  ;
+export default WriteQuestion;

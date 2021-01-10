@@ -1,3 +1,4 @@
+import { mapableConstants } from "../../types/pageMapables";
 import {
   SetCurrentWriting,
   SetSelectElementBox,
@@ -17,7 +18,7 @@ export const setWriteBox = (payload: boolean, title?: string): SetWriteBox => ({
   payload
 });
 
-export const setCurrentWriting = (payload: string): SetCurrentWriting => ({
+export const setCurrentWriting = (payload: mapableConstants): SetCurrentWriting => ({
   type: SET_CURRENT_WRITING,
   payload: payload
 });

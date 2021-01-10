@@ -1,8 +1,8 @@
 import firebase from "firebase";
 import "firebase/firestore";
-import "firebase/auth"; 
+import "firebase/auth";
 
-const usePushData = () => { 
+const useUploadData = () => {
 
   // Push data to
   const pushTo = (path: string, data: Object) => new Promise(
@@ -10,7 +10,7 @@ const usePushData = () => {
 
       try {
         const ref = firebase.firestore().doc(path);
-        await ref.set(data, {merge: true});
+        await ref.set(data, { merge: true });
         resolve("Success");
       } catch (error) {
         reject(error);
@@ -33,7 +33,7 @@ const usePushData = () => {
   )
 
   // Add data with key
-  const AddDataWithKey = (path: string, data: Object) => new Promise(
+  const pushDataWithKey = (path: string, data: Object) => new Promise(
     async (resolve, reject) => {
       try {
         const ref = firebase.firestore().collection(path);
@@ -46,11 +46,11 @@ const usePushData = () => {
     }
   );
 
-  return { pushTo, pushInArray, AddDataWithKey };
+  return { pushTo, pushInArray, pushDataWithKey };
 
 }
 
 
-export default usePushData;
+export default useUploadData;
 
 

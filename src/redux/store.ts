@@ -9,21 +9,25 @@ import {
   notification,
   userData,
   pageEditor,
-  page
+  page,
+  question
 } from "./index";
+import { QuestionState } from "./question/type";
 
 export interface State {
   notification: NotificationState;
   userData: UserDataState;
   pageEditor: PageEditorState;
   page: PageState;
+  question: QuestionState;
 };
 
 const store = createStore(combineReducers({
   notification,
   userData,
   pageEditor,
-  page
+  page,
+  question
 }));
 
 export default store;

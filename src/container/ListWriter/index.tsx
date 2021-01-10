@@ -8,10 +8,9 @@ import { WriterButtonSet, View } from "..";
 
 // Hooks
 import { useWriterMethods } from "../hooks";
+import { LIST } from "../../types/pageMapables";
 
-// Types 
-import { LIST, ListStyleTypes } from "../PageElementTypes";
-
+// Types  
 const ListWriter = () => {
 
   // Get write method

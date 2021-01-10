@@ -24,13 +24,12 @@ const WriterButtonSet: React.FC<Props> = ({ onClear, onSubmit }) => {
     <Button
       background
       onClick={onClear}
-      className="ri-delete-bin-line"
+      className="ri-eraser-line"
       title="Clear"
     />
 
     <Button
       background
-      rounded
       onClick={onClose}
       className="ri-close-line"
     />

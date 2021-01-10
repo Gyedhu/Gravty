@@ -1,7 +1,18 @@
-import { ADD_PAGE_DATA, ADD_PAGE_HEADER, PageAction, PageState } from "./type";
+import { User } from "../../assets/images";
+import {
+  ADD_PAGE_DATA,
+  ADD_PAGE_HEADER,
+  PageAction,
+  PageState
+} from "./type";
 
 const intialState: PageState = {
-  header: null,
+  header: {
+    auther: "Yedhu",
+    date: new Date().toLocaleString(),
+    title: "React Higher-Order Components in TypeScript",
+    imageUrl: User,
+  },
   data: []
 };
 
@@ -15,7 +26,7 @@ const reducer = (state: PageState = intialState, action: PageAction) => {
       newData?.push(action.payload);
 
       console.log(newData);
-      
+
       return {
         ...state,
         data: newData

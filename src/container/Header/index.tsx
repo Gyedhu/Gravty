@@ -8,13 +8,17 @@ import {
 
 interface Props {
   title: string;
-  subTitle: string;
+  subTitle?: string;
+  center?: boolean;
 };
 
-const Header: React.FC<Props> = ({ title, subTitle }) => {
-  return <FlexView direction="column">
-    <Text size="30px">{title}</Text>
-    <Text size="18px">{subTitle}</Text>
+const Header: React.FC<Props> = ({ center, title, subTitle }) => {
+  return <FlexView
+    direction="column"
+    paddingVertical="30px"
+  >
+    <Text align={center ? "center" : undefined} size="30px">{title}</Text>
+    <Text align={center ? "center" : undefined} size="18px">{subTitle}</Text>
   </FlexView>
 }
 

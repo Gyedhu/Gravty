@@ -3,7 +3,7 @@ import { TextContainer } from "./style";
 
 const Text: React.FC<TextProps> = ({ children, ...props }) => {
   return <TextContainer {...props}>
-    {children}
+    {children && <span> {children}</span>}
   </TextContainer>
 }
 

@@ -1,7 +1,6 @@
 import styled, { css } from "styled-components";
 
 export const FlexViewContainer = styled.div<FlexView>`
-  animation: ${({ popup }) => popup && "popup .5s"}; 
   align-items: ${({ align }) => align};
   align-self: ${({ self }) => self}; 
   background-color: ${({ fill }) => fill};
@@ -19,8 +18,15 @@ export const FlexViewContainer = styled.div<FlexView>`
   max-height: ${({ maxHeight }) => maxHeight}; 
   max-width: ${({ maxWidth }) => maxWidth}; 
   min-height: ${({ minHeight }) => minHeight}; 
-  min-width: ${({ minWidth }) => minWidth}; 
+  min-width: ${({ minWidth }) => minWidth};
   padding: ${({ paddingVertical }) => paddingVertical ? paddingVertical : 0} ${({ paddingHorizontal }) => paddingHorizontal ? paddingHorizontal : 0};
+ 
+
+  ${({ popup, delay }) => popup && css`
+    animation: popup .5s ${delay ? delay : 0}s forwards;
+    opacity: 0; 
+    transform: translateY(50px);
+  `}; 
 
   ${({ maxHeight, maxWidth }) => (maxHeight || maxWidth) && css`  
     overflow: auto;
