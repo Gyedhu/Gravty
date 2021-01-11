@@ -8,7 +8,6 @@ import { useHistory } from "react-router-dom";
 import { setNotification } from "../redux/notification/action";
 import { clearUserData } from "../redux/userData/action";
 import { UserDataState } from "../redux/userData/type";
-import useGetUserData from "./useGetUserData";
 import { useNotification } from "../useRedux";
 
 const useAuthentication = () => {
@@ -18,8 +17,6 @@ const useAuthentication = () => {
 
   // history for change route
   const history = useHistory();
-
-  const { getData } = useGetUserData();
 
   // --- Notification ---
   const { popNotification, pushNotification } = useNotification();

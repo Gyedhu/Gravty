@@ -2,61 +2,79 @@ import firebase from "firebase";
 import "firebase/firestore";
 
 // Redux
-import { useDispatch, useSelector } from "react-redux";
-import { useNotification } from "../useRedux";
+import { useSelector } from "react-redux";
+import { useNotification, useUserDataMethods } from "../useRedux";
 import { State } from "../redux/store";
-import { setUserData } from "../redux/userData/action";
 import { UserDataState } from "../redux/userData/type";
+import { useCallback } from "react";
 
 
 const useGetUserData = () => {
 
-  // Dispatch
-  const dispatch = useDispatch();
-
   // --- Notification ---
-  const { popNotification, pushNotification } = useNotification();
+  const { pushNotification } = useNotification();
 
   // --- store user data ---
-  const storeUserData = (data: UserDataState["data"]) => {
-    dispatch(setUserData(data));
-  }
+  const { storeUserData, setStatusLoaded } = useUserDataMethods();
 
-  const userData = useSelector<State, UserDataState>(state => state.userData)
 
-  const getData = async () => {
-    const { currentUser } = firebase.auth();
+  const { empty } = useSelector<State, UserDataState>(state => state.userData);
 
-    try {
-      // Fetch user data
-      if (currentUser) {
+  // Fetch promise function
+  const fetchUserData = () => new Promise(
+    async (resolve, reject) => {
 
-        // checking the username is already in the userName state
-        // If there is no username we are going to fetch an store that in state
-        // Next time this if condition will be false
-        if (currentUser.email && (userData.data.name.trim() === "")) {
-          pushNotification("Fetching your account information");
+      // Get currentUser information
+      const { currentUser } = firebase.auth();
 
-          // Fetch information from database
-          const userData = await firebase.firestore()
+      // checking the current user 
+      // if there is no user no fetch going to be heppened!
+      if (!currentUser)
+        reject({ message: "No user" });
+
+      else if (currentUser.email) {
+
+        try {
+          // Fetching from`global-users/{email}`
+          const response = await firebase.firestore()
             .collection("global-users")
             .doc(currentUser.email)
             .get();
 
-          // Checking the information in exist or not
-          if (userData.exists)
-            // store
-            storeUserData(userData.data() as UserDataState["data"]);
+
+          // Checking the data is exist or not
+          if (response.exists)
+            resolve(response.data());
           else
-            pushNotification("No data available")
+            reject({ message: "No data available" });
+
+        }
+        catch (error) {
+          reject(error);
         }
       }
-    } catch (error) {
-      pushNotification(error.message, 2);
-    } finally {
-      popNotification();
     }
-  }
+  );
+
+
+  // Fetching
+  const getData = useCallback(() => { 
+
+    if (empty) {
+      pushNotification("Fetching your account information");
+
+      // Fetch only if data is not fetched  
+      fetchUserData()
+        .then(data => {
+          storeUserData(data as UserDataState["data"]);
+          setStatusLoaded();
+          pushNotification("Welcome", 2);
+        })
+        .catch(error => pushNotification(error.message, 2));
+    }
+
+  }, [empty, pushNotification, storeUserData, setStatusLoaded])
+
   return { getData };
 
 }

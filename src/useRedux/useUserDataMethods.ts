@@ -1,7 +1,7 @@
 // Redux
 import { useCallback } from "react";
 import { useDispatch } from "react-redux";
-import { setStatusNotEmpty, setUserData } from "../redux/userData/action";
+import { clearUserData, setStatusNotEmpty, setUserData } from "../redux/userData/action";
 import { UserDataState } from "../redux/userData/type";
 
 export default function useUserDataMethods() {
@@ -20,6 +20,11 @@ export default function useUserDataMethods() {
     dispatch(setStatusNotEmpty());
   }, [dispatch]);
 
-  return { storeUserData, setStatusLoaded };
+  // Clear use data from state
+  const resetUserData = useCallback(() => {
+    dispatch(clearUserData());
+  }, [dispatch]);
+
+  return { storeUserData, setStatusLoaded, clearUserData };
 
 }
