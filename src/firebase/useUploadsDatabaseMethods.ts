@@ -1,12 +1,12 @@
 import firebase from "firebase/app";
 import "firebase/firestore";
 import "firebase/auth";
-import { useNotification } from "../hook";
+import { useNotification } from "../useRedux";
 
 // type
 import { QuestionProps } from "../redux/question/type";
-import useQuestioMethods from "../hook/useQuestionMethods";
-import useQuestionRedux from "../hook/useQuestionsRedux";
+import useQuestioMethods from "../useRedux/useQuestionMethods";
+import useQuestionRedux from "../useRedux/useQuestionsRedux";
 import useUploadImage from "./useUploadImage";
 
 const useUploadsDatabaseMethods = () => {

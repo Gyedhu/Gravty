@@ -6,18 +6,13 @@ export { default as ImageDisplay } from "./ImageDisplay";
 // Profile
 export { default as ProfileTitle } from "./profile/ProfileTitle";
 export { default as ProfileNavigation } from "./profile/ProfileNavigation";
+export { default as ProfileDisplayCard } from "./profile/ProfileDisplayCard";
 
 // View 
 export { default as View } from "./View";
 
 // Form 
 export { default as FormContainer } from "./FormContainer";
-
-// Homepage
-export { default as ProfileCard } from "./ProfileCard";
-export { default as UserDataCard } from "./UserDataCard";
-export { default as HomeNavBar } from "./HomeNavBar";
-export { default as ImageCard } from "./ImageCard";
 
 // Buttons tools 
 export { default as ButtonSet } from "./ButtonSet";

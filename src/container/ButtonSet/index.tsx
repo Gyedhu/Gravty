@@ -9,7 +9,7 @@ interface Props {
 const ButtonSet: React.FC<Props> = ({ leftSet, rightSet }) => {
   return <FlexView
     delay={.2}
-    fill="#1e90ff"
+    fill="#59886b"
     gap="10px"
     justify="space-between" wrap="wrap"
     paddingHorizontal="25px"

@@ -3,7 +3,7 @@ import "firebase/firestore";
 
 // Redux
 import { useDispatch, useSelector } from "react-redux";
-import { useNotification } from "../hook";
+import { useNotification } from "../useRedux";
 import { State } from "../redux/store";
 import { setUserData } from "../redux/userData/action";
 import { UserDataState } from "../redux/userData/type";

@@ -9,7 +9,7 @@ import { setNotification } from "../redux/notification/action";
 import { clearUserData } from "../redux/userData/action";
 import { UserDataState } from "../redux/userData/type";
 import useGetUserData from "./useGetUserData";
-import { useNotification } from "../hook";
+import { useNotification } from "../useRedux";
 
 const useAuthentication = () => {
 

@@ -1,6 +1,9 @@
 import React from "react";
 import { Desktop, Mobile, Writer } from "../../assets/images";
-import { FlexView, Text, UrlImage } from "../../components";
+import { FlexView, UrlImage, Text } from "../../components";
+
+
+// Card with image
 
 interface CardProps {
   delay?: number;
@@ -9,7 +12,6 @@ interface CardProps {
   subTitle: string;
 };
 
-// Card with image
 const Card: React.FC<CardProps> = ({ imageUrl, delay, title, subTitle }) => {
   return <FlexView
     direction="column"
@@ -32,8 +34,7 @@ const Card: React.FC<CardProps> = ({ imageUrl, delay, title, subTitle }) => {
   </FlexView>
 }
 
-//  Card set
-const ImageCard = () => {
+const ProfileDisplayCard = () => {
   return <FlexView
     gap="20px"
     wrap="wrap"
@@ -58,8 +59,7 @@ const ImageCard = () => {
       subTitle="Search and find resources"
       title="Search"
     />
-
   </FlexView>
 }
 
-export default ImageCard
+export default ProfileDisplayCard;
