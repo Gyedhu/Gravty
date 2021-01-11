@@ -21,27 +21,18 @@ const WriteQuestion = () => {
 
   // --- Upload ---
   const _uploadQuestion =
-    (
-      data: string,
-      file?: File | null,
-      callback?: () => void
-    ) => {
-
-      newQuestion = {
-        auther: email,
-        content: data,
-        commentCount: 0,
-        likes: 0,
-        views: 0,
-        timestamp: firebase.firestore.Timestamp.fromDate(new Date())
-      }
-
+    (data: string, file?: File | null, callback?: () => void) => {
+      uploadQuestion(data, file, callback);
     }
 
   return <FlexView direction="column" popup>
 
-    <Text size="18px">Write your question and upload in internet for share to the world...</Text>
-    <Text size="18px">As a testing phase, you can only upload 5 question</Text>
+    <Text size="18px">
+      Write your question and upload in internet for share to the world...
+    </Text>
+    <Text size="18px">
+      As a testing phase, you can only upload 5 question
+    </Text>
 
     <QuestionWriteBox onSubmit={_uploadQuestion} />
   </FlexView>

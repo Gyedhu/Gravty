@@ -22,7 +22,7 @@ export interface QuestionProps {
   commentCount: number;
   timestamp: firebase.firestore.Timestamp;
   likes: number;
-  comment?: Array<CommentProps>
+  comments?: Array<CommentProps>
 };
 
 

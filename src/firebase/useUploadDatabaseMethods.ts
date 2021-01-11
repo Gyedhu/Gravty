@@ -29,11 +29,10 @@ const useUploadsDatabaseMethods = () => {
 
   // upload question
   const uploadQuestion = async (
-    data: QuestionProps,
+    data: string,
     file?: File | null,
     callback?: () => void
   ) => {
-
 
     try {
       pushNotification("Uploading question");
@@ -53,11 +52,21 @@ const useUploadsDatabaseMethods = () => {
 
       // --- Upload user info--- 
 
+      const newQuestion: QuestionProps = {
+        auther: currentUser.email,
+        commentCount: 0,
+        content: data,
+        likes: 0,
+        timestamp: firebase.firestore.Timestamp.fromDate(new Date()),
+        views: 0,
+        comments: [],
+      };
+
       // Upload data to 'questions/',
       // and get the id
       const { id } = await firebase.firestore()
         .collection("questions")
-        .add(data);
+        .add(newQuestion);
 
       // Image upload
       pushNotification("Please wait...");

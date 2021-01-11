@@ -10,6 +10,7 @@ export { default as ProfileDisplayCard } from "./profile/ProfileDisplayCard";
 
 
 // Write
+export { default as WriteQuestion } from "./Write/WriteQuestion";
 
 
 // View 
@@ -34,7 +35,7 @@ export { default as WriterButtonSet } from "./WriterButtonSet";
 
 
 // Question
-export { default as WriteQuestion } from "./WriteQuestion";
+// export { default as WriteQuestion } from "./WriteQuestion";
 export { default as QuestionTemplate } from "./QuestionTemplate";
 export { default as QuestionList } from "./QuestionList";
 

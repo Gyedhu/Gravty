@@ -12,9 +12,9 @@ interface Props extends QuestionProps {
   delay?: number
 };
 
-const QuestionTemplate: React.FC<Props> = ({ delay, id, commentCount: comments, imageUrl, content, likes, timestamp, views, comment: commentsContent }) => {
+const QuestionTemplate: React.FC<Props> = ({ delay, id, commentCount, imageUrl, content, likes, timestamp, views, comments }) => {
 
-  const [comment, setComment] = useState(false);
+  const [showComments, setShowComments] = useState(false);
 
   const { removeQuestion } = useUploadDatabaseMethods();
 
@@ -74,18 +74,18 @@ const QuestionTemplate: React.FC<Props> = ({ delay, id, commentCount: comments, 
       <FlexView>
         <Button
           shadow
-          onClick={() => setComment(prev => !prev)}
-          className={comment ? "ri-arrow-drop-up-line" : "ri-arrow-drop-down-line"}
+          onClick={() => setShowComments(prev => !prev)}
+          className={comments ? "ri-arrow-drop-up-line" : "ri-arrow-drop-down-line"}
           size="15px"
-          title={(comment ? "Hide" : "Show") + " comments"}
+          title={(comments ? "Hide" : "Show") + " comments"}
         />
       </FlexView>
 
     </FlexView>
 
     {
-      commentsContent &&
-      comment &&
+      showComments &&
+      comments &&
       <FlexView
         direction="column"
         gap="30px"
@@ -93,7 +93,7 @@ const QuestionTemplate: React.FC<Props> = ({ delay, id, commentCount: comments, 
         paddingVertical="10px"
       >
         {
-          commentsContent.map((value, index) =>
+          comments.map((value, index) =>
             <FlexView
               key={index}
               direction="column"
