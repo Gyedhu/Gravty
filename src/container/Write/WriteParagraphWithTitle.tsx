@@ -4,7 +4,7 @@ import React, { useEffect, useRef } from "react";
 import { FlexView, TextArea } from "../../components";
 
 // Containers
-import { WriterButtonSet, View } from "..";
+import { WritePageButton, View } from "..";
 
 // Hooks
 import { useWriterMethods } from "../hooks";
@@ -75,7 +75,7 @@ const WriteParagraphWithTitle = () => {
 
 
       {/* Submit and Clear */}
-      <WriterButtonSet
+      <WritePageButton
         onClear={onClear}
         onSubmit={_onSubmit}
       />

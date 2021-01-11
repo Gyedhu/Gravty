@@ -4,7 +4,7 @@ import React, { useEffect, useRef } from "react";
 import { FlexView, TextArea, Input, Text } from "../../components";
 
 // Containers
-import { WriterButtonSet, View } from "..";
+import { WritePageButton, View } from "..";
 
 // Hooks
 import { useWriterMethods } from "../hooks";
@@ -88,7 +88,7 @@ const WriteList = () => {
 
 
       {/* Submit and Clear */}
-      <WriterButtonSet
+      <WritePageButton
         onClear={onClear}
         onSubmit={_onSubmit}
       />

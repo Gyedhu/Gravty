@@ -4,7 +4,7 @@ import React from "react";
 import { FlexView, TextArea, Input, Text, Button } from "../../components";
 
 // Containers
-import { WriterButtonSet, View, Image } from "..";
+import { WritePageButton, View, Image } from "..";
 
 // Utility
 import { filePicker } from "../../utility";
@@ -116,7 +116,7 @@ const WriteImage = () => {
 
 
       {/* Submit and Clear */}
-      <WriterButtonSet
+      <WritePageButton
         onClear={onClear}
         onSubmit={_onSubmit}
       />

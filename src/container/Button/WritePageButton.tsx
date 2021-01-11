@@ -1,66 +1,39 @@
-import React, { ChangeEvent, useEffect, useRef, useState } from "react";
+import React from 'react'
+import { Button, FlexView } from '../../components';
+import { useWriterMethods } from '../hooks';
 
-// Components
-import { FlexView, TextArea } from "../../components";
+interface Props {
+  onSubmit: () => void;
+  onClear: () => void;
+};
 
-// Containers
-import { WriterButtonSet, View } from "..";
+const WriterButtonSet: React.FC<Props> = ({ onClear, onSubmit }) => {
 
-// Hooks
-import { useWriterMethods } from "../hooks";
-import { PARAGRAPH } from "../../types/pageMapables";
+  // Get writer tool
+  const { onClose } = useWriterMethods();
 
-// Types  
+  return <FlexView gap="10px">
+    <Button
+      background
+      fit
+      onClick={onSubmit}
+      className="ri-check-double-line"
+      title="Done"
+    />
 
-const WriteParagraph = () => {
+    <Button
+      background
+      onClick={onClear}
+      className="ri-eraser-line"
+      title="Clear"
+    />
 
-  // Get write methods
-  const { onClear, onFocus, onSubmit } = useWriterMethods();
-
-  // --- Local State --- 
-  const [paragraph, setParagraph] = useState("");
-  const TextAreaRef = useRef<HTMLTextAreaElement | null>(null);
-
-  // Automatic focus
-  useEffect(() => TextAreaRef.current?.focus(), []);
-
-  // --- Read Paragraph ---  
-  const readParagraph = (event: ChangeEvent<HTMLTextAreaElement>) =>
-    setParagraph(event.currentTarget.value);
-
-  // --- Submit ---
-  const _onSubmit = () => {
-
-    // check the paragraph is given
-    if (paragraph) {
-      onSubmit({
-        contentType: PARAGRAPH,
-        content: paragraph
-      });
-    }
-  }
-
-  return <View type="medium">
-    <FlexView direction="column" gap="10px">
-
-      {/* Paragraph */}
-      <TextArea
-        onChange={readParagraph}
-        onFocus={onFocus}
-        placeholder="Paragraph"
-        ref={TextAreaRef}
-        size={5}
-        type="dashed"
-      />
-
-      {/* Submit and Clear */}
-      <WriterButtonSet
-        onClear={onClear}
-        onSubmit={_onSubmit}
-      />
-
-    </FlexView>
-  </View>
+    <Button
+      background
+      onClick={onClose}
+      className="ri-close-line"
+    />
+  </FlexView>
 }
 
-export default WriteParagraph;
+export default WriterButtonSet;
