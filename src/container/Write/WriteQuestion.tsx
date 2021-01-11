@@ -1,22 +1,25 @@
 import React from "react";
-import firebase from "firebase/app";
 
-// Components
+// components
 import { FlexView, Text } from "../../components";
 
-// Containers
-import { QuestionWriteBox } from "..";
+// container
+import QuestionWriteBox from "../QuestionWriteBox";
+
+// firebase
 import { useUploadDatabaseMethods } from "../../firebase";
-import { useSelector } from "react-redux";
-import { UserDataState } from "../../redux/userData/type";
-import { State } from "../../redux/store";
+
+// redux
+
+// types
 
 const WriteQuestion = () => {
 
+
   // Upload method
   const { uploadQuestion } = useUploadDatabaseMethods();
-  const { email } = useSelector<State, UserDataState["data"]>(state => state.userData.data);
 
+  // --- Upload ---
   const _uploadQuestion =
     (
       data: string,
@@ -24,7 +27,7 @@ const WriteQuestion = () => {
       callback?: () => void
     ) => {
 
-      const newQuestion = {
+      newQuestion = {
         auther: email,
         content: data,
         commentCount: 0,
@@ -33,10 +36,8 @@ const WriteQuestion = () => {
         timestamp: firebase.firestore.Timestamp.fromDate(new Date())
       }
 
-      uploadQuestion(newQuestion, file, callback);
     }
 
-  // --- Write question --- 
   return <FlexView direction="column" popup>
 
     <Text size="18px">Write your question and upload in internet for share to the world...</Text>

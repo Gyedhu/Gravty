@@ -28,73 +28,66 @@ const useUploadsDatabaseMethods = () => {
   const { uploadImage } = useUploadImage();
 
   // upload question
-  const uploadQuestion =
-    async (
-      data: QuestionProps,
-      file?: File | null,
-      callback?: () => void
-    ) => {
+  const uploadQuestion = async (
+    data: QuestionProps,
+    file?: File | null,
+    callback?: () => void
+  ) => {
 
 
-      try {
-        pushNotification("Uploading question");
-        const { currentUser } = firebase.auth();
+    try {
+      pushNotification("Uploading question");
+      const { currentUser } = firebase.auth();
 
-        if (!currentUser)
-          return;
-        if (!currentUser.email)
-          return;
-
-        if (currentUser) {
-
-          if (currentUser.email && currentUser.displayName) {
-
-            // Get email and uid
-            const { uid } = currentUser;
-
-            // --- Upload user info--- 
-
-            // Upload data to 'questions/',
-            // and get the id
-            const { id } = await firebase.firestore()
-              .collection("questions")
-              .add(data);
-
-            // Image upload
-            pushNotification("Please wait...");
-
-            // --- Upload image --- 
-            // Cheking the image file is given
-            if (!file)
-              return
-
-            // Get url 
-            const url = await uploadImage(`${uid}/${id}`, file);
-
-            // Store image url in database
-            await firebase.firestore()
-              .collection("questions")
-              .doc(id)
-              .set({ imageUrl: url }, { merge: true });
-
-
-            // --- Total success --- 
-            pushNotification("Upload success", 2);
-
-            // Calling callback
-            if (callback)
-              callback();
-          }
-        } else {
-          pushNotification("Push failed");
-        }
-
-      } catch (error) {
-        // --- Error message --- 
-        pushNotification(error.message, 2);
+      if (!currentUser) {
+        pushNotification("Push failed");
+        return
       }
-    }
+      if (!currentUser.email) {
+        pushNotification("Push failed");
+        return;
+      }
 
+      // Get uid
+      const { uid } = currentUser;
+
+      // --- Upload user info--- 
+
+      // Upload data to 'questions/',
+      // and get the id
+      const { id } = await firebase.firestore()
+        .collection("questions")
+        .add(data);
+
+      // Image upload
+      pushNotification("Please wait...");
+
+      // --- Upload image --- 
+      // Cheking the image file is given
+      if (!file)
+        return
+
+      // Get url 
+      const url = await uploadImage(`${uid}/${id}`, file);
+
+      // Store image url in database
+      await firebase.firestore()
+        .collection("questions")
+        .doc(id)
+        .set({ imageUrl: url }, { merge: true });
+
+
+      // --- Total success --- 
+      pushNotification("Upload success", 2);
+
+      // Calling callback
+      if (callback) callback();
+
+    } catch (error) {
+      // --- Error message --- 
+      pushNotification(error.message, 2);
+    }
+  }
 
   // fetch questions
   const fetchQuestion = useCallback(async () => {
@@ -156,30 +149,29 @@ const useUploadsDatabaseMethods = () => {
 
       pushNotification("Please wait...");
 
-      const currentUser = firebase.auth().currentUser;
+      const { currentUser } = firebase.auth();
 
-      if (currentUser?.email) {
-        await firebase.firestore()
-          .collection("questions")
-          .doc(id)
-          .delete();
-
-        if (haveImage) {
-          await firebase.storage().ref(`${currentUser.uid}/${id}`).delete();
-        }
-
-        removeQuestionFromList(id);
-
-        pushNotification("Question removed...", 2);
-      } else {
+      if (!currentUser) {
         pushNotification("Removed failed", 2);
+        return;
       }
 
+      await firebase.firestore()
+        .collection("questions")
+        .doc(id)
+        .delete();
+
+      if (haveImage) {
+        await firebase.storage().ref(`${currentUser.uid}/${id}`).delete();
+      }
+
+      removeQuestionFromList(id);
+
+      pushNotification("Question removed...", 2);
     }
     catch (error) {
       pushNotification(error.message, 2);
     }
-
   }
 
   return { fetchQuestion, removeQuestion, uploadQuestion };
