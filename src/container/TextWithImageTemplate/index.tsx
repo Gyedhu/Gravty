@@ -12,11 +12,12 @@ import { TextWithImageTemplateProps } from "../../types/pageElements";
 
 
 const TextWithImageTemplate: React.FC<TextWithImageTemplateProps> =
-  ({ side, url, title, subTitle }) =>
+  ({ side, url, title, subTitle, border }) =>
 
     <FlexView gap="10px">
       {(side === "left" || side === undefined) && url &&
         <UrlImage
+          border={border}
           rounded
           url={url ? url : ""}
           height="50px" width="50px"

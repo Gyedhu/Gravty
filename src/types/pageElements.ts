@@ -36,6 +36,7 @@ export interface ImageProps {
 
 // TextWithImageTemplate
 export interface TextWithImageTemplateProps {
+  border?: boolean;
   url?: string;
   title: string;
   subTitle?: string;

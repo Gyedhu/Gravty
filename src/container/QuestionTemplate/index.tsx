@@ -75,9 +75,9 @@ const QuestionTemplate: React.FC<Props> = ({ delay, id, commentCount, imageUrl, 
         <Button
           shadow
           onClick={() => setShowComments(prev => !prev)}
-          className={comments ? "ri-arrow-drop-up-line" : "ri-arrow-drop-down-line"}
+          className={showComments ? "ri-arrow-drop-up-line" : "ri-arrow-drop-down-line"}
           size="15px"
-          title={(comments ? "Hide" : "Show") + " comments"}
+          title={(showComments ? "Hide" : "Show") + " comments"}
         />
       </FlexView>
 
@@ -102,12 +102,13 @@ const QuestionTemplate: React.FC<Props> = ({ delay, id, commentCount, imageUrl, 
               paddingVertical="20px"
             >
               <TextWithImageTemplate
+                border={true}
                 title={value.auther}
                 subTitle={value.email}
                 url={value.imageUrl}
               />
 
-              <Text size="18px"> {value.content} </Text>
+              <Text alignJustify size="18px"> {value.content} </Text>
               <FlexView
                 align="center"
                 gap="15px"
