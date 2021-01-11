@@ -18,4 +18,4 @@ const Paragraph: React.FC<ParagraphProps> = ({ header, intent, content }) =>
     </Text>
   </FlexView>
 
-export default Paragraph;
+export default Paragraph; 

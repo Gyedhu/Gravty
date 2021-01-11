@@ -7,7 +7,7 @@ import { FlexView } from "../../components";
 // Containers 
 import {
   View,
-  PageListMap,
+  PageMap,
   PageTitle
 } from "..";
 
@@ -35,7 +35,7 @@ const Page = () => {
       {
         data
           ? data.map((value: PageMapables, index: number) =>
-            <PageListMap key={index}   {...value} />
+            <PageMap key={index}   {...value} />
           )
           : ""
       }

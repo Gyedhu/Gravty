@@ -19,11 +19,11 @@ export { default as WriteParagraph } from "./Write/WriteParagraph";
 export { default as WriteList } from "./Write/WriteList";
 
 
-// View 
+// common 
 export { default as View } from "./View";
-
-// Form 
+export { default as TextWithImageTemplate } from "./TextWithImageTemplate";
 export { default as FormContainer } from "./FormContainer";
+export { default as Header } from "./Header";
 
 // Buttons tools 
 export { default as ButtonSet } from "./Button/ButtonSet";
@@ -43,15 +43,15 @@ export { default as QuestionList } from "./QuestionList";
 
 
 // Page 
-export { default as PageTitle } from "./PageTitle";
+export { default as PageTitle } from "./Page/PageTitle";
+export { default as Paragraph } from "./Page/Paragraph";
+export { default as List } from "./Page/List";
+export { default as Image } from "./Page/Image";
+export { default as PageMap } from "./Page/PageMap";
 
-export { default as TextWithImageTemplate } from "./TextWithImageTemplate";
-export { default as List } from "./List";
-export { default as Paragraph } from "./Paragraph";
-export { default as Header } from "./Header";
+
+
+
 export { default as PageEditorElemenetSelector } from "./PageEditorElemenetSelector";
 export { default as PageEditButtons } from "./PageEditorButtons";
-export { default as Page } from "./Page";
-export { default as PageListMap } from "./PageListMap";
-export { default as Image } from "./Image";
-
+// export { default as Page } from "./MainPage";

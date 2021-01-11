@@ -3,11 +3,9 @@ import {
   Switch
 } from "react-router-dom";
 
-// Container 
-import { Page } from "../container";
-
 // Pages
 import {
+  Page,
   Home,
   PageEditor,
   Signin,
