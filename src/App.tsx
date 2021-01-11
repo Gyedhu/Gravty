@@ -8,6 +8,9 @@ import { useEffect } from "react";
 function App() {
 
   useEffect(() => {
+    window.addEventListener("beforeunload", e => {
+      e.returnValue = false;
+    });
   }, []);
 
   const message = useSelector<State, NotificationState["message"]>(state => state.notification.message);
