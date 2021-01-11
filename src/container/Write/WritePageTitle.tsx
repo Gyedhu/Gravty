@@ -9,7 +9,7 @@ import { State } from "../../redux/store";
 import { UserDataState } from "../../redux/userData/type";
 
 // Containers
-import { WriterButtonSet, View } from "..";
+import { WritePageButton, View } from "..";
 
 // Hooks
 import { useWriterMethods } from "../hooks";
@@ -18,7 +18,7 @@ import { useWriterMethods } from "../hooks";
 import { PAGE_TITLE } from "../../types/pageMapables";
 
 
-const MainHeaderWriter = () => {
+const WritePageTitle = () => {
 
   // Get write methods
   const { onClear, onFocus, onSubmit } = useWriterMethods();
@@ -89,7 +89,7 @@ const MainHeaderWriter = () => {
 
 
     {/* Submit and Clear */}
-    <WriterButtonSet
+    <WritePageButton
       onClear={onClear}
       onSubmit={_onSubmit}
     />
@@ -97,4 +97,4 @@ const MainHeaderWriter = () => {
   </View>
 }
 
-export default MainHeaderWriter;
+export default WritePageTitle;

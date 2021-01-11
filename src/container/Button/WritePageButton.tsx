@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { ChangeEvent, useEffect, useRef, useState } from "react";
 
 // Components
 import { FlexView, TextArea } from "../../components";
@@ -10,69 +10,48 @@ import { WriterButtonSet, View } from "..";
 import { useWriterMethods } from "../hooks";
 import { PARAGRAPH } from "../../types/pageMapables";
 
-// Types 
+// Types  
 
-
-
-const ParagraphWithHeaderWriter = () => {
+const WriteParagraph = () => {
 
   // Get write methods
   const { onClear, onFocus, onSubmit } = useWriterMethods();
 
-  // --- Local State ---
-  const [header, setHeader] = React.useState("");
-  const [paragraph, setParagraph] = React.useState("");
+  // --- Local State --- 
+  const [paragraph, setParagraph] = useState("");
   const TextAreaRef = useRef<HTMLTextAreaElement | null>(null);
 
   // Automatic focus
   useEffect(() => TextAreaRef.current?.focus(), []);
 
-  // --- Read header --- 
-  const readHeader = (event: React.ChangeEvent<HTMLTextAreaElement>) =>
-    setHeader(event.currentTarget.value);
-
   // --- Read Paragraph ---  
-  const readParagraph = (event: React.ChangeEvent<HTMLTextAreaElement>) =>
+  const readParagraph = (event: ChangeEvent<HTMLTextAreaElement>) =>
     setParagraph(event.currentTarget.value);
-
 
   // --- Submit ---
   const _onSubmit = () => {
 
-    if (header && paragraph) {
+    // check the paragraph is given
+    if (paragraph) {
       onSubmit({
         contentType: PARAGRAPH,
-        content: paragraph,
-        header: header
+        content: paragraph
       });
-
     }
   }
 
   return <View type="medium">
     <FlexView direction="column" gap="10px">
 
-      {/* Heading text field */}
+      {/* Paragraph */}
       <TextArea
-        name="header"
-        onChange={readHeader}
-        onFocus={onFocus}
-        placeholder="Heading"
-        ref={TextAreaRef}
-        size={1}
-        type="dashed"
-      />
-
-      {/* Paragraph text field */}
-      <TextArea
-        name="paragraph"
         onChange={readParagraph}
         onFocus={onFocus}
         placeholder="Paragraph"
+        ref={TextAreaRef}
         size={5}
         type="dashed"
       />
-
 
       {/* Submit and Clear */}
       <WriterButtonSet
@@ -84,4 +63,4 @@ const ParagraphWithHeaderWriter = () => {
   </View>
 }
 
-export default ParagraphWithHeaderWriter;
+export default WriteParagraph;

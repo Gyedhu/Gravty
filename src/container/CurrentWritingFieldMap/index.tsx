@@ -3,11 +3,11 @@ import { useSelector } from "react-redux";
 
 // Containers
 import {
-  MainHeaderWriter,
-  ListWriter,
-  ImageWriter,
-  ParagraphWriter,
-  ParagraphWithHeaderWriter
+  WritePageTitle,
+  WriteList,
+  WriteQuestion,
+  WriteParagraph,
+  WriteParagraphWithTitle
 } from "..";
 
 // State, Redux and actions
@@ -31,19 +31,19 @@ const CurrentWritingFieldMap = () => {
   switch (currentWriting) {
 
     case PAGE_TITLE:
-      return <MainHeaderWriter />
+      return <WritePageTitle />
 
     case PARAGRAPH_WITH_HEADER:
-      return <ParagraphWithHeaderWriter />
+      return <WriteParagraphWithTitle />
 
     case PARAGRAPH:
-      return <ParagraphWriter />
+      return <WriteParagraph />
 
     case LIST:
-      return <ListWriter />
+      return <WriteList />
 
     case IMAGE:
-      return <ImageWriter />
+      return <WriteQuestion />
 
     default: return null;
   }

@@ -11,6 +11,12 @@ export { default as ProfileDisplayCard } from "./profile/ProfileDisplayCard";
 
 // Write
 export { default as WriteQuestion } from "./Write/WriteQuestion";
+export { default as WriteQuestionTextArea } from "./Write/WriteQuestionTextArea";
+export { default as WritePage } from "./Write/WritePage";
+export { default as WritePageTitle } from "./Write/WritePageTitle";
+export { default as WriteParagraphWithTitle } from "./Write/WriteParagraphWithTitle";
+export { default as WriteParagraph } from "./Write/WriteParagraph";
+export { default as WriteList } from "./Write/WriteList";
 
 
 // View 
@@ -20,17 +26,13 @@ export { default as View } from "./View";
 export { default as FormContainer } from "./FormContainer";
 
 // Buttons tools 
-export { default as ButtonSet } from "./ButtonSet";
+export { default as ButtonSet } from "./Button/ButtonSet";
+export { default as WritePageButton } from "./Button/WritePageButton";
 
-// Write tools
-export { default as QuestionWriteBox } from "./QuestionWriteBox";
+
+
+// Write tools 
 export { default as CurrentWritingFieldMap } from "./CurrentWritingFieldMap";
-export { default as MainHeaderWriter } from "./MainHeaderWriter";
-export { default as ParagraphWithHeaderWriter } from "./ParagraphWithHeaderWriter";
-export { default as ParagraphWriter } from "./ParagraphWriter";
-export { default as ListWriter } from "./ListWriter";
-export { default as ImageWriter } from "./ImageWriter";
-export { default as WriterButtonSet } from "./WriterButtonSet";
 
 
 
@@ -45,7 +47,6 @@ export { default as PageTitle } from "./PageTitle";
 
 export { default as TextWithImageTemplate } from "./TextWithImageTemplate";
 export { default as List } from "./List";
-export { default as WritePage } from "./WritePage";
 export { default as Paragraph } from "./Paragraph";
 export { default as Header } from "./Header";
 export { default as PageEditorElemenetSelector } from "./PageEditorElemenetSelector";

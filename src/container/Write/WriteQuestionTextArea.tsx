@@ -11,11 +11,10 @@ import {
 } from "../../components";
 
 interface Props {
-  onSubmit: (
-    data: string, file?: File | null, callback?: () => void) => void;
+  onSubmit: (data: string, file?: File | null, callback?: () => void) => void;
 };
 
-const QuestionWriteBox: React.FC<Props> = ({ onSubmit }) => {
+const WriteQuestionTextArea: React.FC<Props> = ({ onSubmit }) => {
 
   // State 
   const [data, setData] = React.useState("");
@@ -104,4 +103,4 @@ const QuestionWriteBox: React.FC<Props> = ({ onSubmit }) => {
   </FlexView>
 }
 
-export default QuestionWriteBox;
+export default WriteQuestionTextArea;

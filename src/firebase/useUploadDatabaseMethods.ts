@@ -39,11 +39,11 @@ const useUploadsDatabaseMethods = () => {
       const { currentUser } = firebase.auth();
 
       if (!currentUser) {
-        pushNotification("Push failed");
+        pushNotification("Push failed", 2);
         return
       }
       if (!currentUser.email) {
-        pushNotification("Push failed");
+        pushNotification("Push failed", 2);
         return;
       }
 
@@ -61,6 +61,7 @@ const useUploadsDatabaseMethods = () => {
         views: 0,
         comments: [],
       };
+
 
       // Upload data to 'questions/',
       // and get the id

@@ -11,7 +11,7 @@ import { useWriterMethods } from "../hooks";
 import { LIST } from "../../types/pageMapables";
 
 // Types  
-const ListWriter = () => {
+const WriteList = () => {
 
   // Get write method
   const { onClear, onFocus, onSubmit } = useWriterMethods();
@@ -97,4 +97,4 @@ const ListWriter = () => {
   </View>
 }
 
-export default ListWriter;
+export default WriteList;

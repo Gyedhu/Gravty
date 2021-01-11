@@ -27,7 +27,7 @@ export interface QuestionProps {
 
 
 export interface QuestionState {
-  questions: Array<QuestionProps>; 
+  questions: Array<QuestionProps>;
 };
 
 

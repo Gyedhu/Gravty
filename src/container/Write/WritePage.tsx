@@ -1,22 +1,23 @@
 import React from "react";
 
-// Components
-import {
-  Button,
-  FlexView
-} from "../../components";
+// components
+import { Button, FlexView } from "../../components";
 
-// Container
+// container
 import { List, Paragraph } from "..";
 
-const WritePage = () => {
+// types
 
+const WritePage = () => {
   return <FlexView direction="column">
+
+    {/* Title */}
     <Paragraph
       header="What is Pages?"
       content="Page are a tool to make an information page with a set of data"
     />
 
+    {/* List of features */}
     <List
       listItems={[
         "Your can write your ideas thoughts and articles or other informations as pages here",
@@ -27,6 +28,7 @@ const WritePage = () => {
     />
 
 
+    {/* Create new document button */}
     <FlexView direction="column" paddingVertical="20px">
       <Button border className="ri-file-line" to="/write/page-editor" width="200px" title="Create new page" />
     </FlexView>

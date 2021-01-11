@@ -4,7 +4,7 @@ import React from "react";
 import { FlexView, Text } from "../../components";
 
 // container
-import QuestionWriteBox from "../QuestionWriteBox";
+import { WriteQuestionTextArea } from "..";
 
 // firebase
 import { useUploadDatabaseMethods } from "../../firebase";
@@ -34,7 +34,8 @@ const WriteQuestion = () => {
       As a testing phase, you can only upload 5 question
     </Text>
 
-    <QuestionWriteBox onSubmit={_uploadQuestion} />
+    {/* Write Area */}
+    <WriteQuestionTextArea onSubmit={_uploadQuestion} />
   </FlexView>
 }
 

@@ -12,7 +12,7 @@ import { PARAGRAPH } from "../../types/pageMapables";
 
 // Types  
 
-const ParagraphWriter = () => {
+const WriteParagraph = () => {
 
   // Get write methods
   const { onClear, onFocus, onSubmit } = useWriterMethods();
@@ -63,4 +63,4 @@ const ParagraphWriter = () => {
   </View>
 }
 
-export default ParagraphWriter;
+export default WriteParagraph;

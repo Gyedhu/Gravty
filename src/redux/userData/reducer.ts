@@ -1,5 +1,6 @@
 
 // Types
+import { Desktop } from "../../assets/images";
 import {
   UserDataState,
   UserDataActionTypes,
@@ -10,10 +11,10 @@ import {
 
 const inialState: UserDataState = {
   data: {
-    imageUrl: "",
-    name: "",
-    email: "",
-    profession: "",
+    imageUrl: Desktop,
+    name: "Cristian Justin",
+    email: "CRIJUS@gmail.com",
+    profession: "Dancer",
     uploads: 0,
     friends: 0,
     stars: 0,
