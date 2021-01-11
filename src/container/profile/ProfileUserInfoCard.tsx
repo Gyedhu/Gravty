@@ -1,22 +1,49 @@
 import React from "react";
 import { useSelector } from "react-redux";
+
+// components
 import { FlexView, UrlImage, Text } from "../../components";
+
+// Redux
 import { State } from "../../redux/store";
 import { UserDataState } from "../../redux/userData/type";
 
-            
-// Dashcard
-const DashCard: React.FC<{ title: string; value: number }> = ({ title, value }) =>
-  <FlexView align="center" direction="column" justify="flex-end" popup>
+
+
+// Dashcard 
+
+interface DashCardProps {
+  title: string;
+  value: Number;
+};
+
+const DashCard: React.FC<DashCardProps> = ({ title, value }) =>
+  <FlexView
+    align="center"
+    direction="column"
+    justify="flex-end"
+    popup
+  >
     <Text>{value}</Text>
     <Text size="15px">{title}</Text>
   </FlexView >
 
 
-const UserData = () => {
+
+// UserInfoCard
+
+const UserInfoCard = () => {
 
   // Get user data from state
-  const { imageUrl, name, email, profession, uploads, friends, stars } = useSelector<State, UserDataState>(state => state.userData);
+  const {
+    imageUrl,
+    name,
+    email,
+    profession,
+    uploads,
+    friends,
+    stars
+  } = useSelector<State, UserDataState>(state => state.userData);
 
   return <FlexView
     align="center"
@@ -28,7 +55,13 @@ const UserData = () => {
   >
 
     {/* User image */}
-    <UrlImage border rounded url={imageUrl ? imageUrl : ""} height="150px" width="150px" />
+    <UrlImage
+      border
+      rounded
+      url={imageUrl ? imageUrl : ""}
+      height="150px"
+      width="150px"
+    />
 
     {/* User info */}
     <FlexView direction="column">
@@ -54,5 +87,5 @@ const UserData = () => {
   </FlexView>
 }
 
+export default UserInfoCard;
 
-export default UserData;
