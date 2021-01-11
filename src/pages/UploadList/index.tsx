@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import React, { memo, useEffect } from "react";
 import "firebase/firestore";
 import { useHistory } from "react-router-dom";
 
@@ -18,13 +18,21 @@ interface UploadListProps {
 
 const UploadList: React.FC<UploadListProps> = ({ type }) => {
 
+  // Fetch question methods
   const { fetchQuestion } = useUploadsDatabaseMethods();
 
+  // router
   const router = useHistory();
 
-  const ChangeRoute = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    router.replace(`/upload-list/${event.currentTarget.value}`);
-  }
+  // change router method
+  const ChangeRoute =
+    (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+      router.replace(`/upload-list/${event.currentTarget.value}`);
+    }
+
+
+  // Fetch Questions
+  useEffect(() => { fetchQuestion() }, [fetchQuestion]);
 
   return <View type="medium">
 
