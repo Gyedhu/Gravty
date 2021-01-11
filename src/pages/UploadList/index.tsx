@@ -9,7 +9,7 @@ import { Button, FlexView } from "../../components";
 import { Header, QuestionList, View } from "../../container";
 
 // type 
-import useUploadsDatabaseMethods from "../../firebase/useUploadsDatabaseMethods";
+import useUploadsDatabaseMethods from "../../firebase/useUploadDatabaseMethods";
 
 
 interface UploadListProps {

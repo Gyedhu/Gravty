@@ -6,7 +6,7 @@ import { FlexView, Text } from "../../components";
 
 // Containers
 import { QuestionWriteBox } from "..";
-import { useUploadsDatabaseMethods } from "../../firebase";
+import { useUploadDatabaseMethods } from "../../firebase";
 import { useSelector } from "react-redux";
 import { UserDataState } from "../../redux/userData/type";
 import { State } from "../../redux/store";
@@ -14,7 +14,7 @@ import { State } from "../../redux/store";
 const WriteQuestion = () => {
 
   // Upload method
-  const { uploadQuestion } = useUploadsDatabaseMethods();
+  const { uploadQuestion } = useUploadDatabaseMethods();
   const { email } = useSelector<State, UserDataState["data"]>(state => state.userData.data);
 
   const _uploadQuestion =

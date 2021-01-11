@@ -9,17 +9,15 @@ import {
 } from "../../container";
 
 // firebase
-import { useGetUserData } from "../../firebase"; 
+import { useGetUserData } from "../../firebase";
 
 const Profile = () => {
 
   // Fetch use data method
   const { getData } = useGetUserData();
 
-
   // fetch user data
   useEffect(getData, [getData]);
-  console.log("..")
 
   return <View type="medium">
 

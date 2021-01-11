@@ -33,7 +33,7 @@ const useUploadsDatabaseMethods = () => {
         const { currentUser } = firebase.auth();
 
         if (currentUser) {
-          
+
           if (currentUser.email && currentUser.displayName) {
 
             // Get email and uid
@@ -109,8 +109,7 @@ const useUploadsDatabaseMethods = () => {
 
         // If data is exixst
         if (questions.length) {
-          // Store the data 
-          console.log(questions)
+          // Store the data  
           storeQuestions(questions);
         }
 
