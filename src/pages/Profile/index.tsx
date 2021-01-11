@@ -1,7 +1,8 @@
-import React, { useEffect } from "react";
+import React from "react";
 
 // Containers
 import {
+  ProfileNavigation,
   ProfileTitle,
   View
 } from "../../container";
@@ -15,6 +16,8 @@ const Profile = () => {
     <ProfileTitle />
 
     {/* Profile Navigation */}
+    <ProfileNavigation />
+
     {/* Profile Display Card */}
 
   </View>

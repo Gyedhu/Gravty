@@ -5,6 +5,7 @@ export { default as ImageDisplay } from "./ImageDisplay";
 
 // Profile
 export { default as ProfileTitle } from "./profile/ProfileTitle";
+export { default as ProfileNavigation } from "./profile/ProfileNavigation";
 
 // View 
 export { default as View } from "./View";
