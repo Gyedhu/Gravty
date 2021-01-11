@@ -1,3 +1,4 @@
+import { useCallback } from "react";
 import firebase from "firebase/app";
 import "firebase/firestore";
 import "firebase/auth";
@@ -12,7 +13,6 @@ import useQuestionRedux from "../useRedux/useQuestionsRedux";
 
 // firebase costum hook methods
 import useUploadImage from "./useUploadImage";
-import { useCallback } from "react";
 
 
 const useUploadsDatabaseMethods = () => {
@@ -100,7 +100,7 @@ const useUploadsDatabaseMethods = () => {
   const fetchQuestion = useCallback(async () => {
 
     // Declare a vaiable
-    const questions: Array<QuestionProps> = [];
+    let questions: Array<QuestionProps> = [];
 
     try {
       const { currentUser } = firebase.auth();

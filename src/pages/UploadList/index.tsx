@@ -48,12 +48,15 @@ const UploadList: React.FC<UploadListProps> = ({ type }) => {
     {/* Navigation */}
     <FlexView gap="30px" justify="space-between">
       <FlexView gap="30px" popup>
+
+        {/* Goto questions */}
         <Button onClick={ChangeRoute}
           active={type === "questions"}
           value="questions"
           title="Questions"
         />
 
+        {/* View pages */}
         <Button onClick={ChangeRoute}
           active={type === "pages"}
           value="pages"
@@ -61,6 +64,8 @@ const UploadList: React.FC<UploadListProps> = ({ type }) => {
         />
       </FlexView>
 
+
+      {/* Manaual fetch button */}
       <FlexView popup>
         <Button
           background

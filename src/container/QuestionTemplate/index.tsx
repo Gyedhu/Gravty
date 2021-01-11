@@ -86,10 +86,21 @@ const QuestionTemplate: React.FC<Props> = ({ delay, id, commentCount: comments, 
     {
       commentsContent &&
       comment &&
-      <FlexView direction="column" gap="30px" paddingHorizontal="10px" paddingVertical="10px">
+      <FlexView
+        direction="column"
+        gap="30px"
+        paddingHorizontal="10px"
+        paddingVertical="10px"
+      >
         {
-          commentsContent.map((value) =>
-            <FlexView direction="column" gap="15px" paddingHorizontal="20px" paddingVertical="20px">
+          commentsContent.map((value, index) =>
+            <FlexView
+              key={index}
+              direction="column"
+              gap="15px"
+              paddingHorizontal="20px"
+              paddingVertical="20px"
+            >
               <TextWithImageTemplate
                 title={value.auther}
                 subTitle={value.email}
@@ -97,7 +108,12 @@ const QuestionTemplate: React.FC<Props> = ({ delay, id, commentCount: comments, 
               />
 
               <Text size="18px"> {value.content} </Text>
-              <FlexView align="center" gap="15px" justify="space-between" wrap="wrap">
+              <FlexView
+                align="center"
+                gap="15px"
+                justify="space-between"
+                wrap="wrap"
+              >
                 <Text size="15px"> Uploaded : {value.timestamp.toDate().toLocaleString()} </Text>
               </FlexView>
             </FlexView>
