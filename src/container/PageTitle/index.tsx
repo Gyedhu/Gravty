@@ -36,15 +36,13 @@ const PageTitle: React.FC<PageTitleProps> = ({ imageUrl, auther, date, title, su
       gap="30px"
       justify="space-between"
       wrap="wrap"
-    >
-
-      <div style={{ color: "#555" }} >
-        <FlexView align="center" gap="10px" wrap="wrap">
-          <Button size="15px" title="203 Views" />  &bull;
+    > 
+    
+      <FlexView align="center" gap="10px" wrap="wrap">
+        <Button size="15px" title="203 Views" />  &bull;
           <Button size="15px" title="20 Likes" /> &bull;
           <Button size="15px" title="93 Comments" />
-        </FlexView>
-      </div>
+      </FlexView>
 
       <TextWithImageTemplate
         url={imageUrl}
