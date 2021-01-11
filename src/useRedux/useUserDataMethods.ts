@@ -25,6 +25,6 @@ export default function useUserDataMethods() {
     dispatch(clearUserData());
   }, [dispatch]);
 
-  return { storeUserData, setStatusLoaded, clearUserData };
+  return { storeUserData, setStatusLoaded, resetUserData };
 
 }
