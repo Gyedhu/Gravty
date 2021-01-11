@@ -1,23 +1,32 @@
 export const SET_USER_DATA = "SET_USER_DATA";
 export const CLEAR_USER_DATA = "CLEAR_USER_DATA";
+export const SET_STATUS_NOT_EMPTY = "SET_STATUS_NOT_EMPTY";
 
 export interface UserDataState {
-  imageUrl?: string;
-  name: string;
-  email: string;
-  profession: string;
-  uploads: number;
-  friends: number;
-  stars: number;
-};
+  data: {
+    imageUrl?: string;
+    name: string;
+    email: string;
+    profession: string;
+    uploads: number;
+    friends: number;
+    stars: number;
+  };
+
+  empty: boolean;
+}
 
 export interface SetUserData {
   type: typeof SET_USER_DATA;
-  payload: UserDataState;
+  payload: UserDataState["data"];
+};
+
+export interface SetStatusNotEmpty {
+  type: typeof SET_STATUS_NOT_EMPTY;
 };
 
 export interface ClearUserData {
   type: typeof CLEAR_USER_DATA;
 };
 
-export type UserDataActionTypes = SetUserData | ClearUserData;
+export type UserDataActionTypes = SetUserData | ClearUserData | SetStatusNotEmpty;

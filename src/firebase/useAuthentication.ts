@@ -33,10 +33,10 @@ const useAuthentication = () => {
       await firebase.auth().signInWithEmailAndPassword(email, password);
 
       // Get use Data
-      getData();
+      // getData();
 
       // Change  route
-      history.replace("/");
+      history.replace("/profile");
 
     } catch (error) {
 
@@ -57,7 +57,7 @@ const useAuthentication = () => {
   const signup = async (data: UserData) => {
 
     const { email, name, profession, password } = data;
-    let userData: UserDataState = {
+    let userData: UserDataState["data"] = {
       email,
       name,
       profession,

@@ -1,5 +1,9 @@
-import React, { useEffect } from "react";
-import { User } from "../../assets/images";
+import React, { memo, useEffect } from "react";
+
+// firebase
+import firebase from "firebase";
+import "firebase/firestore";
+import "firebase/auth";
 
 // Containers
 import {
@@ -8,30 +12,81 @@ import {
   ProfileTitle,
   View
 } from "../../container";
-import { useUserDataMethods } from "../../useRedux";
+import { useNotification, useUserDataMethods } from "../../useRedux";
+import { UserDataState } from "../../redux/userData/type";
+import { useSelector } from "react-redux";
+import { State } from "../../redux/store";
 
 
 const Profile = () => {
 
-  // useData methods
-  const { storeUserData } = useUserDataMethods();
+  // userData methods
+  const { storeUserData, setStatusLoaded } = useUserDataMethods();
 
-  const fetchUser = () => {
-    setTimeout(() => {
-      storeUserData({
-        email: "Yedhu@gmail.com",
-        friends: 20,
-        name: "Yedhumohanan.G",
-        profession: "Fullstack developer",
-        stars: 3,
-        uploads: 23,
-        imageUrl: User
+  // notification methods
+  const { pushNotification } = useNotification();
+
+  // Userdata load status
+  const { empty } = useSelector<State, UserDataState>(state => state.userData);
+
+
+  // fetch
+  const fetchUserData = () => new Promise(
+    async (resolve, reject) => {
+
+      const { currentUser } = firebase.auth();
+
+      // checking the current user 
+      // if there is no user no fetch going to be heppened!
+      if (!currentUser)
+        reject({ message: "Error while fetching information" });
+
+      else if (currentUser.email) {
+
+        try {
+          // Fetching from`global-users/{email}`
+          const response = await firebase.firestore()
+            .collection("global-users")
+            .doc(currentUser.email)
+            .get();
+
+
+          // Checking the data is exist or not
+          if (response.exists)
+            resolve(response.data());
+          else
+            reject({ message: "No data available" });
+
+        }
+        catch (error) {
+          reject(error);
+        }
+      }
+    }
+  )
+
+
+  // User data fetch function
+  const getUserData = () => {
+    pushNotification("Fetching your account information");
+
+    // Fetch only if data is not fetched  
+    fetchUserData()
+      .then(data => {
+        storeUserData(data as UserDataState["data"]);
+        setStatusLoaded();
+        pushNotification("Fetch success", 2);
       })
-    }, 2000);
+      .catch(error => pushNotification(error.message, 2));
   }
 
   // fetch user data
-  useEffect(fetchUser, []);
+  useEffect(
+    getUserData,
+    [empty, storeUserData, setStatusLoaded, pushNotification]
+  );
+
+  console.log("rendering")
 
   return <View type="medium">
 
@@ -49,5 +104,5 @@ const Profile = () => {
 }
 
 
-export default Profile;
+export default memo(Profile);
 

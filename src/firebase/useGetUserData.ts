@@ -18,7 +18,7 @@ const useGetUserData = () => {
   const { popNotification, pushNotification } = useNotification();
 
   // --- store user data ---
-  const storeUserData = (data: UserDataState) => {
+  const storeUserData = (data: UserDataState["data"]) => {
     dispatch(setUserData(data));
   }
 
@@ -34,7 +34,7 @@ const useGetUserData = () => {
         // checking the username is already in the userName state
         // If there is no username we are going to fetch an store that in state
         // Next time this if condition will be false
-        if (currentUser.email && (userData.name.trim() === "")) {
+        if (currentUser.email && (userData.data.name.trim() === "")) {
           pushNotification("Fetching your account information");
 
           // Fetch information from database
@@ -46,7 +46,7 @@ const useGetUserData = () => {
           // Checking the information in exist or not
           if (userData.exists)
             // store
-            storeUserData(userData.data() as UserDataState);
+            storeUserData(userData.data() as UserDataState["data"]);
           else
             pushNotification("No data available")
         }

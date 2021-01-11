@@ -1,30 +1,28 @@
+import { useCallback } from "react";
 import { useDispatch } from "react-redux";
 import { setNotification } from "../redux/notification/action";
 
 const useNotification = () => {
 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch(); 
 
-  // set notification
-  const notification = (message?: string) => {
-    dispatch(setNotification(message));
-  }
-
+  
   // popdown
-  const popNotification = () => {
-    notification();
-  }
+  const popNotification = useCallback(() => {
+    dispatch(setNotification());
+  }, [dispatch]);
 
   // popup
-  const pushNotification = async (message: string, limit?: number) => {
-    notification(message);
+  const pushNotification = useCallback(async (message: string, limit?: number) => {
+
+    dispatch(setNotification(message));
 
     // notification will popdown after given time
     if (limit) {
       await new Promise(resolve => setTimeout(resolve, limit * 1000));
       popNotification();
     }
-  }
+  }, [dispatch, popNotification]);
 
   return { pushNotification, popNotification };
 

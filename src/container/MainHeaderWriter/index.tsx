@@ -32,7 +32,7 @@ const MainHeaderWriter = () => {
   useEffect(() => TextAreaRef.current?.focus(), []);
 
   // --- State and Dispatch ---   
-  const { name, imageUrl } = useSelector<State, UserDataState>(state => state.userData);
+  const { name, imageUrl } = useSelector<State, UserDataState["data"]>(state => state.userData.data);
 
   // --- Read main header --- 
   const readMainHeader = (event: ChangeEvent<HTMLTextAreaElement>) =>

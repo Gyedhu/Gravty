@@ -43,7 +43,8 @@ const ProfileUserInfoCard = () => {
     uploads,
     friends,
     stars
-  } = useSelector<State, UserDataState>(state => state.userData);
+  } = useSelector<State, UserDataState["data"]>(state => state.userData.data
+  );
 
   return <FlexView
     align="center"

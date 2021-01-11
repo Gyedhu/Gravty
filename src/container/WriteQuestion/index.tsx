@@ -15,7 +15,7 @@ const WriteQuestion = () => {
 
   // Upload method
   const { uploadQuestion } = useUploadsDatabaseMethods();
-  const { email } = useSelector<State, UserDataState>(state => state.userData);
+  const { email } = useSelector<State, UserDataState["data"]>(state => state.userData.data);
 
   const _uploadQuestion =
     async (
