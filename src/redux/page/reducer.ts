@@ -1,4 +1,3 @@
-import { User } from "../../assets/images";
 import {
   ADD_PAGE_DATA,
   ADD_PAGE_HEADER,
@@ -7,12 +6,7 @@ import {
 } from "./type";
 
 const intialState: PageState = {
-  header: {
-    auther: "Yedhu",
-    date: new Date().toLocaleString(),
-    title: "React Higher-Order Components in TypeScript",
-    imageUrl: User,
-  },
+  header: null,
   data: []
 };
 

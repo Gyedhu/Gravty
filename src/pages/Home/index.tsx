@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 // Containers
 import {
@@ -8,7 +8,21 @@ import {
   View
 } from "../../container";
 
+// firebase
+import { useGetUserData } from "../../firebase";
+
+
+
+// Home
 const Home = () => {
+
+  const { getData } = useGetUserData();
+
+  useEffect(() => {
+
+    // Fetch use data
+    getData();
+  }, [getData]);
 
   return <View type="medium">
 

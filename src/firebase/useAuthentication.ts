@@ -9,7 +9,7 @@ import { setNotification } from "../redux/notification/action";
 import { clearUserData } from "../redux/userData/action";
 import { UserDataState } from "../redux/userData/type";
 import useGetUserData from "./useGetUserData";
-import useUploadData from "./useUploadData";
+import { useNotification } from "../hook";
 
 const useAuthentication = () => {
 
@@ -19,19 +19,15 @@ const useAuthentication = () => {
   // history for change route
   const history = useHistory();
 
-  // Fetch data methods 
-  const { pushTo } = useUploadData();
   const { getData } = useGetUserData();
 
   // --- Notification ---
-  const notification = (message: string) => {
-    dispatch(setNotification(message));
-  }
+  const { popNotification, pushNotification } = useNotification();
 
   // --- Signin --- 
   const signin = async (email: string, password: string) => {
     try {
-      notification("Loading...");
+      pushNotification("Loading...");
 
       // Signing in...
       await firebase.auth().signInWithEmailAndPassword(email, password);
@@ -44,10 +40,10 @@ const useAuthentication = () => {
 
     } catch (error) {
 
-      notification(error.message);
+      pushNotification(error.message, 2);
     } finally {
       // Close notification 
-      setTimeout(() => notification(""), 2000);
+      popNotification();
     }
   }
 
@@ -71,27 +67,32 @@ const useAuthentication = () => {
     };
 
     try {
-      notification("Loading...");
+      pushNotification("Loading...");
       await firebase.auth().createUserWithEmailAndPassword(email, password);
 
-      notification("Please wait...");
-      await pushTo(`global-users/${email}/`, userData);
+      pushNotification("Please wait...");
 
-      notification("Account created successfull");
+      // Set use data in database
+      await firebase.firestore()
+        .collection("global-users")
+        .doc(email)
+        .set(userData);
+
+      pushNotification("Account created successfull");
       history.replace("/select-image");
     } catch (error) {
-      notification(error.message);
+      pushNotification(error.message, 2);
     }
     finally {
-      notification("");
+      popNotification();
     }
   }
 
   // Signout
   const signout = async () => {
-    notification("Signing out...");
+    setNotification("Signing out...");
     await firebase.auth().signOut();
-    notification("");
+    popNotification();
     dispatch(clearUserData());
     history.replace("/signin");
   }

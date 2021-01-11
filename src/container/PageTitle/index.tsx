@@ -27,7 +27,7 @@ const PageTitle: React.FC<PageTitleProps> = ({ imageUrl, auther, date, title, su
   >
 
     <FlexView direction="column">
-      <Text align="center" size="42px">{title}</Text>
+      <Text align="center" size="40px">{title}</Text>
       <Text align="center" size="18px">{subTitle}</Text>
     </FlexView>
 
@@ -40,9 +40,9 @@ const PageTitle: React.FC<PageTitleProps> = ({ imageUrl, auther, date, title, su
 
       <div style={{ color: "#555" }} >
         <FlexView align="center" gap="10px" wrap="wrap">
-          <Button size="15px" title="203 Views" className="ri-eye-2-line" />  &bull;
-          <Button size="15px" title="20 Likes" className="ri-thumb-up-line" /> &bull;
-          <Button size="15px" title="93 Comments" className="ri-message-line" />
+          <Button size="15px" title="203 Views" />  &bull;
+          <Button size="15px" title="20 Likes" /> &bull;
+          <Button size="15px" title="93 Comments" />
         </FlexView>
       </div>
 

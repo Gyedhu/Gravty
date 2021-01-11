@@ -32,36 +32,41 @@ const useUploadsDatabaseMethods = () => {
         pushNotification("Uploading question");
         const { currentUser } = firebase.auth();
 
-        if (currentUser?.email) {
+        if (currentUser) {
+          
+          if (currentUser.email && currentUser.displayName) {
 
-          // Get email and uid
-          const { uid } = currentUser;
+            // Get email and uid
+            const { uid } = currentUser;
 
-          // Upload data and get the id
-          const { id } = await firebase.firestore()
-            .collection("questions")
-            .add(data);
-
-          pushNotification("Please wait...");
-
-          // Upload image 
-          if (file) {
-
-            // Get url 
-            const url = await uploadImage(`${uid}/${id}`, file);
-
-            // Store url in database
-            await firebase.firestore()
+            // Upload data and get the id
+            const { id } = await firebase.firestore()
               .collection("questions")
-              .doc(id)
-              .set({ imageUrl: url }, { merge: true });
+              .add(data);
+
+            pushNotification("Please wait...");
+
+            // Upload image 
+            if (file) {
+
+              // Get url 
+              const url = await uploadImage(`${uid}/${id}`, file);
+
+              // Store url in database
+              await firebase.firestore()
+                .collection("questions")
+                .doc(id)
+                .set({ imageUrl: url }, { merge: true });
+            }
+
+            pushNotification("Upload success", 2);
+
+            // Calling callback
+            if (callback)
+              callback();
           }
-
-          pushNotification("Upload success", 2);
-
-          // Calling callback
-          if (callback)
-            callback()
+        } else {
+          pushNotification("Push failed");
         }
 
       } catch (error) {

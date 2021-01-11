@@ -38,7 +38,7 @@ export interface ImageProps {
 export interface TextWithImageTemplateProps {
   url?: string;
   title: string;
-  subTitle: string;
+  subTitle?: string;
   side?: Sides;
 };
 

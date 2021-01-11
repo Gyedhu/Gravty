@@ -5,7 +5,7 @@ import {
 } from "./type";
 
 const initialState: ImageDisplayState = {
-  url: ""
+  url: "" 
 };
 
 export default function reducer(state = initialState, action: ImageDisplayActionsTypes): ImageDisplayState {

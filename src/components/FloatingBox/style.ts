@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 export const FloatBoxContainer = styled.div<FloatingBoxStyleType>`   
   left: 0;
   position: fixed; 
-  transition: .5s;
+  transition: .25s;
   width: 100%;
   z-index: 2; 
 

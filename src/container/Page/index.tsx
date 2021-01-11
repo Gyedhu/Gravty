@@ -23,7 +23,7 @@ const Page = () => {
   // state
   const { data, header } = useSelector<State, PageState>(state => state.page);
 
-  return <View type="medium">
+  return <View type="medium" noPadding>
     {
       header &&
       <PageTitle
@@ -31,7 +31,7 @@ const Page = () => {
       />
     }
 
-    <FlexView direction="column" gap="15px">
+    <FlexView direction="column" gap="15px" paddingHorizontal="10px">
       {
         data
           ? data.map((value: PageMapables, index: number) =>
@@ -40,6 +40,8 @@ const Page = () => {
           : ""
       }
     </FlexView>
+
+    <FlexView paddingVertical="20px" />
   </View>
 }
 

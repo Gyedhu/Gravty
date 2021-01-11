@@ -12,7 +12,7 @@ import { ListProps } from "../../types/pageElements";
 
 
 const List: React.FC<ListProps> = ({ title, listItems, type }) => {
-  return <FlexView direction="column">
+  return <FlexView direction="column" paddingHorizontal="20px" paddingVertical="10px">
 
     {/* Title */}
     {title && <Text size="22px">{title}</Text>}
