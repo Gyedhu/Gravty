@@ -1,41 +1,22 @@
-import React, { useEffect } from "react";
+// components
+import { FlexView } from "../../components";
 
-// Containers
-import {
-  ImageCard,
-  HomeNavBar,
-  ProfileCard,
-  View
-} from "..";
-
-// firebase
-import { useGetUserData } from "../../firebase";
+// containers
+import ProfileUserinfoCard from "./ProfileUserInfoCard";
 
 
 
-// Home
-const Home = () => {
-
-  const { getData } = useGetUserData();
-
-  useEffect(() => {
-
-    // Fetch use data
-    getData();
-  }, [getData]);
-
-  return <View type="medium">
-
-    {/* Profile Card */}
-    <ProfileCard />
-
-    {/* NavBar */}
-    <HomeNavBar />
-
-    {/* HomeCard */}
-    <ImageCard />
-
-  </View>
+// Page Title
+const PageTitle = () => {
+  return <FlexView
+    align="center"
+    delay={.1}
+    justify="space-between"
+    wrap="wrap"
+  >
+    <ProfileUserinfoCard />
+  </FlexView>
 }
 
-export default Home;
+export default PageTitle;
+y

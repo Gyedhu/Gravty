@@ -32,7 +32,7 @@ const DashCard: React.FC<DashCardProps> = ({ title, value }) =>
 
 // UserInfoCard
 
-const UserInfoCard = () => {
+const ProfileUserInfoCard = () => {
 
   // Get user data from state
   const {
@@ -87,5 +87,5 @@ const UserInfoCard = () => {
   </FlexView>
 }
 
-export default UserInfoCard;
+export default ProfileUserInfoCard;
 

@@ -36,8 +36,8 @@ const PageTitle: React.FC<PageTitleProps> = ({ imageUrl, auther, date, title, su
       gap="30px"
       justify="space-between"
       wrap="wrap"
-    > 
-    
+    >
+
       <FlexView align="center" gap="10px" wrap="wrap">
         <Button size="15px" title="203 Views" />  &bull;
           <Button size="15px" title="20 Likes" /> &bull;
