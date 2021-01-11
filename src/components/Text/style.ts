@@ -9,7 +9,7 @@ export const TextContainer = styled.p<TextStylesTypes>`
   gap: 5px;
   margin: 0; 
   text-decoration: ${props => props.underline && "underline "};  
-  text-align: ${props => props.align};
+  text-align: ${props => props.align ? props.align : "justify"};
 
   & > span { 
     font-family: ${({ fancy }) => fancy ? "Redressed" : "jost"};

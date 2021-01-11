@@ -40,7 +40,6 @@ const ParagraphWithHeaderWriter = () => {
   const _onSubmit = () => {
 
     if (header && paragraph) {
-
       onSubmit({
         contentType: PARAGRAPH,
         content: paragraph,

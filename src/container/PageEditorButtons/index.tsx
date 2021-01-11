@@ -10,6 +10,7 @@ import { PageState } from "../../redux/page/type";
 
 // State, Reducers and actions 
 import { setCurrentWriting, setSelectElementBox, } from "../../redux/pageEditor/action";
+import { PageEditorState } from "../../redux/pageEditor/type";
 import { State } from "../../redux/store";
 
 // Types
@@ -22,6 +23,7 @@ const PageEditButtons = () => {
 
   // state
   const { header } = useSelector<State, PageState>(state => state.page);
+  const { currentWriting } = useSelector<State, PageEditorState>(state => state.pageEditor);
 
   // --- SelectElementBox Toggler ---
   const selectElementBoxToggler = () => {
@@ -37,8 +39,8 @@ const PageEditButtons = () => {
       selectElementBoxToggler();
   }
 
-  return <FloatingBox side="bottom" active>
-    <View>
+  return <FloatingBox side="bottom" active={!currentWriting}>
+    <View type="medium">
       <FlexView direction="column" minWidth="100%" popup>
         <ButtonSet
 
@@ -62,8 +64,8 @@ const PageEditButtons = () => {
           }
         />
       </FlexView>
-    </View>
-  </FloatingBox>
+    </View >
+  </FloatingBox >
 }
 
 export default PageEditButtons;

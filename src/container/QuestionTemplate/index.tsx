@@ -30,7 +30,6 @@ const QuestionTemplate: React.FC<Props> = ({ delay, id, commentCount: comments, 
   }
 
   return <FlexView
-    border
     fill="#ffffff"
     direction="column"
     gap="50px"
@@ -67,7 +66,6 @@ const QuestionTemplate: React.FC<Props> = ({ delay, id, commentCount: comments, 
         <Text size="15px"> Uploaded : {timestamp.toDate().toLocaleString()} </Text>
 
         <FlexView gap="20px" justify="flex-end">
-          <Button className="ri-pencil-line" />
           <Button className="ri-share-line" />
           <Button value={`${id}`} onClick={remove} className="ri-delete-bin-3-line" />
         </FlexView>
@@ -91,14 +89,14 @@ const QuestionTemplate: React.FC<Props> = ({ delay, id, commentCount: comments, 
       <FlexView direction="column" gap="30px" paddingHorizontal="10px" paddingVertical="10px">
         {
           commentsContent.map((value) =>
-            <FlexView border shadow direction="column" gap="30px" paddingHorizontal="20px" paddingVertical="20px">
+            <FlexView direction="column" gap="15px" paddingHorizontal="20px" paddingVertical="20px">
               <TextWithImageTemplate
                 title={value.auther}
                 subTitle={value.email}
                 url={value.imageUrl}
               />
 
-              <Text> {value.content} </Text>
+              <Text size="18px"> {value.content} </Text>
               <FlexView align="center" gap="15px" justify="space-between" wrap="wrap">
                 <Text size="15px"> Uploaded : {value.timestamp.toDate().toLocaleString()} </Text>
               </FlexView>

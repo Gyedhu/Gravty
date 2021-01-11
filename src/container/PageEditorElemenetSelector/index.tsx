@@ -39,7 +39,7 @@ const SelectButton: React.FC<SelectButtonProps> = ({ title }) => {
 
 
   // --- selectElement ---
-  const selectElement = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => { 
+  const selectElement = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     dispatch(setCurrentWriting(event.currentTarget.value as mapableConstants));
     dispatch(setSelectElementBox(false));
   }
@@ -47,11 +47,10 @@ const SelectButton: React.FC<SelectButtonProps> = ({ title }) => {
   // Button
   return <Button
     border
-    rounded
     width="fit-content"
     onClick={selectElement}
-    title={title}
-    value={title }
+    title={title.toLowerCase()}
+    value={title}
   />
 }
 
@@ -69,9 +68,9 @@ const PageEditorElemenetSelector = () => {
   // Get selectElementBox from state;
   const { selectElementBox } = useSelector<State, PageEditorState>(state => state.pageEditor);
 
-  return <FloatingBox side="center" active={selectElementBox}>
-    <View fill="#ffffff">
-      <FlexView direction="column" gap="30px" paddingHorizontal="20px" paddingVertical="20px" popup radius="10px" shadow>
+  return <FloatingBox side="bottom" active={selectElementBox}>
+    <View fill="#ffffff" type="medium" noPadding shadow>
+      <FlexView direction="column" gap="30px" paddingHorizontal="20px" paddingVertical="20px" popup>
 
         <FlexView justify="space-between">
           <Paragraph header="Elements" content="Select one you want to add" />
