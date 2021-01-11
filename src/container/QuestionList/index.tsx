@@ -26,8 +26,7 @@ const QuestionList = () => {
           {...value}
         />
       )
-    }
-
+    } 
 
     {
       questions.length === 0 &&

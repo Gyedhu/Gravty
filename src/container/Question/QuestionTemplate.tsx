@@ -6,7 +6,9 @@ import { Button, FlexView, Text } from "../../components";
 import { useUploadDatabaseMethods } from "../../firebase";
 import { setImageDisplayUrl } from "../../redux/imageDisplay/action";
 import { QuestionProps } from "../../redux/question/type";
-import TextWithImageTemplate from "../TextWithImageTemplate";
+
+// container
+import TextWithImageTemplate from "../Common/TextWithImageTemplate";
 
 interface Props extends QuestionProps {
   delay?: number

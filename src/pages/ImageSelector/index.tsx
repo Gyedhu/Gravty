@@ -8,7 +8,7 @@ import "firebase/firestore";
 import { Button, FlexView, UrlImage } from "../../components";
 
 // Container
-import { Header, View } from "../../container";
+import { Title, View } from "../../container";
 
 // Firebase
 import { useUploadImage } from "../../firebase";
@@ -60,7 +60,7 @@ const ImagePicker = () => {
 
   return <View type="small">
 
-    <Header
+    <Title
       title="Select Profile Picture (Optional)"
       subTitle="By doing this other peoples can easely recognize you"
     />

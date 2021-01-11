@@ -6,7 +6,7 @@ import { useHistory } from "react-router-dom";
 import { Button, FlexView } from "../../components";
 
 // container
-import { Header, QuestionList, View } from "../../container";
+import { Title, QuestionList, View } from "../../container";
 
 // type 
 import useUploadsDatabaseMethods from "../../firebase/useUploadDatabaseMethods";
@@ -37,7 +37,7 @@ const UploadList: React.FC<UploadListProps> = ({ type }) => {
   return <View type="medium">
 
     {/* Title */}
-    <Header
+    <Title
       center
       fancy
       title="Your uploads"

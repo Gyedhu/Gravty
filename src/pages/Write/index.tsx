@@ -9,7 +9,7 @@ import {
 
 // Containers
 import {
-  Header,
+  Title,
   WritePage,
   WriteQuestion,
   View
@@ -32,7 +32,7 @@ const Write: React.FC<Props> = ({ type }) => {
 
   return <View type="medium">
 
-    <Header
+    <Title
       center
       title="Write"
       subTitle="Write your questions, ideas and thoughts"

@@ -2,7 +2,7 @@ import React from "react";
 import { Logo } from "../../assets/images";
 import { Button, FlexView, Text } from "../../components";
 import { useAuthentication } from "../../firebase";
-import View from "../View";
+import { View } from "..";
 
 const Navigation = () => {
 
