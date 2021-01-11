@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import {
   WritePageTitle,
   WriteList,
-  WriteQuestion,
+  WriteImage,
   WriteParagraph,
   WriteParagraphWithTitle
 } from "..";
@@ -43,7 +43,7 @@ const CurrentWritingFieldMap = () => {
       return <WriteList />
 
     case IMAGE:
-      return <WriteQuestion />
+      return <WriteImage />
 
     default: return null;
   }

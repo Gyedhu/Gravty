@@ -19,8 +19,6 @@ const reducer = (state: PageState = intialState, action: PageAction) => {
       const newData = state.data?.slice();
       newData?.push(action.payload);
 
-      console.log(newData);
-
       return {
         ...state,
         data: newData

@@ -21,6 +21,7 @@ export { default as WritePageTitle } from "./Write/WritePageTitle";
 export { default as WriteParagraphWithTitle } from "./Write/WriteParagraphWithTitle";
 export { default as WriteParagraph } from "./Write/WriteParagraph";
 export { default as WriteList } from "./Write/WriteList";
+export { default as WriteImage } from "./Write/WriteImage";
 export { default as WriteTextFieldMap } from "./Write/WriteTextFieldMap";
 
 // Buttons tools 

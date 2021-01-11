@@ -15,7 +15,7 @@ import { IMAGE } from "../../types/pageMapables";
 
 // Types  
 
-const WriteImage = () => {
+const ImageWriter = () => {
 
   // Get write method
   const { onClear, onFocus, onSubmit } = useWriterMethods();
@@ -126,4 +126,4 @@ const WriteImage = () => {
   </View>
 }
 
-export default WriteImage;
+export default ImageWriter;
