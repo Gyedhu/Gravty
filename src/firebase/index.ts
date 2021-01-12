@@ -1,3 +1,6 @@
+// uploads
+export { default as useUploadQuestions } from "./Upload/useUploadQuestions";
+
 export { default as useAuthentication } from "./useAuthentication";
 export { default as useUploadImage } from "./useUploadImage";
 export { default as useGetUserData } from "./useGetUserData";

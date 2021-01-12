@@ -17,7 +17,7 @@ const ImageDisplayer = () => {
 
   return <FloatingBox active={Boolean(url)} side="center">
     <FlexView justify="center" paddingHorizontal="10px">
-      <FlexView align="flex-end" direction="column" gap="10px" maxWidth="420px" paddingHorizontal="10px" popup>
+      <FlexView align="flex-end" direction="column" gap="10px" maxWidth="1000px" paddingHorizontal="10px" popup>
         <img src={url !== null ? url : ""} alt="Display" width="100%" />
 
         <Button

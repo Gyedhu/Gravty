@@ -1,57 +1,50 @@
 import firebase from "firebase";
 import "firebase/storage";
 import "firebase/auth";
-import { useDispatch } from "react-redux";
-import { setNotification } from "../redux/notification/action";
+import { useCallback } from "react";
+import { useNotification } from "../useRedux";
 
 const useUploadImage = () => {
 
   // Dispatch
-  const dispatch = useDispatch();
+  const { pushNotification } = useNotification();
 
-  // --- Notification ---
-  const notification = (message: string) => {
-    dispatch(setNotification(message));
-  }
+  const uploadImage = useCallback(
+    (path: string, file: File) => new Promise(
+      async (resolve, reject) => {
 
-  const uploadImage = (path: string, file: File) => new Promise(
-    async (resolve, reject) => {
+        try {
+          pushNotification("Please wait");
+          const ref = firebase.storage().ref(path);
+          const task = ref.put(file);
 
-      try {
-        notification("Please wait");
-        const ref = firebase.storage().ref(path);
-        const task = ref.put(file);
+          task.on("state_change",
 
-        task.on("state_change",
+            // Progress
+            (snapshot) => {
+              const progress = Math.round((snapshot.bytesTransferred / snapshot.totalBytes)) * 100;
+              pushNotification(`Upload ${progress}% finished`);
+            },
 
-          // Progress
-          (snapshot) => {
-            const progress = Math.round((snapshot.bytesTransferred / snapshot.totalBytes)) * 100;
-            notification(`Upload ${progress}% finished`);
-          },
+            // Error
+            (error) => {
+              reject(error);
+            },
 
-          // Error
-          (error) => {
-            reject(error);
-          },
+            // Success
+            async () => {
+              pushNotification("Upload success", 2);
+              const url = await ref.getDownloadURL();
+              resolve(url);
+            }
+          )
 
-          // Successy
-          async () => {
-            notification("Upload success");
-            const url = await ref.getDownloadURL();
-            resolve(url);
-          }
-        )
+        } catch (error) {
+          reject(error);
+        }
 
-      } catch (error) {
-        reject(error);
       }
-      finally {
-        notification("");
-      }
-
-    }
-  )
+    ), [pushNotification]);
 
   return { uploadImage };
 

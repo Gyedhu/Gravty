@@ -39,7 +39,6 @@ const UploadList: React.FC<UploadListProps> = ({ type }) => {
     {/* Title */}
     <Title
       center
-      fancy
       title="Your uploads"
       subTitle="Edit, Delete, Share your uploads"
     />

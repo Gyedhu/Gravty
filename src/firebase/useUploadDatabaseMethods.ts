@@ -58,12 +58,11 @@ const useUploadsDatabaseMethods = () => {
 
       const newQuestion: QuestionProps = {
         auther: currentUser.email,
-        commentCount: 0,
+        comments: 0,
         content: data,
         likes: 0,
         timestamp: firebase.firestore.Timestamp.fromDate(new Date()),
         views: 0,
-        comments: [],
       };
 
 

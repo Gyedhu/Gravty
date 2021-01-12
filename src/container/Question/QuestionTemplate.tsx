@@ -7,14 +7,11 @@ import { useUploadDatabaseMethods } from "../../firebase";
 import { setImageDisplayUrl } from "../../redux/imageDisplay/action";
 import { QuestionProps } from "../../redux/question/type";
 
-// container
-import TextWithImageTemplate from "../Common/TextWithImageTemplate";
-
 interface Props extends QuestionProps {
-  delay?: number
+  delay?: number;
 };
 
-const QuestionTemplate: React.FC<Props> = ({ delay, id, commentCount, imageUrl, content, likes, timestamp, views, comments }) => {
+const QuestionTemplate: React.FC<Props> = ({ delay, id, imageUrl, content, likes, timestamp, views, comments }) => {
 
   const [showComments, setShowComments] = useState(false);
 
@@ -82,49 +79,8 @@ const QuestionTemplate: React.FC<Props> = ({ delay, id, commentCount, imageUrl, 
           title={(showComments ? "Hide" : "Show") + " comments"}
         />
       </FlexView>
-
     </FlexView>
-
-    {
-      showComments &&
-      comments &&
-      <FlexView
-        direction="column"
-        gap="30px"
-        paddingHorizontal="10px"
-        paddingVertical="10px"
-      >
-        {
-          comments.map((value, index) =>
-            <FlexView
-              key={index}
-              direction="column"
-              gap="15px"
-              paddingHorizontal="20px"
-              paddingVertical="20px"
-            >
-              <TextWithImageTemplate
-                border={true}
-                title={value.auther}
-                subTitle={value.email}
-                url={value.imageUrl}
-              />
-
-              <Text alignJustify size="18px"> {value.content} </Text>
-              <FlexView
-                align="center"
-                gap="15px"
-                justify="space-between"
-                wrap="wrap"
-              >
-                <Text size="15px"> Uploaded : {value.timestamp.toDate().toLocaleString()} </Text>
-              </FlexView>
-            </FlexView>
-          )
-        }
-      </FlexView>
-    }
-  </FlexView>
+  </FlexView >
 }
 
 export default QuestionTemplate;
