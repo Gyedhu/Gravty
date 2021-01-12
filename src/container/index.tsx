@@ -1,52 +1,48 @@
-// Navigation
-export { default as Navigation } from "./Navigation";
-export { default as Notification } from "./Notification";
-export { default as ImageDisplay } from "./ImageDisplay";
+// Common
+export { default as View } from "./Common/View";
+export { default as Navigation } from "./Common/Navigation";
+export { default as Notification } from "./Common/Notification";
+export { default as ImageDisplay } from "./Common/ImageDisplay";
+export { default as TextWithImageTemplate } from "./Common/TextWithImageTemplate";
+export { default as FormContainer } from "./Common/FormContainer";
+export { default as Title } from "./Common/Title";
 
-// View 
-export { default as View } from "./View";
+// Profile
+export { default as ProfileTitle } from "./Profile/ProfileTitle";
+export { default as ProfileNavigation } from "./Profile/ProfileNavigation";
+export { default as ProfileDisplayCard } from "./Profile/ProfileDisplayCard";
 
-// Form 
-export { default as FormContainer } from "./FormContainer";
 
-// Homepage
-export { default as ProfileCard } from "./ProfileCard";
-export { default as UserDataCard } from "./UserDataCard";
-export { default as HomeNavBar } from "./HomeNavBar";
-export { default as ImageCard } from "./ImageCard";
+// Write
+export { default as WriteQuestion } from "./Write/WriteQuestion";
+export { default as WriteQuestionTextArea } from "./Write/WriteQuestionTextArea";
+export { default as WritePage } from "./Write/WritePage";
+export { default as WritePageTitle } from "./Write/WritePageTitle";
+export { default as WriteParagraphWithTitle } from "./Write/WriteParagraphWithTitle";
+export { default as WriteParagraph } from "./Write/WriteParagraph";
+export { default as WriteList } from "./Write/WriteList";
+export { default as WriteImage } from "./Write/WriteImage";
+export { default as WriteTextFieldMap } from "./Write/WriteTextFieldMap";
 
 // Buttons tools 
-export { default as ButtonSet } from "./ButtonSet";
-
-// Write tools
-export { default as QuestionWriteBox } from "./QuestionWriteBox";
-export { default as CurrentWritingFieldMap } from "./CurrentWritingFieldMap";
-export { default as MainHeaderWriter } from "./MainHeaderWriter";
-export { default as ParagraphWithHeaderWriter } from "./ParagraphWithHeaderWriter";
-export { default as ParagraphWriter } from "./ParagraphWriter";
-export { default as ListWriter } from "./ListWriter";
-export { default as ImageWriter } from "./ImageWriter";
-export { default as WriterButtonSet } from "./WriterButtonSet";
-
+export { default as ButtonSet } from "./Button/ButtonSet";
+export { default as WritePageButton } from "./Button/WritePageButton";
 
 
 // Question
-export { default as WriteQuestion } from "./WriteQuestion";
-export { default as QuestionTemplate } from "./QuestionTemplate";
+export { default as QuestionTemplate } from "./Question/QuestionTemplate";
 export { default as QuestionList } from "./QuestionList";
 
 
 // Page 
-export { default as PageTitle } from "./PageTitle";
+export { default as PageTitle } from "./Page/PageTitle";
+export { default as Paragraph } from "./Page/Paragraph";
+export { default as List } from "./Page/List";
+export { default as Image } from "./Page/Image";
+export { default as PageMap } from "./Page/PageMap";
+export { default as SentenceWithColon } from "./Page/SentenceWithColon";
 
-export { default as TextWithImageTemplate } from "./TextWithImageTemplate";
-export { default as List } from "./List";
-export { default as WritePage } from "./WritePage";
-export { default as Paragraph } from "./Paragraph";
-export { default as Header } from "./Header";
-export { default as PageEditorElemenetSelector } from "./PageEditorElemenetSelector";
-export { default as PageEditButtons } from "./PageEditorButtons";
-export { default as Page } from "./Page";
-export { default as PageListMap } from "./PageListMap";
-export { default as Image } from "./Image";
 
+// Page editor
+export { default as PageEditorElementSelector } from "./PageEditor/PageEditorElementSelector";
+export { default as PageEditorButtons } from "./PageEditor/PageEditorButtons"; 

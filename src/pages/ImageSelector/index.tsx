@@ -2,15 +2,16 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import firebase from "firebase";
 import "firebase/auth";
+import "firebase/firestore";
 
 // Component
 import { Button, FlexView, UrlImage } from "../../components";
 
 // Container
-import { Header, View } from "../../container";
+import { Title, View } from "../../container";
 
 // Firebase
-import { useGetUserData, useUploadData, useUploadImage } from "../../firebase";
+import { useUploadImage } from "../../firebase";
 
 // Utility
 import { filePicker } from "../../utility";
@@ -19,8 +20,6 @@ const ImagePicker = () => {
 
   const [file, setFile] = useState<File | null>(null);
   const { uploadImage } = useUploadImage();
-  const { pushTo } = useUploadData();
-  const { getData } = useGetUserData();
   const history = useHistory();
 
   // --- Read image ---
@@ -31,30 +30,37 @@ const ImagePicker = () => {
 
   // --- OnSkip ---
   const onSkip = () => {
-    history.replace("/");
-    getData();
+    history.replace("/profile");
   }
 
   // --- Upload Image
   const _upload = async () => {
 
     const { currentUser } = firebase.auth();
-    if (currentUser)
-      if (file && currentUser.uid) {
 
-        try {
-          const url = await uploadImage(`${currentUser.uid}/profile-image.jpg`, file);
-          await pushTo(`global-users/${currentUser.email}`, { imageUrl: url });
-          onSkip();
-        } catch (error) {
-          alert(error.message);
-        }
+    // checking for current user is exist or not
+    if (!currentUser)
+      return;
 
+    else if (file && currentUser.uid && currentUser.email) {
+
+      try {
+        const url = await uploadImage(`${currentUser.uid}/profile-image.jpg`, file);
+        await firebase.firestore()
+          .collection("global-users")
+          .doc(currentUser.email)
+          .set({ imageUrl: url }, { merge: true });
+
+        onSkip();
+      } catch (error) {
+        alert(error.message);
       }
+    }
   }
+
   return <View type="small">
 
-    <Header
+    <Title
       title="Select Profile Picture (Optional)"
       subTitle="By doing this other peoples can easely recognize you"
     />
@@ -70,4 +76,4 @@ const ImagePicker = () => {
   </View>
 }
 
-export default ImagePicker
+export default ImagePicker;

@@ -8,11 +8,11 @@ export const TextContainer = styled.p<TextStylesTypes>`
   font-weight: ${props => props.bold ? "bold" : "normal"};
   gap: 5px;
   margin: 0; 
-  text-decoration: ${props => props.underline && "underline "};  
-  text-align: ${props => props.align ? props.align : "justify"};
+  text-decoration: ${props => props.underline && "underline "};   
+  text-align: ${({ alignJustify }) => alignJustify && "justify"};
 
   & > span { 
-    font-family: ${({ fancy }) => fancy ? "Redressed" : "jost"};
+    font-family: ${({ fancy }) => fancy ? "Redressed" : "jost"}; 
     width: 100%;
   }
 `;

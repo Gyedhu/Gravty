@@ -2,27 +2,22 @@ import firebase from "firebase/app";
 import "firebase/firestore";
 import "firebase/auth";
 
-// Redux
-import { useDispatch } from "react-redux";
+// Redux 
 import { useHistory } from "react-router-dom";
 import { setNotification } from "../redux/notification/action";
-import { clearUserData } from "../redux/userData/action";
 import { UserDataState } from "../redux/userData/type";
-import useGetUserData from "./useGetUserData";
-import { useNotification } from "../hook";
+import { useNotification, useUserDataMethods } from "../useRedux";
 
 const useAuthentication = () => {
-
-  // Dispatch
-  const dispatch = useDispatch();
 
   // history for change route
   const history = useHistory();
 
-  const { getData } = useGetUserData();
-
   // --- Notification ---
   const { popNotification, pushNotification } = useNotification();
+
+  // --- User data methods ---
+  const { resetUserData } = useUserDataMethods();
 
   // --- Signin --- 
   const signin = async (email: string, password: string) => {
@@ -32,17 +27,13 @@ const useAuthentication = () => {
       // Signing in...
       await firebase.auth().signInWithEmailAndPassword(email, password);
 
-      // Get use Data
-      getData();
-
       // Change  route
-      history.replace("/");
+      history.replace("/profile");
 
     } catch (error) {
-
       pushNotification(error.message, 2);
-    } finally {
-      // Close notification 
+    }
+    finally {
       popNotification();
     }
   }
@@ -54,10 +45,11 @@ const useAuthentication = () => {
     password: string;
     profession: string;
   };
+
   const signup = async (data: UserData) => {
 
     const { email, name, profession, password } = data;
-    let userData: UserDataState = {
+    let userData: UserDataState["data"] = {
       email,
       name,
       profession,
@@ -68,6 +60,8 @@ const useAuthentication = () => {
 
     try {
       pushNotification("Loading...");
+
+      // signing up....
       await firebase.auth().createUserWithEmailAndPassword(email, password);
 
       pushNotification("Please wait...");
@@ -79,6 +73,8 @@ const useAuthentication = () => {
         .set(userData);
 
       pushNotification("Account created successfull");
+
+      // change route
       history.replace("/select-image");
     } catch (error) {
       pushNotification(error.message, 2);
@@ -93,7 +89,7 @@ const useAuthentication = () => {
     setNotification("Signing out...");
     await firebase.auth().signOut();
     popNotification();
-    dispatch(clearUserData());
+    resetUserData();
     history.replace("/signin");
   }
 

@@ -22,12 +22,12 @@ export interface QuestionProps {
   commentCount: number;
   timestamp: firebase.firestore.Timestamp;
   likes: number;
-  comment?: Array<CommentProps>
+  comments?: Array<CommentProps>
 };
 
 
 export interface QuestionState {
-  questions: Array<QuestionProps>; 
+  questions: Array<QuestionProps>;
 };
 
 

@@ -3,22 +3,22 @@ import {
   Switch
 } from "react-router-dom";
 
-// Container 
-import { Page } from "../container";
-
 // Pages
 import {
+  Page,
   Home,
   PageEditor,
   Signin,
   Signup,
   Write,
   ImageSelector,
-  UploadList
+  UploadList,
+  Profile
 } from "../pages";
 
 const Router = () => {
   return <Switch>
+    <Route exact component={Profile} path="/profile" />
     <Route exact component={Home} path="/" />
     <Route component={Signin} path="/signin" />
     <Route component={Signup} path="/signup" />
@@ -26,7 +26,7 @@ const Router = () => {
     <Route exact component={Page} path="/page" />
     <Route exact component={ImageSelector} path="/select-image" />
     <Route exact component={UploadList} path="/upload-list" />
-    
+
     <Route exact path="/upload-list/questions">
       <UploadList type="questions" />
     </Route>
@@ -42,7 +42,7 @@ const Router = () => {
       <Write type="page" />
     </Route>
 
-    <Route component={PageEditor} path="/write/page-editor" />
+    <Route component={PageEditor} path="/page/page-editor" />
 
   </Switch>
 }

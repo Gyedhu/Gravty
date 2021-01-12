@@ -3,20 +3,22 @@ import { FlexView } from "../../components";
 
 // Containers
 import {
-  Page,
-  PageEditButtons,
-  PageEditorElemenetSelector,
+  PageEditorButtons,
+  PageEditorElementSelector,
   View,
-  CurrentWritingFieldMap
+  WriteTextFieldMap
 } from "../../container";
+
+// Pages
+import { Page } from "..";
 
 const PageEditor = () => {
 
   return <View>
-    <PageEditButtons />
+    <PageEditorButtons />
     <Page />
-    <CurrentWritingFieldMap />
-    <PageEditorElemenetSelector /> 
+    <WriteTextFieldMap />
+    <PageEditorElementSelector />
     <FlexView minHeight="100px" />
   </View>
 }

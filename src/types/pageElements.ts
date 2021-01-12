@@ -30,15 +30,23 @@ export interface ImageProps {
   header?: string;
   footer?: string;
   fit?: FitStyleTypes;
-  file: FileList;
+  file?: FileList;
 };
 
 
 // TextWithImageTemplate
 export interface TextWithImageTemplateProps {
+  border?: boolean;
   url?: string;
   title: string;
   subTitle?: string;
   side?: Sides;
+};
+
+
+// Sentence with colon
+export interface SentenceWithColonProps {
+  beforeColon: string;
+  sentence: string;
 };
 
