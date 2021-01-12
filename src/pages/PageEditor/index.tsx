@@ -16,8 +16,8 @@ const PageEditor = () => {
 
   return <View>
     <PageEditorButtons />
-    <WriteTextFieldMap />
     <Page />
+    <WriteTextFieldMap />
     <PageEditorElementSelector />
     <FlexView minHeight="100px" />
   </View>

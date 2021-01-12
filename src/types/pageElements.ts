@@ -30,7 +30,7 @@ export interface ImageProps {
   header?: string;
   footer?: string;
   fit?: FitStyleTypes;
-  file: FileList;
+  file?: FileList;
 };
 
 
@@ -41,5 +41,12 @@ export interface TextWithImageTemplateProps {
   title: string;
   subTitle?: string;
   side?: Sides;
+};
+
+
+// Sentence with colon
+export interface SentenceWithColonProps {
+  beforeColon: string;
+  sentence: string;
 };
 

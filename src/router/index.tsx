@@ -42,7 +42,7 @@ const Router = () => {
       <Write type="page" />
     </Route>
 
-    <Route component={PageEditor} path="/write/page-editor" />
+    <Route component={PageEditor} path="/page/page-editor" />
 
   </Switch>
 }

@@ -3,7 +3,8 @@ import {
   ImageProps,
   ListProps,
   PageTitleProps,
-  ParagraphProps
+  ParagraphProps,
+  SentenceWithColonProps
 } from "./pageElements";
 
 // --- Constants ---
@@ -12,6 +13,7 @@ export const PARAGRAPH = "PARAGRAPH";
 export const LIST = "LIST";
 export const IMAGE = "IMAGE";
 export const PAGE_TITLE = "PAGE_TITLE";
+export const SETNTENCE_WITH_COLON = "SETNTENCE_WITH_COLON";
 
 
 // Set of constants
@@ -21,6 +23,7 @@ export type mapableConstants =
   typeof IMAGE |
   typeof PAGE_TITLE |
   typeof PARAGRAPH_WITH_HEADER |
+  typeof SETNTENCE_WITH_COLON |
   null;
 
 
@@ -48,13 +51,18 @@ export interface ListMapable extends ListProps {
   contentType: typeof LIST;
 };
 
+// Sentence with colon
+export interface SentenceWithColonMapable extends SentenceWithColonProps {
+  contentType: typeof SETNTENCE_WITH_COLON;
+};
 
 // Set of page mapables interfaces
 export type PageMapables =
   PageTitleMapable |
   ParagraphMapable |
   ListMapable |
-  ImageMapable
+  ImageMapable |
+  SentenceWithColonMapable;
 
 
 // Mapable data

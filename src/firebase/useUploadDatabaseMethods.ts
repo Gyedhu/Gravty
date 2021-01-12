@@ -36,12 +36,16 @@ const useUploadsDatabaseMethods = () => {
 
     try {
       pushNotification("Uploading question");
+
+      // current user
       const { currentUser } = firebase.auth();
 
+      // Check the current user is available
       if (!currentUser) {
         pushNotification("Push failed", 2);
         return
       }
+      // Check the email is available or not
       if (!currentUser.email) {
         pushNotification("Push failed", 2);
         return;
@@ -74,18 +78,17 @@ const useUploadsDatabaseMethods = () => {
 
       // --- Upload image --- 
       // Cheking the image file is given
-      if (!file)
-        return
+      if (file) {
 
-      // Get url 
-      const url = await uploadImage(`${uid}/${id}`, file);
+        // Get url 
+        const url = await uploadImage(`${uid}/${id}`, file);
 
-      // Store image url in database
-      await firebase.firestore()
-        .collection("questions")
-        .doc(id)
-        .set({ imageUrl: url }, { merge: true });
-
+        // Store image url in database
+        await firebase.firestore()
+          .collection("questions")
+          .doc(id)
+          .set({ imageUrl: url }, { merge: true });
+      }
 
       // --- Total success --- 
       pushNotification("Upload success", 2);

@@ -6,12 +6,16 @@ import {
   Paragraph,
   Image
 } from "..";
+
+// types
 import {
   PageMapables,
   PARAGRAPH,
   LIST,
-  IMAGE
+  IMAGE,
+  SETNTENCE_WITH_COLON
 } from "../../types/pageMapables";
+import SentenceWithColon from "./SentenceWithColon";
 
 
 const PageListMap: React.FC<PageMapables> = (props) => {
@@ -29,6 +33,10 @@ const PageListMap: React.FC<PageMapables> = (props) => {
     // Image
     case IMAGE:
       return <Image {...props} />
+
+    // Sentence with colon
+    case SETNTENCE_WITH_COLON:
+      return <SentenceWithColon {...props} />
 
     // If nother
     default:

@@ -40,6 +40,7 @@ export { default as Paragraph } from "./Page/Paragraph";
 export { default as List } from "./Page/List";
 export { default as Image } from "./Page/Image";
 export { default as PageMap } from "./Page/PageMap";
+export { default as SentenceWithColon } from "./Page/SentenceWithColon";
 
 
 // Page editor
