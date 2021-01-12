@@ -2,14 +2,13 @@ import React from "react";
 import { useSelector } from "react-redux";
 
 // Components
-import { FlexView, Text } from "../../components";
+import { FlexView } from "../../components";
 
 // Containers 
 import {
   View,
   PageMap,
   PageTitle,
-  SentenceWithColon
 } from "../../container";
 
 // State and Actions
@@ -18,7 +17,6 @@ import { PageState } from "../../redux/page/type";
 
 // Types
 import { PageMapables } from "../../types/pageMapables";
-import { lorem } from "faker";
 
 const Page = () => {
 
