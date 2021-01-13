@@ -11,7 +11,7 @@ interface Props extends QuestionProps {
   delay?: number;
 };
 
-const QuestionTemplate: React.FC<Props> = ({ delay, id, imageUrl, content, likes, timestamp, views, comments }) => {
+const QuestionTemplate: React.FC<Props> = ({ delay, id, imageUrl, content, likes, timestamp, comments }) => {
 
   const [showComments, setShowComments] = useState(false);
 
@@ -55,8 +55,6 @@ const QuestionTemplate: React.FC<Props> = ({ delay, id, imageUrl, content, likes
 
         {/* Buttons */}
         <FlexView gap="10px">
-          <Button size="15px" title={`${views} Views`} />
-          <FlexView border />
           <Button size="15px" title={`${likes} Likes`} />
           <FlexView border />
           <Button size="15px" title={`${comments} Comments`} />

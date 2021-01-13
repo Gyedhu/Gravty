@@ -19,7 +19,6 @@ export interface QuestionProps {
   imageUrl?: string;
   content: string;
   comments: number;
-  views: number;
   timestamp: firebase.firestore.Timestamp;
   likes: number;
 };

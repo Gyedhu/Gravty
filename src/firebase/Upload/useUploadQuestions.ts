@@ -13,7 +13,6 @@ interface QuestionData {
   auther: string;
   timestamp: firebase.firestore.Timestamp;
   comments: number;
-  views: number;
   likes: number;
 };
 
@@ -36,7 +35,6 @@ export default function useFetchQuestion() {
         const newQuestionData: QuestionData = {
           auther: currentUser.email,
           comments: 0,
-          views: 0,
           likes: 0,
           timestamp: firebase.firestore.Timestamp.fromDate(new Date())
         };
