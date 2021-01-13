@@ -1,12 +1,6 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 
-// Components
-import {
-  Button,
-  FlexView
-} from "../../components";
-
 // Containers
 import {
   Title,
