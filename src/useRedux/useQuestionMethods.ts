@@ -1,20 +1,21 @@
 import { useCallback } from "react";
 import { useDispatch } from "react-redux";
-import { setQuestion } from "../redux/question/action";
+import { removeQuestion, setQuestion } from "../redux/question/action";
 import { QuestionProps } from "../redux/question/type";
 
-const useQuestioMethods = () => {
+export default function useQuestionRedux() {
 
-  // dispatch
   const dispatch = useDispatch();
 
-  // set method in state;
-  const storeQuestions = useCallback((questions: Array<QuestionProps>) => {
+  // add a question
+  const setQuesitonList = useCallback((questions: Array<QuestionProps>) => {
     dispatch(setQuestion(questions));
   }, [dispatch]);
 
-  return { storeQuestions };
+  // remove question
+  const removeQuestionFromList = useCallback((id: string) => {
+    dispatch(removeQuestion(id));
+  }, [dispatch]);
 
+  return { setQuesitonList, removeQuestionFromList };
 }
-
-export default useQuestioMethods;

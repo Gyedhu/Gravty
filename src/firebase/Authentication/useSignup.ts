@@ -4,39 +4,16 @@ import "firebase/auth";
 
 // Redux 
 import { useHistory } from "react-router-dom";
-import { setNotification } from "../redux/notification/action";
-import { UserDataState } from "../redux/userData/type";
-import { useNotification, useUserDataMethods } from "../useRedux";
+import { UserDataState } from "../../redux/userData/type";
+import { useNotification } from "../../useRedux";
 
-const useAuthentication = () => {
+export default function useSignup() {
 
   // history for change route
   const history = useHistory();
 
   // --- Notification ---
   const { popNotification, pushNotification } = useNotification();
-
-  // --- User data methods ---
-  const { resetUserData } = useUserDataMethods();
-
-  // --- Signin --- 
-  const signin = async (email: string, password: string) => {
-    try {
-      pushNotification("Loading...");
-
-      // Signing in...
-      await firebase.auth().signInWithEmailAndPassword(email, password);
-
-      // Change  route
-      history.replace("/profile");
-
-    } catch (error) {
-      pushNotification(error.message, 2);
-    }
-    finally {
-      popNotification();
-    }
-  }
 
   // Signup   
   interface UserData {
@@ -84,17 +61,5 @@ const useAuthentication = () => {
     }
   }
 
-  // Signout
-  const signout = async () => {
-    setNotification("Signing out...");
-    await firebase.auth().signOut();
-    popNotification();
-    resetUserData();
-    history.replace("/signin");
-  }
-
-  return { signin, signup, signout };
-
-}
-
-export default useAuthentication;
+  return signup;
+}; 

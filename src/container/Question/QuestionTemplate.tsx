@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 
 // components
 import { Button, FlexView, Text } from "../../components";
-import { useUploadDatabaseMethods } from "../../firebase";
+import { useDeleteQuestion } from "../../firebase";
 import { setImageDisplayUrl } from "../../redux/imageDisplay/action";
 import { QuestionProps } from "../../redux/question/type";
 
@@ -15,7 +15,7 @@ const QuestionTemplate: React.FC<Props> = ({ delay, id, imageUrl, content, likes
 
   const [showComments, setShowComments] = useState(false);
 
-  const { removeQuestion } = useUploadDatabaseMethods();
+  const removeQuestion = useDeleteQuestion();
 
   const remove = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     removeQuestion(event.currentTarget.value, Boolean(imageUrl));

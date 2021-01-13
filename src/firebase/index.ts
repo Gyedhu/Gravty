@@ -1,7 +1,16 @@
 // uploads
 export { default as useUploadQuestions } from "./Upload/useUploadQuestions";
+export { default as useUploadImage } from "./Upload/useUploadImage";
 
-export { default as useAuthentication } from "./useAuthentication";
-export { default as useUploadImage } from "./useUploadImage";
-export { default as useGetUserData } from "./useGetUserData";
-export { default as useUploadDatabaseMethods } from "./useUploadDatabaseMethods"; 
+// Fetch
+export { default as useFetchQuestion } from "./Fetch/useFetchQuestion";
+export { default as useFetchUserData } from "./Fetch/useFetchUserData";
+
+// Delete
+export { default as useDeleteQuestion } from "./Delete/useDeleteQuestions";
+
+// Authentication
+export { default as useSignin } from "./Authentication/useSignin";
+export { default as useSignup } from "./Authentication/useSignup";
+export { default as useSignout } from "./Authentication/useSignout";
+

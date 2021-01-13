@@ -1,20 +1,20 @@
 
-// Types
-import { User } from "../../assets/images";
+// Types 
 import {
   UserDataState,
   UserDataActionTypes,
   SET_USER_DATA,
   CLEAR_USER_DATA,
-  SET_STATUS_NOT_EMPTY
+  SET_STATUS_NOT_EMPTY,
+  CHANGE_UPLOADS_VALUE
 } from "./type";
 
 const inialState: UserDataState = {
   data: {
-    imageUrl: User,
-    name: "Yedhumohanan.G",
-    email: "gyedhumohanan@gmail.com",
-    profession: "FullStack developer",
+    imageUrl: "",
+    name: "",
+    email: "",
+    profession: "",
     uploads: 0,
     friends: 0,
     stars: 0,
@@ -42,6 +42,19 @@ const reducer = (state: UserDataState = inialState, action: UserDataActionTypes)
       return {
         ...state,
         ...inialState
+      };
+
+    case CHANGE_UPLOADS_VALUE:
+
+      alert(action.payload);
+
+      return {
+        ...state,
+        data: {
+          ...state.data,
+          
+          uploads: state.data.uploads + action.payload
+        }
       };
 
     default:

@@ -8,8 +8,8 @@ import { Button, FlexView } from "../../components";
 // container
 import { Title, QuestionList, View } from "../../container";
 
-// type 
-import useUploadsDatabaseMethods from "../../firebase/useUploadDatabaseMethods";
+// type  
+import { useFetchQuestion } from "../../firebase";
 
 
 interface UploadListProps {
@@ -19,7 +19,7 @@ interface UploadListProps {
 const UploadList: React.FC<UploadListProps> = ({ type }) => {
 
   // Fetch question methods
-  const { fetchQuestion } = useUploadsDatabaseMethods();
+  const fetchQuestion = useFetchQuestion();
 
   // router
   const router = useHistory();

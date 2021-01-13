@@ -1,7 +1,7 @@
 // Redux
 import { useCallback } from "react";
 import { useDispatch } from "react-redux";
-import { clearUserData, setStatusNotEmpty, setUserData } from "../redux/userData/action";
+import { changeUploadsValue, clearUserData, setStatusNotEmpty, setUserData } from "../redux/userData/action";
 import { UserDataState } from "../redux/userData/type";
 
 export default function useUserDataMethods() {
@@ -25,6 +25,16 @@ export default function useUserDataMethods() {
     dispatch(clearUserData());
   }, [dispatch]);
 
-  return { storeUserData, setStatusLoaded, resetUserData };
+
+  // change uploads value
+  const incrementUploads = useCallback(() => {
+    dispatch(changeUploadsValue(1));
+  }, [dispatch]);
+
+  const decrementUploads = useCallback(() => {
+    dispatch(changeUploadsValue(-1));
+  }, [dispatch]);
+
+  return { storeUserData, setStatusLoaded, resetUserData, decrementUploads, incrementUploads };
 
 }

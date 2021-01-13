@@ -9,12 +9,12 @@ import {
 } from "../../container";
 
 // firebase
-import { useGetUserData } from "../../firebase";
+import { useFetchUserData } from "../../firebase";
 
 const Profile = () => {
 
   // Fetch use data method
-  const { getData } = useGetUserData();
+  const { getData } = useFetchUserData();
 
   // fetch user data
   useEffect(getData, [getData]);

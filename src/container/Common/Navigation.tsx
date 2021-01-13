@@ -1,12 +1,12 @@
 import React from "react";
 import { Logo } from "../../assets/images";
 import { Button, FlexView, Text } from "../../components";
-import { useAuthentication } from "../../firebase";
+import { useSignout } from "../../firebase";
 import { View } from "..";
 
 const Navigation = () => {
 
-  const { signout } = useAuthentication();
+  const signout = useSignout();
 
   return <View type="medium" shadow sticky>
     <FlexView justify="space-between">

@@ -17,8 +17,6 @@ const QuestionList = () => {
   // State
   const { questions } = useSelector<State, QuestionState>(state => state.question);
 
-  console.log(questions);
-
   return <FlexView direction="column" gap="25px" popup>
     {
       questions?.map((value, index) =>

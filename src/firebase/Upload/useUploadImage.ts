@@ -1,8 +1,8 @@
-import firebase from "firebase";
+import firebase from "firebase/app";
 import "firebase/storage";
 import "firebase/auth";
 import { useCallback } from "react";
-import { useNotification } from "../useRedux";
+import { useNotification } from "../../useRedux";
 
 const useUploadImage = () => {
 
