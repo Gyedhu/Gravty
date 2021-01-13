@@ -1,4 +1,4 @@
-import firebase from "firebase";
+import firebase from "firebase/app";
 import "firebase/firestore";
 import { useSelector } from "react-redux";
 import { AnswerProps } from "../../redux/question/type";
@@ -17,10 +17,9 @@ export default function useFetchAnswers() {
 
   const fetchAnswers = async (id: string, callback?: () => void) => {
 
-    if (Object.entries(answersList).length === 0)
 
+    if (answersList[id] === undefined)
       try {
-
         pushNotification("Loading answer, please wait");
 
         const response = await firebase.firestore()
@@ -33,7 +32,6 @@ export default function useFetchAnswers() {
         if (response.empty) {
           pushNotification("No answer");
         } else {
-
           const newAnswers: Array<AnswerProps> = [];
 
           response.forEach(doc => {
@@ -58,10 +56,9 @@ export default function useFetchAnswers() {
       catch (error) {
         pushNotification(error.message, 2);
       }
-    else {
+    else
       if (callback)
         callback()
-    }
 
   }
 

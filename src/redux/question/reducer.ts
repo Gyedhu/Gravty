@@ -30,6 +30,7 @@ export default function reducer(state = initialState, action: QuestionActionsTyp
       return {
         ...state,
         answers: {
+          ...state.answers,
           [action.payload.id]: action.payload.answer
         }
       }

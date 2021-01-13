@@ -25,7 +25,6 @@ const Profile = () => {
     <ProfileTitle />
 
     {/* Profile Navigation */}
-    {/* <ProfileNavigation /> */}
 
     <ButtonBar
       filled
@@ -34,7 +33,7 @@ const Profile = () => {
       leftSide={[
         "ri-add-line, write/question",
         "ri-message-line, message",
-        "ri-search-2-line, search",
+        "ri-gallery-line, search",
         "ri-upload-cloud-2-line, upload-list/questions",
         "ri-team-line, team"
       ]}
