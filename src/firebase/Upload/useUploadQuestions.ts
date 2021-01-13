@@ -12,8 +12,9 @@ import { UserDataState } from "../../redux/userData/type";
 interface QuestionData {
   auther: string;
   timestamp: firebase.firestore.Timestamp;
-  comments: number;
+  answers: number;
   likes: number;
+  id: string;
 };
 
 export default function useFetchQuestion() {
@@ -34,8 +35,9 @@ export default function useFetchQuestion() {
 
         const newQuestionData: QuestionData = {
           auther: currentUser.email,
-          comments: 0,
+          answers: 0,
           likes: 0,
+          id: "",
           timestamp: firebase.firestore.Timestamp.fromDate(new Date())
         };
 

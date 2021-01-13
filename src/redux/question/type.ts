@@ -4,10 +4,10 @@ export const SET_QUESTION = "SET_QUESTION";
 export const REMOVE_QUESTION = "REMOVE_QUESTION";
 
 // State
-export interface CommentProps {
+export interface AnswerProps {
   auther: string;
   email?: string;
-  id?: string | number;
+  id?: string;
   imageUrl?: string;
   content: string;
   timestamp: firebase.firestore.Timestamp;
@@ -15,10 +15,10 @@ export interface CommentProps {
 
 export interface QuestionProps {
   auther: string;
-  id?: string | number;
+  id: string | "";
   imageUrl?: string;
   content: string;
-  comments: number;
+  answers: number;
   timestamp: firebase.firestore.Timestamp;
   likes: number;
 };
@@ -26,6 +26,9 @@ export interface QuestionProps {
 
 export interface QuestionState {
   questions: Array<QuestionProps>;
+  answers: {
+    [id: string]: Array<AnswerProps>;
+  };
 };
 
 

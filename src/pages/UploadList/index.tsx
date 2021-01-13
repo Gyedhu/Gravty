@@ -39,7 +39,6 @@ const UploadList: React.FC<UploadListProps> = ({ type }) => {
     <Title
       center
       title="Your uploads"
-      subTitle="Edit, Delete, Share your uploads"
     />
 
     <FlexView justify="space-between">

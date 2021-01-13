@@ -1,10 +1,10 @@
 import React from "react";
-import { FlexView, Text } from "../../components";
-import { CommentProps } from "../../redux/question/type";
+import { FlexView, Text, TextArea } from "../../components";
+import { AnswerProps } from "../../redux/question/type";
 import TextWithImageTemplate from "./TextWithImageTemplate";
 
-const CommentTemplate: React.FC<CommentProps> =
-  ({ auther, content, timestamp, email, id, imageUrl }) => {
+const AnswerTemplate: React.FC<AnswerProps> =
+  ({ auther, content, timestamp, email, imageUrl }) => {
     return <FlexView
       direction="column"
       gap="20px"
@@ -20,10 +20,10 @@ const CommentTemplate: React.FC<CommentProps> =
         subTitle={email}
       />
 
-      <Text>{content}</Text>
+      <TextArea readOnly value={content} />
       <Text size="15px"> Uploaded : {timestamp.toDate().toLocaleString()} </Text>
 
     </FlexView>
   }
 
-export default CommentTemplate;
+export default AnswerTemplate;
