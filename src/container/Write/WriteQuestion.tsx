@@ -7,23 +7,13 @@ import { FlexView, Text } from "../../components";
 import { WriteQuestionTextArea } from "..";
 
 // firebase
-import { useUploadDatabaseMethods } from "../../firebase";
+import { useUploadQuestions } from "../../firebase";
 
-// redux
-
-// types
 
 const WriteQuestion = () => {
 
-
-  // Upload method
-  const { uploadQuestion } = useUploadDatabaseMethods();
-
-  // --- Upload ---
-  const _uploadQuestion =
-    (data: string, file?: File | null, callback?: () => void) => {
-      uploadQuestion(data, file, callback);
-    }
+  // Upload method 
+  const { uploadQuestion } = useUploadQuestions();
 
   return <FlexView direction="column" popup>
 
@@ -35,7 +25,7 @@ const WriteQuestion = () => {
     </Text>
 
     {/* Write Area */}
-    <WriteQuestionTextArea onSubmit={_uploadQuestion} />
+    <WriteQuestionTextArea onSubmit={uploadQuestion} />
   </FlexView>
 }
 

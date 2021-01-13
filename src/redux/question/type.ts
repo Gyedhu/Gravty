@@ -18,11 +18,9 @@ export interface QuestionProps {
   id?: string | number;
   imageUrl?: string;
   content: string;
-  views: number;
-  commentCount: number;
+  comments: number;
   timestamp: firebase.firestore.Timestamp;
   likes: number;
-  comments?: Array<CommentProps>
 };
 
 

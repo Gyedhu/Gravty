@@ -1,3 +1,4 @@
+import React from "react";
 
 // components
 import { useDispatch, useSelector } from "react-redux";
@@ -15,21 +16,23 @@ const ImageDisplayer = () => {
 
   const closeImage = () => dispatch(setImageDisplayUrl(""));
 
-  return <FloatingBox active={Boolean(url)} side="center">
-    <FlexView justify="center" paddingHorizontal="10px">
-      <FlexView align="flex-end" direction="column" gap="10px" maxWidth="420px" paddingHorizontal="10px" popup>
-        <img src={url !== null ? url : ""} alt="Display" width="100%" />
+  return <div onClick={closeImage}>
+    <FloatingBox active={Boolean(url)} side="center">
+      <FlexView justify="center" paddingHorizontal="10px">
+        <FlexView align="flex-end" direction="column" gap="10px" maxWidth="1000px" paddingHorizontal="10px" popup>
+          <img style={{ maxHeight: "600px", maxWidth: "100%" }} src={url !== null ? url : ""} alt="Display" />
 
-        <Button
-          className="ri-close-line"
-          onClick={closeImage}
-          size="20px"
-          width="fit-content"
-        />
+          <Button
+            className="ri-close-line"
+            onClick={closeImage}
+            size="20px"
+            width="fit-content"
+          />
+
+        </FlexView>
       </FlexView>
-    </FlexView>
-
-  </FloatingBox >
+    </FloatingBox>
+  </div>
 }
 
 export default ImageDisplayer;

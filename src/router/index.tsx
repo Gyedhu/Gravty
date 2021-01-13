@@ -28,18 +28,18 @@ const Router = () => {
     <Route exact component={UploadList} path="/upload-list" />
 
     <Route exact path="/upload-list/questions">
-      <UploadList type="questions" />
+      <UploadList type="Questions" />
     </Route>
     <Route exact path="/upload-list/pages">
-      <UploadList type="pages" />
+      <UploadList type="Pages" />
     </Route>
 
     <Route path="/write/question">
-      <Write type="question" />
+      <Write type="Question" />
     </Route>
 
     <Route path="/write/page">
-      <Write type="page" />
+      <Write type="Page" />
     </Route>
 
     <Route component={PageEditor} path="/page/page-editor" />

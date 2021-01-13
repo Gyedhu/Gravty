@@ -9,7 +9,6 @@ export { default as Title } from "./Common/Title";
 
 // Profile
 export { default as ProfileTitle } from "./Profile/ProfileTitle";
-export { default as ProfileNavigation } from "./Profile/ProfileNavigation";
 export { default as ProfileDisplayCard } from "./Profile/ProfileDisplayCard";
 
 
@@ -27,6 +26,7 @@ export { default as WriteTextFieldMap } from "./Write/WriteTextFieldMap";
 // Buttons tools 
 export { default as ButtonSet } from "./Button/ButtonSet";
 export { default as WritePageButton } from "./Button/WritePageButton";
+export { default as ButtonBar } from "./Button/ButtonBar";
 
 
 // Question

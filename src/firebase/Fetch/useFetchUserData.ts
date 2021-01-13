@@ -1,11 +1,11 @@
-import firebase from "firebase";
+import firebase from "firebase/app";
 import "firebase/firestore";
 
 // Redux
 import { useSelector } from "react-redux";
-import { useNotification, useUserDataMethods } from "../useRedux";
-import { State } from "../redux/store";
-import { UserDataState } from "../redux/userData/type";
+import { useNotification, useUserDataMethods } from "../../useRedux";
+import { State } from "../../redux/store";
+import { UserDataState } from "../../redux/userData/type";
 import { useCallback } from "react";
 
 
@@ -58,7 +58,7 @@ const useGetUserData = () => {
 
 
   // Fetching
-  const getData = useCallback(() => { 
+  const getData = useCallback(() => {
 
     if (empty) {
       pushNotification("Fetching your account information");

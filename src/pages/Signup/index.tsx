@@ -9,7 +9,7 @@ import {
 
 // Containers
 import { FormContainer } from "../../container";
-import { useAuthentication } from "../../firebase";
+import { useSignup } from "../../firebase";
 
 // User data interface
 interface UserData {
@@ -33,7 +33,7 @@ const Signup = () => {
   });
 
   // Authentication
-  const { signup } = useAuthentication();
+  const signup = useSignup();
 
   // ShowPassword for change password visibility
   const [showPassword, setShowPassword] = useState(false);

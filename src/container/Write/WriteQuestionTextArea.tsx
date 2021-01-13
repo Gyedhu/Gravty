@@ -31,12 +31,10 @@ const WriteQuestionTextArea: React.FC<Props> = ({ onSubmit }) => {
 
   // --- Submit data ---
   const submit = () => {
-    if (data.trim() !== "") {
-      onSubmit(data, file, () => {
-        clearTextArea();
-        detachMedia();
-      });
-    }
+    onSubmit(data, file, () => {
+      clearTextArea();
+      detachMedia();
+    });
   }
 
   // --- Read data ---

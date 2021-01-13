@@ -4,8 +4,7 @@ import { setNotification } from "../redux/notification/action";
 
 const useNotification = () => {
 
-  const dispatch = useDispatch(); 
-
+  const dispatch = useDispatch();  
   
   // popdown
   const popNotification = useCallback(() => {
