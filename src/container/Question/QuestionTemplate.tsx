@@ -70,15 +70,19 @@ const QuestionTemplate: React.FC<Props> = ({ delay, id, imageUrl, content, likes
         </FlexView>
       </FlexView>
 
-      <FlexView>
-        <Button
-          shadow
-          onClick={() => setShowComments(prev => !prev)}
-          className={showComments ? "ri-arrow-drop-up-line" : "ri-arrow-drop-down-line"}
-          size="15px"
-          title={(showComments ? "Hide" : "Show") + " comments"}
-        />
-      </FlexView>
+      {
+        comments > 0 &&
+        <FlexView>
+          <Button
+            shadow
+            onClick={() => setShowComments(prev => !prev)}
+            className={showComments ? "ri-arrow-drop-up-line" : "ri-arrow-drop-down-line"}
+            size="15px"
+            title={(showComments ? "Hide" : "Show") + " comments"}
+          />
+        </FlexView>
+      }
+
     </FlexView>
   </FlexView >
 }

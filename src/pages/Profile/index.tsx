@@ -2,8 +2,8 @@ import React, { memo, useEffect } from "react";
 
 // Containers
 import {
+  ButtonBar,
   ProfileDisplayCard,
-  ProfileNavigation,
   ProfileTitle,
   View
 } from "../../container";
@@ -25,7 +25,25 @@ const Profile = () => {
     <ProfileTitle />
 
     {/* Profile Navigation */}
-    <ProfileNavigation />
+    {/* <ProfileNavigation /> */}
+
+    <ButtonBar
+      filled
+      selectType="normal"
+      buttonType="icon"
+      leftSide={[
+        "ri-add-line, write/question",
+        "ri-message-line, message",
+        "ri-search-2-line, search",
+        "ri-upload-cloud-2-line, upload-list/questions",
+        "ri-team-line, team"
+      ]}
+
+      rightSide={[
+        "ri-settings-2-line",
+        "ri-menu-line"
+      ]}
+    />
 
     {/* Profile Display Card */}
     <ProfileDisplayCard />

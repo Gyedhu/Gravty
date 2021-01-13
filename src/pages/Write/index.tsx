@@ -12,13 +12,14 @@ import {
   Title,
   WritePage,
   WriteQuestion,
-  View
+  View,
+  ButtonBar
 } from "../../container";
 
 // Write types
 interface Props {
-  type: "question" | "page" | null
-}
+  type: "Question" | "Page";
+};
 
 const Write: React.FC<Props> = ({ type }) => {
 
@@ -26,8 +27,8 @@ const Write: React.FC<Props> = ({ type }) => {
   const history = useHistory();
 
   // Select current page
-  const selectWriteType = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    history.replace(`/write/${event.currentTarget.value}`);
+  const selectWriteType = (current: string) => {
+    history.replace(`/write/${current.toLocaleLowerCase()}`);
   }
 
   return <View type="medium">
@@ -39,32 +40,25 @@ const Write: React.FC<Props> = ({ type }) => {
     />
 
     {/* Button set question ~ pages */}
-    <FlexView gap="20px" popup>
-
-      <Button
-        active={type === "question"}
-        onClick={selectWriteType}
-        title="Questions"
-        value="question"
-      />
-
-      <Button
-        active={type === "page"}
-        onClick={selectWriteType}
-        title="Pages"
-        value="page"
-      />
-
-    </FlexView>
+    <ButtonBar
+      selectType="toggle"
+      buttonType="text"
+      defaultSelected={type}
+      onClick={selectWriteType}
+      leftSide={[
+        "Question",
+        "Page"
+      ]}
+    />
 
     {
       // question write area
-      type === "question" && <WriteQuestion />
+      type === "Question" && <WriteQuestion />
     }
 
     {
       // Page write area
-      type === "page" && <WritePage />
+      type === "Page" && <WritePage />
     }
 
   </View>
