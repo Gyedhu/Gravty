@@ -46,13 +46,10 @@ const reducer = (state: UserDataState = inialState, action: UserDataActionTypes)
 
     case CHANGE_UPLOADS_VALUE:
 
-      alert(action.payload);
-
       return {
         ...state,
         data: {
           ...state.data,
-          
           uploads: state.data.uploads + action.payload
         }
       };

@@ -4,7 +4,7 @@ export const ButtonContainer = styled.button <ButtonStyleTypes>`
   align-items: center;
   background-color: transparent;
   border: 0; 
-  border-bottom: ${({ active }) => active && "4px solid #59886b"};
+  border-bottom: ${({ active }) => active && "4px solid #5b886b"}; 
   color: inherit;
   cursor: pointer;
   display: flex;
