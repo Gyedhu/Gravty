@@ -2,6 +2,7 @@ import firebase from "firebase/app";
 
 export const SET_QUESTION = "SET_QUESTION";
 export const REMOVE_QUESTION = "REMOVE_QUESTION";
+export const SET_ANSWER = "SET_ANSWER";
 
 // State
 export interface AnswerProps {
@@ -43,4 +44,9 @@ export interface RemoveQuestion {
   payload: string;
 };
 
-export type QuestionActionsTypes = SetQuestion | RemoveQuestion;
+export interface SetAnswer {
+  type: typeof SET_ANSWER;
+  payload: { id: string; answer: Array<AnswerProps> };
+};
+
+export type QuestionActionsTypes = SetQuestion | RemoveQuestion | SetAnswer;

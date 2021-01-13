@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 // components
 import { Button, FlexView, Text, TextArea } from "../../components";
 import { useDeleteQuestion } from "../../firebase";
+import useFetchAnswers from "../../firebase/Fetch/useFetchAnswers";
 import { setImageDisplayUrl } from "../../redux/imageDisplay/action";
 import { QuestionProps } from "../../redux/question/type";
 import AnswerList from "../Answer/AnswerList";
@@ -15,8 +16,19 @@ interface Props extends QuestionProps {
 const QuestionTemplate: React.FC<Props> = ({ delay, id, imageUrl, content, likes, timestamp, answers }) => {
 
   const [showAnswer, setShowAnswers] = useState(false);
+  const fetchAnswers = useFetchAnswers();
 
   const removeQuestion = useDeleteQuestion();
+
+  const answersToggler = () => {
+
+    if (!showAnswer)
+      fetchAnswers(id, () => setShowAnswers(true))
+    else
+      setShowAnswers(false);
+
+  }
+
 
   const remove = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     removeQuestion(event.currentTarget.value, Boolean(imageUrl));
@@ -74,7 +86,7 @@ const QuestionTemplate: React.FC<Props> = ({ delay, id, imageUrl, content, likes
         <FlexView>
           <Button
             shadow
-            onClick={() => setShowAnswers(prev => !prev)}
+            onClick={answersToggler}
             className={showAnswer ? "ri-arrow-drop-up-line" : "ri-arrow-drop-down-line"}
             size="15px"
             title={(showAnswer ? "Hide" : "Show") + " Answers"}

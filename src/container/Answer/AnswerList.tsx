@@ -17,6 +17,7 @@ const AnswerList: React.FC<Props> = ({ id }) => {
 
   return <FlexView direction="column" gap="30px">
     {
+      answersList &&
       answersList.map(value =>
         <AnswerTemplate
           key={value.id}
