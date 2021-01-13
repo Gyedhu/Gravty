@@ -2,20 +2,33 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 
 // components
-import { Button, FlexView, Text } from "../../components";
+import { Button, FlexView, Text, TextArea } from "../../components";
 import { useDeleteQuestion } from "../../firebase";
+import useFetchAnswers from "../../firebase/Fetch/useFetchAnswers";
 import { setImageDisplayUrl } from "../../redux/imageDisplay/action";
 import { QuestionProps } from "../../redux/question/type";
+import AnswerList from "../Answer/AnswerList";
 
 interface Props extends QuestionProps {
   delay?: number;
 };
 
-const QuestionTemplate: React.FC<Props> = ({ delay, id, imageUrl, content, likes, timestamp, comments }) => {
+const QuestionTemplate: React.FC<Props> = ({ delay, id, imageUrl, content, likes, timestamp, answers }) => {
 
-  const [showComments, setShowComments] = useState(false);
+  const [showAnswer, setShowAnswers] = useState(false);
+  const fetchAnswers = useFetchAnswers();
 
   const removeQuestion = useDeleteQuestion();
+
+  const answersToggler = () => {
+
+    if (!showAnswer)
+      fetchAnswers(id, () => setShowAnswers(true))
+    else
+      setShowAnswers(false);
+
+  }
+
 
   const remove = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     removeQuestion(event.currentTarget.value, Boolean(imageUrl));
@@ -46,18 +59,18 @@ const QuestionTemplate: React.FC<Props> = ({ delay, id, imageUrl, content, likes
     <FlexView
       direction="column"
       gap="30px"
-      paddingHorizontal="20px"
+      paddingHorizontal="15px"
     >
 
       {/* Question */}
-      <Text> {content} </Text>
+      <TextArea value={content} type="dashed" readOnly />
       <FlexView align="center" gap="15px" justify="space-between" wrap="wrap">
 
         {/* Buttons */}
         <FlexView gap="10px">
           <Button size="15px" title={`${likes} Likes`} />
           <FlexView border />
-          <Button size="15px" title={`${comments} Comments`} />
+          <Button size="15px" title={`${answers} answers`} />
         </FlexView>
 
         <Text size="15px"> Uploaded : {timestamp.toDate().toLocaleString()} </Text>
@@ -69,16 +82,24 @@ const QuestionTemplate: React.FC<Props> = ({ delay, id, imageUrl, content, likes
       </FlexView>
 
       {
-        comments > 0 &&
+        answers > 0 &&
         <FlexView>
           <Button
             shadow
-            onClick={() => setShowComments(prev => !prev)}
-            className={showComments ? "ri-arrow-drop-up-line" : "ri-arrow-drop-down-line"}
+            onClick={answersToggler}
+            className={showAnswer ? "ri-arrow-drop-up-line" : "ri-arrow-drop-down-line"}
             size="15px"
-            title={(showComments ? "Hide" : "Show") + " comments"}
+            title={(showAnswer ? "Hide" : "Show") + " Answers"}
           />
         </FlexView>
+      }
+
+      {
+        showAnswer && <>
+          {
+            <AnswerList id={id} />
+          }
+        </>
       }
 
     </FlexView>

@@ -33,13 +33,12 @@ const UploadList: React.FC<UploadListProps> = ({ type }) => {
   // Fetch Questions
   useEffect(() => { fetchQuestion() }, [fetchQuestion]);
 
-  return <View type="medium">
+  return <View type="medium" noPadding>
 
     {/* Title */}
     <Title
       center
       title="Your uploads"
-      subTitle="Edit, Delete, Share your uploads"
     />
 
     <FlexView justify="space-between">

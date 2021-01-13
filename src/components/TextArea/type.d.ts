@@ -1,6 +1,7 @@
 interface TextAreaStyle {
   align?: TextAlign;
   fontSize?: FontSize;
+  readOnly?: boolean;
   size?: TextAreaSize;
   type?: TextAreaType;
 };

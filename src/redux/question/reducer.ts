@@ -1,7 +1,8 @@
-import { QuestionActionsTypes, QuestionState, REMOVE_QUESTION, SET_QUESTION } from "./type";
+import { QuestionActionsTypes, QuestionState, REMOVE_QUESTION, SET_ANSWER, SET_QUESTION } from "./type";
 
 const initialState: QuestionState = {
   questions: [],
+  answers: {}
 };
 
 export default function reducer(state = initialState, action: QuestionActionsTypes): QuestionState {
@@ -24,6 +25,15 @@ export default function reducer(state = initialState, action: QuestionActionsTyp
         ...state,
         questions: newQuestions
       };
+
+    case SET_ANSWER:
+      return {
+        ...state,
+        answers: {
+          ...state.answers,
+          [action.payload.id]: action.payload.answer
+        }
+      }
 
     default:
       return state;

@@ -28,9 +28,15 @@ export const TextAreaContainer = styled.textarea<TextAreaStyle>`
   ${({ size }) => size === 1 && css`
     overflow: hidden;
     resize: none;
-  `}  
+  `};
 
   &:focus {
     outline: 1px dashed dodgerblue;
-  }
+  };
+
+  ${({ readOnly }) => readOnly && css` 
+    background: white;
+    animation: none;
+    border: 0;
+  `};
 `;

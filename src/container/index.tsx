@@ -6,6 +6,7 @@ export { default as ImageDisplay } from "./Common/ImageDisplay";
 export { default as TextWithImageTemplate } from "./Common/TextWithImageTemplate";
 export { default as FormContainer } from "./Common/FormContainer";
 export { default as Title } from "./Common/Title";
+export { default as AnswerTemplate } from "./Common/AnswerTemplate";
 
 // Profile
 export { default as ProfileTitle } from "./Profile/ProfileTitle";
@@ -33,6 +34,8 @@ export { default as ButtonBar } from "./Button/ButtonBar";
 export { default as QuestionTemplate } from "./Question/QuestionTemplate";
 export { default as QuestionList } from "./QuestionList";
 
+// Answer
+export { default as AnswerList } from "./Answer/AnswerList";
 
 // Page 
 export { default as PageTitle } from "./Page/PageTitle";
