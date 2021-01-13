@@ -34,6 +34,8 @@ export { default as ButtonBar } from "./Button/ButtonBar";
 export { default as QuestionTemplate } from "./Question/QuestionTemplate";
 export { default as QuestionList } from "./QuestionList";
 
+// Answer
+export { default as AnswerList } from "./Answer/AnswerList";
 
 // Page 
 export { default as PageTitle } from "./Page/PageTitle";

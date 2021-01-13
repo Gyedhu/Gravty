@@ -1,14 +1,12 @@
-import firebase from "firebase";
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 // components
 import { Button, FlexView, Text, TextArea } from "../../components";
 import { useDeleteQuestion } from "../../firebase";
 import { setImageDisplayUrl } from "../../redux/imageDisplay/action";
-import { AnswerProps, QuestionProps } from "../../redux/question/type";
-import { State } from "../../redux/store";
-import AnswerTemplate from "../Common/AnswerTemplate";
+import { QuestionProps } from "../../redux/question/type";
+import AnswerList from "../Answer/AnswerList";
 
 interface Props extends QuestionProps {
   delay?: number;
@@ -23,8 +21,6 @@ const QuestionTemplate: React.FC<Props> = ({ delay, id, imageUrl, content, likes
   const remove = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     removeQuestion(event.currentTarget.value, Boolean(imageUrl));
   }
-
-  const answersList = useSelector<State, Array<AnswerProps>>(state => state.question.answers[id]);
 
   // dispatch
   const dispatch = useDispatch();
@@ -89,13 +85,7 @@ const QuestionTemplate: React.FC<Props> = ({ delay, id, imageUrl, content, likes
       {
         showAnswer && <>
           {
-            answersList && id &&
-            (answersList).map((value) =>
-              <AnswerTemplate
-                key={(value as AnswerProps).id}
-                {...value as AnswerProps}
-              />
-            )
+            <AnswerList id={id} />
           }
         </>
       }
