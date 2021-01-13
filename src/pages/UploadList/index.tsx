@@ -33,7 +33,7 @@ const UploadList: React.FC<UploadListProps> = ({ type }) => {
   // Fetch Questions
   useEffect(() => { fetchQuestion() }, [fetchQuestion]);
 
-  return <View type="medium">
+  return <View type="medium" noPadding>
 
     {/* Title */}
     <Title

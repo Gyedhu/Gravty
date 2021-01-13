@@ -6,6 +6,7 @@ export { default as ImageDisplay } from "./Common/ImageDisplay";
 export { default as TextWithImageTemplate } from "./Common/TextWithImageTemplate";
 export { default as FormContainer } from "./Common/FormContainer";
 export { default as Title } from "./Common/Title";
+export { default as CommentTemplate } from "./Common/CommentTemplate";
 
 // Profile
 export { default as ProfileTitle } from "./Profile/ProfileTitle";

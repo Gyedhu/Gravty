@@ -1,7 +1,19 @@
+import firebase from "firebase";
+
 import { QuestionActionsTypes, QuestionState, REMOVE_QUESTION, SET_QUESTION } from "./type";
 
 const initialState: QuestionState = {
-  questions: [],
+  questions: [
+    {
+      auther: "Yedhumohanan.G",
+      comments: 1,
+      content: "What is computer",
+      likes: 20,
+      timestamp: firebase.firestore.Timestamp.fromDate(new Date()),
+      id: "slfjslkdjf",
+
+    }
+  ],
 };
 
 export default function reducer(state = initialState, action: QuestionActionsTypes): QuestionState {

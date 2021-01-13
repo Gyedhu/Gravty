@@ -1,3 +1,4 @@
+import firebase from "firebase";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 
@@ -6,6 +7,7 @@ import { Button, FlexView, Text } from "../../components";
 import { useDeleteQuestion } from "../../firebase";
 import { setImageDisplayUrl } from "../../redux/imageDisplay/action";
 import { QuestionProps } from "../../redux/question/type";
+import CommentTemplate from "../Common/CommentTemplate";
 
 interface Props extends QuestionProps {
   delay?: number;
@@ -46,7 +48,7 @@ const QuestionTemplate: React.FC<Props> = ({ delay, id, imageUrl, content, likes
     <FlexView
       direction="column"
       gap="30px"
-      paddingHorizontal="20px"
+      paddingHorizontal="15px"
     >
 
       {/* Question */}
@@ -79,6 +81,34 @@ const QuestionTemplate: React.FC<Props> = ({ delay, id, imageUrl, content, likes
             title={(showComments ? "Hide" : "Show") + " comments"}
           />
         </FlexView>
+      }
+
+      {
+        showComments && <>
+          <CommentTemplate
+            auther="Cristain Justjin"
+            email="justin@gmail.com"
+            content="Computer is a device"
+            imageUrl="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+            timestamp={firebase.firestore.Timestamp.fromDate(new Date())}
+          />
+
+          <CommentTemplate
+            auther="Cristain Justjin"
+            email="justin@gmail.com"
+            content="Computer is a device"
+            imageUrl="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+            timestamp={firebase.firestore.Timestamp.fromDate(new Date())}
+          />
+
+          <CommentTemplate
+            auther="Cristain Justjin"
+            email="justin@gmail.com"
+            content="Computer is a device"
+            imageUrl="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+            timestamp={firebase.firestore.Timestamp.fromDate(new Date())}
+          />
+        </>
       }
 
     </FlexView>
